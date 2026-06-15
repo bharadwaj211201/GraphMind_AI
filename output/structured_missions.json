@@ -1,0 +1,112 @@
+[
+    {
+        "mission_name": "SpaDeX Mission",
+        "launch_vehicles": [
+            "PSLV"
+        ],
+        "organizations": [
+            "ISRO"
+        ],
+        "custom_entities": [
+            [
+                "SpaDex",
+                "MISSION"
+            ],
+            [
+                "PSLV",
+                "LAUNCH_VEHICLE"
+            ],
+            [
+                "ISRO",
+                "ORG"
+            ],
+            [
+                "VSSC",
+                "CENTRE"
+            ],
+            [
+                "URSC",
+                "CENTRE"
+            ],
+            [
+                "SDSC",
+                "CENTRE"
+            ],
+            [
+                "ISTRAC",
+                "CENTRE"
+            ],
+            [
+                "SAC",
+                "CENTRE"
+            ]
+        ],
+        "url": "https://www.isro.gov.in/mission_SpaDeX.html"
+    },
+    {
+        "mission_name": "PSLV-C62 / EOS-N1 Mission",
+        "launch_vehicles": [
+            "PSLV"
+        ],
+        "organizations": [
+            "NSIL",
+            "ISRO"
+        ],
+        "custom_entities": [
+            [
+                "Aditya-L1",
+                "MISSION"
+            ],
+            [
+                "AstroSat",
+                "MISSION"
+            ],
+            [
+                "PSLV",
+                "LAUNCH_VEHICLE"
+            ],
+            [
+                "ISRO",
+                "ORG"
+            ],
+            [
+                "NSIL",
+                "ORG"
+            ]
+        ],
+        "url": "https://www.isro.gov.in/Mission_PSLV_C62.html"
+    },
+    {
+        "mission_name": "ISRO’s GSLV-F16 will launch ISRO-NASA joint satellite, NISAR, on July 30, 2025",
+        "launch_vehicles": [
+            "GSLV"
+        ],
+        "organizations": [
+            "ISRO",
+            "NASA"
+        ],
+        "custom_entities": [
+            [
+                "NISAR",
+                "MISSION"
+            ],
+            [
+                "GSLV",
+                "LAUNCH_VEHICLE"
+            ],
+            [
+                "ISRO",
+                "ORG"
+            ],
+            [
+                "NASA",
+                "ORG"
+            ],
+            [
+                "SDSC",
+                "CENTRE"
+            ]
+        ],
+        "url": "https://www.isro.gov.in/Mission_GSLVF16_NISAR.html"
+    }
+]
