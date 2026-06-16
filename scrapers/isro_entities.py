@@ -24,7 +24,7 @@ ORGANIZATIONS = [
     "NSIL"
 ]
 
-CENTERS = [
+CENTRES = [
     "VSSC",
     "URSC",
     "SDSC",

@@ -62,7 +62,7 @@ def extract_custom_entities(text):
                 (org, "ORG")
             )
 
-    for centre in CENTERS:
+    for centre in CENTRES:
 
         if centre.lower() in text.lower():
             entities.append(

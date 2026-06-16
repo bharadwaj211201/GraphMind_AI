@@ -24,4 +24,35 @@ def create_relationships(record):
             )
         )
     
+    for entity, label in record["custom_entities"]:
+        if label == "CENTRE":
+            relationships.append(
+                (
+                    mission,
+                    "ASSOCIATED_WITH",
+                    entity
+                )
+            )
+        elif label == "MISSION":
+
+            if entity.lower() != mission.lower():
+                relationships.append(
+                    (
+                        mission,
+                        "REFERENCES",
+                        entity
+                    )
+                )
+
+        elif label == "ORG":
+            if entity not in record["organizations"]:
+                relationships.append(
+                    (
+                        mission,
+                        "COLLABORATES_WITH",
+                        entity
+                    )
+                )
+        
+    
     return relationships

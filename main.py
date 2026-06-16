@@ -1,6 +1,9 @@
 import json
 
-from config import MISSION_URLS
+from scrapers.url_loader import (
+    load_urls,
+    get_mission_urls
+)
 from scrapers.mission_scraper import scrape_mission
 from scrapers.entity_extractor import (
     extract_custom_entities,
@@ -11,17 +14,37 @@ from scrapers.relationship_builder import create_relationships
 
 structured_data = []
 
+all_urls = load_urls("data/isro_links.txt")
+
+MISSION_URLS = get_mission_urls(all_urls)
+
+print(f"Found {len(MISSION_URLS)} mission urls")
+
+print("\nMission URLs Found:\n")
+
+for url in MISSION_URLS:
+    print(url)
+
 for url in MISSION_URLS:
 
     mission = scrape_mission(url)
 
     if mission:
         
-        vehicles = extract_launch_vehicle(mission["content"])
+        vehicles = extract_launch_vehicle(
+            mission["title"] + " " + 
+            mission["content"][:2000]
+        )
 
-        orgs = extract_organizations(mission["content"])
+        orgs = extract_organizations(
+            mission["title"] + " " +
+            mission["content"][:2000]
+        )
 
-        custom_entities = extract_custom_entities(mission["content"])
+        custom_entities = extract_custom_entities(
+            mission["title"] + " " +
+            mission["content"][:2000]
+        )
 
         record = {
             "mission_name": mission["title"],
@@ -55,7 +78,7 @@ for r in structured_data:
 
     print("\nMission:", r["mission_name"])
 
-    for entity in record["custom_entities"]:
+    for entity in r["custom_entities"]:
         print(entity)
 
 all_relationships = []

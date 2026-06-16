@@ -1,55 +1,8 @@
 [
     {
-        "mission_name": "SpaDeX Mission",
-        "launch_vehicles": [
-            "PSLV"
-        ],
+        "mission_name": "ISRO's Aditya-L1 decodes the Impact of a Powerful Solar Storm on Earth’s Invisible Magnetic Shield",
+        "launch_vehicles": [],
         "organizations": [
-            "ISRO"
-        ],
-        "custom_entities": [
-            [
-                "SpaDex",
-                "MISSION"
-            ],
-            [
-                "PSLV",
-                "LAUNCH_VEHICLE"
-            ],
-            [
-                "ISRO",
-                "ORG"
-            ],
-            [
-                "VSSC",
-                "CENTRE"
-            ],
-            [
-                "URSC",
-                "CENTRE"
-            ],
-            [
-                "SDSC",
-                "CENTRE"
-            ],
-            [
-                "ISTRAC",
-                "CENTRE"
-            ],
-            [
-                "SAC",
-                "CENTRE"
-            ]
-        ],
-        "url": "https://www.isro.gov.in/mission_SpaDeX.html"
-    },
-    {
-        "mission_name": "PSLV-C62 / EOS-N1 Mission",
-        "launch_vehicles": [
-            "PSLV"
-        ],
-        "organizations": [
-            "NSIL",
             "ISRO"
         ],
         "custom_entities": [
@@ -58,9 +11,414 @@
                 "MISSION"
             ],
             [
-                "AstroSat",
+                "ISRO",
+                "ORG"
+            ]
+        ],
+        "url": "https://www.isro.gov.in/AdityaL1_decodes_Impact_Powerful_Solar_Storm.html"
+    },
+    {
+        "mission_name": "Aditya-L1 Mission: Announcement of Opportunity (AO) soliciting proposals for the first AO cycle observations",
+        "launch_vehicles": [],
+        "organizations": [
+            "ISRO"
+        ],
+        "custom_entities": [
+            [
+                "Aditya-L1",
                 "MISSION"
             ],
+            [
+                "ISRO",
+                "ORG"
+            ]
+        ],
+        "url": "https://www.isro.gov.in/AdityaL1_first_AO_cycle.html"
+    },
+    {
+        "mission_name": "Aditya-L1 Mission: Announcement of Opportunity (AO) soliciting proposals for the second AO cycle observations",
+        "launch_vehicles": [],
+        "organizations": [
+            "ISRO"
+        ],
+        "custom_entities": [
+            [
+                "Aditya-L1",
+                "MISSION"
+            ],
+            [
+                "ISRO",
+                "ORG"
+            ]
+        ],
+        "url": "https://www.isro.gov.in/AdityaL1_second_cycle_AO.html"
+    },
+    {
+        "mission_name": "India’s Aditya-L1 Joins Global Effort in Landmark Solar Storm Study",
+        "launch_vehicles": [],
+        "organizations": [
+            "NASA"
+        ],
+        "custom_entities": [
+            [
+                "Aditya-L1",
+                "MISSION"
+            ],
+            [
+                "NASA",
+                "ORG"
+            ]
+        ],
+        "url": "https://www.isro.gov.in/Aditya_L1_Landmark_solar_storm_study.html"
+    },
+    {
+        "mission_name": "Unlocking the Mysteries of the Sun: Aditya-L1’s Observations of a Coronal Mass Ejection",
+        "launch_vehicles": [],
+        "organizations": [],
+        "custom_entities": [
+            [
+                "Aditya-L1",
+                "MISSION"
+            ]
+        ],
+        "url": "https://www.isro.gov.in/Aditya_L1_Observations_Coronal_Mass_Ejection.html"
+    },
+    {
+        "mission_name": "Aditya-L1 measurementshelp to explain unusual dawn-time geomagnetic disturbances during strong solar storms",
+        "launch_vehicles": [],
+        "organizations": [],
+        "custom_entities": [
+            [
+                "Aditya-L1",
+                "MISSION"
+            ]
+        ],
+        "url": "https://www.isro.gov.in/Aditya_L1_measurementshelp.html"
+    },
+    {
+        "mission_name": "Ax-04 Mission Updates",
+        "launch_vehicles": [],
+        "organizations": [
+            "ISRO",
+            "NASA"
+        ],
+        "custom_entities": [
+            [
+                "ISRO",
+                "ORG"
+            ],
+            [
+                "NASA",
+                "ORG"
+            ]
+        ],
+        "url": "https://www.isro.gov.in/Ax-04_MissionUpdates_13062025.html"
+    },
+    {
+        "mission_name": "Ax-04 Mission Press Update",
+        "launch_vehicles": [],
+        "organizations": [
+            "ISRO",
+            "NASA"
+        ],
+        "custom_entities": [
+            [
+                "ISRO",
+                "ORG"
+            ],
+            [
+                "NASA",
+                "ORG"
+            ]
+        ],
+        "url": "https://www.isro.gov.in/Ax-04_MissionUpdates_14062025.html"
+    },
+    {
+        "mission_name": "Axiom-4 Mission: A saga of ~12 million kilometers and ~282 orbits aboard ISS",
+        "launch_vehicles": [],
+        "organizations": [
+            "ISRO",
+            "NASA",
+            "ESA"
+        ],
+        "custom_entities": [
+            [
+                "ISRO",
+                "ORG"
+            ],
+            [
+                "NASA",
+                "ORG"
+            ],
+            [
+                "ESA",
+                "ORG"
+            ]
+        ],
+        "url": "https://www.isro.gov.in/Axiom04_mission_successfully_concluded_return_ISRO_Gaganyatri_ShubhanshuShukla.html"
+    },
+    {
+        "mission_name": "Axiom-4 Mission: Successful completion of Microgravity experiments",
+        "launch_vehicles": [],
+        "organizations": [
+            "ISRO"
+        ],
+        "custom_entities": [
+            [
+                "ISRO",
+                "ORG"
+            ]
+        ],
+        "url": "https://www.isro.gov.in/Axiom4_Mission_Successful_completion_of_microgravity_experiments.html"
+    },
+    {
+        "mission_name": "ISRO successfully conducted the flight acceptance hot test of CE20 Cryogenic Engine for LVM3-M6 Mission",
+        "launch_vehicles": [
+            "LVM3"
+        ],
+        "organizations": [
+            "ISRO"
+        ],
+        "custom_entities": [
+            [
+                "LVM3",
+                "LAUNCH_VEHICLE"
+            ],
+            [
+                "ISRO",
+                "ORG"
+            ]
+        ],
+        "url": "https://www.isro.gov.in/CE20_Cryogenic_Engine_flight_acceptance_hot_test_successful_LVM3-M6_Mission.html"
+    },
+    {
+        "mission_name": "Chandrayaan-2 Observes Effects of the Coronal Mass Ejections from the Sun on the Lunar Exosphere",
+        "launch_vehicles": [],
+        "organizations": [],
+        "custom_entities": [
+            [
+                "Chandrayaan-2",
+                "MISSION"
+            ]
+        ],
+        "url": "https://www.isro.gov.in/Chandrayaan-2_Coronal_Mass_Ejections_Lunar_Exosphere.html"
+    },
+    {
+        "mission_name": "Chandrayaan-2 unveils the effect of the Earth’s geomagnetic tail on the Lunar ionosphere plasma",
+        "launch_vehicles": [],
+        "organizations": [],
+        "custom_entities": [
+            [
+                "Chandrayaan-2",
+                "MISSION"
+            ],
+            [
+                "VSSC",
+                "CENTRE"
+            ]
+        ],
+        "url": "https://www.isro.gov.in/Chandrayaan2EarthgeomagneticLunarionosphereplasma.html"
+    },
+    {
+        "mission_name": "Chandrayaan-2 Dual Frequency Synthetic Aperture Radar (DFSAR) Observations Reveal Subsurface Ice in Lunar South\n        Polar Regions",
+        "launch_vehicles": [],
+        "organizations": [],
+        "custom_entities": [
+            [
+                "Chandrayaan-2",
+                "MISSION"
+            ]
+        ],
+        "url": "https://www.isro.gov.in/Chandrayaan2_Dual_Frequency_Synthetic_Aperture_Radar.html"
+    },
+    {
+        "mission_name": "Chandrayaan-3's RAMBHA-LP Instrument Delivers Critical 'Ground Truth'  on the Moon’s Plasma Environment",
+        "launch_vehicles": [],
+        "organizations": [],
+        "custom_entities": [
+            [
+                "Chandrayaan-3",
+                "MISSION"
+            ]
+        ],
+        "url": "https://www.isro.gov.in/Chandrayaan3RAMBHALP_GroundTruth.html"
+    },
+    {
+        "mission_name": "Chandrayaan2",
+        "launch_vehicles": [
+            "GSLV"
+        ],
+        "organizations": [
+            "ISRO"
+        ],
+        "custom_entities": [
+            [
+                "Chandrayaan-2",
+                "MISSION"
+            ],
+            [
+                "GSLV",
+                "LAUNCH_VEHICLE"
+            ],
+            [
+                "ISRO",
+                "ORG"
+            ]
+        ],
+        "url": "https://www.isro.gov.in/Chandrayaan_2.html"
+    },
+    {
+        "mission_name": "Chandrayaan-3 \"Hop\" Experiment Reveals Hidden Lunar Secrets: Scientists Uncover Regolith Heterogeneity at Moon’s\r\n        South Pole",
+        "launch_vehicles": [],
+        "organizations": [],
+        "custom_entities": [
+            [
+                "Chandrayaan-3",
+                "MISSION"
+            ]
+        ],
+        "url": "https://www.isro.gov.in/Chandrayaan_3Hop_Experiment_Reveals.html"
+    },
+    {
+        "mission_name": "Chandrayaan-3 Fly-by",
+        "launch_vehicles": [
+            "LVM3"
+        ],
+        "organizations": [],
+        "custom_entities": [
+            [
+                "Chandrayaan-3",
+                "MISSION"
+            ],
+            [
+                "LVM3",
+                "LAUNCH_VEHICLE"
+            ],
+            [
+                "SDSC",
+                "CENTRE"
+            ]
+        ],
+        "url": "https://www.isro.gov.in/Chandrayaan_3_Fly_by.html"
+    },
+    {
+        "mission_name": "Dr. V. Narayanan Assumed Charge of Secretary, Department of Space and Chairman, Space Commission",
+        "launch_vehicles": [],
+        "organizations": [
+            "ISRO"
+        ],
+        "custom_entities": [
+            [
+                "Gaganyaan",
+                "MISSION"
+            ],
+            [
+                "ISRO",
+                "ORG"
+            ]
+        ],
+        "url": "https://www.isro.gov.in/DrVNarayanan_Assumed_Charge_Secretary_DOS_Chairman_Space_Commission.html"
+    },
+    {
+        "mission_name": "Successful accomplishment of Drogue Parachute Deployment Tests for Gaganyaan",
+        "launch_vehicles": [],
+        "organizations": [
+            "ISRO"
+        ],
+        "custom_entities": [
+            [
+                "Gaganyaan",
+                "MISSION"
+            ],
+            [
+                "ISRO",
+                "ORG"
+            ],
+            [
+                "VSSC",
+                "CENTRE"
+            ]
+        ],
+        "url": "https://www.isro.gov.in/Gaganyaan_Drogue_Parachute_Deployment_Tests.html"
+    },
+    {
+        "mission_name": "Updates on Gaganyaan, Space Docking Technology and GLEX2025",
+        "launch_vehicles": [],
+        "organizations": [
+            "ISRO"
+        ],
+        "custom_entities": [
+            [
+                "Gaganyaan",
+                "MISSION"
+            ],
+            [
+                "ISRO",
+                "ORG"
+            ]
+        ],
+        "url": "https://www.isro.gov.in/Gaganyaan_Space_Docking_Technology_GLEX2025.html"
+    },
+    {
+        "mission_name": "Leveraging Indian National Satellite System (INSAT) Geostationary Satellite for advanced lightning detection and analysis",
+        "launch_vehicles": [],
+        "organizations": [
+            "ISRO"
+        ],
+        "custom_entities": [
+            [
+                "ISRO",
+                "ORG"
+            ],
+            [
+                "NRSC",
+                "CENTRE"
+            ]
+        ],
+        "url": "https://www.isro.gov.in/INSAT_Geostationary_Satellite.html"
+    },
+    {
+        "mission_name": "ISRO-NASA joint Axiom – 4 mission to International Space Station (ISS):\r\n        Post splash down activities and Health conditions of Gaganyatri Shubhanshu Shukla",
+        "launch_vehicles": [],
+        "organizations": [
+            "ISRO",
+            "NASA"
+        ],
+        "custom_entities": [
+            [
+                "ISRO",
+                "ORG"
+            ],
+            [
+                "NASA",
+                "ORG"
+            ]
+        ],
+        "url": "https://www.isro.gov.in/ISRO_NASA_Axiom4_mission_post_splash_down_activities.html"
+    },
+    {
+        "mission_name": "ISRO Organises National Meet on Aditya L1 Data Release and Payload Performance Appraisal",
+        "launch_vehicles": [],
+        "organizations": [
+            "ISRO"
+        ],
+        "custom_entities": [
+            [
+                "ISRO",
+                "ORG"
+            ]
+        ],
+        "url": "https://www.isro.gov.in/ISRO_Nationalmeet_AdityaL1.html"
+    },
+    {
+        "mission_name": "ISRO Successfully qualifies fourth stage engine of PSLV with Stellite Nozzle Divergent",
+        "launch_vehicles": [
+            "PSLV"
+        ],
+        "organizations": [
+            "ISRO"
+        ],
+        "custom_entities": [
             [
                 "PSLV",
                 "LAUNCH_VEHICLE"
@@ -68,13 +426,165 @@
             [
                 "ISRO",
                 "ORG"
+            ]
+        ],
+        "url": "https://www.isro.gov.in/ISRO_Successfully_qualifies_fourth_stage_engine_of_PSLV_with_Stellite_Nozzle_Divergent.html"
+    },
+    {
+        "mission_name": "ISRO conducts Second Integrated Air Drop Test (IADT-02) for Gaganyaan",
+        "launch_vehicles": [],
+        "organizations": [
+            "ISRO"
+        ],
+        "custom_entities": [
+            [
+                "Gaganyaan",
+                "MISSION"
             ],
             [
-                "NSIL",
+                "ISRO",
                 "ORG"
             ]
         ],
-        "url": "https://www.isro.gov.in/Mission_PSLV_C62.html"
+        "url": "https://www.isro.gov.in/ISRO_conducts_Second_Integrated_Air_Drop_Test_for_Gaganyaan.html"
+    },
+    {
+        "mission_name": "Indian Microgravity Research Portfolio in upcoming Axiom-4 Mission",
+        "launch_vehicles": [],
+        "organizations": [
+            "ISRO"
+        ],
+        "custom_entities": [
+            [
+                "Gaganyaan",
+                "MISSION"
+            ],
+            [
+                "ISRO",
+                "ORG"
+            ]
+        ],
+        "url": "https://www.isro.gov.in/Indian_microgravity_research_Axiom4_mission.html"
+    },
+    {
+        "mission_name": "ISRO accomplishes first Integrated Air Drop Test for Gaganyaan Missions successfully",
+        "launch_vehicles": [],
+        "organizations": [
+            "ISRO"
+        ],
+        "custom_entities": [
+            [
+                "Gaganyaan",
+                "MISSION"
+            ],
+            [
+                "ISRO",
+                "ORG"
+            ],
+            [
+                "SDSC",
+                "CENTRE"
+            ]
+        ],
+        "url": "https://www.isro.gov.in/Integrated_Air_Drop_Test_for_Gaganyaan_Missions.html"
+    },
+    {
+        "mission_name": "Preparing for inflight re-ignition - Vacuum ignition trial of Cryogenic engine with Multi-element Igniter conducted successfully",
+        "launch_vehicles": [
+            "LVM3"
+        ],
+        "organizations": [
+            "ISRO"
+        ],
+        "custom_entities": [
+            [
+                "Gaganyaan",
+                "MISSION"
+            ],
+            [
+                "LVM3",
+                "LAUNCH_VEHICLE"
+            ],
+            [
+                "ISRO",
+                "ORG"
+            ]
+        ],
+        "url": "https://www.isro.gov.in/LVM3_CE20_vacuum_ignition_trial_cryogenic_engine_successful.html"
+    },
+    {
+        "mission_name": "LVM3-M5/CMS-03 MISSION",
+        "launch_vehicles": [
+            "LVM3"
+        ],
+        "organizations": [],
+        "custom_entities": [
+            [
+                "Chandrayaan-3",
+                "MISSION"
+            ],
+            [
+                "LVM3",
+                "LAUNCH_VEHICLE"
+            ]
+        ],
+        "url": "https://www.isro.gov.in/LVM3_M5_CMS_03_MISSION.html"
+    },
+    {
+        "mission_name": "LVM3-M6 / BlueBird Block-2 Mission",
+        "launch_vehicles": [
+            "LVM3"
+        ],
+        "organizations": [
+            "ISRO"
+        ],
+        "custom_entities": [
+            [
+                "Chandrayaan-2",
+                "MISSION"
+            ],
+            [
+                "Chandrayaan-3",
+                "MISSION"
+            ],
+            [
+                "LVM3",
+                "LAUNCH_VEHICLE"
+            ],
+            [
+                "ISRO",
+                "ORG"
+            ]
+        ],
+        "url": "https://www.isro.gov.in/LVM3_M6_BlueBird_Block2_Mission.html"
+    },
+    {
+        "mission_name": "Gaganyaan-G1 Launch campaign commences: Human Rated LVM3 assembly starts at SDSC for the first un-crewed flight",
+        "launch_vehicles": [
+            "LVM3"
+        ],
+        "organizations": [
+            "ISRO"
+        ],
+        "custom_entities": [
+            [
+                "Gaganyaan",
+                "MISSION"
+            ],
+            [
+                "LVM3",
+                "LAUNCH_VEHICLE"
+            ],
+            [
+                "ISRO",
+                "ORG"
+            ],
+            [
+                "SDSC",
+                "CENTRE"
+            ]
+        ],
+        "url": "https://www.isro.gov.in/LVM3_first_uncrewed_flight_Gaganyaan.html"
     },
     {
         "mission_name": "ISRO’s GSLV-F16 will launch ISRO-NASA joint satellite, NISAR, on July 30, 2025",
@@ -108,5 +618,478 @@
             ]
         ],
         "url": "https://www.isro.gov.in/Mission_GSLVF16_NISAR.html"
+    },
+    {
+        "mission_name": "NISAR – NASA ISRO Synthetic Aperture Radar Mission",
+        "launch_vehicles": [
+            "GSLV"
+        ],
+        "organizations": [
+            "ISRO",
+            "NASA"
+        ],
+        "custom_entities": [
+            [
+                "NISAR",
+                "MISSION"
+            ],
+            [
+                "GSLV",
+                "LAUNCH_VEHICLE"
+            ],
+            [
+                "ISRO",
+                "ORG"
+            ],
+            [
+                "NASA",
+                "ORG"
+            ]
+        ],
+        "url": "https://www.isro.gov.in/Mission_GSLVF16_NISAR_Home.html"
+    },
+    {
+        "mission_name": "PSLV-C62 / EOS-N1 Mission",
+        "launch_vehicles": [
+            "PSLV"
+        ],
+        "organizations": [
+            "ISRO",
+            "NSIL"
+        ],
+        "custom_entities": [
+            [
+                "Aditya-L1",
+                "MISSION"
+            ],
+            [
+                "AstroSat",
+                "MISSION"
+            ],
+            [
+                "PSLV",
+                "LAUNCH_VEHICLE"
+            ],
+            [
+                "ISRO",
+                "ORG"
+            ],
+            [
+                "NSIL",
+                "ORG"
+            ]
+        ],
+        "url": "https://www.isro.gov.in/Mission_PSLV_C62.html"
+    },
+    {
+        "mission_name": "NISAR Awareness Workshop (April 29, 2025) for Indian Non-Governmental Entities (NGEi) \r\n        Space Applications Centre, Ahmedabad",
+        "launch_vehicles": [],
+        "organizations": [
+            "ISRO",
+            "NSIL"
+        ],
+        "custom_entities": [
+            [
+                "NISAR",
+                "MISSION"
+            ],
+            [
+                "ISRO",
+                "ORG"
+            ],
+            [
+                "NSIL",
+                "ORG"
+            ],
+            [
+                "SAC",
+                "CENTRE"
+            ]
+        ],
+        "url": "https://www.isro.gov.in/NISAR_Awareness_Workshop_for_NGEi.html"
+    },
+    {
+        "mission_name": "NISAR Mission enters Science Phase",
+        "launch_vehicles": [
+            "GSLV"
+        ],
+        "organizations": [
+            "ISRO",
+            "NASA"
+        ],
+        "custom_entities": [
+            [
+                "NISAR",
+                "MISSION"
+            ],
+            [
+                "GSLV",
+                "LAUNCH_VEHICLE"
+            ],
+            [
+                "ISRO",
+                "ORG"
+            ],
+            [
+                "NASA",
+                "ORG"
+            ],
+            [
+                "ISTRAC",
+                "CENTRE"
+            ]
+        ],
+        "url": "https://www.isro.gov.in/NISAR_Mission_Science_Phase.html"
+    },
+    {
+        "mission_name": "National Space Day 2025: Celebrating India’s Space Journey from Aryabhatta to Gaganyaan",
+        "launch_vehicles": [],
+        "organizations": [
+            "ISRO"
+        ],
+        "custom_entities": [
+            [
+                "Gaganyaan",
+                "MISSION"
+            ],
+            [
+                "ISRO",
+                "ORG"
+            ]
+        ],
+        "url": "https://www.isro.gov.in/NSpD2025_Celebrating_Indias_Space_Journey_from_Aryabhatta_to_Gaganyaan.html"
+    },
+    {
+        "mission_name": "Soil Moisture Products at 100m resolution from NISAR data",
+        "launch_vehicles": [],
+        "organizations": [
+            "ISRO",
+            "NASA"
+        ],
+        "custom_entities": [
+            [
+                "NISAR",
+                "MISSION"
+            ],
+            [
+                "ISRO",
+                "ORG"
+            ],
+            [
+                "NASA",
+                "ORG"
+            ],
+            [
+                "SAC",
+                "CENTRE"
+            ]
+        ],
+        "url": "https://www.isro.gov.in/NisarData_soil_moisture_products.html"
+    },
+    {
+        "mission_name": "Ocean Colour Monitor-3(OCM-3) Satellite Imagery and Vegetation  Dynamics: Unveiling Global Patterns",
+        "launch_vehicles": [],
+        "organizations": [
+            "ISRO",
+            "NASA"
+        ],
+        "custom_entities": [
+            [
+                "ISRO",
+                "ORG"
+            ],
+            [
+                "NASA",
+                "ORG"
+            ]
+        ],
+        "url": "https://www.isro.gov.in/OCM3_Satellite.html"
+    },
+    {
+        "mission_name": "PSLV-C59/Proba-3 Mission",
+        "launch_vehicles": [
+            "PSLV"
+        ],
+        "organizations": [
+            "NSIL",
+            "ESA"
+        ],
+        "custom_entities": [
+            [
+                "PSLV",
+                "LAUNCH_VEHICLE"
+            ],
+            [
+                "ESA",
+                "ORG"
+            ],
+            [
+                "NSIL",
+                "ORG"
+            ],
+            [
+                "SDSC",
+                "CENTRE"
+            ]
+        ],
+        "url": "https://www.isro.gov.in/PSLV_C59_PROBA-3_Mission.html"
+    },
+    {
+        "mission_name": "PSLV related Update",
+        "launch_vehicles": [
+            "PSLV"
+        ],
+        "organizations": [],
+        "custom_entities": [
+            [
+                "PSLV",
+                "LAUNCH_VEHICLE"
+            ]
+        ],
+        "url": "https://www.isro.gov.in/PSLV_Update.html"
+    },
+    {
+        "mission_name": "Progress of Axiom-4 mission and tentative schedule for undocking from ISS to return journey to earth",
+        "launch_vehicles": [],
+        "organizations": [
+            "ISRO"
+        ],
+        "custom_entities": [
+            [
+                "Gaganyaan",
+                "MISSION"
+            ],
+            [
+                "ISRO",
+                "ORG"
+            ]
+        ],
+        "url": "https://www.isro.gov.in/Progress_Axiom-4_mission_tentative_schedule_undocking_ISS_to_earth.html"
+    },
+    {
+        "mission_name": "Historic First: India’s Solar Ultra-violet Imaging Telescope (SUIT) onboard Aditya-L1 Captures Unprecedented Solar Flare Details",
+        "launch_vehicles": [
+            "PSLV"
+        ],
+        "organizations": [
+            "ISRO"
+        ],
+        "custom_entities": [
+            [
+                "Aditya-L1",
+                "MISSION"
+            ],
+            [
+                "PSLV",
+                "LAUNCH_VEHICLE"
+            ],
+            [
+                "ISRO",
+                "ORG"
+            ],
+            [
+                "URSC",
+                "CENTRE"
+            ]
+        ],
+        "url": "https://www.isro.gov.in/SUIT_Aditya-L1_Captures_SolarFlare.html"
+    },
+    {
+        "mission_name": "Solar Ultraviolet Imaging Telescope (SUIT) onboard Aditya-L1 Mission Observed Powerful Solar Flare and a First-of-Its-Kind Observation of Rare Plasma Ejection in Ultra-violet Light",
+        "launch_vehicles": [],
+        "organizations": [],
+        "custom_entities": [
+            [
+                "Aditya-L1",
+                "MISSION"
+            ]
+        ],
+        "url": "https://www.isro.gov.in/SUIT_onboard_Aditya-L1_Mission.html"
+    },
+    {
+        "mission_name": "Release of the Second Set of Aditya-L1 Science Data",
+        "launch_vehicles": [],
+        "organizations": [
+            "ISRO"
+        ],
+        "custom_entities": [
+            [
+                "Aditya-L1",
+                "MISSION"
+            ],
+            [
+                "ISRO",
+                "ORG"
+            ]
+        ],
+        "url": "https://www.isro.gov.in/Second_Set_of_Aditya_L1_Science_Data.html"
+    },
+    {
+        "mission_name": "ISRO organizes Space Analog Mission in Tso Kar Valley, Ladakh",
+        "launch_vehicles": [],
+        "organizations": [
+            "ISRO"
+        ],
+        "custom_entities": [
+            [
+                "ISRO",
+                "ORG"
+            ]
+        ],
+        "url": "https://www.isro.gov.in/Space_Analog_Mission.html"
+    },
+    {
+        "mission_name": "International Conference on Spacecraft Mission Operations - SMOPS-2026",
+        "launch_vehicles": [],
+        "organizations": [
+            "ISRO"
+        ],
+        "custom_entities": [
+            [
+                "ISRO",
+                "ORG"
+            ]
+        ],
+        "url": "https://www.isro.gov.in/Spacecraft_Mission_Operations_SMOPS_2026.html"
+    },
+    {
+        "mission_name": "SPADEX Mission: Successful demonstration of Second Docking and Power Transfer",
+        "launch_vehicles": [],
+        "organizations": [
+            "ISRO"
+        ],
+        "custom_entities": [
+            [
+                "SpaDex",
+                "MISSION"
+            ],
+            [
+                "ISRO",
+                "ORG"
+            ]
+        ],
+        "url": "https://www.isro.gov.in/Spadex_Successful_demonstration_of_Second_Docking_and_Power_Transfer.html"
+    },
+    {
+        "mission_name": "Successful accomplishment of Development of Service Module Propulsion System technology for Gaganyaan Missions",
+        "launch_vehicles": [],
+        "organizations": [
+            "ISRO"
+        ],
+        "custom_entities": [
+            [
+                "Gaganyaan",
+                "MISSION"
+            ],
+            [
+                "ISRO",
+                "ORG"
+            ]
+        ],
+        "url": "https://www.isro.gov.in/Successful_accomplishment_SMPS_Gaganyaan.html"
+    },
+    {
+        "mission_name": "ISRO conducts successful hot tests of Gaganyaan Service Module Propulsion System",
+        "launch_vehicles": [],
+        "organizations": [
+            "ISRO"
+        ],
+        "custom_entities": [
+            [
+                "Gaganyaan",
+                "MISSION"
+            ],
+            [
+                "ISRO",
+                "ORG"
+            ]
+        ],
+        "url": "https://www.isro.gov.in/Successful_hot_tests_Gaganyaan_SMPS.html"
+    },
+    {
+        "mission_name": "Indian Satellite data based analysis of the Dharali Flash Flood",
+        "launch_vehicles": [],
+        "organizations": [
+            "ISRO"
+        ],
+        "custom_entities": [
+            [
+                "ISRO",
+                "ORG"
+            ],
+            [
+                "NRSC",
+                "CENTRE"
+            ]
+        ],
+        "url": "https://www.isro.gov.in/indian_satellite_data_based_analysis_of_the_dharali_flash_flood.html"
+    },
+    {
+        "mission_name": "SpaDeX Mission",
+        "launch_vehicles": [
+            "PSLV"
+        ],
+        "organizations": [],
+        "custom_entities": [
+            [
+                "SpaDex",
+                "MISSION"
+            ],
+            [
+                "PSLV",
+                "LAUNCH_VEHICLE"
+            ]
+        ],
+        "url": "https://www.isro.gov.in/mission_SpaDeX.html"
+    },
+    {
+        "mission_name": "MISSION MITRA by ISRO\r\n        Mapping of Interoperable Traits and Response Assessment (MITRA)",
+        "launch_vehicles": [],
+        "organizations": [
+            "ISRO"
+        ],
+        "custom_entities": [
+            [
+                "ISRO",
+                "ORG"
+            ]
+        ],
+        "url": "https://www.isro.gov.in/mission_mitra_by_ISRO.html"
+    },
+    {
+        "mission_name": "ISRO successfully completed docking of two SPADEX satellites (SDX-01 & SDX-02) in the early hours of 16 January, 2025.",
+        "launch_vehicles": [],
+        "organizations": [
+            "ISRO"
+        ],
+        "custom_entities": [
+            [
+                "SpaDex",
+                "MISSION"
+            ],
+            [
+                "ISRO",
+                "ORG"
+            ]
+        ],
+        "url": "https://www.isro.gov.in/spadex_docking.html"
+    },
+    {
+        "mission_name": "SPADEX UNDOCKING SUCCESSFUL",
+        "launch_vehicles": [],
+        "organizations": [
+            "ISRO"
+        ],
+        "custom_entities": [
+            [
+                "SpaDex",
+                "MISSION"
+            ],
+            [
+                "ISRO",
+                "ORG"
+            ]
+        ],
+        "url": "https://www.isro.gov.in/spadex_undocking_successful.html"
     }
 ]
