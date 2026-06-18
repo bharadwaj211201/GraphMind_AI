@@ -65,8 +65,16 @@
 
 # print(response.status_code)
 
+<<<<<<< HEAD
 import requests
 
 response = requests.get("https://www.google.com")
 
 print(response.status_code)
+=======
+# import requests
+
+# response = requests.get("https://www.google.com")
+
+# print(response.status_code)
+>>>>>>> dfcadb51a4ff8454f805f4df269812c61c35b60e

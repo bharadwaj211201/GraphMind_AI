@@ -1,5 +1,9 @@
 import re
+<<<<<<< HEAD
 from scrapers.isro_entities import *
+=======
+from scrapers.domain_entities import *
+>>>>>>> dfcadb51a4ff8454f805f4df269812c61c35b60e
 
 LAUNCH_VEHICLES = [
     "PSLV",
