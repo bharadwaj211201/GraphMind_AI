@@ -1,5 +1,5 @@
 import re
-from scrapers.isro_entities import *
+from scrapers.domain_entities import *
 
 LAUNCH_VEHICLES = [
     "PSLV",

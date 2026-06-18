@@ -12,6 +12,8 @@ from scrapers.entity_extractor import (
 )
 from scrapers.relationship_builder import create_relationships
 
+from scrapers.document_classifier import classify_document
+
 structured_data = []
 
 all_urls = load_urls("data/isro_links.txt")
@@ -22,8 +24,8 @@ print(f"Found {len(MISSION_URLS)} mission urls")
 
 print("\nMission URLs Found:\n")
 
-for url in MISSION_URLS:
-    print(url)
+# for url in MISSION_URLS:
+#     print(url)
 
 for url in MISSION_URLS:
 
@@ -31,33 +33,50 @@ for url in MISSION_URLS:
 
     if mission:
         
-        vehicles = extract_launch_vehicle(
-            mission["title"] + " " + 
+        search_text = (
+            mission['title'] +
+            " " +
             mission["content"][:2000]
+        )
+
+        vehicles = extract_launch_vehicle(
+            search_text
         )
 
         orgs = extract_organizations(
-            mission["title"] + " " +
-            mission["content"][:2000]
+            search_text
         )
 
         custom_entities = extract_custom_entities(
-            mission["title"] + " " +
-            mission["content"][:2000]
+            search_text
+        )
+
+        doc_type = classify_document(
+            mission["title"]
         )
 
         record = {
             "mission_name": mission["title"],
+
+            "document_type": doc_type,
+
+            "content": mission["content"],
+
             "launch_vehicles": vehicles,
+
             "organizations": orgs,
+
             "custom_entities": custom_entities,
-            "url": mission["url"]
+
+            "url": mission["url"],
+
+            "source": "ISRO"
         }
 
         structured_data.append(record)
 
 with open(
-    "output/structured_missions.json",
+    "data/raw/isro/structured_missions.json",
     "w",
     encoding="utf-8"
 ) as f:

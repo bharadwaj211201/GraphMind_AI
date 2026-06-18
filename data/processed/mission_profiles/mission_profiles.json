@@ -1,0 +1,127 @@
+[
+    {
+        "mission": "Aditya-L1",
+        "organizations": [
+            "NSIL",
+            "ISRO",
+            "NASA"
+        ],
+        "launch_vehicles": [
+            "PSLV"
+        ],
+        "urls": [
+            "https://www.isro.gov.in/Mission_PSLV_C62.html",
+            "https://www.isro.gov.in/SUIT_onboard_Aditya-L1_Mission.html",
+            "https://www.isro.gov.in/Aditya_L1_measurementshelp.html",
+            "https://www.isro.gov.in/SUIT_Aditya-L1_Captures_SolarFlare.html",
+            "https://www.isro.gov.in/Second_Set_of_Aditya_L1_Science_Data.html",
+            "https://www.isro.gov.in/Aditya_L1_Landmark_solar_storm_study.html",
+            "https://www.isro.gov.in/AdityaL1_decodes_Impact_Powerful_Solar_Storm.html",
+            "https://www.isro.gov.in/Aditya_L1_Observations_Coronal_Mass_Ejection.html",
+            "https://www.isro.gov.in/AdityaL1_second_cycle_AO.html",
+            "https://www.isro.gov.in/AdityaL1_first_AO_cycle.html"
+        ]
+    },
+    {
+        "mission": "Chandrayaan-2",
+        "organizations": [
+            "ISRO"
+        ],
+        "launch_vehicles": [
+            "LVM3",
+            "GSLV"
+        ],
+        "urls": [
+            "https://www.isro.gov.in/Chandrayaan2EarthgeomagneticLunarionosphereplasma.html",
+            "https://www.isro.gov.in/Chandrayaan2_Dual_Frequency_Synthetic_Aperture_Radar.html",
+            "https://www.isro.gov.in/Chandrayaan-2_Coronal_Mass_Ejections_Lunar_Exosphere.html",
+            "https://www.isro.gov.in/Chandrayaan_2.html",
+            "https://www.isro.gov.in/LVM3_M6_BlueBird_Block2_Mission.html"
+        ]
+    },
+    {
+        "mission": "Chandrayaan-3",
+        "organizations": [
+            "ISRO"
+        ],
+        "launch_vehicles": [
+            "LVM3"
+        ],
+        "urls": [
+            "https://www.isro.gov.in/Chandrayaan_3_Fly_by.html",
+            "https://www.isro.gov.in/LVM3_M5_CMS_03_MISSION.html",
+            "https://www.isro.gov.in/Chandrayaan3RAMBHALP_GroundTruth.html",
+            "https://www.isro.gov.in/Chandrayaan_3Hop_Experiment_Reveals.html",
+            "https://www.isro.gov.in/LVM3_M6_BlueBird_Block2_Mission.html"
+        ]
+    },
+    {
+        "mission": "Gaganyaan",
+        "organizations": [
+            "ISRO"
+        ],
+        "launch_vehicles": [
+            "LVM3"
+        ],
+        "urls": [
+            "https://www.isro.gov.in/Successful_accomplishment_SMPS_Gaganyaan.html",
+            "https://www.isro.gov.in/DrVNarayanan_Assumed_Charge_Secretary_DOS_Chairman_Space_Commission.html",
+            "https://www.isro.gov.in/Integrated_Air_Drop_Test_for_Gaganyaan_Missions.html",
+            "https://www.isro.gov.in/Gaganyaan_Drogue_Parachute_Deployment_Tests.html",
+            "https://www.isro.gov.in/NSpD2025_Celebrating_Indias_Space_Journey_from_Aryabhatta_to_Gaganyaan.html",
+            "https://www.isro.gov.in/LVM3_first_uncrewed_flight_Gaganyaan.html",
+            "https://www.isro.gov.in/Indian_microgravity_research_Axiom4_mission.html",
+            "https://www.isro.gov.in/LVM3_CE20_vacuum_ignition_trial_cryogenic_engine_successful.html",
+            "https://www.isro.gov.in/ISRO_conducts_Second_Integrated_Air_Drop_Test_for_Gaganyaan.html",
+            "https://www.isro.gov.in/Successful_hot_tests_Gaganyaan_SMPS.html",
+            "https://www.isro.gov.in/Progress_Axiom-4_mission_tentative_schedule_undocking_ISS_to_earth.html",
+            "https://www.isro.gov.in/Gaganyaan_Space_Docking_Technology_GLEX2025.html"
+        ]
+    },
+    {
+        "mission": "NISAR",
+        "organizations": [
+            "NSIL",
+            "ISRO",
+            "NASA"
+        ],
+        "launch_vehicles": [
+            "GSLV"
+        ],
+        "urls": [
+            "https://www.isro.gov.in/NISAR_Mission_Science_Phase.html",
+            "https://www.isro.gov.in/NISAR_Awareness_Workshop_for_NGEi.html",
+            "https://www.isro.gov.in/Mission_GSLVF16_NISAR_Home.html",
+            "https://www.isro.gov.in/NisarData_soil_moisture_products.html",
+            "https://www.isro.gov.in/Mission_GSLVF16_NISAR.html"
+        ]
+    },
+    {
+        "mission": "AstroSat",
+        "organizations": [
+            "ISRO",
+            "NSIL"
+        ],
+        "launch_vehicles": [
+            "PSLV"
+        ],
+        "urls": [
+            "https://www.isro.gov.in/Mission_PSLV_C62.html"
+        ]
+    },
+    {
+        "mission": "SpaDex",
+        "organizations": [
+            "ISRO"
+        ],
+        "launch_vehicles": [
+            "PSLV"
+        ],
+        "urls": [
+            "https://www.isro.gov.in/mission_SpaDeX.html",
+            "https://www.isro.gov.in/spadex_undocking_successful.html",
+            "https://www.isro.gov.in/spadex_docking.html",
+            "https://www.isro.gov.in/Spadex_Successful_demonstration_of_Second_Docking_and_Power_Transfer.html"
+        ]
+    }
+]
