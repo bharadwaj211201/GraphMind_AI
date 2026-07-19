@@ -1,80 +1,140 @@
-import json
+"""
+Mission Profile Builder Pipeline
+--------------------------------
+Loads processed documents, builds mission profiles,
+validates them, prints statistics and saves the output.
+"""
 
-with open(
-    "data/raw/isro/structured_missions.json",
-    "r",
-    encoding="utf-8"
-) as f:
+import os
+import sys
+import time
 
-    data = json.load(f)
+# ----------------------------------------------------------
+# Add Project Root to Python Path
+# ----------------------------------------------------------
 
-missions = {}
+PROJECT_ROOT = os.path.abspath(
+    os.path.join(
+        os.path.dirname(__file__),
+        ".."
+    )
+)
 
-for record in data:
+if PROJECT_ROOT not in sys.path:
+    sys.path.insert(0, PROJECT_ROOT)
 
-    for entity in record["custom_entities"]:
+# ----------------------------------------------------------
+# Import Mission Builder
+# ----------------------------------------------------------
 
-        name = entity[0]
-        entity_type = entity[1]
+from processors.mission_builder import (
+    load_documents,
+    build_mission_profiles,
+    save_profiles,
+    print_statistics,
+    validate_profiles,
+    print_top_missions
+)
 
-        if entity_type != "MISSION":
-            continue
+# ----------------------------------------------------------
+# File Paths
+# ----------------------------------------------------------
 
-        if name not in missions:
+INPUT_FILE = "data/raw/raw_documents.json"
 
-            missions[name] = {
+OUTPUT_FILE = (
+    "data/processed/mission_profiles/"
+    "mission_profiles.json"
+)
 
-                "organizations": set(),
+# ----------------------------------------------------------
+# Main Pipeline
+# ----------------------------------------------------------
 
-                "launch_vehicles": set(),
+def main():
 
-                "urls": set()
-            }
+    print("\n" + "=" * 70)
+    print("MISSION PROFILE PIPELINE")
+    print("=" * 70)
 
-        missions[name]["organizations"].update(
-            record["organizations"]
-        )
+    start_time = time.time()
 
-        missions[name]["launch_vehicles"].update(
-            record["launch_vehicles"]
-        )
+    # ------------------------------------------------------
 
-        missions[name]["urls"].add(
-            record["url"]
-        )
+    if not os.path.exists(INPUT_FILE):
 
-result = []
+        print(f"\nERROR : Input file not found")
 
-for mission, info in missions.items():
+        print(INPUT_FILE)
 
-    result.append({
+        return
 
-        "mission": mission,
+    # ------------------------------------------------------
 
-        "organizations":
-            list(info["organizations"]),
+    documents = load_documents(INPUT_FILE)
 
-        "launch_vehicles":
-            list(info["launch_vehicles"]),
+    print(f"\nDocuments Loaded : {len(documents)}")
 
-        "urls":
-            list(info["urls"])
-    })
+    # ------------------------------------------------------
 
-with open(
-    "data/processed/mission_profiles/mission_profiles.json",
-    "w",
-    encoding="utf-8"
-) as f:
-
-    json.dump(
-        result,
-        f,
-        indent=4,
-        ensure_ascii=False
+    mission_profiles = build_mission_profiles(
+        documents
     )
 
-print(
-    "Mission Profiles Created:",
-    len(result)
-)
+    print(
+        f"Mission Profiles Built : "
+        f"{len(mission_profiles)}"
+    )
+
+    # ------------------------------------------------------
+
+    os.makedirs(
+        os.path.dirname(OUTPUT_FILE),
+        exist_ok=True
+    )
+
+    save_profiles(
+        mission_profiles,
+        OUTPUT_FILE
+    )
+
+    # ------------------------------------------------------
+
+    print_statistics(
+        mission_profiles
+    )
+
+    validate_profiles(
+        mission_profiles
+    )
+
+    print_top_missions(
+        mission_profiles,
+        top_n=10
+    )
+
+    # ------------------------------------------------------
+
+    execution_time = round(
+        time.time() - start_time,
+        2
+    )
+
+    print("\n" + "=" * 70)
+    print("PIPELINE FINISHED")
+    print("=" * 70)
+
+    print(f"Execution Time : {execution_time} sec")
+
+    print(f"Output File    : {OUTPUT_FILE}")
+
+    print("=" * 70)
+
+
+# ----------------------------------------------------------
+# Entry Point
+# ----------------------------------------------------------
+
+if __name__ == "__main__":
+
+    main()  

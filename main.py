@@ -7,85 +7,132 @@ from scrapers.url_loader import (
 
 from scrapers.mission_scraper import scrape_mission
 
-from scrapers.entity_extractor import (
-    extract_custom_entities,
-    extract_launch_vehicle,
-    extract_organizations
-)
+from scrapers.entity_extractor import extract_custom_entities
+
+from processors.entity_resolver import resolve_entities
+from processors.entity_classifier import classify_entities
 
 from scrapers.relationship_builder import create_relationships
-
 from scrapers.document_classifier import classify_document
 
 
 structured_data = []
 
-# Load all URLs
+# ==========================================================
+# Load URLs
+# ==========================================================
+
 all_urls = load_urls("data/isro_links.txt")
 
-# Filter mission-related URLs
 MISSION_URLS = get_mission_urls(all_urls)
 
-print(f"Found {len(MISSION_URLS)} mission urls")
+print(f"\nFound {len(MISSION_URLS)} mission URLs")
 
-print("\nMission URLs Found:\n")
 
-for url in MISSION_URLS:
-    print(url)
+# ==========================================================
+# Process Each Mission
+# ==========================================================
 
-# Scrape each URL
 for url in MISSION_URLS:
 
     mission = scrape_mission(url)
 
-    if mission:
+    if not mission:
+        continue
 
-        search_text = (
-            mission["title"] +
-            " " +
-            mission["content"][:2000]
+    search_text = (
+        mission["title"]
+        + " "
+        + mission["content"][:2000]
+    )
+
+    # ------------------------------------------------------
+    # Entity Pipeline
+    # ------------------------------------------------------
+
+    entities = extract_custom_entities(search_text)
+
+    entities = resolve_entities(entities)
+
+    entities = classify_entities(entities)
+
+    # ------------------------------------------------------
+    # Extract Launch Vehicles
+    # ------------------------------------------------------
+
+    launch_vehicles = [
+
+        entity["name"]
+
+        for entity in entities
+
+        if entity["type"] in (
+
+            "LAUNCH_VEHICLE",
+
+            "ROCKET_VARIANT"
+
         )
 
-        vehicles = extract_launch_vehicle(
-            search_text
-        )
+    ]
 
-        orgs = extract_organizations(
-            search_text
-        )
+    # ------------------------------------------------------
+    # Extract Organizations
+    # ------------------------------------------------------
 
-        custom_entities = extract_custom_entities(
-            search_text
-        )
+    organizations = [
 
-        doc_type = classify_document(
-            mission["title"]
-        )
+        entity["name"]
 
-        record = {
+        for entity in entities
 
-            "mission_name": mission["title"],
+        if entity["type"] == "ORGANIZATION"
 
-            "document_type": doc_type,
+    ]
 
-            "content": mission["content"],
+    # ------------------------------------------------------
+    # Document Type
+    # ------------------------------------------------------
 
-            "launch_vehicles": vehicles,
+    document_type = classify_document(
+        mission["title"]
+    )
 
-            "organizations": orgs,
+    # ------------------------------------------------------
+    # Build Record
+    # ------------------------------------------------------
 
-            "custom_entities": custom_entities,
+    record = {
 
-            "url": mission["url"],
+        "title": mission["title"],
 
-            "source": "ISRO"
-        }
+        "document_type": document_type,
 
-        structured_data.append(record)
+        "content": mission["content"],
 
-# Save structured data
+        "entities": entities,
+
+        "launch_vehicles": launch_vehicles,
+
+        "organizations": organizations,
+
+        "url": mission["url"],
+
+        "source": "ISRO"
+
+    }
+
+    structured_data.append(record)
+
+
+# ==========================================================
+# Save JSON
+# ==========================================================
+
+output_file = "data/raw/isro/structured_missions.json"
+
 with open(
-    "data/raw/isro/structured_missions.json",
+    output_file,
     "w",
     encoding="utf-8"
 ) as f:
@@ -97,36 +144,60 @@ with open(
         ensure_ascii=False
     )
 
-print(
-    f"\nSaved {len(structured_data)} records"
-)
+print(f"\nSaved {len(structured_data)} records")
+print(f"Output File : {output_file}")
 
-# Print extracted entities
-print("\n" + "=" * 60)
-print("CUSTOM ENTITIES")
-print("=" * 60)
 
-for r in structured_data:
+# ==========================================================
+# Print Extracted Entities
+# ==========================================================
 
-    print("\nMission:", r["mission_name"])
+print("\n" + "=" * 80)
+print("EXTRACTED ENTITIES")
+print("=" * 80)
 
-    for entity in r["custom_entities"]:
+for record in structured_data:
 
-        print(entity)
+    print(f"\nDocument : {record['title']}")
 
-# Build relationships
+    print("-" * 80)
+
+    for entity in record["entities"]:
+
+        print(
+
+            f"{entity['type']:<20}"
+
+            f"{entity['name']}"
+
+        )
+
+
+# ==========================================================
+# Build Relationships
+# ==========================================================
+
 all_relationships = []
 
 for record in structured_data:
 
-    rels = create_relationships(record)
+    relationships = create_relationships(record)
 
-    all_relationships.extend(rels)
+    all_relationships.extend(
+        relationships
+    )
 
-print("\n" + "=" * 60)
-print("RELATIONSHIPS")
-print("=" * 60)
 
-for rel in all_relationships:
+# ==========================================================
+# Print Relationships
+# ==========================================================
 
-    print(rel)
+# print("\n" + "=" * 80)
+# print("KNOWLEDGE GRAPH RELATIONSHIPS")
+# print("=" * 80)
+
+# for relationship in all_relationships:
+
+#     print(relationship)
+
+# print("\nTotal Relationships :", len(all_relationships))
