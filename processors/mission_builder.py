@@ -2,7 +2,6 @@ import json
 import re
 from collections import defaultdict
 
-from scrapers.document_classifier import classify_document
 from scrapers.domain_entities import MISSIONS
 
 #=====================================================
@@ -23,7 +22,7 @@ MISSION_ALIASES = {
     "Axiom-4": [
         "Axiom-4",
         "Ax-04",
-        "Axiom Mission-04"
+        "Axiom Mission-04",
         "Axiom Mission 4"
     ],
 
@@ -31,6 +30,12 @@ MISSION_ALIASES = {
         "Aditya-L1",
         "Aditya L1",
         "Solar Mission"
+    ],
+
+    "Chandrayaan-1": [
+        "Chandrayaan-1",
+        "Chandrayaan 1",
+        "CH-1"
     ],
 
     "Chandrayaan-2": [
@@ -43,6 +48,12 @@ MISSION_ALIASES = {
         "Chandrayaan-3",
         "Chandrayaan 3",
         "CH-3"
+    ],
+
+    "Gaganyaan": [
+        "Gaganyaan",
+        "Human Space Flight",
+        "Human Spaceflight"
     ],
 
     "Mangalyaan": [
@@ -59,11 +70,6 @@ MISSION_ALIASES = {
     "SpaDex": [
         "SpaDex",
         "SpaDeX"
-    ],
-
-    "Gaganyaan": [
-        "Gaganyaan",
-        "Human Space Flight"
     ]
 }
 
@@ -114,11 +120,25 @@ ENTITY_MAPPING = {
 
     "PAYLOAD": "payloads",
 
+    "INSTRUMENT": "instruments",
+
     "ASTRONAUT": "astronauts",
 
     "SCIENTIST": "scientists",
 
     "COUNTRY": "countries",
+
+    "STATE": "states",
+
+    "CITY": "cities",
+
+    "SPACEPORT": "spaceports",
+
+    "FACILITY": "facilities",
+
+    "LABORATORY": "laboratories",
+
+    "PROGRAM": "programs",
 
     "TECHNOLOGY": "technologies",
 
@@ -132,6 +152,9 @@ ENTITY_MAPPING = {
 
 def normalize(text):
 
+    if not text:
+        return ""
+
     text = text.lower()
 
     text = text.replace("-", "")
@@ -140,6 +163,19 @@ def normalize(text):
 
     return text.strip()
 
+# ==========================================================
+# Search Text
+# ==========================================================
+
+def build_search_text(document):
+
+    return normalize(
+        " ".join([
+            document.get("title", ""),
+            document.get("url", ""),
+            document.get("content", "")
+        ])
+    )
 
 # ==========================================================
 # Mission Candidate Generator
@@ -149,31 +185,61 @@ def get_candidate_missions(document):
 
     candidates = set()
 
-    entities = document.get("custom_entities", [])
+    entities = document.get("entities", [])
 
-    title = document.get("mission_name", "")
+    search_text = build_search_text(document)
 
-    url = document.get("url", "")
+    # ==========================================================
+    # 1. Extracted Entities
+    # ==========================================================
 
-    content = document.get("content", "")
+    for entity in entities:
 
-    search_text = " ".join([title, url, content])
+        entity_name = entity.get("name", "")
 
-    search_text = normalize(search_text)
+        entity_type = entity.get("type", "")
 
-    # -----------------------------
-    # MISSION entities
-    # -----------------------------
+        normalized = normalize(entity_name)
 
-    for entity_name, entity_type in entities:
+        # -------------------------------------------------
+        # Direct Mission
+        # -------------------------------------------------
 
         if entity_type == "MISSION":
 
             candidates.add(entity_name)
 
-    # -----------------------------
-    # Alias Search
-    # -----------------------------
+            continue
+
+        # ------------------------------------------------
+        # Some ISRO missions are classified
+        # as SATELLITE in the ontology.
+        # 
+        # Example:
+        # Aditya-L1
+        # NISAR
+        # Mangalyaan
+        # AstroSat
+        # EOS
+        # -------------------------------------------------
+
+        if entity_type == "SATELLITE":
+
+            for mission, aliases in MISSION_ALIASES.items():
+
+                all_names = aliases + [mission]
+
+                for alias in all_names:
+
+                    if normalize(alias) == normalized:
+
+                        candidates.add(mission)
+
+                        break
+
+    # ================================================
+    # 2. Alias Search
+    # ================================================
 
     for mission, aliases in MISSION_ALIASES.items():
 
@@ -185,9 +251,9 @@ def get_candidate_missions(document):
 
                 break
 
-    # -----------------------------
-    # Dictionary Search
-    # -----------------------------
+    # ================================================
+    # 3. Mission Dictionary Search
+    # ================================================
 
     for mission in MISSIONS:
 
@@ -205,7 +271,7 @@ def get_candidate_missions(document):
 def detect_primary_mission(document):
 
     title = normalize(
-        document.get("mission_name", "")
+        document.get("title", "")
     )
 
     url = normalize(
@@ -216,14 +282,15 @@ def detect_primary_mission(document):
         document.get("content", "")
     )
 
-    document_type = classify_document(
-        document.get("mission_name", ""),
-        document.get("url", "")
+    document_type = document.get(
+        "document_type",
+        "UNKNOWN"
     )
 
     candidates = get_candidate_missions(document)
 
     if not candidates:
+
         return None
 
     scores = {}
@@ -236,9 +303,9 @@ def detect_primary_mission(document):
 
         mission_key = normalize(mission)
 
-        # ---------------------------------
+        # ==========================================
         # Title Match
-        # ---------------------------------
+        # ==========================================
 
         if mission_key in title:
 
@@ -246,9 +313,9 @@ def detect_primary_mission(document):
 
             reasons.append("TITLE")
 
-        # ---------------------------------
+        # ==========================================
         # URL Match
-        # ---------------------------------
+        # ==========================================
 
         if mission_key in url:
 
@@ -256,23 +323,23 @@ def detect_primary_mission(document):
 
             reasons.append("URL")
 
-        # ---------------------------------
+        # ==========================================
         # Content Frequency
-        # ---------------------------------
+        # ==========================================
 
         frequency = content.count(mission_key)
 
         if frequency:
 
-            score += frequency * 2
+            score += frequency * 3
 
             reasons.append(
                 f"CONTENT({frequency})"
             )
 
-        # ---------------------------------
-        # Document Type
-        # ---------------------------------
+        # =============================================
+        # DOCUMENT TYPE BONUS
+        # =============================================
 
         score += DOCUMENT_WEIGHTS.get(
             document_type,
@@ -281,6 +348,37 @@ def detect_primary_mission(document):
 
         reasons.append(document_type)
 
+        # ==================================================
+        # ENTITY BONUS
+        # ==================================================
+
+        entity_bonus = 0
+
+        for entity in document.get("entities", []):
+
+            entity_name = normalize(
+                entity.get("name", "")
+            )
+
+            entity_type = entity.get("type", "")
+
+            if entity_name != mission_key:
+                continue
+
+            if entity_type == "MISSION":
+
+                entity_bonus = 40
+
+            elif entity_type == "SATELLITE":
+
+                entity_bonus = 25
+        
+        if entity_bonus:
+
+            score += entity_bonus
+
+            reasons.append("ENTITY")
+
         scores[mission] = {
 
             "score": score,
@@ -288,26 +386,31 @@ def detect_primary_mission(document):
             "reason": reasons
         }
 
-    best = max(
+    # ==================================================
+    # Select Highest Scoring Mission
+    # ==================================================
+
+    best_mission, best_data = max(
 
         scores.items(),
 
-        key=lambda x: x[1]["score"]
+        key = lambda item: item[1]["score"]
+    )
 
+    confidence = min(
+        round(best_data["score"] / 250, 2),
+        1.0
     )
 
     return {
 
-        "mission": best[0],
+        "mission": best_mission,
 
-        "confidence": round(
-            min(best[1]["score"] / 250, 1.0),
-            2
-        ),
+        "confidence": confidence,
 
-        "reason": ", ".join(
-            best[1]["reason"]
-        )
+        "score": best_data["score"],
+
+        "reason": ", ".join(best_data["reason"])
     }
 
 # ==========================================================
@@ -338,11 +441,25 @@ def build_mission_profiles(documents):
 
         "payloads": set(),
 
+        "instruments": set(),
+
         "astronauts": set(),
 
         "scientists": set(),
 
         "countries": set(),
+
+        "states": set(),
+
+        "cities": set(),
+
+        "spaceports": set(),
+
+        "facilities": set(),
+
+        "laboratories": set(),
+
+        "programs": set(),
 
         "technologies": set(),
 
@@ -374,12 +491,16 @@ def build_mission_profiles(documents):
 
         profile = profiles[mission]
 
+        # -------------------------------------------------
+        # Basic Information
+        # -------------------------------------------------
+
         profile["mission"] = mission
 
         profile["document_count"] += 1
 
         profile["documents"].append(
-            document.get("mission_name", "")
+            document.get("title", "")
         )
 
         profile["urls"].add(
@@ -392,12 +513,9 @@ def build_mission_profiles(documents):
 
         profile["document_types"].add(
 
-            classify_document(
-
-                document.get("mission_name", ""),
-
-                document.get("url", "")
-
+            document.get(
+                "document_type",
+                "UNKNOWN"
             )
 
         )
@@ -414,16 +532,18 @@ def build_mission_profiles(documents):
         # Merge Entities
         # ==========================================
 
-        for entity_name, entity_type in document.get(
-            "custom_entities",
-            []
-        ):
+        for entity in document.get("entities", []):
 
-            if entity_type in ENTITY_MAPPING:
+            entity_name = entity.get("name", "")
 
-                profile[
-                    ENTITY_MAPPING[entity_type]
-                ].add(entity_name)
+            entity_type = entity.get("type", "")
+
+            if entity_type not in ENTITY_MAPPING:
+                continue
+
+            profile[
+                ENTITY_MAPPING[entity_type]
+            ].add(entity_name)
 
     # ======================================================
     # Final Formatting
@@ -433,13 +553,20 @@ def build_mission_profiles(documents):
 
     for profile in profiles.values():
 
+    
+        # ---------------------------------------------
         # Convert sets into sorted lists
+        # ---------------------------------------------
 
-        for key in list(profile.keys()):
+        for key, value in profile.items():
 
-            if isinstance(profile[key], set):
+            if isinstance(value, set):
 
-                profile[key] = sorted(profile[key])
+                profile[key] = sorted(value)
+
+        # --------------------------------------------
+        # Remove Duplicated Documents
+        # --------------------------------------------
 
         profile["documents"] = sorted(
             set(profile["documents"])
@@ -478,7 +605,7 @@ def build_mission_profiles(documents):
         mission_profiles.append(profile)
 
     # ======================================================
-    # Sort by Number of Documents
+    # Sort Profiles
     # ======================================================
 
     mission_profiles.sort(
@@ -510,9 +637,9 @@ def save_profiles(profiles, filepath):
             ensure_ascii=False
         )
 
-    print("\n" + "=" * 70)
+    print("\n" + "=" * 80)
     print("MISSION PROFILE GENERATION COMPLETED")
-    print("=" * 70)
+    print("=" * 80)
 
     print(f"Mission Profiles Generated : {len(profiles)}")
 
@@ -550,7 +677,7 @@ def save_profiles(profiles, filepath):
 
     print("\nMission Summary")
 
-    print("-" * 70)
+    print("-" * 80)
 
     for profile in profiles:
 
@@ -562,212 +689,619 @@ def save_profiles(profiles, filepath):
 
             f" Confidence : {profile['average_confidence']}"
 
+            f" Organizations : {len(profile['organizations']):<3}"
+
+            f" Payloads : {len(profile['payloads']):<3}"
+
+            f" Spacecraft : {len(profile['spacecraft']):<3}"
+
         )
 
-    print("-" * 70)
+    print("-" * 80)
 
     print(f"\nProfiles Saved To : {filepath}")
 
 
 # ==========================================================
-# Mission Statistics
+# Knowledge Graph Statistics
 # ==========================================================
 
 def print_statistics(profiles):
 
     print("\n")
-
-    print("=" * 70)
+    print("=" * 90)
     print("MISSION PROFILE STATISTICS")
-    print("=" * 70)
+    print("=" * 90)
 
-    total_documents = 0
+    total_profiles = len(profiles)
 
-    total_organizations = 0
+    total_documents = sum(
 
-    total_centres = 0
+        profile["document_count"]
 
-    total_launch_vehicles = 0
+        for profile in profiles
 
-    total_rocket_variants = 0
+    )
 
-    total_satellites = 0
+    print(f"Mission Profiles      : {total_profiles}")
+    print(f"Documents Processed   : {total_documents}")
 
-    total_spacecraft = 0
+    if total_profiles:
 
-    total_payloads = 0
+        avg_docs = round(
 
-    total_astronauts = 0
+            total_documents /
 
-    total_scientists = 0
+            total_profiles,
 
-    total_countries = 0
+            2
 
-    total_technologies = 0
+        )
+    else:
 
-    total_celestial_bodies = 0
+        avg_docs = 0
+
+    print(f"Average Docs / Mission   : {avg_docs}")
+
+    # ================================================
+    # Count Entites
+    # ================================================
+
+    entity_totals = {
+
+        "Organizations": 0,
+
+        "Centers": 0,
+
+        "Launch Vehicles": 0,
+
+        "Rocket Variants": 0,
+
+        "Satellites": 0,
+
+        "Spacecraft": 0,
+
+        "Payloads": 0,
+
+        "Instrument": 0,
+
+        "Scientists": 0,
+
+        "Astronauts": 0,
+
+        "Countries": 0,
+
+        "States": 0,
+
+        "Cities": 0,
+
+        "Spaceports": 0,
+
+        "Facilities": 0,
+
+        "Laboratories": 0,
+
+        "Programs": 0,
+
+        "Technologies": 0,
+
+        "Celestial Bodies": 0
+
+    }
+
+    mapping = {
+
+        "Organizations": "organizations",
+
+        "Centers": "centres",
+
+        "Launch Vehicles": "launch_vehicles",
+
+        "Rocket Variants": "rocket_variants",
+
+        "Satellites": "satellites",
+
+        "Spacecraft": "spacecraft",
+
+        "Payloads": "payloads",
+
+        "Instrument": "instruments",
+
+        "Scientists": "scientists",
+
+        "Astronauts": "astronauts",
+
+        "Countries": "countries",
+
+        "States": "states",
+
+        "Cities": "cities",
+
+        "Spaceports": "spaceports",
+
+        "Facilities": "facilities",
+
+        "Laboratories": "laboratories",
+
+        "Programs": "programs",
+
+        "Technologies": "technologies",
+
+        "Celestial Bodies": "celestial_bodies"
+    }
 
     for profile in profiles:
 
-        total_documents += profile["document_count"]
+        for title, key in mapping.items():
 
-        total_organizations += len(
-            profile["organizations"]
+            entity_totals[title] += len(
+
+                profile.get(key, [])
+
+            )
+
+    print("\n")
+    print("-" * 90)
+    print("ENTITY DISTRIBUTION")
+    print("-" * 90)
+
+    for entity_type, count in entity_totals.items():
+
+        print(
+
+            f"{entity_type:<22} : {count}"
+
+        )
+    
+    # ===============================================
+    # Confidence
+    # ===============================================
+
+    if profiles:
+
+        average_confidence = round(
+
+            sum(
+
+                profile["average_confidence"]
+
+                for profile in profiles
+
+            )
+
+            /
+
+            total_profiles,
+
+            2
+
         )
 
-        total_centres += len(
-            profile["centres"]
+        highest = max(
+
+            profile["average_confidence"]
+
+            for profile in profiles
+
         )
 
-        total_launch_vehicles += len(
-            profile["launch_vehicles"]
+        lowest = min(
+
+            profile["average_confidence"]
+
+            for profile in profiles
+
+        )
+    
+    else:
+
+        average_confidence = 0
+
+        highest = 0
+
+        lowest = 0
+
+    print("\n")
+    print("-" * 90)
+    print("CONFIDENCE")
+    print("-" * 90)
+
+    print(
+
+        f"Average Confidence  :  {average_confidence}"
+    )
+
+    print(
+
+        f"Highest Confidence  :  {highest}"
+    )
+
+    print(
+
+        f"Lowest Confidence  :  {lowest}"
+    )
+
+    # =======================================
+    # Richest Mission
+    # =======================================
+
+    richest = None
+
+    richest_score = -1
+
+    for profile in profiles:
+
+        score = 0
+
+        for value in profile.values():
+
+            if isinstance(value, list):
+
+                score += len(value)
+
+        if score > richest_score:
+
+            richest = profile
+
+            richest_score = score
+    
+    if richest:
+
+        print("\n")
+        print("-" * 90)
+        print("RICHEST MISSION PROFILE")
+        print("-" * 90)
+
+        print(
+
+            f"Mission                : {richest['mission']}"
+
         )
 
-        total_rocket_variants += len(
-            profile["rocket_variants"]
+        print(
+
+            f"Documents            : {richest['document_count']}"
+
         )
 
-        total_satellites += len(
-            profile["satellites"]
+        print(
+
+            f"Knowledge Items        : {richest_score}"
+
         )
 
-        total_spacecraft += len(
-            profile["spacecraft"]
+        print(
+
+            f"Average Confidence        : {richest['average_confidence']}"
+
         )
 
-        total_payloads += len(
-            profile["payloads"]
-        )
-
-        total_astronauts += len(
-            profile["astronauts"]
-        )
-
-        total_scientists += len(
-            profile["scientists"]
-        )
-
-        total_countries += len(
-            profile["countries"]
-        )
-
-        total_technologies += len(
-            profile["technologies"]
-        )
-
-        total_celestial_bodies += len(
-            profile["celestial_bodies"]
-        )
-
-    print(f"Profiles             : {len(profiles)}")
-    print(f"Documents            : {total_documents}")
-    print(f"Organizations        : {total_organizations}")
-    print(f"Centres              : {total_centres}")
-    print(f"Launch Vehicles      : {total_launch_vehicles}")
-    print(f"Rocket Variants      : {total_rocket_variants}")
-    print(f"Satellites           : {total_satellites}")
-    print(f"Spacecraft           : {total_spacecraft}")
-    print(f"Payloads             : {total_payloads}")
-    print(f"Astronauts           : {total_astronauts}")
-    print(f"Scientists           : {total_scientists}")
-    print(f"Countries            : {total_countries}")
-    print(f"Technologies         : {total_technologies}")
-    print(f"Celestial Bodies     : {total_celestial_bodies}")
-
-    print("=" * 70)
+    print("=" * 90)
 
 
 # ==========================================================
-# Validation
+# Validate Mission Profiles
 # ==========================================================
 
 def validate_profiles(profiles):
 
     print("\n")
-
-    print("=" * 70)
+    print("=" * 90)
     print("MISSION PROFILE VALIDATION")
-    print("=" * 70)
+    print("=" * 90)
 
-    valid_profiles = 0
+    total_profiles = len(profiles)
 
-    invalid_profiles = 0
+    passed = 0
+
+    warnings = []
 
     for profile in profiles:
 
-        errors = []
+        mission = profile["mission"]
 
-        if not profile["mission"]:
+        issues = []
 
-            errors.append("Missing Mission")
+        # --------------------------------------------------
+        # Mission Name
+        # --------------------------------------------------
+
+        if not mission:
+
+            issues.append("Missing mission name")
+
+        # --------------------------------------------------
+        # Documents
+        # --------------------------------------------------
 
         if profile["document_count"] == 0:
 
-            errors.append("No Documents")
+            issues.append("No supporting documents")
 
-        if len(profile["documents"]) == 0:
+        # --------------------------------------------------
+        # Confidence
+        # --------------------------------------------------
 
-            errors.append("Empty Documents")
+        if profile["average_confidence"] < 0.60:
+
+            issues.append(
+                f"Low confidence ({profile['average_confidence']})"
+            )
+
+        # --------------------------------------------------
+        # Organizations
+        # --------------------------------------------------
+
+        if len(profile["organizations"]) == 0:
+
+            issues.append("No organization linked")
+
+        # --------------------------------------------------
+        # URLs
+        # --------------------------------------------------
 
         if len(profile["urls"]) == 0:
 
-            errors.append("No URLs")
+            issues.append("No source URL")
 
-        if errors:
+        # --------------------------------------------------
+        # Document Types
+        # --------------------------------------------------
 
-            invalid_profiles += 1
+        if len(profile["document_types"]) == 0:
 
-            print(f"\n❌ {profile['mission']}")
+            issues.append("Missing document type")
 
-            for error in errors:
+        # --------------------------------------------------
+        # Sources
+        # --------------------------------------------------
 
-                print("   -", error)
+        if len(profile["sources"]) == 0:
+
+            issues.append("Missing source")
+
+        # --------------------------------------------------
+        # Entity Density
+        # --------------------------------------------------
+
+        entity_count = (
+
+            len(profile["organizations"])
+
+            + len(profile["centres"])
+
+            + len(profile["launch_vehicles"])
+
+            + len(profile["rocket_variants"])
+
+            + len(profile["satellites"])
+
+            + len(profile["spacecraft"])
+
+            + len(profile["payloads"])
+
+            + len(profile["instruments"])
+
+            + len(profile["scientists"])
+
+            + len(profile["astronauts"])
+
+            + len(profile["countries"])
+
+            + len(profile["states"])
+
+            + len(profile["cities"])
+
+            + len(profile["spaceports"])
+
+            + len(profile["facilities"])
+
+            + len(profile["laboratories"])
+
+            + len(profile["programs"])
+
+            + len(profile["technologies"])
+
+            + len(profile["celestial_bodies"])
+
+        )
+
+        if entity_count < 3:
+
+            issues.append(
+                f"Very few linked entities ({entity_count})"
+            )
+
+        # --------------------------------------------------
+        # Result
+        # --------------------------------------------------
+
+        if issues:
+
+            warnings.append({
+
+                "mission": mission,
+
+                "issues": issues
+
+            })
 
         else:
 
-            valid_profiles += 1
+            passed += 1
 
-    print("\n" + "-" * 70)
+    # ======================================================
+    # Summary
+    # ======================================================
 
-    print(f"Valid Profiles   : {valid_profiles}")
+    print(f"Profiles Checked : {total_profiles}")
 
-    print(f"Invalid Profiles : {invalid_profiles}")
+    print(f"Passed           : {passed}")
 
-    print("=" * 70)
+    print(f"Warnings         : {len(warnings)}")
+
+    # ======================================================
+    # Detailed Warnings
+    # ======================================================
+
+    if warnings:
+
+        print("\n")
+
+        print("-" * 90)
+
+        print("PROFILE WARNINGS")
+
+        print("-" * 90)
+
+        for warning in warnings:
+
+            print(f"\nMission : {warning['mission']}")
+
+            for issue in warning["issues"]:
+
+                print(f"  • {issue}")
+
+    else:
+
+        print("\nAll mission profiles passed validation.")
+
+    print("=" * 90)
+
+    return warnings
 
 
 # ==========================================================
-# Top Missions
+# Print Top Mission Profiles
 # ==========================================================
 
 def print_top_missions(profiles, top_n=10):
 
     print("\n")
+    print("=" * 100)
+    print(f"TOP {min(top_n, len(profiles))} MISSION PROFILES")
+    print("=" * 100)
 
-    print("=" * 70)
-    print(f"TOP {top_n} MISSIONS")
-    print("=" * 70)
-
-    sorted_profiles = sorted(
+    ranked = sorted(
 
         profiles,
 
-        key=lambda x: x["document_count"],
+        key=lambda p: (
 
-        reverse=True
+            -p["document_count"],
 
-    )
-
-    for profile in sorted_profiles[:top_n]:
-
-        print(
-
-            f"{profile['mission']:<22}"
-
-            f" Docs : {profile['document_count']:<3}"
-
-            f" Confidence : {profile['average_confidence']}"
+            -p["average_confidence"]
 
         )
 
-    print("=" * 70)
+    )
+
+    for i, profile in enumerate(ranked[:top_n], start=1):
+
+        print(f"\n{i}. {profile['mission']}")
+
+        print("-" * 100)
+
+        print(f"Documents          : {profile['document_count']}")
+
+        print(f"Confidence         : {profile['average_confidence']}")
+
+        print(f"Organizations      : {len(profile['organizations'])}")
+
+        print(f"Launch Vehicles    : {len(profile['launch_vehicles'])}")
+
+        print(f"Rocket Variants    : {len(profile['rocket_variants'])}")
+
+        print(f"Satellites         : {len(profile['satellites'])}")
+
+        print(f"Spacecraft         : {len(profile['spacecraft'])}")
+
+        print(f"Payloads           : {len(profile['payloads'])}")
+
+        print(f"Instruments        : {len(profile['instruments'])}")
+
+        print(f"Scientists         : {len(profile['scientists'])}")
+
+        print(f"Astronauts         : {len(profile['astronauts'])}")
+
+        print(f"Countries          : {len(profile['countries'])}")
+
+        print(f"States             : {len(profile['states'])}")
+
+        print(f"Cities             : {len(profile['cities'])}")
+
+        print(f"Spaceports         : {len(profile['spaceports'])}")
+
+        print(f"Facilities         : {len(profile['facilities'])}")
+
+        print(f"Laboratories       : {len(profile['laboratories'])}")
+
+        print(f"Programs           : {len(profile['programs'])}")
+
+        print(f"Technologies       : {len(profile['technologies'])}")
+
+        print(f"Celestial Bodies   : {len(profile['celestial_bodies'])}")
+
+    print("=" * 100)
+
+# ==========================================================
+# Main
+# ==========================================================
+
+def main():
+
+    INPUT_FILE = "data/raw/isro/structured_missions.json"
+
+    OUTPUT_FILE = "data/raw/mission_profiles.json"
+
+    print("\n")
+    print("=" * 100)
+    print("MISSION PROFILE BUILDER")
+    print("=" * 100)
+
+    documents = load_documents(INPUT_FILE)
+
+    print(f"\nLoaded Documents : {len(documents)}")
+
+    profiles = build_mission_profiles(documents)
+
+    save_profiles(
+
+        profiles,
+
+        OUTPUT_FILE
+
+    )
+
+    print_statistics(
+
+        profiles
+
+    )
+
+    validate_profiles(
+
+        profiles
+
+    )
+
+    print_top_missions(
+
+        profiles,
+
+        top_n=10
+
+    )
+
+    print("\n")
+
+    print("=" * 100)
+
+    print("MISSION PROFILE GENERATION FINISHED")
+
+    print("=" * 100)
+
+
+if __name__ == "__main__":
+
+    main()

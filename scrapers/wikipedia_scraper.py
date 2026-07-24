@@ -9,7 +9,13 @@ def scrape_wikipedia(url):
         print("Crawling:", url)
 
         headers = {
-            "User-Agent": "Mozilla/5.0"
+
+            "User-Agent": (
+                "ISRO-KnowledgeGraph/1.0 "
+                "(https://github.com/your-project)"
+            ),
+
+            "Accept-Language": "en-US,en;q=0.9"
         }
 
 

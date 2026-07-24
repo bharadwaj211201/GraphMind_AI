@@ -1,89 +1,142 @@
+"""
+wiki_loader.py
+
+Search Wikipedia pages for ISRO entities.
+
+Uses the official Wikipedia REST API.
+"""
+
 import requests
-from bs4 import BeautifulSoup
-from urllib.parse import urljoin
+from urllib.parse import quote
+
+# ==========================================================
+# Configuration
+# ==========================================================
+
+HEADERS = {
+    "User-Agent": "ISRO-KnowledgeGraph/1.0 (Educational Project)",
+    "Accept": "application/json",
+    "Accept-Language": "en"
+}
+
+REST_API = "https://en.wikipedia.org/api/rest_v1/page/summary/"
 
 
-def crawl_wikipedia(start_url, limit=50):
+# ==========================================================
+# Search Single Page
+# ==========================================================
+
+def search_wikipedia(title):
+    """
+    Search a Wikipedia page using the REST API.
+
+    Parameters
+    ----------
+    title : str
+
+    Returns
+    -------
+    str | None
+        Canonical Wikipedia URL if found.
+    """
+
+    encoded_title = quote(title)
+
+    url = REST_API + encoded_title
+
+    try:
+
+        response = requests.get(
+            url,
+            headers=HEADERS,
+            timeout=20
+        )
+
+        if response.status_code != 200:
+            return None
+
+        data = response.json()
+
+        # Missing article
+        if data.get("type") == "https://mediawiki.org/wiki/HyperSwitch/errors/not_found":
+            return None
+
+        # Canonical URL
+        if "content_urls" in data:
+
+            desktop = data["content_urls"].get("desktop", {})
+
+            if "page" in desktop:
+                return desktop["page"]
+
+        return None
+
+    except Exception as e:
+
+        print(f"[ERROR] {title} : {e}")
+
+        return None
 
 
-    visited = set()
+# ==========================================================
+# Search Multiple Pages
+# ==========================================================
 
-    queue = [start_url]
+def search_multiple(titles):
+    """
+    Search multiple Wikipedia pages.
 
+    Parameters
+    ----------
+    titles : list
 
-    headers = {
-        "User-Agent": "Mozilla/5.0"
-    }
+    Returns
+    -------
+    dict
+    """
 
+    results = {}
 
+    print()
 
-    while queue and len(visited) < limit:
+    for title in titles:
 
+        print(f"Searching : {title}")
 
-        url = queue.pop(0)
+        url = search_wikipedia(title)
 
+        if url:
 
-        if url in visited:
-            continue
+            print("   ✓ Found")
 
+            results[title] = url
 
+        else:
 
-        print("Crawling:", url)
+            print("   ✗ Not Found")
 
-
-        visited.add(url)
-
-
-
-        try:
-
-
-            response = requests.get(
-                url,
-                headers=headers,
-                timeout=10
-            )
-
-
-            soup = BeautifulSoup(
-                response.text,
-                "html.parser"
-            )
+    return results
 
 
+# ==========================================================
+# Standalone Test
+# ==========================================================
 
-            for a in soup.find_all("a", href=True):
+if __name__ == "__main__":
 
+    pages = search_multiple([
+        "Chandrayaan-3",
+        "Aditya-L1",
+        "PSLV",
+        "Gaganyaan"
+    ])
 
-                href = a["href"]
+    print()
 
+    for key, value in pages.items():
 
+        print(key)
 
-                if href.startswith("/wiki/"):
+        print(value)
 
-
-                    if ":" in href:
-                        continue
-
-
-
-                    full_url = urljoin(
-                        "https://en.wikipedia.org",
-                        href
-                    )
-
-
-
-                    if full_url not in visited:
-
-                        queue.append(full_url)
-
-
-
-        except Exception as e:
-
-            print("ERROR:",e)
-
-
-
-    return list(visited)
+        print()

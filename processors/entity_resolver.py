@@ -1,35 +1,42 @@
 """
 ==========================================================
-Entity Resolver
+Entity Resolver V2
 ==========================================================
 
-This module converts extracted entities into their
-canonical forms before storing them in MongoDB or Neo4j.
+Purpose
+-------
+Convert extracted entities into their canonical forms before
+building the Knowledge Graph.
 
 Responsibilities
 ----------------
 1. Normalize text
 2. Resolve aliases
-3. Standardize entity names
+3. Standardize ontology names
 4. Preserve rocket variants
-5. Remove duplicate entities
+5. Optional fuzzy matching
+6. Cross-type validation
+7. Confidence scoring
+8. Remove duplicate entities
+9. Generate resolver statistics
 
-NOTE
-----
-This module DOES NOT classify entities.
-
-Classification is handled by
-entity_classifier.py.
+Author
+------
+ISRO Knowledge Graph Project
 """
 
 import re
+from difflib import get_close_matches
+from collections import defaultdict
 
 from scrapers.domain_entities import (
 
+    # Alias Dictionaries
     MISSION_ALIASES,
     ORGANIZATION_ALIASES,
     CENTRE_ALIASES,
 
+    # Ontologies
     MISSIONS,
     ORGANIZATIONS,
     CENTRES,
@@ -57,8 +64,19 @@ from scrapers.domain_entities import (
     PROGRAMS,
     TECHNOLOGIES,
     CELESTIAL_BODIES
-
 )
+
+# ==========================================================
+# Configuration
+# ==========================================================
+
+ENABLE_FUZZY_MATCHING = True
+
+FUZZY_THRESHOLD = 0.92
+
+ENABLE_CROSS_TYPE_VALIDATION = True
+
+PRINT_STATISTICS = True
 
 # ==========================================================
 # Normalization
@@ -66,10 +84,10 @@ from scrapers.domain_entities import (
 
 def normalize(text):
     """
-    Normalize entity text.
+    Normalize entity names for comparison.
 
-    Example
-
+    Examples
+    --------
     Chandrayaan-3
     Chandrayaan 3
     CHANDRAYAAN_3
@@ -78,6 +96,11 @@ def normalize(text):
 
     chandrayaan 3
     """
+
+    if not text:
+        return ""
+
+    text = str(text)
 
     text = text.lower()
 
@@ -91,6 +114,12 @@ def normalize(text):
 
     text = text.replace(".", "")
 
+    text = text.replace(",", "")
+
+    text = text.replace("(", "")
+
+    text = text.replace(")", "")
+
     text = text.replace("’", "'")
 
     text = re.sub(r"\s+", " ", text)
@@ -101,12 +130,11 @@ def normalize(text):
 
     return text
 
-
 # ==========================================================
 # Rocket Variant Detection
 # ==========================================================
 
-ROCKET_REGEX = [
+ROCKET_PATTERNS = [
 
     r"PSLV-[A-Z0-9]+",
 
@@ -114,22 +142,33 @@ ROCKET_REGEX = [
 
     r"LVM3-[A-Z0-9]+",
 
-    r"SSLV-[A-Z0-9]+"
+    r"SSLV-[A-Z0-9]+",
 
+    r"PSLV\s+[A-Z0-9]+",
+
+    r"GSLV\s+[A-Z0-9]+",
+
+    r"LVM3\s+[A-Z0-9]+",
+
+    r"SSLV\s+[A-Z0-9]+"
 ]
 
 
-def is_rocket_variant(text):
+def is_rocket_variant(name):
+    """
+    Detect rocket variants such as
 
-    for pattern in ROCKET_REGEX:
+    PSLV-C62
+    GSLV-F15
+    LVM3-M5
+    SSLV-D3
+    """
 
-        if re.fullmatch(
+    text = name.upper().strip()
 
-            pattern,
+    for pattern in ROCKET_PATTERNS:
 
-            text.upper()
-
-        ):
+        if re.fullmatch(pattern, text):
 
             return True
 
@@ -137,322 +176,343 @@ def is_rocket_variant(text):
 
 
 # ==========================================================
-# Canonical Lookup
+# Build Lookup Dictionaries
 # ==========================================================
 
-def canonical_lookup(name, ontology):
+def build_lookup(ontology):
     """
-    Return ontology spelling if found.
+    Build
+
+    normalized name
+
+        →
+
+    canonical ontology name
+
+    for O(1) lookup.
     """
 
-    key = normalize(name)
+    lookup = {}
 
-    for value in ontology:
+    for item in ontology:
 
-        if normalize(value) == key:
+        lookup[normalize(item)] = item
 
-            return value
+    return lookup
+
+
+MISSION_LOOKUP = build_lookup(MISSIONS)
+
+ORGANIZATION_LOOKUP = build_lookup(ORGANIZATIONS)
+
+CENTRE_LOOKUP = build_lookup(CENTRES)
+
+LAUNCH_VEHICLE_LOOKUP = build_lookup(LAUNCH_VEHICLES)
+
+SATELLITE_LOOKUP = build_lookup(SATELLITES)
+
+SPACECRAFT_LOOKUP = build_lookup(SPACECRAFT)
+
+PAYLOAD_LOOKUP = build_lookup(PAYLOADS)
+
+INSTRUMENT_LOOKUP = build_lookup(INSTRUMENTS)
+
+SCIENTIST_LOOKUP = build_lookup(SCIENTISTS)
+
+ASTRONAUT_LOOKUP = build_lookup(ASTRONAUTS)
+
+COUNTRY_LOOKUP = build_lookup(COUNTRIES)
+
+STATE_LOOKUP = build_lookup(STATES)
+
+CITY_LOOKUP = build_lookup(CITIES)
+
+SPACEPORT_LOOKUP = build_lookup(SPACEPORTS)
+
+FACILITY_LOOKUP = build_lookup(FACILITIES)
+
+LABORATORY_LOOKUP = build_lookup(LABORATORIES)
+
+PROGRAM_LOOKUP = build_lookup(PROGRAMS)
+
+TECHNOLOGY_LOOKUP = build_lookup(TECHNOLOGIES)
+
+CELESTIAL_BODY_LOOKUP = build_lookup(CELESTIAL_BODIES)
+
+# ==========================================================
+# Alias Lookup
+# ==========================================================
+
+ALIAS_TABLE = {
+
+    "MISSION": MISSION_ALIASES,
+
+    "ORGANIZATION": ORGANIZATION_ALIASES,
+
+    "CENTRE": CENTRE_ALIASES
+}
+
+# ==========================================================
+# Ontology Lookup Table
+# ==========================================================
+
+LOOKUP_TABLE = {
+
+    "MISSION": MISSION_LOOKUP,
+
+    "ORGANIZATION": ORGANIZATION_LOOKUP,
+
+    "CENTRE": CENTRE_LOOKUP,
+
+    "LAUNCH_VEHICLE": LAUNCH_VEHICLE_LOOKUP,
+
+    "ROCKET_VARIANT": LAUNCH_VEHICLE_LOOKUP,
+
+    "SATELLITE": SATELLITE_LOOKUP,
+
+    "SPACECRAFT": SPACECRAFT_LOOKUP,
+
+    "PAYLOAD": PAYLOAD_LOOKUP,
+
+    "INSTRUMENT": INSTRUMENT_LOOKUP,
+
+    "SCIENTIST": SCIENTIST_LOOKUP,
+
+    "ASTRONAUT": ASTRONAUT_LOOKUP,
+
+    "COUNTRY": COUNTRY_LOOKUP,
+
+    "STATE": STATE_LOOKUP,
+
+    "CITY": CITY_LOOKUP,
+
+    "SPACEPORT": SPACEPORT_LOOKUP,
+
+    "FACILITY": FACILITY_LOOKUP,
+
+    "LABORATORY": LABORATORY_LOOKUP,
+
+    "PROGRAM": PROGRAM_LOOKUP,
+
+    "TECHNOLOGY": TECHNOLOGY_LOOKUP,
+
+    "CELESTIAL_BODY": CELESTIAL_BODY_LOOKUP
+}
+
+# ==========================================================
+# Resolver Statistics
+# ==========================================================
+
+class ResolverStatistics:
+
+    def __init__(self):
+
+        self.total_entities = 0
+
+        self.alias_matches = 0
+
+        self.ontology_matches = 0
+
+        self.fuzzy_matches = 0
+
+        self.rocket_variants = 0
+
+        self.cross_type_corrections = 0
+
+        self.duplicates_removed = 0
+
+        self.unknown_entities = 0
+
+    def print_summary(self):
+
+        if not PRINT_STATISTICS:
+            return
+
+        print("\n" + "=" * 70)
+        print("ENTITY RESOLVER STATISTICS")
+        print("=" * 70)
+
+        print(f"Entities Processed      : {self.total_entities}")
+        print(f"Alias Matches           : {self.alias_matches}")
+        print(f"Ontology Matches        : {self.ontology_matches}")
+        print(f"Fuzzy Matches           : {self.fuzzy_matches}")
+        print(f"Rocket Variants         : {self.rocket_variants}")
+        print(f"Cross-Type Corrections  : {self.cross_type_corrections}")
+        print(f"Duplicates Removed      : {self.duplicates_removed}")
+        print(f"Unknown Entities        : {self.unknown_entities}")
+
+        print("=" * 70)
+
+
+resolver_stats = ResolverStatistics()
+
+# ==========================================================
+# Generic Lookup
+# ==========================================================
+
+def lookup_entity(name, entity_type):
+    """
+    Resolve an entity using the following order:
+
+    1. Rocket Variant
+    2. Alias Dictionary
+    3. Ontology Lookup
+    4. Fuzzy Matching
+    """
+
+    normalized = normalize(name)
+
+    # ------------------------------------------------------
+    # Rocket Variant
+    # ------------------------------------------------------
+
+    if entity_type in ("LAUNCH_VEHICLE", "ROCKET_VARIANT"):
+
+        if is_rocket_variant(name):
+
+            resolver_stats.rocket_variants += 1
+
+            return {
+                "name": name.upper(),
+                "confidence": 1.0,
+                "matched_by": "rocket_variant"
+            }
+
+    # ------------------------------------------------------
+    # Alias Lookup
+    # ------------------------------------------------------
+
+    alias_dict = ALIAS_TABLE.get(entity_type)
+
+    if alias_dict:
+
+        if normalized in alias_dict:
+
+            resolver_stats.alias_matches += 1
+
+            return {
+                "name": alias_dict[normalized],
+                "confidence": 1.0,
+                "matched_by": "alias"
+            }
+
+    # ------------------------------------------------------
+    # Ontology Lookup
+    # ------------------------------------------------------
+
+    ontology = LOOKUP_TABLE.get(entity_type)
+
+    if ontology:
+
+        if normalized in ontology:
+
+            resolver_stats.ontology_matches += 1
+
+            return {
+                "name": ontology[normalized],
+                "confidence": 1.0,
+                "matched_by": "ontology"
+            }
+
+    # ------------------------------------------------------
+    # Fuzzy Matching
+    # ------------------------------------------------------
+
+    if ENABLE_FUZZY_MATCHING and ontology:
+
+        matches = get_close_matches(
+
+            normalized,
+
+            ontology.keys(),
+
+            n=1,
+
+            cutoff=FUZZY_THRESHOLD
+
+        )
+
+        if matches:
+
+            resolver_stats.fuzzy_matches += 1
+
+            return {
+
+                "name": ontology[matches[0]],
+
+                "confidence": 0.90,
+
+                "matched_by": "fuzzy"
+
+            }
+
+    resolver_stats.unknown_entities += 1
+
+    return {
+
+        "name": name,
+
+        "confidence": 0.50,
+
+        "matched_by": "unknown"
+
+    }
+
+
+# ==========================================================
+# Cross-Type Validation
+# ==========================================================
+
+def detect_entity_type(name):
+    """
+    Detect if an entity actually belongs to
+    another ontology.
+
+    Example
+
+    PSLV
+
+    extracted as
+
+    MISSION
+
+    →
+
+    corrected to
+
+    LAUNCH_VEHICLE
+    """
+
+    normalized = normalize(name)
+
+    for entity_type, lookup in LOOKUP_TABLE.items():
+
+        if normalized in lookup:
+
+            return entity_type
 
     return None
 
-# ==========================================================
-# Mission Resolver
-# ==========================================================
 
-def resolve_mission(name):
+def validate_entity_type(name, current_type):
     """
-    Resolve mission aliases to canonical mission names.
+    Correct entity type if necessary.
     """
 
-    key = normalize(name)
+    if not ENABLE_CROSS_TYPE_VALIDATION:
 
-    # Alias lookup
-    if key in MISSION_ALIASES:
-        return MISSION_ALIASES[key]
+        return current_type
 
-    # Ontology lookup
-    canonical = canonical_lookup(name, MISSIONS)
+    detected = detect_entity_type(name)
 
-    if canonical:
-        return canonical
+    if detected and detected != current_type:
 
-    return name
+        resolver_stats.cross_type_corrections += 1
 
+        return detected
 
-# ==========================================================
-# Organization Resolver
-# ==========================================================
+    return current_type
 
-def resolve_organization(name):
-    """
-    Resolve organization aliases.
-    """
-
-    key = normalize(name)
-
-    if key in ORGANIZATION_ALIASES:
-        return ORGANIZATION_ALIASES[key]
-
-    canonical = canonical_lookup(name, ORGANIZATIONS)
-
-    if canonical:
-        return canonical
-
-    return name
-
-
-# ==========================================================
-# Centre Resolver
-# ==========================================================
-
-def resolve_centre(name):
-    """
-    Resolve ISRO centre aliases.
-    """
-
-    key = normalize(name)
-
-    if key in CENTRE_ALIASES:
-        return CENTRE_ALIASES[key]
-
-    canonical = canonical_lookup(name, CENTRES)
-
-    if canonical:
-        return canonical
-
-    return name
-
-
-# ==========================================================
-# Launch Vehicle Resolver
-# ==========================================================
-
-def resolve_vehicle(name):
-    """
-    Preserve rocket variants while normalizing
-    launch vehicle family names.
-    """
-
-    # Preserve variants like PSLV-C62
-    if is_rocket_variant(name):
-        return name.upper()
-
-    canonical = canonical_lookup(name, LAUNCH_VEHICLES)
-
-    if canonical:
-        return canonical
-
-    return name
-
-
-# ==========================================================
-# Satellite Resolver
-# ==========================================================
-
-def resolve_satellite(name):
-
-    canonical = canonical_lookup(name, SATELLITES)
-
-    if canonical:
-        return canonical
-
-    return name
-
-
-# ==========================================================
-# Spacecraft Resolver
-# ==========================================================
-
-def resolve_spacecraft(name):
-
-    canonical = canonical_lookup(name, SPACECRAFT)
-
-    if canonical:
-        return canonical
-
-    return name
-
-
-# ==========================================================
-# Payload Resolver
-# ==========================================================
-
-def resolve_payload(name):
-
-    canonical = canonical_lookup(name, PAYLOADS)
-
-    if canonical:
-        return canonical
-
-    return name
-
-
-# ==========================================================
-# Instrument Resolver
-# ==========================================================
-
-def resolve_instrument(name):
-
-    canonical = canonical_lookup(name, INSTRUMENTS)
-
-    if canonical:
-        return canonical
-
-    return name
-
-
-# ==========================================================
-# Scientist Resolver
-# ==========================================================
-
-def resolve_scientist(name):
-
-    canonical = canonical_lookup(name, SCIENTISTS)
-
-    if canonical:
-        return canonical
-
-    return name
-
-
-# ==========================================================
-# Astronaut Resolver
-# ==========================================================
-
-def resolve_astronaut(name):
-
-    canonical = canonical_lookup(name, ASTRONAUTS)
-
-    if canonical:
-        return canonical
-
-    return name
-
-
-# ==========================================================
-# Country Resolver
-# ==========================================================
-
-def resolve_country(name):
-
-    canonical = canonical_lookup(name, COUNTRIES)
-
-    if canonical:
-        return canonical
-
-    return name
-
-
-# ==========================================================
-# State Resolver
-# ==========================================================
-
-def resolve_state(name):
-
-    canonical = canonical_lookup(name, STATES)
-
-    if canonical:
-        return canonical
-
-    return name
-
-
-# ==========================================================
-# City Resolver
-# ==========================================================
-
-def resolve_city(name):
-
-    canonical = canonical_lookup(name, CITIES)
-
-    if canonical:
-        return canonical
-
-    return name
-
-
-# ==========================================================
-# Spaceport Resolver
-# ==========================================================
-
-def resolve_spaceport(name):
-
-    canonical = canonical_lookup(name, SPACEPORTS)
-
-    if canonical:
-        return canonical
-
-    return name
-
-
-# ==========================================================
-# Facility Resolver
-# ==========================================================
-
-def resolve_facility(name):
-
-    canonical = canonical_lookup(name, FACILITIES)
-
-    if canonical:
-        return canonical
-
-    return name
-
-
-# ==========================================================
-# Laboratory Resolver
-# ==========================================================
-
-def resolve_laboratory(name):
-
-    canonical = canonical_lookup(name, LABORATORIES)
-
-    if canonical:
-        return canonical
-
-    return name
-
-
-# ==========================================================
-# Program Resolver
-# ==========================================================
-
-def resolve_program(name):
-
-    canonical = canonical_lookup(name, PROGRAMS)
-
-    if canonical:
-        return canonical
-
-    return name
-
-
-# ==========================================================
-# Technology Resolver
-# ==========================================================
-
-def resolve_technology(name):
-
-    canonical = canonical_lookup(name, TECHNOLOGIES)
-
-    if canonical:
-        return canonical
-
-    return name
-
-
-# ==========================================================
-# Celestial Body Resolver
-# ==========================================================
-
-def resolve_celestial_body(name):
-
-    canonical = canonical_lookup(name, CELESTIAL_BODIES)
-
-    if canonical:
-        return canonical
-
-    return name
 
 # ==========================================================
 # Resolve One Entity
@@ -460,68 +520,47 @@ def resolve_celestial_body(name):
 
 def resolve_entity(entity_name, entity_type):
     """
-    Resolve a single entity and return a structured object.
+    Resolve one entity.
+
+    Returns
+
+    {
+        name
+        type
+        original_name
+        confidence
+        matched_by
+        resolved
+    }
     """
 
-    if entity_type == "MISSION":
-        canonical = resolve_mission(entity_name)
+    resolver_stats.total_entities += 1
 
-    elif entity_type == "ORGANIZATION":
-        canonical = resolve_organization(entity_name)
+    # --------------------------------------------
+    # Validate Type
+    # --------------------------------------------
 
-    elif entity_type == "CENTRE":
-        canonical = resolve_centre(entity_name)
+    entity_type = validate_entity_type(
 
-    elif entity_type in ("LAUNCH_VEHICLE", "ROCKET_VARIANT"):
-        canonical = resolve_vehicle(entity_name)
+        entity_name,
 
-    elif entity_type == "SATELLITE":
-        canonical = resolve_satellite(entity_name)
+        entity_type
 
-    elif entity_type == "SPACECRAFT":
-        canonical = resolve_spacecraft(entity_name)
+    )
 
-    elif entity_type == "PAYLOAD":
-        canonical = resolve_payload(entity_name)
+    # --------------------------------------------
+    # Lookup
+    # --------------------------------------------
 
-    elif entity_type == "INSTRUMENT":
-        canonical = resolve_instrument(entity_name)
+    result = lookup_entity(
 
-    elif entity_type == "SCIENTIST":
-        canonical = resolve_scientist(entity_name)
+        entity_name,
 
-    elif entity_type == "ASTRONAUT":
-        canonical = resolve_astronaut(entity_name)
+        entity_type
 
-    elif entity_type == "COUNTRY":
-        canonical = resolve_country(entity_name)
+    )
 
-    elif entity_type == "STATE":
-        canonical = resolve_state(entity_name)
-
-    elif entity_type == "CITY":
-        canonical = resolve_city(entity_name)
-
-    elif entity_type == "SPACEPORT":
-        canonical = resolve_spaceport(entity_name)
-
-    elif entity_type == "FACILITY":
-        canonical = resolve_facility(entity_name)
-
-    elif entity_type == "LABORATORY":
-        canonical = resolve_laboratory(entity_name)
-
-    elif entity_type == "PROGRAM":
-        canonical = resolve_program(entity_name)
-
-    elif entity_type == "TECHNOLOGY":
-        canonical = resolve_technology(entity_name)
-
-    elif entity_type == "CELESTIAL_BODY":
-        canonical = resolve_celestial_body(entity_name)
-
-    else:
-        canonical = entity_name
+    canonical = result["name"]
 
     return {
 
@@ -531,7 +570,11 @@ def resolve_entity(entity_name, entity_type):
 
         "original_name": entity_name,
 
-        "resolved": canonical != entity_name
+        "confidence": result["confidence"],
+
+        "matched_by": result["matched_by"],
+
+        "resolved": normalize(canonical) != normalize(entity_name)
 
     }
 
@@ -542,7 +585,21 @@ def resolve_entity(entity_name, entity_type):
 
 def resolve_entities(entity_list):
     """
-    Resolve a list of extracted entities.
+    Resolve all extracted entities.
+
+    Input
+
+    [
+        ("ISRO","ORGANIZATION"),
+        ("PSLV","MISSION")
+    ]
+
+    Output
+
+    [
+        {...},
+        {...}
+    ]
     """
 
     resolved_entities = []
@@ -561,13 +618,16 @@ def resolve_entities(entity_list):
 
         key = (
 
-            entity["name"].lower(),
+            normalize(entity["name"]),
 
             entity["type"]
 
         )
 
         if key in seen:
+
+            resolver_stats.duplicates_removed += 1
+
             continue
 
         seen.add(key)
@@ -576,7 +636,6 @@ def resolve_entities(entity_list):
 
     return resolved_entities
 
-
 # ==========================================================
 # Group Entities
 # ==========================================================
@@ -584,21 +643,22 @@ def resolve_entities(entity_list):
 def group_entities(entity_list):
     """
     Group resolved entities by entity type.
+
+    Returns
+    -------
+    {
+        "MISSION": [...],
+        "ORGANIZATION": [...]
+    }
     """
 
-    grouped = {}
+    grouped = defaultdict(list)
 
     for entity in entity_list:
 
-        grouped.setdefault(
+        grouped[entity["type"]].append(entity)
 
-            entity["type"],
-
-            []
-
-        ).append(entity)
-
-    return grouped
+    return dict(grouped)
 
 
 # ==========================================================
@@ -607,70 +667,185 @@ def group_entities(entity_list):
 
 def print_entities(entity_list):
     """
-    Print grouped entities.
+    Pretty-print resolved entities.
     """
 
     grouped = group_entities(entity_list)
 
+    print("\n" + "=" * 80)
+    print("RESOLVED ENTITIES")
+    print("=" * 80)
+
     for entity_type in sorted(grouped):
 
-        print("\n" + "=" * 60)
-
+        print("\n" + "-" * 80)
         print(entity_type)
-
-        print("=" * 60)
+        print("-" * 80)
 
         for entity in grouped[entity_type]:
 
             if entity["resolved"]:
 
                 print(
-
-                    f'{entity["original_name"]}'
-
-                    f'  -->  '
-
-                    f'{entity["name"]}'
-
+                    f"{entity['original_name']}"
+                    f"  -->  "
+                    f"{entity['name']}"
+                    f"  [{entity['matched_by']}]"
+                    f"  Confidence={entity['confidence']:.2f}"
                 )
 
             else:
 
-                print(entity["name"])
+                print(
+                    f"{entity['name']}"
+                    f"  [{entity['matched_by']}]"
+                    f"  Confidence={entity['confidence']:.2f}"
+                )
 
 
 # ==========================================================
-# Test
+# Export Statistics
+# ==========================================================
+
+def get_statistics():
+    """
+    Return resolver statistics as a dictionary.
+    """
+
+    return {
+
+        "entities_processed":
+            resolver_stats.total_entities,
+
+        "alias_matches":
+            resolver_stats.alias_matches,
+
+        "ontology_matches":
+            resolver_stats.ontology_matches,
+
+        "fuzzy_matches":
+            resolver_stats.fuzzy_matches,
+
+        "rocket_variants":
+            resolver_stats.rocket_variants,
+
+        "cross_type_corrections":
+            resolver_stats.cross_type_corrections,
+
+        "duplicates_removed":
+            resolver_stats.duplicates_removed,
+
+        "unknown_entities":
+            resolver_stats.unknown_entities
+    }
+
+
+# ==========================================================
+# Print Statistics
+# ==========================================================
+
+def print_statistics():
+
+    resolver_stats.print_summary()
+
+
+# ==========================================================
+# Reset Statistics
+# ==========================================================
+
+def reset_statistics():
+    """
+    Reset counters before processing a new batch.
+    """
+
+    global resolver_stats
+
+    resolver_stats = ResolverStatistics()
+
+
+# ==========================================================
+# Test Block
 # ==========================================================
 
 if __name__ == "__main__":
 
-    sample = [
+    sample_entities = [
 
-        ("Indian Space Research Organisation", "ORGANIZATION"),
+        ("Indian Space Research Organisation",
+         "ORGANIZATION"),
 
-        ("ISRO", "ORGANIZATION"),
+        ("ISRO",
+         "ORGANIZATION"),
 
-        ("Chandrayaan 3", "MISSION"),
+        ("Chandrayaan 3",
+         "MISSION"),
 
-        ("Chandrayaan-3", "MISSION"),
+        ("Chandrayan-3",
+         "MISSION"),
 
-        ("PSLV-C62", "ROCKET_VARIANT"),
+        ("PSLV-C62",
+         "ROCKET_VARIANT"),
 
-        ("LVM3", "LAUNCH_VEHICLE"),
+        ("LVM3",
+         "LAUNCH_VEHICLE"),
 
-        ("NASA", "ORGANIZATION"),
+        ("NASA",
+         "ORGANIZATION"),
 
-        ("National Aeronautics and Space Administration", "ORGANIZATION"),
+        ("National Aeronautics and Space Administration",
+         "ORGANIZATION"),
 
-        ("Vikram", "SPACECRAFT"),
+        ("Vikram",
+         "SPACECRAFT"),
 
-        ("Pragyan", "SPACECRAFT"),
+        ("Pragyan",
+         "SPACECRAFT"),
 
-        ("Aditya L1", "MISSION")
+        ("Aditya L1",
+         "MISSION"),
+
+        ("Aditya-L1",
+         "SATELLITE"),
+
+        ("Mars Orbiter Mission",
+         "MISSION"),
+
+        ("Mangalyaan",
+         "SATELLITE"),
+
+        ("Satish Dhawan Space Centre",
+         "SPACEPORT"),
+
+        ("SDSC",
+         "SPACEPORT"),
+
+        ("Moon",
+         "CELESTIAL_BODY"),
+
+        ("Mars",
+         "CELESTIAL_BODY"),
+
+        ("PSLV",
+         "MISSION"),
+
+        ("SSLV-D3",
+         "ROCKET_VARIANT")
 
     ]
 
-    resolved = resolve_entities(sample)
+    print("\n")
+    print("=" * 80)
+    print("ENTITY RESOLVER V2")
+    print("=" * 80)
+
+    resolved = resolve_entities(sample_entities)
 
     print_entities(resolved)
+
+    print_statistics()
+
+    print("\nStatistics Dictionary\n")
+
+    print(get_statistics())
+
+    print("\nFinished.\n")

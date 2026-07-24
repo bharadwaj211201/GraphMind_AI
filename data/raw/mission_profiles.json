@@ -1,0 +1,930 @@
+[
+    {
+        "mission": "Gaganyaan",
+        "document_count": 12,
+        "document_types": [
+            "FLIGHT_TEST",
+            "LAUNCH_CAMPAIGN",
+            "LAUNCH_VEHICLE",
+            "MISSION_UPDATE",
+            "NEWS"
+        ],
+        "organizations": [
+            "Assembly, Integration",
+            "Bangalore",
+            "CES",
+            "Chemical",
+            "DOS",
+            "DRDO",
+            "Department of Space",
+            "DoS",
+            "Electric Propulsion Systems",
+            "Gaganyaan Crew Module",
+            "Gaganyaan Orbital Module",
+            "Gaganyatris) &ground",
+            "HAT",
+            "Human Spaceflight Project",
+            "IADT",
+            "ISRO",
+            "ISRO Propulsion Complex",
+            "Indian Air Force Chinook",
+            "Indian Navy",
+            "LAM",
+            "LEO",
+            "LPSC-IPRC Coordination Committee",
+            "LVM3-X",
+            "Ladakh August 1, 2025",
+            "Ladakh ISRO",
+            "Leh",
+            "Leh, Union Territory",
+            "Liquid Apogee Motor",
+            "Liquid Propulsion",
+            "Liquid Propulsion Systems Centre",
+            "National Meet 2025",
+            "PMC-STS",
+            "Reaction Control System",
+            "Response Assessment (MITRA",
+            "SDSC",
+            "SDSC-SHAR",
+            "SMPS",
+            "Service Module Propulsion System",
+            "TBRL",
+            "Terminal Ballistic Research Laboratory",
+            "Valiamala in Thiruvananthapuram",
+            "un"
+        ],
+        "centres": [
+            "HSFC",
+            "IPRC",
+            "LPSC",
+            "VSSC"
+        ],
+        "launch_vehicles": [
+            "LVM3"
+        ],
+        "rocket_variants": [],
+        "satellites": [],
+        "spacecraft": [
+            "Crew Escape System",
+            "Crew Module",
+            "Orbital Module",
+            "Service Module",
+            "Vikram"
+        ],
+        "payloads": [],
+        "instruments": [],
+        "astronauts": [],
+        "scientists": [
+            "Satish Dhawan",
+            "V. Narayanan",
+            "Vikram Sarabhai"
+        ],
+        "countries": [
+            "India"
+        ],
+        "states": [
+            "Tamil Nadu"
+        ],
+        "cities": [
+            "Bengaluru",
+            "Mahendragiri",
+            "New Delhi",
+            "Sriharikota",
+            "Thiruvananthapuram"
+        ],
+        "spaceports": [
+            "Satish Dhawan Space Centre"
+        ],
+        "facilities": [
+            "Propulsion Complex"
+        ],
+        "laboratories": [],
+        "programs": [
+            "Gaganyaan Programme",
+            "Human Spaceflight Programme"
+        ],
+        "technologies": [
+            "Cryogenic Engine",
+            "Docking",
+            "Human Spaceflight",
+            "Planetary Exploration",
+            "Space Docking"
+        ],
+        "celestial_bodies": [
+            "Earth",
+            "Low Earth Orbit"
+        ],
+        "documents": [
+            "Dr. V. Narayanan Assumed Charge of Secretary, Department of Space and Chairman, Space Commission",
+            "Gaganyaan-G1 Launch campaign commences: Human Rated LVM3 assembly starts at SDSC for the first un-crewed flight",
+            "ISRO accomplishes first Integrated Air Drop Test for Gaganyaan Missions successfully",
+            "ISRO conducts Second Integrated Air Drop Test (IADT-02) for Gaganyaan",
+            "ISRO conducts successful hot tests of Gaganyaan Service Module Propulsion System",
+            "ISRO organizes Space Analog Mission in Tso Kar Valley, Ladakh",
+            "MISSION MITRA by ISRO\r\n        Mapping of Interoperable Traits and Response Assessment (MITRA)",
+            "National Space Day 2025: Celebrating India’s Space Journey from Aryabhatta to Gaganyaan",
+            "Preparing for inflight re-ignition - Vacuum ignition trial of Cryogenic engine with Multi-element Igniter conducted successfully",
+            "Successful accomplishment of Development of Service Module Propulsion System technology for Gaganyaan Missions",
+            "Successful accomplishment of Drogue Parachute Deployment Tests for Gaganyaan",
+            "Updates on Gaganyaan, Space Docking Technology and GLEX2025"
+        ],
+        "urls": [
+            "https://www.isro.gov.in/DrVNarayanan_Assumed_Charge_Secretary_DOS_Chairman_Space_Commission.html",
+            "https://www.isro.gov.in/Gaganyaan_Drogue_Parachute_Deployment_Tests.html",
+            "https://www.isro.gov.in/Gaganyaan_Space_Docking_Technology_GLEX2025.html",
+            "https://www.isro.gov.in/ISRO_conducts_Second_Integrated_Air_Drop_Test_for_Gaganyaan.html",
+            "https://www.isro.gov.in/Integrated_Air_Drop_Test_for_Gaganyaan_Missions.html",
+            "https://www.isro.gov.in/LVM3_CE20_vacuum_ignition_trial_cryogenic_engine_successful.html",
+            "https://www.isro.gov.in/LVM3_first_uncrewed_flight_Gaganyaan.html",
+            "https://www.isro.gov.in/NSpD2025_Celebrating_Indias_Space_Journey_from_Aryabhatta_to_Gaganyaan.html",
+            "https://www.isro.gov.in/Space_Analog_Mission.html",
+            "https://www.isro.gov.in/Successful_accomplishment_SMPS_Gaganyaan.html",
+            "https://www.isro.gov.in/Successful_hot_tests_Gaganyaan_SMPS.html",
+            "https://www.isro.gov.in/mission_mitra_by_ISRO.html"
+        ],
+        "sources": [
+            "ISRO"
+        ],
+        "detection_reasons": [
+            "CONTENT(1), LAUNCH_VEHICLE, ENTITY",
+            "CONTENT(1), NEWS",
+            "CONTENT(5), NEWS, ENTITY",
+            "NEWS",
+            "TITLE, URL, CONTENT(3), NEWS, ENTITY",
+            "TITLE, URL, CONTENT(5), MISSION_UPDATE, ENTITY",
+            "TITLE, URL, CONTENT(6), FLIGHT_TEST, ENTITY",
+            "TITLE, URL, CONTENT(7), FLIGHT_TEST, ENTITY",
+            "TITLE, URL, CONTENT(7), LAUNCH_CAMPAIGN, ENTITY",
+            "TITLE, URL, CONTENT(7), MISSION_UPDATE, ENTITY"
+        ],
+        "average_confidence": 0.71
+    },
+    {
+        "mission": "Aditya-L1",
+        "document_count": 11,
+        "document_types": [
+            "EVENT",
+            "PAYLOAD_DOCUMENT",
+            "SCIENTIFIC_RESULT"
+        ],
+        "organizations": [
+            "Aditya-L1 Joins Global Effort",
+            "Aditya-L1 Science Data",
+            "Coronal Mass Ejections",
+            "DOS",
+            "Department of Space",
+            "Earth-Sun Lagrange Point",
+            "Halo",
+            "Heliophysics",
+            "High Energy L1",
+            "IAA",
+            "ISRO",
+            "ISRO Centres",
+            "ISRO Headquarters",
+            "ISSDC",
+            "Imaging Telescope (",
+            "Lagrange",
+            "Lagrange Point L1",
+            "NASA",
+            "NOAA",
+            "NUV",
+            "PRADAN",
+            "SMOPS-2026",
+            "Solar",
+            "Solar Flares",
+            "Sun-Earth",
+            "Sun-Earth Lagrange Point L1",
+            "U Rao Satellite Centre",
+            "Universal Time"
+        ],
+        "centres": [
+            "URSC"
+        ],
+        "launch_vehicles": [
+            "PSLV"
+        ],
+        "rocket_variants": [],
+        "satellites": [
+            "Aditya-L1"
+        ],
+        "spacecraft": [],
+        "payloads": [
+            "CLASS",
+            "HEL1OS",
+            "SUIT",
+            "SoLEXS",
+            "VELC"
+        ],
+        "instruments": [
+            "High Energy L1 Orbiting X-ray Spectrometer",
+            "Solar Low Energy X-ray Spectrometer",
+            "Solar Ultraviolet Imaging Telescope",
+            "Ultraviolet Imaging Telescope",
+            "Visible Emission Line Coronagraph"
+        ],
+        "astronauts": [],
+        "scientists": [
+            "Chairman ISRO"
+        ],
+        "countries": [
+            "India"
+        ],
+        "states": [],
+        "cities": [
+            "Bengaluru"
+        ],
+        "spaceports": [],
+        "facilities": [],
+        "laboratories": [],
+        "programs": [],
+        "technologies": [
+            "Artificial Intelligence",
+            "Human Spaceflight",
+            "Navigation"
+        ],
+        "celestial_bodies": [
+            "Chromosphere",
+            "Corona",
+            "Earth",
+            "Geostationary Orbit",
+            "Halo Orbit",
+            "Photosphere",
+            "Sun"
+        ],
+        "documents": [
+            "Aditya-L1 Mission: Announcement of Opportunity (AO) soliciting proposals for the first AO cycle observations",
+            "Aditya-L1 Mission: Announcement of Opportunity (AO) soliciting proposals for the second AO cycle observations",
+            "Aditya-L1 measurementshelp to explain unusual dawn-time geomagnetic disturbances during strong solar storms",
+            "Historic First: India’s Solar Ultra-violet Imaging Telescope (SUIT) onboard Aditya-L1 Captures Unprecedented Solar Flare Details",
+            "ISRO Organises National Meet on Aditya L1 Data Release and Payload Performance Appraisal",
+            "ISRO's Aditya-L1 decodes the Impact of a Powerful Solar Storm on Earth’s Invisible Magnetic Shield",
+            "India’s Aditya-L1 Joins Global Effort in Landmark Solar Storm Study",
+            "International Conference on Spacecraft Mission Operations - SMOPS-2026",
+            "Release of the Second Set of Aditya-L1 Science Data",
+            "Solar Ultraviolet Imaging Telescope (SUIT) onboard Aditya-L1 Mission Observed Powerful Solar Flare and a First-of-Its-Kind Observation of Rare Plasma Ejection in Ultra-violet Light",
+            "Unlocking the Mysteries of the Sun: Aditya-L1’s Observations of a Coronal Mass Ejection"
+        ],
+        "urls": [
+            "https://www.isro.gov.in/AdityaL1_decodes_Impact_Powerful_Solar_Storm.html",
+            "https://www.isro.gov.in/AdityaL1_first_AO_cycle.html",
+            "https://www.isro.gov.in/AdityaL1_second_cycle_AO.html",
+            "https://www.isro.gov.in/Aditya_L1_Landmark_solar_storm_study.html",
+            "https://www.isro.gov.in/Aditya_L1_Observations_Coronal_Mass_Ejection.html",
+            "https://www.isro.gov.in/Aditya_L1_measurementshelp.html",
+            "https://www.isro.gov.in/ISRO_Nationalmeet_AdityaL1.html",
+            "https://www.isro.gov.in/SUIT_Aditya-L1_Captures_SolarFlare.html",
+            "https://www.isro.gov.in/SUIT_onboard_Aditya-L1_Mission.html",
+            "https://www.isro.gov.in/Second_Set_of_Aditya_L1_Science_Data.html",
+            "https://www.isro.gov.in/Spacecraft_Mission_Operations_SMOPS_2026.html"
+        ],
+        "sources": [
+            "ISRO"
+        ],
+        "detection_reasons": [
+            "CONTENT(1), EVENT",
+            "TITLE, CONTENT(12), SCIENTIFIC_RESULT, ENTITY",
+            "TITLE, CONTENT(7), SCIENTIFIC_RESULT, ENTITY",
+            "TITLE, CONTENT(8), SCIENTIFIC_RESULT, ENTITY",
+            "TITLE, CONTENT(9), SCIENTIFIC_RESULT, ENTITY",
+            "TITLE, URL, CONTENT(10), SCIENTIFIC_RESULT, ENTITY",
+            "TITLE, URL, CONTENT(15), SCIENTIFIC_RESULT, ENTITY",
+            "TITLE, URL, CONTENT(6), SCIENTIFIC_RESULT, ENTITY",
+            "URL, CONTENT(2), PAYLOAD_DOCUMENT"
+        ],
+        "average_confidence": 0.79
+    },
+    {
+        "mission": "Axiom-4",
+        "document_count": 7,
+        "document_types": [
+            "COLLABORATION",
+            "MISSION_UPDATE",
+            "NEWS",
+            "SCIENTIFIC_RESULT"
+        ],
+        "organizations": [
+            "Amrit",
+            "Axiom",
+            "Axiom & SpaceX",
+            "Axiom Space",
+            "Bharatiya Antariksh Station",
+            "Crew Dragon Module",
+            "Crop",
+            "ESA",
+            "Falcon",
+            "First Glimpse",
+            "Gaganyaan, Bhartiya Antariksha Station",
+            "ICGEB &BRIC-NIPGR",
+            "ISRO",
+            "ISRO-NASA",
+            "ISRO’s Gaganyatri",
+            "ISS",
+            "ISS Later",
+            "Indian Microgravity Research Portfolio",
+            "LEO",
+            "LOX",
+            "Microalgae",
+            "Microgravity",
+            "Myogenesis",
+            "NASA",
+            "Post",
+            "Roscosmos",
+            "Space Microalgae",
+            "SpaceX",
+            "methi & moong",
+            "tardigrades Electronic Displays"
+        ],
+        "centres": [
+            "HSFC"
+        ],
+        "launch_vehicles": [],
+        "rocket_variants": [],
+        "satellites": [],
+        "spacecraft": [
+            "Crew Dragon",
+            "Dragon",
+            "Service Module"
+        ],
+        "payloads": [],
+        "instruments": [],
+        "astronauts": [
+            "Rakesh Sharma",
+            "Shubhanshu Shukla"
+        ],
+        "scientists": [],
+        "countries": [
+            "India"
+        ],
+        "states": [],
+        "cities": [
+            "Bengaluru",
+            "New Delhi"
+        ],
+        "spaceports": [],
+        "facilities": [],
+        "laboratories": [],
+        "programs": [
+            "Gaganyaan Programme",
+            "Indian Space Programme"
+        ],
+        "technologies": [
+            "Human Spaceflight",
+            "Navigation"
+        ],
+        "celestial_bodies": [
+            "Earth",
+            "Low Earth Orbit"
+        ],
+        "documents": [
+            "Ax-04 Mission Press Update",
+            "Ax-04 Mission Updates",
+            "Axiom-4 Mission: A saga of ~12 million kilometers and ~282 orbits aboard ISS",
+            "Axiom-4 Mission: Successful completion of Microgravity experiments",
+            "ISRO-NASA joint Axiom – 4 mission to International Space Station (ISS):\r\n        Post splash down activities and Health conditions of Gaganyatri Shubhanshu Shukla",
+            "Indian Microgravity Research Portfolio in upcoming Axiom-4 Mission",
+            "Progress of Axiom-4 mission and tentative schedule for undocking from ISS to return journey to earth"
+        ],
+        "urls": [
+            "https://www.isro.gov.in/Ax-04_MissionUpdates_13062025.html",
+            "https://www.isro.gov.in/Ax-04_MissionUpdates_14062025.html",
+            "https://www.isro.gov.in/Axiom04_mission_successfully_concluded_return_ISRO_Gaganyatri_ShubhanshuShukla.html",
+            "https://www.isro.gov.in/Axiom4_Mission_Successful_completion_of_microgravity_experiments.html",
+            "https://www.isro.gov.in/ISRO_NASA_Axiom4_mission_post_splash_down_activities.html",
+            "https://www.isro.gov.in/Indian_microgravity_research_Axiom4_mission.html",
+            "https://www.isro.gov.in/Progress_Axiom-4_mission_tentative_schedule_undocking_ISS_to_earth.html"
+        ],
+        "sources": [
+            "ISRO"
+        ],
+        "detection_reasons": [
+            "CONTENT(1), MISSION_UPDATE, ENTITY",
+            "MISSION_UPDATE",
+            "TITLE, CONTENT(3), NEWS, ENTITY",
+            "TITLE, URL, CONTENT(3), MISSION_UPDATE, ENTITY",
+            "TITLE, URL, CONTENT(4), SCIENTIFIC_RESULT, ENTITY",
+            "TITLE, URL, CONTENT(5), MISSION_UPDATE, ENTITY",
+            "URL, COLLABORATION"
+        ],
+        "average_confidence": 0.65
+    },
+    {
+        "mission": "Chandrayaan-2",
+        "document_count": 5,
+        "document_types": [
+            "LAUNCH_VEHICLE",
+            "NEWS",
+            "SCIENTIFIC_RESULT"
+        ],
+        "organizations": [
+            "AST SpaceMobile",
+            "C25",
+            "CH-2",
+            "Chandra’s Atmospheric Composition",
+            "Helium",
+            "Hydrogen",
+            "ISRO",
+            "Rover",
+            "TTC",
+            "~25K"
+        ],
+        "centres": [
+            "IDSN",
+            "PRL",
+            "VSSC"
+        ],
+        "launch_vehicles": [
+            "GSLV",
+            "LVM3"
+        ],
+        "rocket_variants": [
+            "LVM3-M5",
+            "LVM3-M6"
+        ],
+        "satellites": [],
+        "spacecraft": [
+            "Lander",
+            "Orbiter",
+            "Vikram"
+        ],
+        "payloads": [
+            "CHACE-2",
+            "DFSAR"
+        ],
+        "instruments": [
+            "Dual Frequency Synthetic Aperture Radar"
+        ],
+        "astronauts": [],
+        "scientists": [],
+        "countries": [
+            "India"
+        ],
+        "states": [],
+        "cities": [
+            "Ahmedabad"
+        ],
+        "spaceports": [],
+        "facilities": [
+            "Indian Deep Space Network"
+        ],
+        "laboratories": [
+            "Physical Research Laboratory",
+            "Space Physics Laboratory"
+        ],
+        "programs": [],
+        "technologies": [
+            "Synthetic Aperture Radar",
+            "Telecommand",
+            "Telemetry"
+        ],
+        "celestial_bodies": [
+            "Earth",
+            "Low Earth Orbit",
+            "Moon",
+            "Polar Orbit",
+            "South Pole",
+            "Sun",
+            "Transfer Orbit"
+        ],
+        "documents": [
+            "Chandrayaan-2 Dual Frequency Synthetic Aperture Radar (DFSAR) Observations Reveal Subsurface Ice in Lunar South\n        Polar Regions",
+            "Chandrayaan-2 Observes Effects of the Coronal Mass Ejections from the Sun on the Lunar Exosphere",
+            "Chandrayaan-2 unveils the effect of the Earth’s geomagnetic tail on the Lunar ionosphere plasma",
+            "Chandrayaan2",
+            "LVM3-M6 / BlueBird Block-2 Mission"
+        ],
+        "urls": [
+            "https://www.isro.gov.in/Chandrayaan-2_Coronal_Mass_Ejections_Lunar_Exosphere.html",
+            "https://www.isro.gov.in/Chandrayaan2EarthgeomagneticLunarionosphereplasma.html",
+            "https://www.isro.gov.in/Chandrayaan2_Dual_Frequency_Synthetic_Aperture_Radar.html",
+            "https://www.isro.gov.in/Chandrayaan_2.html",
+            "https://www.isro.gov.in/LVM3_M6_BlueBird_Block2_Mission.html"
+        ],
+        "sources": [
+            "ISRO"
+        ],
+        "detection_reasons": [
+            "CONTENT(1), LAUNCH_VEHICLE, ENTITY",
+            "TITLE, CONTENT(6), NEWS, ENTITY",
+            "TITLE, URL, CONTENT(6), SCIENTIFIC_RESULT, ENTITY",
+            "TITLE, URL, CONTENT(7), SCIENTIFIC_RESULT, ENTITY"
+        ],
+        "average_confidence": 0.78
+    },
+    {
+        "mission": "NISAR",
+        "document_count": 5,
+        "document_types": [
+            "EVENT",
+            "LAUNCH_CAMPAIGN",
+            "NEWS",
+            "PAYLOAD_DOCUMENT",
+            "SCIENTIFIC_RESULT"
+        ],
+        "organizations": [
+            "Amazon",
+            "Elbow",
+            "Greenland’s & Antarctica’s",
+            "I3K",
+            "IN-SPACe",
+            "ISRO",
+            "ISRO Headquarters",
+            "ISRO-NASA",
+            "ISRO’s S-Band",
+            "ISRO’s S-band",
+            "IST",
+            "Indian Non-Governmental Entities",
+            "NASA",
+            "NASA-ISRO Synthetic Aperture Radar",
+            "NISAR Awareness",
+            "NISAR S-Band SAR",
+            "NISAR science & project",
+            "NSIL",
+            "National Remote Sensing Centre",
+            "Root",
+            "Soil Moisture Products",
+            "Space Applications Centre",
+            "SweepSAR",
+            "geo-sciences"
+        ],
+        "centres": [
+            "ISTRAC",
+            "SAC"
+        ],
+        "launch_vehicles": [
+            "GSLV"
+        ],
+        "rocket_variants": [
+            "GSLV-F16"
+        ],
+        "satellites": [
+            "NISAR"
+        ],
+        "spacecraft": [],
+        "payloads": [
+            "S-Band SAR"
+        ],
+        "instruments": [
+            "Dual Frequency Synthetic Aperture Radar"
+        ],
+        "astronauts": [],
+        "scientists": [
+            "Satish Dhawan"
+        ],
+        "countries": [
+            "India"
+        ],
+        "states": [
+            "Gujarat"
+        ],
+        "cities": [
+            "Ahmedabad",
+            "Sriharikota"
+        ],
+        "spaceports": [
+            "SDSC SHAR",
+            "Satish Dhawan Space Centre"
+        ],
+        "facilities": [
+            "ISRO Telemetry Tracking and Command Network"
+        ],
+        "laboratories": [],
+        "programs": [],
+        "technologies": [
+            "Synthetic Aperture Radar",
+            "Telemetry"
+        ],
+        "celestial_bodies": [
+            "Earth",
+            "Sun"
+        ],
+        "documents": [
+            "ISRO’s GSLV-F16 will launch ISRO-NASA joint satellite, NISAR, on July 30, 2025",
+            "NISAR Awareness Workshop (April 29, 2025) for Indian Non-Governmental Entities (NGEi) \r\n        Space Applications Centre, Ahmedabad",
+            "NISAR Mission enters Science Phase",
+            "NISAR – NASA ISRO Synthetic Aperture Radar Mission",
+            "Soil Moisture Products at 100m resolution from NISAR data"
+        ],
+        "urls": [
+            "https://www.isro.gov.in/Mission_GSLVF16_NISAR.html",
+            "https://www.isro.gov.in/Mission_GSLVF16_NISAR_Home.html",
+            "https://www.isro.gov.in/NISAR_Awareness_Workshop_for_NGEi.html",
+            "https://www.isro.gov.in/NISAR_Mission_Science_Phase.html",
+            "https://www.isro.gov.in/NisarData_soil_moisture_products.html"
+        ],
+        "sources": [
+            "ISRO"
+        ],
+        "detection_reasons": [
+            "TITLE, URL, CONTENT(10), LAUNCH_CAMPAIGN, ENTITY",
+            "TITLE, URL, CONTENT(14), EVENT, ENTITY",
+            "TITLE, URL, CONTENT(18), NEWS, ENTITY",
+            "TITLE, URL, CONTENT(20), PAYLOAD_DOCUMENT, ENTITY",
+            "TITLE, URL, CONTENT(7), SCIENTIFIC_RESULT, ENTITY"
+        ],
+        "average_confidence": 1.0
+    },
+    {
+        "mission": "Chandrayaan-3",
+        "document_count": 4,
+        "document_types": [
+            "LAUNCH_VEHICLE",
+            "NEWS",
+            "SCIENTIFIC_RESULT"
+        ],
+        "organizations": [
+            "GTO",
+            "Hydrogen",
+            "SOI",
+            "TEI",
+            "Trans-Earth Injection",
+            "rock'-"
+        ],
+        "centres": [
+            "IDSN"
+        ],
+        "launch_vehicles": [
+            "LVM3"
+        ],
+        "rocket_variants": [
+            "LVM3-M5"
+        ],
+        "satellites": [],
+        "spacecraft": [
+            "Lander",
+            "Lander Module",
+            "Propulsion Module",
+            "Vikram"
+        ],
+        "payloads": [
+            "RAMBHA",
+            "RAMBHA-LP"
+        ],
+        "instruments": [],
+        "astronauts": [],
+        "scientists": [],
+        "countries": [
+            "India"
+        ],
+        "states": [],
+        "cities": [
+            "Sriharikota"
+        ],
+        "spaceports": [
+            "SDSC SHAR"
+        ],
+        "facilities": [
+            "Indian Deep Space Network"
+        ],
+        "laboratories": [],
+        "programs": [],
+        "technologies": [
+            "Soft Landing"
+        ],
+        "celestial_bodies": [
+            "Earth",
+            "Lunar South Pole",
+            "Moon",
+            "South Pole",
+            "Sun",
+            "Transfer Orbit"
+        ],
+        "documents": [
+            "Chandrayaan-3 \"Hop\" Experiment Reveals Hidden Lunar Secrets: Scientists Uncover Regolith Heterogeneity at Moon’s\r\n        South Pole",
+            "Chandrayaan-3 Fly-by",
+            "Chandrayaan-3's RAMBHA-LP Instrument Delivers Critical 'Ground Truth'  on the Moon’s Plasma Environment",
+            "LVM3-M5/CMS-03 MISSION"
+        ],
+        "urls": [
+            "https://www.isro.gov.in/Chandrayaan3RAMBHALP_GroundTruth.html",
+            "https://www.isro.gov.in/Chandrayaan_3Hop_Experiment_Reveals.html",
+            "https://www.isro.gov.in/Chandrayaan_3_Fly_by.html",
+            "https://www.isro.gov.in/LVM3_M5_CMS_03_MISSION.html"
+        ],
+        "sources": [
+            "ISRO"
+        ],
+        "detection_reasons": [
+            "CONTENT(1), LAUNCH_VEHICLE, ENTITY",
+            "TITLE, CONTENT(4), NEWS, ENTITY",
+            "TITLE, CONTENT(7), SCIENTIFIC_RESULT, ENTITY",
+            "TITLE, URL, CONTENT(7), SCIENTIFIC_RESULT, ENTITY"
+        ],
+        "average_confidence": 0.68
+    },
+    {
+        "mission": "SpaDeX",
+        "document_count": 4,
+        "document_types": [
+            "MISSION_UPDATE",
+            "NEWS"
+        ],
+        "organizations": [
+            "Bharatiya Antariksh Station",
+            "Deployed",
+            "IN-SPACe",
+            "ISRO",
+            "Integration Video Lift-",
+            "MST",
+            "PIF",
+            "SDX",
+            "SPADEX UNDOCKING SUCCESSFUL",
+            "Second Docking and",
+            "Target"
+        ],
+        "centres": [],
+        "launch_vehicles": [
+            "PSLV"
+        ],
+        "rocket_variants": [
+            "PSLV-C60"
+        ],
+        "satellites": [],
+        "spacecraft": [],
+        "payloads": [],
+        "instruments": [],
+        "astronauts": [],
+        "scientists": [],
+        "countries": [
+            "India"
+        ],
+        "states": [],
+        "cities": [
+            "Bengaluru",
+            "Lucknow"
+        ],
+        "spaceports": [],
+        "facilities": [],
+        "laboratories": [],
+        "programs": [],
+        "technologies": [
+            "Docking",
+            "Rendezvous",
+            "Space Docking"
+        ],
+        "celestial_bodies": [
+            "Earth",
+            "Moon"
+        ],
+        "documents": [
+            "ISRO successfully completed docking of two SPADEX satellites (SDX-01 & SDX-02) in the early hours of 16 January, 2025.",
+            "SPADEX Mission: Successful demonstration of Second Docking and Power Transfer",
+            "SPADEX UNDOCKING SUCCESSFUL",
+            "SpaDeX Mission"
+        ],
+        "urls": [
+            "https://www.isro.gov.in/Spadex_Successful_demonstration_of_Second_Docking_and_Power_Transfer.html",
+            "https://www.isro.gov.in/mission_SpaDeX.html",
+            "https://www.isro.gov.in/spadex_docking.html",
+            "https://www.isro.gov.in/spadex_undocking_successful.html"
+        ],
+        "sources": [
+            "ISRO"
+        ],
+        "detection_reasons": [
+            "TITLE, URL, CONTENT(16), NEWS, ENTITY",
+            "TITLE, URL, CONTENT(4), MISSION_UPDATE, ENTITY",
+            "TITLE, URL, CONTENT(5), MISSION_UPDATE, ENTITY",
+            "TITLE, URL, CONTENT(7), MISSION_UPDATE, ENTITY"
+        ],
+        "average_confidence": 1.0
+    },
+    {
+        "mission": "EOS",
+        "document_count": 3,
+        "document_types": [
+            "LAUNCH_VEHICLE",
+            "NEWS",
+            "TECHNICAL_DOCUMENT"
+        ],
+        "organizations": [
+            "Animation",
+            "GPU",
+            "Geostationary Satellite",
+            "INSAT",
+            "INSAT-3D",
+            "ISRO",
+            "KID",
+            "Kestrel Initial Technology",
+            "Land Surface Temperature",
+            "NASA",
+            "NDVI",
+            "NSIL",
+            "Ocean Colour Monitor-3(OCM-3"
+        ],
+        "centres": [
+            "NRSC"
+        ],
+        "launch_vehicles": [
+            "PSLV"
+        ],
+        "rocket_variants": [
+            "PSLV-C62"
+        ],
+        "satellites": [
+            "Aditya-L1",
+            "AstroSat",
+            "EOS-06",
+            "INSAT-3D",
+            "Mangalyaan",
+            "Mars Orbiter Mission"
+        ],
+        "spacecraft": [
+            "Orbiter"
+        ],
+        "payloads": [],
+        "instruments": [],
+        "astronauts": [],
+        "scientists": [
+            "Satish Dhawan"
+        ],
+        "countries": [
+            "India"
+        ],
+        "states": [],
+        "cities": [
+            "Sriharikota"
+        ],
+        "spaceports": [
+            "First Launch Pad",
+            "Satish Dhawan Space Centre"
+        ],
+        "facilities": [],
+        "laboratories": [],
+        "programs": [],
+        "technologies": [],
+        "celestial_bodies": [
+            "Earth",
+            "Mars"
+        ],
+        "documents": [
+            "Leveraging Indian National Satellite System (INSAT) Geostationary Satellite for advanced lightning detection and analysis",
+            "Ocean Colour Monitor-3(OCM-3) Satellite Imagery and Vegetation  Dynamics: Unveiling Global Patterns",
+            "PSLV-C62 / EOS-N1 Mission"
+        ],
+        "urls": [
+            "https://www.isro.gov.in/INSAT_Geostationary_Satellite.html",
+            "https://www.isro.gov.in/Mission_PSLV_C62.html",
+            "https://www.isro.gov.in/OCM3_Satellite.html"
+        ],
+        "sources": [
+            "ISRO"
+        ],
+        "detection_reasons": [
+            "CONTENT(3), NEWS, ENTITY",
+            "TITLE, CONTENT(7), LAUNCH_VEHICLE, ENTITY",
+            "TITLE, URL, CONTENT(4), TECHNICAL_DOCUMENT"
+        ],
+        "average_confidence": 0.62
+    },
+    {
+        "mission": "Cartosat",
+        "document_count": 1,
+        "document_types": [
+            "NEWS"
+        ],
+        "organizations": [
+            "ISRO",
+            "Indian Satellite",
+            "National Remote Sensing Centre",
+            "search & rescue",
+            "sediment & debris"
+        ],
+        "centres": [
+            "NRSC"
+        ],
+        "launch_vehicles": [],
+        "rocket_variants": [],
+        "satellites": [
+            "Cartosat-2S"
+        ],
+        "spacecraft": [],
+        "payloads": [],
+        "instruments": [],
+        "astronauts": [],
+        "scientists": [],
+        "countries": [
+            "India"
+        ],
+        "states": [],
+        "cities": [],
+        "spaceports": [],
+        "facilities": [],
+        "laboratories": [],
+        "programs": [],
+        "technologies": [],
+        "celestial_bodies": [],
+        "documents": [
+            "Indian Satellite data based analysis of the Dharali Flash Flood"
+        ],
+        "urls": [
+            "https://www.isro.gov.in/indian_satellite_data_based_analysis_of_the_dharali_flash_flood.html"
+        ],
+        "sources": [
+            "ISRO"
+        ],
+        "detection_reasons": [
+            "CONTENT(1), NEWS, ENTITY"
+        ],
+        "average_confidence": 0.19
+    }
+]
