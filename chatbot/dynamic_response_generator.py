@@ -2,11 +2,13 @@ from chatbot.llm_interface import ask_llm
 
 
 def generate_offline_synthesis(question: str, graph_data: list) -> str:
-
     if not graph_data:
         return f"### 🛰️ GraphMind AI Summary\n\nNo detailed Knowledge Graph records were found for: **{question}**."
 
-    # Group entities by type
+    q_low = question.lower()
+    is_list_query = any(w in q_low for w in ["list", "all mission", "missions", "show mission", "available"])
+
+    # Collect all unique entities by type
     orgs, centres, vehicles, payloads, spaceports, scientists, celestial = set(), set(), set(), set(), set(), set(), set()
     subjects = set()
 
@@ -17,8 +19,8 @@ def generate_offline_synthesis(question: str, graph_data: list) -> str:
         m_props = m.get("properties", {}) if isinstance(m, dict) else {}
         n_props = n.get("properties", {}) if isinstance(n, dict) else {}
         
-        m_name = m_props.get("name", "")
-        n_name = n_props.get("name", "")
+        m_name = m_props.get("name", "").strip()
+        n_name = n_props.get("name", "").strip()
         n_type = n.get("type", "Entity") if isinstance(n, dict) else "Entity"
 
         if m_name:
@@ -40,54 +42,65 @@ def generate_offline_synthesis(question: str, graph_data: list) -> str:
             elif "CELESTIAL" in t_upper or "BODY" in t_upper:
                 celestial.add(n_name)
 
-    main_subject = list(subjects)[0] if subjects else "ISRO Entity"
+    # 1. Special Handling for List Missions Query
+    if is_list_query or len(subjects) > 3:
+        all_missions = [f"**{name}**" for name in subjects if name.lower() not in {"isro", "drdo", "department of space"}]
+        missions_str = ", ".join(all_missions[:12]) if all_missions else "**Chandrayaan-3**, **Aditya-L1**, **Gaganyaan**, **Mangalyaan**, **Astrosat**, **XPoSat**, **SpaDeX**, **Cartosat-3**, **RISAT-1A**, **EOS-06**"
+        
+        org_name = list(orgs)[0] if orgs else "ISRO (Indian Space Research Organisation)"
+        org_str = f"**{org_name.strip('*')}**"
 
-    # Build 5 to 6 line structured narrative answer
-    lines = []
-    lines.append(f"### 🛰️ GraphMind AI Summary: {main_subject}\n")
-    lines.append(f"1. **Core Subject & Scope**: **{main_subject}** is a key subject in ISRO's space knowledge graph, interconnected with core space mission networks.")
+        centre_str = ", ".join([f"**{c}**" for c in list(centres)[:3]]) or "**Vikram Sarabhai Space Centre (VSSC)** and **U R Rao Satellite Centre (URSC)**"
+        vehicle_str = ", ".join([f"**{v}**" for v in list(vehicles)[:3]]) or "**LVM3 (GSLV Mk III)** and **PSLV**"
+        
+        paragraph = (
+            f"The **GraphMind AI Knowledge Base** indexes a comprehensive directory of **ISRO space missions** "
+            f"spanning lunar exploration, solar observation, human spaceflight, satellite communications, and deep space research. "
+            f"Key space missions available in the knowledge graph include {missions_str}. "
+            f"All of these missions were developed under the **{org_str}** in coordination with primary research and development centres including {centre_str}. "
+            f"Orbital launches and mission deployments are executed using heavy-lift and reliable launch vehicles such as {vehicle_str} operating from **Satish Dhawan Space Centre (SDSC SHAR), Sriharikota**. "
+            f"Each mission carries specialized scientific instruments and payloads designed to advance planetary science, Earth observation, and space technological capabilities."
+        )
+        return f"### 🛰️ ISRO Missions Catalog\n\n{paragraph}"
+
+    # 2. Focused Single Entity / Topic Narrative Paragraph
+    main_subject = list(subjects)[0] if subjects else "ISRO Entity"
+    
+    parts = []
+    parts.append(f"**{main_subject}** is a prominent space entity within the **Indian Space Research Organisation (ISRO)** knowledge graph.")
     
     if orgs or centres:
-        org_str = ", ".join(list(orgs)[:3]) or "ISRO"
-        centre_str = ", ".join(list(centres)[:3])
-        if centre_str:
-            lines.append(f"2. **Organizations & Research Centres**: Directly associated with **{org_str}** and major development centres including **{centre_str}**.")
+        o_str = ", ".join([f"**{o}**" for o in list(orgs)[:2]]) or "**ISRO**"
+        c_str = ", ".join([f"**{c}**" for c in list(centres)[:2]])
+        if c_str:
+            parts.append(f"It operates under the governance of {o_str} and is engineered across major technical centres including {c_str}.")
         else:
-            lines.append(f"2. **Organizations**: Operations and governance administered via **{org_str}**.")
-    else:
-        lines.append("2. **Organizations**: Developed under the auspices of the Indian Space Research Organisation (ISRO).")
-
+            parts.append(f"It operates under the governance and technical direction of {o_str}.")
+            
     if vehicles or spaceports:
-        v_str = ", ".join(list(vehicles)[:3]) or "ISRO Launch Vehicles"
-        sp_str = ", ".join(list(spaceports)[:2])
-        if sp_str:
-            lines.append(f"3. **Launch & Infrastructure**: Integrated with launch capabilities (**{v_str}**) operating from **{sp_str}**.")
-        else:
-            lines.append(f"3. **Launch Infrastructure**: Utilizes ISRO launch systems such as **{v_str}**.")
-    else:
-        lines.append("3. **Infrastructure**: Connected to ISRO launch, tracking, and ground control network infrastructure.")
-
+        v_str = ", ".join([f"**{v}**" for v in list(vehicles)[:2]])
+        s_str = ", ".join([f"**{s}**" for s in list(spaceports)[:2]])
+        if v_str and s_str:
+            parts.append(f"Orbital insertion and space flight logistics utilize launch systems such as {v_str} operating from spaceports like {s_str}.")
+        elif v_str:
+            parts.append(f"Launch operations utilize specialized rocket configurations including {v_str}.")
+            
     if payloads or celestial:
-        p_str = ", ".join(list(payloads)[:3])
-        c_str = ", ".join(list(celestial)[:2])
-        if p_str and c_str:
-            lines.append(f"4. **Payloads & Target Objectives**: Features instrumentation (**{p_str}**) focused on target domain **{c_str}**.")
+        p_str = ", ".join([f"**{p}**" for p in list(payloads)[:3]])
+        b_str = ", ".join([f"**{b}**" for b in list(celestial)[:2]])
+        if p_str and b_str:
+            parts.append(f"The mission setup incorporates scientific instruments including {p_str} targeting observation of {b_str}.")
         elif p_str:
-            lines.append(f"4. **Payloads & Instruments**: Carries scientific equipment including **{p_str}**.")
-        else:
-            lines.append(f"4. **Target Objectives**: Designed for space observation and planetary study targeting **{c_str}**.")
-    else:
-        lines.append("4. **Scientific Objectives**: Designed to advance space research, satellite operations, and technology demonstration.")
+            parts.append(f"Scientific objectives are carried out via advanced payloads such as {p_str}.")
+        elif b_str:
+            parts.append(f"Mission operations are targeted towards celestial observation of {b_str}.")
 
     if scientists:
-        s_str = ", ".join(list(scientists)[:3])
-        lines.append(f"5. **Key Pioneers & Scientists**: Historically linked with leading space scientists including **{s_str}**.")
-    else:
-        lines.append("5. **Operational Leadership**: Executed under the leadership of ISRO space scientists and engineers.")
+        sc_str = ", ".join([f"**{sc}**" for sc in list(scientists)[:3]])
+        parts.append(f"Key aerospace pioneers and scientists associated with this work include {sc_str}.")
 
-    lines.append(f"6. **Graph Metadata**: Formatted from {len(graph_data)} verified Knowledge Graph records.")
-
-    return "\n".join(lines)
+    paragraph = " ".join(parts)
+    return f"### 🛰️ GraphMind AI Summary: **{main_subject}**\n\n{paragraph}"
 
 
 def summarize(question: str, graph_data: list) -> str:
@@ -120,19 +133,19 @@ def summarize(question: str, graph_data: list) -> str:
     prompt = f"""
 You are GraphMind AI, an expert AI assistant specializing in ISRO space missions, satellites, rocket systems, and space science history.
 
-Provide a clear, detailed, and structured 5 to 6 line summary explaining the core facts, ISRO involvement, technical parameters, launch vehicles, payloads, centres, and scientific outcomes.
+Provide a clear, detailed, and continuous 5 to 6 line PARAGRAPH narrative answering the user's question.
 
-Rules:
-1. Synthesize a comprehensive 5 to 6 line answer addressing the user's question.
-2. Include explicit details from the Knowledge Graph records below (organizations, centres, launch vehicles, payloads, spaceports, and scientists).
-3. Format cleanly with bullet points.
+CRITICAL FORMATTING RULES:
+1. Write a single smooth 5 to 6 line PARAGRAPH. Do NOT use numbered lists (1. 2. 3.), do NOT use bullet points (- or *).
+2. Format ALL primary query keywords, mission titles (e.g. **Chandrayaan-3**, **Aditya-L1**), organizations, centres, launch vehicles, payloads, and space scientists in **bold** markdown (`**Name**`).
+3. If the user asks to list or show available ISRO missions, explicitly enumerate the mission names in **bold** within the paragraph text.
 
 User Question: "{question}"
 
 Knowledge Graph Records:
 {context_str}
 
-Detailed 5-6 Line Answer:
+Continuous Paragraph Answer (5-6 lines, with bold keywords):
 """
 
     response = ask_llm(prompt)

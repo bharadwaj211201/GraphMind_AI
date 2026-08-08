@@ -84,6 +84,36 @@ def execute_in_memory_search(query: str):
     graph_data = []
     q_lower = query.lower()
 
+    # Detect list_missions intent or broad mission query
+    is_list_missions = any(phrase in q_lower for phrase in ["list all", "list mission", "all mission", "show mission", "list_missions", "match (m:mission)"])
+
+    if is_list_missions:
+        mission_records = []
+        for m in kb:
+            title = m.get("title", "")
+            m_type = infer_source_type(title)
+            if m_type == "Mission" and title.lower() not in {"isro", "isro mission"}:
+                mission_records.append(m)
+        
+        selected_missions = mission_records[:12] if mission_records else kb[:12]
+
+        for mission in selected_missions:
+            m_title = mission.get("title", "ISRO Mission")
+            graph_data.append({
+                "m": {
+                    "type": "Mission",
+                    "properties": {"name": m_title}
+                },
+                "r": {
+                    "relationship": "DEVELOPED_BY"
+                },
+                "n": {
+                    "type": "Organization",
+                    "properties": {"name": "ISRO"}
+                }
+            })
+        return graph_data
+
     # Extract search terms inside quotes or lower match
     matches = re.findall(r'contains\s+tolower\(["\']([^"\']+)["\']\)', q_lower)
     search_term = matches[0].strip() if matches else ""
@@ -138,6 +168,7 @@ def execute_in_memory_search(query: str):
 
     for mission in selected_targets:
         m_title = mission.get("title", "ISRO Node")
+
         relationships = mission.get("relationships", [])
 
         if relationships:
