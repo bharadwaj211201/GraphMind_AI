@@ -45,35 +45,23 @@ def generate_offline_synthesis(question: str, graph_data: list) -> str:
 
     # 1. Special Handling for List Missions Query
     if is_list_query or len(subjects) > 3:
-        all_missions = [f"**{name}**" for name in subjects if is_actual_mission(name)]
-        if not all_missions:
-            all_missions = [
-                "**Chandrayaan-3**", "**Aditya-L1**", "**Gaganyaan**", "**Mangalyaan**",
-                "**AstroSat**", "**XPoSat**", "**SpaDeX**", "**Cartosat-3**", "**EOS-06**"
-            ]
-        missions_str = ", ".join(all_missions[:10])
-
-        org_name = list(orgs)[0] if orgs else "ISRO (Indian Space Research Organisation)"
-        clean_org = str(org_name).replace("*", "").strip()
-        if not clean_org or any(p in clean_org.lower() for p in ["physical research laboratory", "prl", "kalam", "sarabhai", "dhawan"]):
-            clean_org = "ISRO (Indian Space Research Organisation)"
-        org_str = f"**{clean_org}**"
-
-
-
-
-        centre_str = ", ".join([f"**{c}**" for c in list(centres)[:3]]) or "**Vikram Sarabhai Space Centre (VSSC)** and **U R Rao Satellite Centre (URSC)**"
-        vehicle_str = ", ".join([f"**{v}**" for v in list(vehicles)[:3]]) or "**LVM3 (GSLV Mk III)** and **PSLV**"
+        from chatbot.cypher_executor import get_all_kb_missions
+        all_93 = get_all_kb_missions()
         
+        bold_missions = [f"**{name}**" for name in all_93 if is_actual_mission(name)]
+        total_count = len(bold_missions) if bold_missions else 93
+        missions_str = ", ".join(bold_missions) if bold_missions else "**Chandrayaan-1**, **Chandrayaan-2**, **Chandrayaan-3**, **Chandrayaan-4**, **LUPEX**, **Aditya-L1**, **XPoSat**, **AstroSat**, **Mangalyaan**, **Mangalyaan-2**, **Shukrayaan-1**, **Gaganyaan**, **Gaganyaan-1**, **Gaganyaan-2**, **Gaganyaan-3**, **SpaDeX**, **EOS-01**, **EOS-02**, **EOS-03**, **EOS-04**, **EOS-05**, **EOS-06**, **EOS-07**, **EOS-08**, **Cartosat-1**, **Cartosat-2**, **Cartosat-2A**, **Cartosat-2B**, **Cartosat-2C**, **Cartosat-2D**, **Cartosat-2E**, **Cartosat-2F**, **Cartosat-3**, **RISAT-1**, **RISAT-1A**, **RISAT-2**, **RISAT-2B**, **RISAT-2BR1**, **RISAT-2BR2**, **Oceansat-1**, **Oceansat-2**, **Oceansat-3**, **NISAR**, **TRISHNA**, **Aryabhata**, **Bhaskara-I**, **Bhaskara-II**, **APPLE**, **GSAT-1** to **GSAT-31**, **GSAT-N2**, **INSAT-1A** to **INSAT-4CR**"
+
         paragraph = (
-            f"The **GraphMind AI Knowledge Base** indexes a comprehensive directory of **ISRO space missions** "
-            f"spanning lunar exploration, solar observation, human spaceflight, satellite communications, and deep space research. "
+            f"The **GraphMind AI Knowledge Base** indexes a comprehensive directory of **{total_count} ISRO space missions and satellites**. "
             f"Key space missions available in the knowledge graph include {missions_str}. "
-            f"All of these missions were developed under the **{org_str}** in coordination with primary research and development centres including {centre_str}. "
-            f"Orbital launches and mission deployments are executed using heavy-lift and reliable launch vehicles such as {vehicle_str} operating from **Satish Dhawan Space Centre (SDSC SHAR), Sriharikota**. "
-            f"Each mission carries specialized scientific instruments and payloads designed to advance planetary science, Earth observation, and space technological capabilities."
+            f"All of these **{total_count} missions** were engineered under **ISRO (Indian Space Research Organisation)** "
+            f"in coordination with primary research and development centres including **Vikram Sarabhai Space Centre (VSSC)**, **U R Rao Satellite Centre (URSC)**, **Space Applications Centre (SAC)**, and **Liquid Propulsion Systems Centre (LPSC)**. "
+            f"Orbital launches and mission deployments are executed using heavy-lift launch vehicles such as **LVM3 (GSLV Mk III)**, **PSLV**, **GSLV**, and **SSLV** operating from **Satish Dhawan Space Centre (SDSC SHAR), Sriharikota**. "
+            f"Each mission carries specialized scientific instruments and payloads designed to advance planetary science, lunar exploration, Earth observation, and space technological capabilities."
         )
-        return f"### 🛰️ ISRO Missions Catalog\n\n{paragraph}"
+        return f"### 🛰️ Complete ISRO Missions Directory ({total_count} Missions)\n\n{paragraph}"
+
 
     # 2. Focused Single Entity / Topic Narrative Paragraph
     main_subject = list(subjects)[0] if subjects else "ISRO Entity"

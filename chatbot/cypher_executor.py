@@ -114,6 +114,18 @@ def infer_source_type(title: str, rel_source_label: str = None) -> str:
     return "Mission"
 
 
+def get_all_kb_missions() -> list:
+    kb = load_local_kb()
+    missions = []
+    seen = set()
+    for item in kb:
+        title = item.get("title", "").strip()
+        if is_actual_mission(title) and title.lower() not in seen:
+            seen.add(title.lower())
+            missions.append(title)
+    return missions
+
+
 def execute_in_memory_search(query: str):
     kb = load_local_kb()
     if not kb:
@@ -126,16 +138,8 @@ def execute_in_memory_search(query: str):
     is_list_missions = any(phrase in q_lower for phrase in ["list all", "list mission", "all mission", "show mission", "list_missions", "match (m:mission)"])
 
     if is_list_missions:
-        mission_records = []
-        seen_titles = set()
-
-        for m in kb:
-            title = m.get("title", "").strip()
-            if is_actual_mission(title) and title.lower() not in seen_titles:
-                seen_titles.add(title.lower())
-                mission_records.append(title)
-
-        selected_titles = mission_records[:8] if mission_records else ["Chandrayaan-3", "Aditya-L1", "Gaganyaan", "Mangalyaan", "AstroSat", "XPoSat", "SpaDeX", "EOS-06"]
+        mission_records = get_all_kb_missions()
+        selected_titles = mission_records if mission_records else ["Chandrayaan-3", "Aditya-L1", "Gaganyaan", "Mangalyaan", "AstroSat", "XPoSat", "SpaDeX", "EOS-06"]
 
         for m_title in selected_titles:
             graph_data.append({
@@ -154,6 +158,7 @@ def execute_in_memory_search(query: str):
         return graph_data
 
     # Extract search terms inside quotes or lower match
+
     matches = re.findall(r'contains\s+tolower\(["\']([^"\']+)["\']\)', q_lower)
     search_term = matches[0].strip() if matches else ""
 
