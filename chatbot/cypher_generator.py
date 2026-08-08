@@ -52,11 +52,26 @@ def generate_cypher(question: str) -> str:
     cypher_raw = ask_llm(prompt)
 
     if "[OLLAMA_ERROR]" in cypher_raw:
-        # Fallback Cypher generation based on keyword extraction if Ollama server is offline
-        words = [w.strip("?,.!") for w in question.split() if len(w) > 3 and w.lower() not in {"tell", "about", "what", "where", "when", "which", "show", "list", "give", "from"}]
-        if words:
-            kw = words[0]
-            return f'MATCH (m:Mission) WHERE toLower(m.name) CONTAINS toLower("{kw}") OPTIONAL MATCH (m)-[r]-(n) RETURN m, r, n LIMIT 50'
+        # Precision keyword extraction for offline/fallback Cypher query generation
+        q_low = question.lower()
+        specific_targets = [
+            "chandrayaan-3", "chandrayaan 3", "chandrayaan-2", "chandrayaan-1", "chandrayaan-4",
+            "aditya-l1", "aditya l1", "gaganyaan", "mangalyaan", "astrosat", "xposat",
+            "abdul kalam", "kalam", "sarabhai", "dhawan", "somanath"
+        ]
+        kw = None
+        for st in specific_targets:
+            if st in q_low:
+                kw = st.replace(" ", "-")
+                break
+        
+        if not kw:
+            words = [w.strip("?,.!") for w in question.split() if len(w) > 3 and w.lower() not in {"tell", "about", "what", "where", "when", "which", "show", "list", "give", "from"}]
+            if words:
+                kw = words[0]
+        
+        if kw:
+            return f'MATCH (m) WHERE toLower(m.name) CONTAINS toLower("{kw}") OPTIONAL MATCH (m)-[r]-(n) RETURN m, r, n LIMIT 50'
         return LIST_MISSIONS
 
     cypher_clean = clean_cypher_output(cypher_raw)

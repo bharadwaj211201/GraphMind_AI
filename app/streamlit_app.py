@@ -202,10 +202,26 @@ if "pending_question" not in st.session_state:
     st.session_state.pending_question = None
 
 # ==========================================================
-# Graph Builder (Clean Spacing & No Overlap)
+# ==========================================================
+# Graph Builder (Clean Spacing, No Overlap & Target Highlighting)
 # ==========================================================
 
-def build_graph(graph_data):
+def extract_query_target(question: str) -> str:
+    if not question:
+        return ""
+    q_low = question.lower()
+    targets = [
+        "chandrayaan-3", "chandrayaan 3", "chandrayaan-2", "chandrayaan-1", "chandrayaan-4",
+        "aditya-l1", "aditya l1", "gaganyaan", "mangalyaan", "astrosat", "xposat",
+        "abdul kalam", "kalam", "sarabhai", "dhawan", "somanath", "sivan", "isro"
+    ]
+    for t in targets:
+        if t in q_low:
+            return t
+    return ""
+
+
+def build_graph(graph_data, query_target=""):
     nodes = {}
     edges = []
     seen_edge_keys = set()
@@ -213,6 +229,8 @@ def build_graph(graph_data):
 
     if not graph_data or not isinstance(graph_data, list):
         return [], [], {}
+
+    target_clean = query_target.lower().replace("-", " ") if query_target else ""
 
     for row in graph_data:
         if not isinstance(row, dict):
@@ -237,21 +255,47 @@ def build_graph(graph_data):
             if not full_name or full_name == "{}":
                 continue
 
+            # Check if this node is the main query target keyword
+            name_clean = full_name.lower().replace("-", " ")
+            is_highlight_target = False
+            if target_clean and (target_clean in name_clean or name_clean in target_clean):
+                is_highlight_target = True
+
             display_label = full_name if len(full_name) <= 22 else full_name[:19] + "..."
             node_id = f"{node_type}:{full_name}"
             created_node_ids.append((node_id, full_name, node_type, props))
 
             if node_id not in nodes:
-                color = NODE_COLORS.get(node_type, NODE_COLORS["Default"])
-                size = 36 if node_type == "Mission" else (28 if node_type in ("Organization", "LaunchVehicle", "Centre") else 24)
+                if is_highlight_target:
+                    color = "#FFD700"  # Vibrant Highlight Gold
+                    size = 55         # Prominent size
+                    font_cfg = {
+                        "color": "#0F172A",
+                        "size": 15,
+                        "face": "Plus Jakarta Sans",
+                        "strokeWidth": 4,
+                        "strokeColor": "#FFD700"
+                    }
+                    lbl_text = f"⭐ {display_label}"
+                else:
+                    color = NODE_COLORS.get(node_type, NODE_COLORS["Default"])
+                    size = 32 if node_type == "Mission" else (26 if node_type in ("Organization", "LaunchVehicle", "Centre", "Scientist", "Person") else 22)
+                    font_cfg = {
+                        "color": "#0F172A",
+                        "size": 12,
+                        "face": "Plus Jakarta Sans",
+                        "strokeWidth": 3,
+                        "strokeColor": "#FFFFFF"
+                    }
+                    lbl_text = display_label
 
                 nodes[node_id] = Node(
                     id=node_id,
-                    label=display_label,
-                    title=f"Name: {full_name}\nType: {node_type}",
+                    label=lbl_text,
+                    title=f"Name: {full_name}\nType: {node_type}" + ("\n⭐ [MAIN QUERY TARGET]" if is_highlight_target else ""),
                     size=size,
                     color=color,
-                    font={"color": "#0F172A", "size": 13, "face": "Plus Jakarta Sans", "strokeWidth": 4, "strokeColor": "#FFFFFF"}
+                    font=font_cfg
                 )
 
                 node_metadata[node_id] = {
@@ -286,12 +330,13 @@ def build_graph(graph_data):
     return list(nodes.values()), edges, node_metadata
 
 
-def render_graph(graph_data, key_suffix=""):
+def render_graph(graph_data, query="", key_suffix=""):
     if not graph_data:
         st.info("No knowledge graph records returned for this query.")
         return
 
-    nodes, edges, node_metadata = build_graph(graph_data)
+    query_target = extract_query_target(query)
+    nodes, edges, node_metadata = build_graph(graph_data, query_target=query_target)
 
     if not nodes:
         st.info("No structural nodes found to render visually.")
@@ -301,6 +346,7 @@ def render_graph(graph_data, key_suffix=""):
     st.markdown(
         """
         <div class="legend-box-white">
+            <div class="legend-item-white"><div class="legend-dot" style="background:#FFD700;"></div> ⭐ Main Target</div>
             <div class="legend-item-white"><div class="legend-dot" style="background:#EF4444;"></div> Mission</div>
             <div class="legend-item-white"><div class="legend-dot" style="background:#0EA5E9;"></div> Organization</div>
             <div class="legend-item-white"><div class="legend-dot" style="background:#6366F1;"></div> ISRO Centre</div>
@@ -432,7 +478,7 @@ def render_chat_tab():
                 st.code(chat["cypher"], language="cypher")
 
             with st.expander("🕸️ Interactive Knowledge Graph", expanded=True):
-                render_graph(chat["graph_data"], key_suffix=f"hist_{idx}")
+                render_graph(chat["graph_data"], query=chat["question"], key_suffix=f"hist_{idx}")
 
             with st.expander("📦 Raw Neo4j Graph Data", expanded=False):
                 st.json(chat["graph_data"])
@@ -459,7 +505,7 @@ def render_chat_tab():
                 st.code(cypher, language="cypher")
 
             with st.expander("🕸️ Interactive Knowledge Graph", expanded=True):
-                render_graph(graph_data, key_suffix="live_new")
+                render_graph(graph_data, query=question, key_suffix="live_new")
 
             with st.expander("📦 Raw Neo4j Graph Data", expanded=False):
                 st.json(graph_data)
@@ -471,6 +517,7 @@ def render_chat_tab():
             "answer": answer,
             "timestamp": str(datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
         })
+
 
 # ==========================================================
 # Tab 2: Dashboard Analytics

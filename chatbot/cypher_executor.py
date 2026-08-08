@@ -35,6 +35,47 @@ def load_local_kb():
     return _LOCAL_KB_CACHE
 
 
+def normalize_label(raw_label: str) -> str:
+    if not raw_label:
+        return "Entity"
+    lbl = str(raw_label).strip().upper()
+    mapping = {
+        "PERSON": "Scientist",
+        "SCIENTIST": "Scientist",
+        "ORGANIZATION": "Organization",
+        "CENTRE": "Centre",
+        "LAUNCH_VEHICLE": "LaunchVehicle",
+        "SPACEPORT": "Spaceport",
+        "SPACECRAFT": "Spacecraft",
+        "PAYLOAD": "Payload",
+        "CELESTIAL_BODY": "CelestialBody",
+        "MISSION": "Mission"
+    }
+    return mapping.get(lbl, raw_label.replace("_", " ").title().replace(" ", ""))
+
+
+def infer_source_type(title: str, rel_source_label: str = None) -> str:
+    if rel_source_label:
+        norm = normalize_label(rel_source_label)
+        if norm in ("Scientist", "Organization", "Centre", "LaunchVehicle", "Mission"):
+            return norm
+
+    t_lower = title.lower()
+    scientist_keywords = ["kalam", "sarabhai", "dhawan", "somanath", "sivan", "radhakrishnan", "scientist", "pioneer"]
+    if any(sk in t_lower for sk in scientist_keywords):
+        return "Scientist"
+    
+    org_keywords = ["isro", "drdo", "department of space", "nasa", "jaxa", "esa"]
+    if any(ok == t_lower for ok in org_keywords):
+        return "Organization"
+        
+    centre_keywords = ["space centre", "vssc", "ursc", "sac", "lpsc", "iprc", "istrac", "nrsc"]
+    if any(ck in t_lower for ck in centre_keywords):
+        return "Centre"
+
+    return "Mission"
+
+
 def execute_in_memory_search(query: str):
     kb = load_local_kb()
     if not kb:
@@ -48,13 +89,14 @@ def execute_in_memory_search(query: str):
     search_term = matches[0].strip() if matches else ""
 
     if not search_term:
-        # Broad ISRO domain keywords list
+        # Broad ISRO domain keywords list (longer/specific terms first to prevent partial matches)
         domain_keywords = [
-            "kalam", "abdul kalam", "sarabhai", "dhawan", "somanath", "sivan", "radhakrishnan",
-            "chandrayaan-3", "chandrayaan", "aditya-l1", "aditya", "gaganyaan", "spadex", "nisar",
+            "chandrayaan-3", "chandrayaan 3", "chandrayaan-2", "chandrayaan-1", "chandrayaan-4", "chandrayaan",
+            "aditya-l1", "aditya l1", "aditya", "gaganyaan", "spadex", "nisar",
             "mangalyaan", "cartosat", "oceansat", "resourcesat", "risat", "astrosat", "xposat",
-            "isro", "pslv", "gslv", "lvm3", "sslv", "slv-3", "aslv", "aryabhata", "bhaskara", "apple",
-            "vssc", "ursc", "shar", "sriharikota", "payload", "rocket", "satellite", "orbit", "moon", "mars", "sun"
+            "abdul kalam", "kalam", "sarabhai", "dhawan", "somanath", "sivan", "radhakrishnan",
+            "pslv", "gslv", "lvm3", "sslv", "slv-3", "aslv", "aryabhata", "bhaskara", "apple",
+            "vssc", "ursc", "shar", "sriharikota", "isro"
         ]
         for kw in domain_keywords:
             if kw in q_lower:
@@ -62,57 +104,78 @@ def execute_in_memory_search(query: str):
                 break
 
     target_missions = []
+    
+    # 1. Exact Title Match (Highest Precision)
     if search_term:
+        term_clean = search_term.replace(" ", "-")
         target_missions = [
             m for m in kb
             if search_term in m.get("title", "").lower()
+            or term_clean in m.get("title", "").lower()
             or search_term in m.get("mission_key", "").lower()
-            or search_term in str(m.get("content", "")).lower()
+        ]
+    
+    # 2. Content / Entity Fallback Match
+    if not target_missions and search_term:
+        target_missions = [
+            m for m in kb
+            if search_term in str(m.get("content", "")).lower()
             or search_term in str(m.get("entities", [])).lower()
-            or search_term in str(m.get("relationships", [])).lower()
         ]
 
     # Universal Fallback: If no specific search term or query match, return core ISRO graph cluster
     if not target_missions:
-        priority_keys = ["chandrayaan-3", "aditya-l1", "gaganyaan", "a.p.j. abdul kalam", "vikram sarabhai", "isro"]
+        priority_keys = ["chandrayaan-3", "aditya-l1", "gaganyaan", "a.p.j. abdul kalam", "vikram sarabhai"]
         target_missions = [
             m for m in kb if any(pk in m.get("title", "").lower() for pk in priority_keys)
         ]
         if not target_missions:
-            target_missions = kb[:8]
+            target_missions = kb[:5]
 
-    for mission in target_missions[:8]:
-        m_title = mission.get("title", "ISRO Mission")
+    # Limit targets to 2 if specific query to prevent mixing unrelated missions (e.g. Chandrayaan-4 with Chandrayaan-3)
+    max_targets = 2 if search_term and search_term != "isro" else 5
+    selected_targets = target_missions[:max_targets]
+
+    for mission in selected_targets:
+        m_title = mission.get("title", "ISRO Node")
         relationships = mission.get("relationships", [])
 
         if relationships:
-            for rel in relationships[:10]:
+            for rel in relationships[:12]:
+                m_type = infer_source_type(m_title, rel.get("source_label") or rel.get("source_type"))
+                target_type = normalize_label(rel.get("target_label") or rel.get("target_type"))
+                target_name = rel.get("target", "Entity")
+
                 graph_data.append({
                     "m": {
-                        "type": "Mission",
+                        "type": m_type,
                         "properties": {"name": m_title}
                     },
                     "r": {
                         "relationship": rel.get("relationship", "RELATED_TO")
                     },
                     "n": {
-                        "type": rel.get("target_label", "Entity"),
-                        "properties": {"name": rel.get("target", "Entity")}
+                        "type": target_type,
+                        "properties": {"name": target_name}
                     }
                 })
         else:
+            m_type = infer_source_type(m_title)
             for ent in mission.get("entities", [])[:8]:
+                target_type = normalize_label(ent.get("type", "Entity"))
+                target_name = ent.get("name", "Entity")
+
                 graph_data.append({
                     "m": {
-                        "type": "Mission",
+                        "type": m_type,
                         "properties": {"name": m_title}
                     },
                     "r": {
                         "relationship": "INVOLVES"
                     },
                     "n": {
-                        "type": ent.get("type", "Entity").title(),
-                        "properties": {"name": ent.get("name", "Entity")}
+                        "type": target_type,
+                        "properties": {"name": target_name}
                     }
                 })
 

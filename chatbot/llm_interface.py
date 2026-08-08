@@ -38,7 +38,7 @@ def ask_llm(prompt: str) -> str:
                 "messages": [{"role": "user", "content": prompt}],
                 "temperature": 0.2
             }
-            resp = requests.post(url, headers=headers, json=payload, timeout=15)
+            resp = requests.post(url, headers=headers, json=payload, timeout=3)
             if resp.status_code == 200:
                 return resp.json()["choices"][0]["message"]["content"]
         except Exception as e:
@@ -57,7 +57,7 @@ def ask_llm(prompt: str) -> str:
                 "messages": [{"role": "user", "content": prompt}],
                 "temperature": 0.2
             }
-            resp = requests.post(url, headers=headers, json=payload, timeout=15)
+            resp = requests.post(url, headers=headers, json=payload, timeout=3)
             if resp.status_code == 200:
                 return resp.json()["choices"][0]["message"]["content"]
         except Exception as e:
@@ -70,11 +70,12 @@ def ask_llm(prompt: str) -> str:
             payload = {
                 "contents": [{"parts": [{"text": prompt}]}]
             }
-            resp = requests.post(url, json=payload, timeout=15)
+            resp = requests.post(url, json=payload, timeout=3)
             if resp.status_code == 200:
                 return resp.json()["candidates"][0]["content"]["parts"][0]["text"]
         except Exception as e:
             print(f"[Gemini Cloud LLM Warning]: {e}")
+
 
 
     # 4. Local Ollama Fallback
