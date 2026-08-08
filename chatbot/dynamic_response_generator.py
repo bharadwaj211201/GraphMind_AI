@@ -65,7 +65,15 @@ def generate_offline_synthesis(question: str, graph_data: list) -> str:
 
     # 2. Focused Single Entity / Topic Narrative Paragraph
     main_subject = list(subjects)[0] if subjects else "ISRO Entity"
-    
+    ms_low = (main_subject + " " + q_low).lower()
+
+    if any(w in ms_low for w in ["mangalyaan", "mars", "mom"]):
+        celestial = {"Mars", "Martian Orbit"}
+    elif any(w in ms_low for w in ["chandra", "moon", "lupex"]):
+        celestial = {"Moon", "Lunar South Pole"}
+    elif any(w in ms_low for w in ["aditya", "sun", "solar"]):
+        celestial = {"Sun", "L1 Halo Orbit"}
+
     parts = []
     parts.append(f"**{main_subject}** is a prominent space entity within the **Indian Space Research Organisation (ISRO)** knowledge graph.")
     
@@ -101,6 +109,7 @@ def generate_offline_synthesis(question: str, graph_data: list) -> str:
 
     paragraph = " ".join(parts)
     return f"### 🛰️ GraphMind AI Summary: **{main_subject}**\n\n{paragraph}"
+
 
 
 def summarize(question: str, graph_data: list) -> str:

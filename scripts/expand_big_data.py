@@ -136,15 +136,49 @@ PRECISE_MISSION_MAP = {
     },
     "Mangalyaan": {
         "orgs": ["ISRO"],
-        "centres": ["U R Rao Satellite Centre", "Space Applications Centre", "ISRO Telemetry Tracking and Command Network"],
+        "centres": ["U R Rao Satellite Centre", "Space Applications Centre", "ISTRAC"],
         "launchers": ["PSLV-XL", "PSLV-C25"],
         "spacecraft": ["Mars Orbiter Spacecraft"],
-        "payloads": ["LAP", "MSM", "MENCA", "TIS", "MCC"],
-        "scientists": ["K. Radhakrishnan", "Mylswamy Annadurai", "S. Arunan"],
+        "payloads": ["MSM (Methane Sensor for Mars)", "MCC (Mars Colour Camera)", "LAP", "MENCA", "TIS"],
+        "scientists": ["K. Radhakrishnan", "Mylswamy Annadurai", "Subbiah Arunan", "V. Kesava Raju"],
         "spaceports": ["Satish Dhawan Space Centre", "First Launch Pad"],
-        "bodies": ["Mars", "Trans-Mars Injection"],
+        "bodies": ["Mars", "Martian Orbit"],
         "tech": ["Autonomous Navigation", "Trans-Mars Injection", "Mars Orbit Insertion"]
     },
+    "Mangalyaan-2": {
+        "orgs": ["ISRO"],
+        "centres": ["U R Rao Satellite Centre", "Space Applications Centre", "Satish Dhawan Space Centre"],
+        "launchers": ["LVM3", "PSLV-XL"],
+        "spacecraft": ["Mars Orbiter 2 Spacecraft", "Martian Lander", "Martian Rover"],
+        "payloads": ["Hyperspectral Camera", "Martian Soil Radar", "Environmental Payload"],
+        "scientists": ["S. Somanath", "Subbiah Arunan"],
+        "spaceports": ["Satish Dhawan Space Centre"],
+        "bodies": ["Mars", "Martian Orbit", "Martian Surface"],
+        "tech": ["Martian Atmospheric Re-entry", "Mars Soft Landing", "Rover Operations"]
+    },
+    "Mars Orbiter Mission": {
+        "orgs": ["ISRO"],
+        "centres": ["U R Rao Satellite Centre", "Space Applications Centre", "ISTRAC"],
+        "launchers": ["PSLV-XL", "PSLV-C25"],
+        "spacecraft": ["Mars Orbiter Spacecraft"],
+        "payloads": ["MSM (Methane Sensor for Mars)", "MCC (Mars Colour Camera)", "LAP", "MENCA", "TIS"],
+        "scientists": ["K. Radhakrishnan", "Mylswamy Annadurai", "Subbiah Arunan"],
+        "spaceports": ["Satish Dhawan Space Centre"],
+        "bodies": ["Mars", "Martian Orbit"],
+        "tech": ["Mars Orbit Insertion", "Interplanetary Navigation"]
+    },
+    "MOM": {
+        "orgs": ["ISRO"],
+        "centres": ["U R Rao Satellite Centre", "ISTRAC"],
+        "launchers": ["PSLV-XL", "PSLV-C25"],
+        "spacecraft": ["Mars Orbiter Spacecraft"],
+        "payloads": ["MSM", "MCC", "LAP", "MENCA", "TIS"],
+        "scientists": ["K. Radhakrishnan", "Mylswamy Annadurai"],
+        "spaceports": ["Satish Dhawan Space Centre"],
+        "bodies": ["Mars", "Martian Orbit"],
+        "tech": ["Mars Orbit Insertion"]
+    },
+
     "XPoSat": {
         "orgs": ["ISRO", "Raman Research Institute"],
         "centres": ["U R Rao Satellite Centre"],
