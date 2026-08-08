@@ -36,8 +36,13 @@ from scrapers.domain_entities import (
     MISSIONS,
     SATELLITES,
     SPACECRAFT,
-    LAUNCH_VEHICLES
+    LAUNCH_VEHICLES,
+    CENTRES,
+    ORGANIZATIONS,
+    PAYLOADS,
+    SCIENTISTS
 )
+
 from scrapers.wiki_loader import search_multiple
 from scrapers.wikipedia_scraper import scrape_wikipedia
 from scrapers.entity_extractor import extract_custom_entities
@@ -177,23 +182,25 @@ def collect_wikipedia_data():
 
     print("Searching Wikipedia...\n")
 
-    knowledge_items = (
+    knowledge_items = list(dict.fromkeys(
         MISSIONS +
         SATELLITES +
         SPACECRAFT +
-        LAUNCH_VEHICLES
-    )
+        LAUNCH_VEHICLES +
+        CENTRES +
+        ORGANIZATIONS +
+        PAYLOADS +
+        SCIENTISTS
+    ))
 
     mission_urls = search_multiple(knowledge_items)
+    stats["missions"] = len(knowledge_items)
 
-    stats["missions"] = len(MISSIONS)
+    print(f"\nStarting Wikipedia harvesting over {len(knowledge_items)} knowledge topics...\n")
 
-    print("\nStarting Wikipedia scraping...\n")
-
-    for index, mission in enumerate(MISSIONS, start=1):
-
+    for index, mission in enumerate(knowledge_items, start=1):
         print("-" * 70)
-        print(f"[{index}/{len(MISSIONS)}] {mission}")
+        print(f"[{index}/{len(knowledge_items)}] {mission}")
 
         url = mission_urls.get(mission)
 

@@ -20,6 +20,27 @@ from dataclasses import dataclass, field
 from collections import defaultdict
 from scrapers.domain_entities import *
 
+ENTITY_LOOKUP = {
+    "MISSION": MISSIONS,
+    "SATELLITE": SATELLITES,
+    "SPACECRAFT": SPACECRAFT,
+    "LAUNCH_VEHICLE": LAUNCH_VEHICLES,
+    "ROCKET_VARIANT": ROCKET_VARIANTS,
+    "ORGANIZATION": ORGANIZATIONS,
+    "CENTRE": CENTRES,
+    "PAYLOAD": PAYLOADS,
+    "INSTRUMENT": INSTRUMENTS,
+    "SCIENTIST": SCIENTISTS,
+    "ASTRONAUT": ASTRONAUTS,
+    "SPACEPORT": SPACEPORTS,
+    "FACILITY": FACILITIES,
+    "LABORATORY": LABORATORIES,
+    "CELESTIAL_BODY": CELESTIAL_BODIES,
+    "TECHNOLOGY": TECHNOLOGIES,
+    "PROGRAM": PROGRAMS
+}
+
+
 
 # ==========================================================
 # Load spaCy
@@ -28,11 +49,11 @@ from scrapers.domain_entities import *
 try:
     nlp = spacy.load("en_core_web_sm")
 except Exception:
-    raise RuntimeError(
-        "spaCy model 'en_core_web_sm' not found.\n"
-        "Run:\n"
-        "python -m spacy download en_core_web_sm"
-    )
+    try:
+        nlp = spacy.blank("en")
+    except Exception:
+        nlp = None
+
 
 # ==========================================================
 # Entity Extractor Configuration

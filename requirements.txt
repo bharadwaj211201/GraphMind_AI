@@ -17,3 +17,4 @@ spacy
 networkx
 
 matplotlib
+python-dotenv

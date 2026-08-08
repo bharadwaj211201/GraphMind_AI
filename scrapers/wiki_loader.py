@@ -107,13 +107,14 @@ def search_multiple(titles):
 
         if url:
 
-            print("   ✓ Found")
+            print("   [FOUND]")
 
             results[title] = url
 
         else:
 
-            print("   ✗ Not Found")
+            print("   [NOT FOUND]")
+
 
     return results
 

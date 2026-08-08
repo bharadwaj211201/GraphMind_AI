@@ -43,10 +43,14 @@ CATEGORY_DIR.mkdir(parents=True, exist_ok=True)
 SCRAPED_DIR.mkdir(parents=True, exist_ok=True)
 MERGED_DIR.mkdir(parents=True, exist_ok=True)
 
-LINK_FILE = RAW_DIR / "isro_links.txt"
-FAILED_URL_FILE = RAW_DIR / "failed_urls.txt"
+try:
+    nlp = spacy.load("en_core_web_sm")
+except Exception:
+    try:
+        nlp = spacy.blank("en")
+    except Exception:
+        nlp = None
 
-nlp = spacy.load("en_core_web_sm")
 
 # ==========================================================
 # COMMON HELPERS

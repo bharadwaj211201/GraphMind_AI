@@ -1,7 +1,13 @@
+import os
+import sys
 import json
 
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+if PROJECT_ROOT not in sys.path:
+    sys.path.insert(0, PROJECT_ROOT)
+
 from scrapers.entity_extractor import (
-    extract_launch_vehicle,
+    extract_launch_vehicles,
     extract_organizations,
     extract_custom_entities
 )
@@ -20,7 +26,8 @@ def standardize_document(
 
     search_text = mission_name + " " + content[:2000]
 
-    vehicles = extract_launch_vehicle(search_text)
+    vehicles = extract_launch_vehicles(search_text)
+
 
     organizations = extract_organizations(search_text)
 

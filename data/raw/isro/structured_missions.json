@@ -17,7 +17,7 @@
                 "type": "ORGANIZATION",
                 "original_name": "ISRO",
                 "confidence": 1.0,
-                "matched_by": "ontology",
+                "matched_by": "alias",
                 "resolved": false
             },
             {
@@ -32,14 +32,6 @@
                 "name": "Sun",
                 "type": "CELESTIAL_BODY",
                 "original_name": "Sun",
-                "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
-            },
-            {
-                "name": "Navigation",
-                "type": "TECHNOLOGY",
-                "original_name": "Navigation",
                 "confidence": 1.0,
                 "matched_by": "ontology",
                 "resolved": false
@@ -87,7 +79,7 @@
                 "type": "ORGANIZATION",
                 "original_name": "ISRO",
                 "confidence": 1.0,
-                "matched_by": "ontology",
+                "matched_by": "alias",
                 "resolved": false
             },
             {
@@ -123,14 +115,6 @@
                 "resolved": false
             },
             {
-                "name": "India",
-                "type": "COUNTRY",
-                "original_name": "India",
-                "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
-            },
-            {
                 "name": "Earth",
                 "type": "CELESTIAL_BODY",
                 "original_name": "Earth",
@@ -152,6 +136,14 @@
                 "original_name": "Earth L1",
                 "confidence": 0.5,
                 "matched_by": "unknown",
+                "resolved": false
+            },
+            {
+                "name": "India",
+                "type": "COUNTRY",
+                "original_name": "India",
+                "confidence": 1.0,
+                "matched_by": "ontology",
                 "resolved": false
             }
         ],
@@ -184,7 +176,7 @@
                 "type": "ORGANIZATION",
                 "original_name": "ISRO",
                 "confidence": 1.0,
-                "matched_by": "ontology",
+                "matched_by": "alias",
                 "resolved": false
             },
             {
@@ -220,14 +212,6 @@
                 "resolved": false
             },
             {
-                "name": "India",
-                "type": "COUNTRY",
-                "original_name": "India",
-                "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
-            },
-            {
                 "name": "Earth",
                 "type": "CELESTIAL_BODY",
                 "original_name": "Earth",
@@ -249,6 +233,14 @@
                 "original_name": "Earth L1",
                 "confidence": 0.5,
                 "matched_by": "unknown",
+                "resolved": false
+            },
+            {
+                "name": "India",
+                "type": "COUNTRY",
+                "original_name": "India",
+                "confidence": 1.0,
+                "matched_by": "ontology",
                 "resolved": false
             }
         ],
@@ -281,15 +273,7 @@
                 "type": "ORGANIZATION",
                 "original_name": "NASA",
                 "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
-            },
-            {
-                "name": "NOAA",
-                "type": "ORGANIZATION",
-                "original_name": "NOAA",
-                "confidence": 1.0,
-                "matched_by": "ontology",
+                "matched_by": "alias",
                 "resolved": false
             },
             {
@@ -317,6 +301,14 @@
                 "resolved": false
             },
             {
+                "name": "NOAA",
+                "type": "ORGANIZATION",
+                "original_name": "NOAA",
+                "confidence": 0.5,
+                "matched_by": "unknown",
+                "resolved": false
+            },
+            {
                 "name": "DOI:10.3847/2041-8213/adfe60",
                 "type": "ORGANIZATION",
                 "original_name": "DOI:10.3847/2041-8213/adfe60",
@@ -333,17 +325,17 @@
                 "resolved": false
             },
             {
-                "name": "India",
-                "type": "COUNTRY",
-                "original_name": "India",
+                "name": "Earth",
+                "type": "CELESTIAL_BODY",
+                "original_name": "Earth",
                 "confidence": 1.0,
                 "matched_by": "ontology",
                 "resolved": false
             },
             {
-                "name": "Earth",
-                "type": "CELESTIAL_BODY",
-                "original_name": "Earth",
+                "name": "India",
+                "type": "COUNTRY",
+                "original_name": "India",
                 "confidence": 1.0,
                 "matched_by": "ontology",
                 "resolved": false
@@ -352,10 +344,10 @@
         "launch_vehicles": [],
         "organizations": [
             "NASA",
-            "NOAA",
             "Aditya-L1 Joins Global Effort",
             "Coronal Mass Ejections",
             "the Astrophysical Journal Letters",
+            "NOAA",
             "DOI:10.3847/2041-8213/adfe60"
         ],
         "url": "https://www.isro.gov.in/Aditya_L1_Landmark_solar_storm_study.html",
@@ -415,14 +407,6 @@
                 "resolved": false
             },
             {
-                "name": "India",
-                "type": "COUNTRY",
-                "original_name": "India",
-                "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
-            },
-            {
                 "name": "Corona",
                 "type": "CELESTIAL_BODY",
                 "original_name": "Corona",
@@ -439,9 +423,9 @@
                 "resolved": false
             },
             {
-                "name": "Halo Orbit",
-                "type": "CELESTIAL_BODY",
-                "original_name": "Halo Orbit",
+                "name": "India",
+                "type": "COUNTRY",
+                "original_name": "India",
                 "confidence": 1.0,
                 "matched_by": "ontology",
                 "resolved": false
@@ -518,7 +502,7 @@
                 "type": "ORGANIZATION",
                 "original_name": "ISRO",
                 "confidence": 1.0,
-                "matched_by": "ontology",
+                "matched_by": "alias",
                 "resolved": false
             },
             {
@@ -526,7 +510,7 @@
                 "type": "ORGANIZATION",
                 "original_name": "NASA",
                 "confidence": 1.0,
-                "matched_by": "ontology",
+                "matched_by": "alias",
                 "resolved": false
             },
             {
@@ -534,7 +518,7 @@
                 "type": "ORGANIZATION",
                 "original_name": "Roscosmos",
                 "confidence": 1.0,
-                "matched_by": "ontology",
+                "matched_by": "alias",
                 "resolved": false
             },
             {
@@ -602,17 +586,17 @@
                 "resolved": false
             },
             {
-                "name": "Crew Dragon",
-                "type": "SPACECRAFT",
-                "original_name": "Crew Dragon",
+                "name": "Falcon 9",
+                "type": "LAUNCH_VEHICLE",
+                "original_name": "Falcon 9",
                 "confidence": 1.0,
                 "matched_by": "ontology",
                 "resolved": false
             },
             {
-                "name": "Dragon",
+                "name": "Crew Dragon",
                 "type": "SPACECRAFT",
-                "original_name": "Dragon",
+                "original_name": "Crew Dragon",
                 "confidence": 1.0,
                 "matched_by": "ontology",
                 "resolved": false
@@ -634,14 +618,6 @@
                 "resolved": false
             },
             {
-                "name": "India",
-                "type": "COUNTRY",
-                "original_name": "India",
-                "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
-            },
-            {
                 "name": "Ax-04 Mission Updates",
                 "type": "PERSON",
                 "original_name": "Ax-04 Mission Updates",
@@ -656,9 +632,19 @@
                 "confidence": 0.5,
                 "matched_by": "unknown",
                 "resolved": false
+            },
+            {
+                "name": "India",
+                "type": "COUNTRY",
+                "original_name": "India",
+                "confidence": 1.0,
+                "matched_by": "ontology",
+                "resolved": false
             }
         ],
-        "launch_vehicles": [],
+        "launch_vehicles": [
+            "Falcon 9"
+        ],
         "organizations": [
             "ISRO",
             "NASA",
@@ -685,7 +671,7 @@
                 "type": "ORGANIZATION",
                 "original_name": "ISRO",
                 "confidence": 1.0,
-                "matched_by": "ontology",
+                "matched_by": "alias",
                 "resolved": false
             },
             {
@@ -693,7 +679,7 @@
                 "type": "ORGANIZATION",
                 "original_name": "NASA",
                 "confidence": 1.0,
-                "matched_by": "ontology",
+                "matched_by": "alias",
                 "resolved": false
             },
             {
@@ -745,6 +731,14 @@
                 "resolved": false
             },
             {
+                "name": "Falcon 9",
+                "type": "LAUNCH_VEHICLE",
+                "original_name": "Falcon 9",
+                "confidence": 1.0,
+                "matched_by": "ontology",
+                "resolved": false
+            },
+            {
                 "name": "Service Module",
                 "type": "SPACECRAFT",
                 "original_name": "Service Module",
@@ -761,7 +755,9 @@
                 "resolved": false
             }
         ],
-        "launch_vehicles": [],
+        "launch_vehicles": [
+            "Falcon 9"
+        ],
         "organizations": [
             "ISRO",
             "NASA",
@@ -793,7 +789,7 @@
                 "type": "ORGANIZATION",
                 "original_name": "ESA",
                 "confidence": 1.0,
-                "matched_by": "ontology",
+                "matched_by": "alias",
                 "resolved": false
             },
             {
@@ -801,7 +797,7 @@
                 "type": "ORGANIZATION",
                 "original_name": "ISRO",
                 "confidence": 1.0,
-                "matched_by": "ontology",
+                "matched_by": "alias",
                 "resolved": false
             },
             {
@@ -809,7 +805,7 @@
                 "type": "ORGANIZATION",
                 "original_name": "NASA",
                 "confidence": 1.0,
-                "matched_by": "ontology",
+                "matched_by": "alias",
                 "resolved": false
             },
             {
@@ -869,49 +865,17 @@
                 "resolved": false
             },
             {
-                "name": "HSFC",
+                "name": "Human Space Flight Centre",
                 "type": "CENTRE",
                 "original_name": "HSFC",
                 "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
-            },
-            {
-                "name": "Dragon",
-                "type": "SPACECRAFT",
-                "original_name": "Dragon",
-                "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
+                "matched_by": "alias",
+                "resolved": true
             },
             {
                 "name": "Shubhanshu Shukla",
                 "type": "ASTRONAUT",
                 "original_name": "Shubhanshu Shukla",
-                "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
-            },
-            {
-                "name": "India",
-                "type": "COUNTRY",
-                "original_name": "India",
-                "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
-            },
-            {
-                "name": "Bengaluru",
-                "type": "CITY",
-                "original_name": "Bengaluru",
-                "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
-            },
-            {
-                "name": "New Delhi",
-                "type": "CITY",
-                "original_name": "New Delhi",
                 "confidence": 1.0,
                 "matched_by": "ontology",
                 "resolved": false
@@ -933,6 +897,14 @@
                 "resolved": false
             },
             {
+                "name": "Bengaluru",
+                "type": "CITY",
+                "original_name": "Bengaluru",
+                "confidence": 1.0,
+                "matched_by": "ontology",
+                "resolved": false
+            },
+            {
                 "name": "Cyanobacteria",
                 "type": "LOCATION",
                 "original_name": "Cyanobacteria",
@@ -941,11 +913,27 @@
                 "resolved": false
             },
             {
+                "name": "India",
+                "type": "COUNTRY",
+                "original_name": "India",
+                "confidence": 1.0,
+                "matched_by": "ontology",
+                "resolved": false
+            },
+            {
                 "name": "Microgravity",
                 "type": "LOCATION",
                 "original_name": "Microgravity",
                 "confidence": 0.5,
                 "matched_by": "unknown",
+                "resolved": false
+            },
+            {
+                "name": "New Delhi",
+                "type": "CITY",
+                "original_name": "New Delhi",
+                "confidence": 1.0,
+                "matched_by": "ontology",
                 "resolved": false
             }
         ],
@@ -983,7 +971,7 @@
                 "type": "ORGANIZATION",
                 "original_name": "ISRO",
                 "confidence": 1.0,
-                "matched_by": "ontology",
+                "matched_by": "alias",
                 "resolved": false
             },
             {
@@ -1035,25 +1023,9 @@
                 "resolved": false
             },
             {
-                "name": "Dragon",
-                "type": "SPACECRAFT",
-                "original_name": "Dragon",
-                "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
-            },
-            {
                 "name": "Shubhanshu Shukla",
                 "type": "ASTRONAUT",
                 "original_name": "Shubhanshu Shukla",
-                "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
-            },
-            {
-                "name": "India",
-                "type": "COUNTRY",
-                "original_name": "India",
                 "confidence": 1.0,
                 "matched_by": "ontology",
                 "resolved": false
@@ -1115,6 +1087,14 @@
                 "resolved": false
             },
             {
+                "name": "India",
+                "type": "COUNTRY",
+                "original_name": "India",
+                "confidence": 1.0,
+                "matched_by": "ontology",
+                "resolved": false
+            },
+            {
                 "name": "Microalgae",
                 "type": "LOCATION",
                 "original_name": "Microalgae",
@@ -1141,6 +1121,114 @@
             "ISRO’s Gaganyatri"
         ],
         "url": "https://www.isro.gov.in/Axiom4_Mission_Successful_completion_of_microgravity_experiments.html",
+        "source": "ISRO"
+    },
+    {
+        "title": "ISRO successfully conducted the flight acceptance hot test of CE20 Cryogenic Engine for LVM3-M6 Mission",
+        "document_type": "LAUNCH_VEHICLE",
+        "content": "ISRO successfully conducted the flight acceptance hot test of CE20 Cryogenic Engine for LVM3-M6 Mission ISRO successfully conducted the flight acceptance hot test of CE20 Cryogenic Engine for LVM3-M6 Mission Home / LVM3-M6 Mission March 14, 2025 On March 14, 2025, ISRO successfully conducted the flight acceptance hot testing of the cryogenic engine identified for the sixth operational mission of LVM3 launch vehicle (LVM-M6) at ISRO Propulsion Complex (IPRC), Mahendragiri. Cryogenic engines for every mission undergo hot testing as part of its acceptance for the flight. Hot tests for the indigenous cryogenic engine (CE20)used in the Cryogenic Upper Stage of LVM3 were so far performed at the High-Altitude Test (HAT) facility at IPRC, where vacuum conditions are simulated with complex installations, limiting the maximum hot test duration to 25s. In the current test, the engine was tested for a longer duration of 100s for the first time using an innovative Nozzle Protection System under non-vacuum conditions. This test method significantly reduces the setup time and effort required for the flight acceptance testing of a cryogenic engine, which in turn helps faster delivery of cryogenic stages for space missions. Performance of the CE20 engine met all the test objectives and the parameters were closely matching with the predictions during the entire duration of the test. Further, this engine will be integrated to the Cryogenic Upper Stage of the launch vehicle for the LVM3-M6 mission, which is scheduled during the second half of 2025.",
+        "entities": [
+            {
+                "name": "ISRO",
+                "type": "ORGANIZATION",
+                "original_name": "ISRO",
+                "confidence": 1.0,
+                "matched_by": "alias",
+                "resolved": false
+            },
+            {
+                "name": "ISRO Propulsion Complex",
+                "type": "FACILITY",
+                "original_name": "ISRO Propulsion Complex",
+                "confidence": 1.0,
+                "matched_by": "ontology",
+                "resolved": false
+            },
+            {
+                "name": "LVM3-M6 Mission ISRO",
+                "type": "ORGANIZATION",
+                "original_name": "LVM3-M6 Mission ISRO",
+                "confidence": 0.5,
+                "matched_by": "unknown",
+                "resolved": false
+            },
+            {
+                "name": "Nozzle Protection System",
+                "type": "ORGANIZATION",
+                "original_name": "Nozzle Protection System",
+                "confidence": 0.5,
+                "matched_by": "unknown",
+                "resolved": false
+            },
+            {
+                "name": "the Cryogenic Upper Stage",
+                "type": "ORGANIZATION",
+                "original_name": "the Cryogenic Upper Stage",
+                "confidence": 0.5,
+                "matched_by": "unknown",
+                "resolved": false
+            },
+            {
+                "name": "HAT",
+                "type": "ORGANIZATION",
+                "original_name": "HAT",
+                "confidence": 0.5,
+                "matched_by": "unknown",
+                "resolved": false
+            },
+            {
+                "name": "the High-Altitude Test",
+                "type": "FACILITY",
+                "original_name": "the High-Altitude Test",
+                "confidence": 0.5,
+                "matched_by": "unknown",
+                "resolved": false
+            },
+            {
+                "name": "LVM3",
+                "type": "LAUNCH_VEHICLE",
+                "original_name": "LVM3",
+                "confidence": 1.0,
+                "matched_by": "ontology",
+                "resolved": false
+            },
+            {
+                "name": "LVM3-M6",
+                "type": "ROCKET_VARIANT",
+                "original_name": "LVM3-M6",
+                "confidence": 1.0,
+                "matched_by": "rocket_variant",
+                "resolved": false
+            },
+            {
+                "name": "Cryogenic Engine",
+                "type": "TECHNOLOGY",
+                "original_name": "Cryogenic Engine",
+                "confidence": 1.0,
+                "matched_by": "ontology",
+                "resolved": false
+            },
+            {
+                "name": "Mahendragiri",
+                "type": "CITY",
+                "original_name": "Mahendragiri",
+                "confidence": 1.0,
+                "matched_by": "ontology",
+                "resolved": false
+            }
+        ],
+        "launch_vehicles": [
+            "LVM3",
+            "LVM3-M6"
+        ],
+        "organizations": [
+            "ISRO",
+            "LVM3-M6 Mission ISRO",
+            "Nozzle Protection System",
+            "the Cryogenic Upper Stage",
+            "HAT"
+        ],
+        "url": "https://www.isro.gov.in/CE20_Cryogenic_Engine_flight_acceptance_hot_test_successful_LVM3-M6_Mission.html",
         "source": "ISRO"
     },
     {
@@ -1221,14 +1309,6 @@
                 "resolved": false
             },
             {
-                "name": "India",
-                "type": "COUNTRY",
-                "original_name": "India",
-                "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
-            },
-            {
                 "name": "Earth",
                 "type": "CELESTIAL_BODY",
                 "original_name": "Earth",
@@ -1240,6 +1320,14 @@
                 "name": "Moon",
                 "type": "CELESTIAL_BODY",
                 "original_name": "Moon",
+                "confidence": 1.0,
+                "matched_by": "ontology",
+                "resolved": false
+            },
+            {
+                "name": "India",
+                "type": "COUNTRY",
+                "original_name": "India",
                 "confidence": 1.0,
                 "matched_by": "ontology",
                 "resolved": false
@@ -1284,12 +1372,12 @@
                 "resolved": false
             },
             {
-                "name": "IDSN",
-                "type": "CENTRE",
+                "name": "Indian Deep Space Network",
+                "type": "FACILITY",
                 "original_name": "IDSN",
                 "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
+                "matched_by": "alias",
+                "resolved": true
             },
             {
                 "name": "TTC",
@@ -1300,33 +1388,17 @@
                 "resolved": false
             },
             {
-                "name": "VSSC",
+                "name": "Vikram Sarabhai Space Centre",
                 "type": "CENTRE",
                 "original_name": "VSSC",
                 "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
-            },
-            {
-                "name": "Indian Deep Space Network",
-                "type": "FACILITY",
-                "original_name": "Indian Deep Space Network",
-                "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
+                "matched_by": "alias",
+                "resolved": true
             },
             {
                 "name": "Orbiter",
                 "type": "SPACECRAFT",
                 "original_name": "Orbiter",
-                "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
-            },
-            {
-                "name": "India",
-                "type": "COUNTRY",
-                "original_name": "India",
                 "confidence": 1.0,
                 "matched_by": "ontology",
                 "resolved": false
@@ -1386,6 +1458,14 @@
                 "confidence": 0.5,
                 "matched_by": "unknown",
                 "resolved": false
+            },
+            {
+                "name": "India",
+                "type": "COUNTRY",
+                "original_name": "India",
+                "confidence": 1.0,
+                "matched_by": "ontology",
+                "resolved": false
             }
         ],
         "launch_vehicles": [],
@@ -1423,14 +1503,6 @@
                 "original_name": "~25K",
                 "confidence": 0.5,
                 "matched_by": "unknown",
-                "resolved": false
-            },
-            {
-                "name": "PRL",
-                "type": "CENTRE",
-                "original_name": "PRL",
-                "confidence": 1.0,
-                "matched_by": "ontology",
                 "resolved": false
             },
             {
@@ -1482,14 +1554,6 @@
                 "resolved": false
             },
             {
-                "name": "Ahmedabad",
-                "type": "CITY",
-                "original_name": "Ahmedabad",
-                "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
-            },
-            {
                 "name": "Moon",
                 "type": "CELESTIAL_BODY",
                 "original_name": "Moon",
@@ -1503,6 +1567,14 @@
                 "original_name": "South Polar Region",
                 "confidence": 0.5,
                 "matched_by": "unknown",
+                "resolved": false
+            },
+            {
+                "name": "Ahmedabad",
+                "type": "CITY",
+                "original_name": "Ahmedabad",
+                "confidence": 1.0,
+                "matched_by": "ontology",
                 "resolved": false
             }
         ],
@@ -1624,7 +1696,7 @@
                 "type": "ORGANIZATION",
                 "original_name": "ISRO",
                 "confidence": 1.0,
-                "matched_by": "ontology",
+                "matched_by": "alias",
                 "resolved": false
             },
             {
@@ -1668,19 +1740,19 @@
                 "resolved": false
             },
             {
-                "name": "Vikram",
+                "name": "Rover",
                 "type": "SPACECRAFT",
-                "original_name": "Vikram",
+                "original_name": "Rover",
                 "confidence": 1.0,
                 "matched_by": "ontology",
                 "resolved": false
             },
             {
-                "name": "Rover",
+                "name": "Vikram",
                 "type": "SPACECRAFT",
-                "original_name": "Rover",
-                "confidence": 0.5,
-                "matched_by": "unknown",
+                "original_name": "Vikram",
+                "confidence": 1.0,
+                "matched_by": "ontology",
                 "resolved": false
             },
             {
@@ -1873,12 +1945,12 @@
                 "resolved": false
             },
             {
-                "name": "IDSN",
-                "type": "CENTRE",
+                "name": "Indian Deep Space Network",
+                "type": "FACILITY",
                 "original_name": "IDSN",
                 "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
+                "matched_by": "alias",
+                "resolved": true
             },
             {
                 "name": "IST",
@@ -1913,20 +1985,12 @@
                 "resolved": false
             },
             {
-                "name": "SDSC SHAR",
+                "name": "Satish Dhawan Space Centre",
                 "type": "SPACEPORT",
                 "original_name": "SDSC SHAR",
                 "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
-            },
-            {
-                "name": "Indian Deep Space Network",
-                "type": "FACILITY",
-                "original_name": "Indian Deep Space Network",
-                "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
+                "matched_by": "alias",
+                "resolved": true
             },
             {
                 "name": "LVM3",
@@ -1956,14 +2020,6 @@
                 "name": "Rover",
                 "type": "SPACECRAFT",
                 "original_name": "Rover",
-                "confidence": 0.5,
-                "matched_by": "unknown",
-                "resolved": false
-            },
-            {
-                "name": "Sriharikota",
-                "type": "CITY",
-                "original_name": "Sriharikota",
                 "confidence": 1.0,
                 "matched_by": "ontology",
                 "resolved": false
@@ -2001,11 +2057,11 @@
                 "resolved": false
             },
             {
-                "name": "Rover",
-                "type": "LOCATION",
-                "original_name": "Rover",
-                "confidence": 0.5,
-                "matched_by": "unknown",
+                "name": "Sriharikota",
+                "type": "CITY",
+                "original_name": "Sriharikota",
+                "confidence": 1.0,
+                "matched_by": "ontology",
                 "resolved": false
             }
         ],
@@ -2035,19 +2091,19 @@
                 "resolved": false
             },
             {
-                "name": "ISRO",
+                "name": "Department of Space",
                 "type": "ORGANIZATION",
-                "original_name": "ISRO",
+                "original_name": "Department of Space",
                 "confidence": 1.0,
                 "matched_by": "ontology",
                 "resolved": false
             },
             {
-                "name": "Department of Space",
+                "name": "ISRO",
                 "type": "ORGANIZATION",
-                "original_name": "Department of Space",
-                "confidence": 0.5,
-                "matched_by": "unknown",
+                "original_name": "ISRO",
+                "confidence": 1.0,
+                "matched_by": "alias",
                 "resolved": false
             },
             {
@@ -2060,10 +2116,10 @@
             },
             {
                 "name": "ISRO Propulsion Complex",
-                "type": "ORGANIZATION",
+                "type": "FACILITY",
                 "original_name": "ISRO Propulsion Complex",
-                "confidence": 0.5,
-                "matched_by": "unknown",
+                "confidence": 1.0,
+                "matched_by": "ontology",
                 "resolved": false
             },
             {
@@ -2076,10 +2132,10 @@
             },
             {
                 "name": "Liquid Propulsion Systems Centre",
-                "type": "ORGANIZATION",
+                "type": "CENTRE",
                 "original_name": "Liquid Propulsion Systems Centre",
-                "confidence": 0.5,
-                "matched_by": "unknown",
+                "confidence": 1.0,
+                "matched_by": "ontology",
                 "resolved": false
             },
             {
@@ -2104,22 +2160,6 @@
                 "original_name": "DOS",
                 "confidence": 0.5,
                 "matched_by": "unknown",
-                "resolved": false
-            },
-            {
-                "name": "IPRC",
-                "type": "CENTRE",
-                "original_name": "IPRC",
-                "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
-            },
-            {
-                "name": "LPSC",
-                "type": "CENTRE",
-                "original_name": "LPSC",
-                "confidence": 1.0,
-                "matched_by": "ontology",
                 "resolved": false
             },
             {
@@ -2171,41 +2211,9 @@
                 "resolved": false
             },
             {
-                "name": "Propulsion Complex",
-                "type": "FACILITY",
-                "original_name": "Propulsion Complex",
-                "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
-            },
-            {
                 "name": "V. Narayanan",
                 "type": "SCIENTIST",
                 "original_name": "V. Narayanan",
-                "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
-            },
-            {
-                "name": "Tamil Nadu",
-                "type": "STATE",
-                "original_name": "Tamil Nadu",
-                "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
-            },
-            {
-                "name": "Mahendragiri",
-                "type": "CITY",
-                "original_name": "Mahendragiri",
-                "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
-            },
-            {
-                "name": "Thiruvananthapuram",
-                "type": "CITY",
-                "original_name": "Thiruvananthapuram",
                 "confidence": 1.0,
                 "matched_by": "ontology",
                 "resolved": false
@@ -2219,22 +2227,36 @@
                 "resolved": false
             },
             {
+                "name": "Tamil Nadu",
+                "type": "STATE",
+                "original_name": "Tamil Nadu",
+                "confidence": 1.0,
+                "matched_by": "ontology",
+                "resolved": false
+            },
+            {
                 "name": "Liquid",
                 "type": "LOCATION",
                 "original_name": "Liquid",
                 "confidence": 0.5,
                 "matched_by": "unknown",
                 "resolved": false
+            },
+            {
+                "name": "Mahendragiri",
+                "type": "CITY",
+                "original_name": "Mahendragiri",
+                "confidence": 1.0,
+                "matched_by": "ontology",
+                "resolved": false
             }
         ],
         "launch_vehicles": [],
         "organizations": [
-            "ISRO",
             "Department of Space",
+            "ISRO",
             "Electric Propulsion Systems",
-            "ISRO Propulsion Complex",
             "LPSC-IPRC Coordination Committee",
-            "Liquid Propulsion Systems Centre",
             "Space Commission Home",
             "Valiamala in Thiruvananthapuram",
             "DOS",
@@ -2262,11 +2284,19 @@
                 "resolved": false
             },
             {
+                "name": "DRDO",
+                "type": "ORGANIZATION",
+                "original_name": "DRDO",
+                "confidence": 1.0,
+                "matched_by": "ontology",
+                "resolved": false
+            },
+            {
                 "name": "ISRO",
                 "type": "ORGANIZATION",
                 "original_name": "ISRO",
                 "confidence": 1.0,
-                "matched_by": "ontology",
+                "matched_by": "alias",
                 "resolved": false
             },
             {
@@ -2294,14 +2324,6 @@
                 "resolved": false
             },
             {
-                "name": "DRDO",
-                "type": "ORGANIZATION",
-                "original_name": "DRDO",
-                "confidence": 0.5,
-                "matched_by": "unknown",
-                "resolved": false
-            },
-            {
                 "name": "TBRL",
                 "type": "ORGANIZATION",
                 "original_name": "TBRL",
@@ -2310,12 +2332,12 @@
                 "resolved": false
             },
             {
-                "name": "VSSC",
+                "name": "Vikram Sarabhai Space Centre",
                 "type": "CENTRE",
                 "original_name": "VSSC",
                 "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
+                "matched_by": "alias",
+                "resolved": true
             },
             {
                 "name": "Vikram",
@@ -2342,14 +2364,6 @@
                 "resolved": false
             },
             {
-                "name": "DRDO",
-                "type": "PERSON",
-                "original_name": "DRDO",
-                "confidence": 0.5,
-                "matched_by": "unknown",
-                "resolved": false
-            },
-            {
                 "name": "Chandigarh",
                 "type": "PERSON",
                 "original_name": "Chandigarh",
@@ -2360,10 +2374,10 @@
         ],
         "launch_vehicles": [],
         "organizations": [
+            "DRDO",
             "ISRO",
             "Gaganyaan Crew Module",
             "Terminal Ballistic Research Laboratory",
-            "DRDO",
             "TBRL"
         ],
         "url": "https://www.isro.gov.in/Gaganyaan_Drogue_Parachute_Deployment_Tests.html",
@@ -2387,7 +2401,7 @@
                 "type": "ORGANIZATION",
                 "original_name": "ISRO",
                 "confidence": 1.0,
-                "matched_by": "ontology",
+                "matched_by": "alias",
                 "resolved": false
             },
             {
@@ -2415,25 +2429,9 @@
                 "resolved": false
             },
             {
-                "name": "India",
-                "type": "COUNTRY",
-                "original_name": "India",
-                "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
-            },
-            {
                 "name": "Gaganyaan Programme",
                 "type": "PROGRAM",
                 "original_name": "Gaganyaan Programme",
-                "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
-            },
-            {
-                "name": "Docking",
-                "type": "TECHNOLOGY",
-                "original_name": "Docking",
                 "confidence": 1.0,
                 "matched_by": "ontology",
                 "resolved": false
@@ -2461,6 +2459,14 @@
                 "confidence": 0.5,
                 "matched_by": "unknown",
                 "resolved": false
+            },
+            {
+                "name": "India",
+                "type": "COUNTRY",
+                "original_name": "India",
+                "confidence": 1.0,
+                "matched_by": "ontology",
+                "resolved": false
             }
         ],
         "launch_vehicles": [],
@@ -2482,7 +2488,7 @@
                 "type": "ORGANIZATION",
                 "original_name": "ISRO",
                 "confidence": 1.0,
-                "matched_by": "ontology",
+                "matched_by": "alias",
                 "resolved": false
             },
             {
@@ -2510,14 +2516,6 @@
                 "resolved": false
             },
             {
-                "name": "INSAT-3D",
-                "type": "ORGANIZATION",
-                "original_name": "INSAT-3D",
-                "confidence": 0.5,
-                "matched_by": "unknown",
-                "resolved": false
-            },
-            {
                 "name": "NRSC/ISRO",
                 "type": "ORGANIZATION",
                 "original_name": "NRSC/ISRO",
@@ -2534,19 +2532,19 @@
                 "resolved": false
             },
             {
-                "name": "NRSC",
+                "name": "National Remote Sensing Centre",
                 "type": "CENTRE",
                 "original_name": "NRSC",
                 "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
+                "matched_by": "alias",
+                "resolved": true
             },
             {
                 "name": "INSAT-3D",
                 "type": "SATELLITE",
                 "original_name": "INSAT-3D",
-                "confidence": 0.5,
-                "matched_by": "unknown",
+                "confidence": 1.0,
+                "matched_by": "ontology",
                 "resolved": false
             },
             {
@@ -2564,7 +2562,6 @@
             "Land Surface Temperature",
             "the Outgoing Longwave Radiation",
             "INSAT",
-            "INSAT-3D",
             "NRSC/ISRO",
             "Geostationary Satellite"
         ],
@@ -2581,7 +2578,7 @@
                 "type": "ORGANIZATION",
                 "original_name": "ISRO",
                 "confidence": 1.0,
-                "matched_by": "ontology",
+                "matched_by": "alias",
                 "resolved": false
             },
             {
@@ -2589,7 +2586,7 @@
                 "type": "ORGANIZATION",
                 "original_name": "NASA",
                 "confidence": 1.0,
-                "matched_by": "ontology",
+                "matched_by": "alias",
                 "resolved": false
             },
             {
@@ -2649,14 +2646,6 @@
                 "resolved": false
             },
             {
-                "name": "Dragon",
-                "type": "SPACECRAFT",
-                "original_name": "Dragon",
-                "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
-            },
-            {
                 "name": "Shubhanshu Shukla",
                 "type": "ASTRONAUT",
                 "original_name": "Shubhanshu Shukla",
@@ -2676,6 +2665,14 @@
                 "name": "Gaganyatri Shubhanshu Shukla ISRO-NASA",
                 "type": "PERSON",
                 "original_name": "Gaganyatri Shubhanshu Shukla ISRO-NASA",
+                "confidence": 0.5,
+                "matched_by": "unknown",
+                "resolved": false
+            },
+            {
+                "name": "Dragon",
+                "type": "PERSON",
+                "original_name": "Dragon",
                 "confidence": 0.5,
                 "matched_by": "unknown",
                 "resolved": false
@@ -2737,7 +2734,7 @@
                 "type": "ORGANIZATION",
                 "original_name": "ISRO",
                 "confidence": 1.0,
-                "matched_by": "ontology",
+                "matched_by": "alias",
                 "resolved": false
             },
             {
@@ -2797,33 +2794,9 @@
                 "resolved": false
             },
             {
-                "name": "Chairman ISRO",
-                "type": "SCIENTIST",
-                "original_name": "Chairman ISRO",
-                "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
-            },
-            {
-                "name": "Bengaluru",
-                "type": "CITY",
-                "original_name": "Bengaluru",
-                "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
-            },
-            {
                 "name": "Earth",
                 "type": "CELESTIAL_BODY",
                 "original_name": "Earth",
-                "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
-            },
-            {
-                "name": "Halo Orbit",
-                "type": "CELESTIAL_BODY",
-                "original_name": "Halo Orbit",
                 "confidence": 1.0,
                 "matched_by": "ontology",
                 "resolved": false
@@ -2867,6 +2840,14 @@
                 "confidence": 0.5,
                 "matched_by": "unknown",
                 "resolved": false
+            },
+            {
+                "name": "Bengaluru",
+                "type": "CITY",
+                "original_name": "Bengaluru",
+                "confidence": 1.0,
+                "matched_by": "ontology",
+                "resolved": false
             }
         ],
         "launch_vehicles": [],
@@ -2893,15 +2874,15 @@
                 "type": "ORGANIZATION",
                 "original_name": "ISRO",
                 "confidence": 1.0,
-                "matched_by": "ontology",
+                "matched_by": "alias",
                 "resolved": false
             },
             {
                 "name": "ISRO Propulsion Complex",
-                "type": "ORGANIZATION",
+                "type": "FACILITY",
                 "original_name": "ISRO Propulsion Complex",
-                "confidence": 0.5,
-                "matched_by": "unknown",
+                "confidence": 1.0,
+                "matched_by": "ontology",
                 "resolved": false
             },
             {
@@ -2921,25 +2902,9 @@
                 "resolved": false
             },
             {
-                "name": "Propulsion Complex",
-                "type": "FACILITY",
-                "original_name": "Propulsion Complex",
-                "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
-            },
-            {
                 "name": "PSLV",
                 "type": "LAUNCH_VEHICLE",
                 "original_name": "PSLV",
-                "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
-            },
-            {
-                "name": "Mahendragiri",
-                "type": "CITY",
-                "original_name": "Mahendragiri",
                 "confidence": 1.0,
                 "matched_by": "ontology",
                 "resolved": false
@@ -2959,6 +2924,14 @@
                 "confidence": 0.5,
                 "matched_by": "unknown",
                 "resolved": false
+            },
+            {
+                "name": "Mahendragiri",
+                "type": "CITY",
+                "original_name": "Mahendragiri",
+                "confidence": 1.0,
+                "matched_by": "ontology",
+                "resolved": false
             }
         ],
         "launch_vehicles": [
@@ -2966,7 +2939,6 @@
         ],
         "organizations": [
             "ISRO",
-            "ISRO Propulsion Complex",
             "Chromium, Nickel",
             "ISRO Successfully"
         ],
@@ -2990,6 +2962,22 @@
                 "name": "ISRO",
                 "type": "ORGANIZATION",
                 "original_name": "ISRO",
+                "confidence": 1.0,
+                "matched_by": "alias",
+                "resolved": false
+            },
+            {
+                "name": "DRDO",
+                "type": "ORGANIZATION",
+                "original_name": "DRDO",
+                "confidence": 1.0,
+                "matched_by": "ontology",
+                "resolved": false
+            },
+            {
+                "name": "Indian Air Force",
+                "type": "ORGANIZATION",
+                "original_name": "Indian Air Force",
                 "confidence": 1.0,
                 "matched_by": "ontology",
                 "resolved": false
@@ -3019,14 +3007,6 @@
                 "resolved": false
             },
             {
-                "name": "the Indian Air Force",
-                "type": "ORGANIZATION",
-                "original_name": "the Indian Air Force",
-                "confidence": 0.5,
-                "matched_by": "unknown",
-                "resolved": false
-            },
-            {
                 "name": "Indian Navy",
                 "type": "ORGANIZATION",
                 "original_name": "Indian Navy",
@@ -3043,27 +3023,28 @@
                 "resolved": false
             },
             {
-                "name": "Sriharikota",
-                "type": "CITY",
-                "original_name": "Sriharikota",
-                "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
-            },
-            {
                 "name": "Gaganyaan Format",
                 "type": "PERSON",
                 "original_name": "Gaganyaan Format",
                 "confidence": 0.5,
                 "matched_by": "unknown",
                 "resolved": false
+            },
+            {
+                "name": "Sriharikota",
+                "type": "CITY",
+                "original_name": "Sriharikota",
+                "confidence": 1.0,
+                "matched_by": "ontology",
+                "resolved": false
             }
         ],
         "launch_vehicles": [],
         "organizations": [
             "ISRO",
+            "DRDO",
+            "Indian Air Force",
             "Indian Air Force Chinook",
-            "the Indian Air Force",
             "Indian Navy"
         ],
         "url": "https://www.isro.gov.in/ISRO_conducts_Second_Integrated_Air_Drop_Test_for_Gaganyaan.html",
@@ -3074,6 +3055,14 @@
         "document_type": "SCIENTIFIC_RESULT",
         "content": "Indian Microgravity Research Portfolio in upcoming Axiom-4 Mission Indian Microgravity Research Portfolio in upcoming Axiom-4 Mission Home / Indian Microgravity Research Portfolio in upcoming Axiom-4 Mission April 28, 2025 Indian Space Research Organisation (ISRO) since its inception is involved in science, engineering and technology to harvest the benefits of outer space for India and the humankind. Through 4000 sounding rockets and 236 missions achieved till date, ISRO has endeavored to build as well as enhance national capabilities in critical areas such as remote sensing, communication, navigation, disaster management and space sciences. With the approval of Gaganyaan Programme, ISRO envisages to undertake human spaceflight missions to Low Earth Orbit (LEO) and to lay the foundation of technologies needed for an Indian human space exploration programme in the long run. The vision for space in the Amrit kaal envisages including other things, creation of an operational Bharatiya Antariksh Station by 2035 and Indian Crewed Lunar Mission by 2040. Human space flight missions provides a strong opportunity to pursue international collaborations. The first Indian to travel to space, Wing Commander (Retd.) Rakesh Sharma undertook his iconic mission in 1984 through such a collaborative effort. The official state visit of Hon'ble Prime Minster Shri.Narendra Modi to USA in June,2023 has led to another defining chapter in Indian space programme, in terms of a collaborative international human space mission. This mission with ISRO's Gaganyatri marks the visit of first Indian ever to the International Space Station (ISS). During this mission, ISRO's Gaganyatri will carry out shortlisted Indian microgravity research experiments onboard ISS. The field of microgravity research with potential applications in diverse areas such as human health, physical/ life sciences, material research, novel pharmaceutical development and biotechnology offers significant opportunities to the national scientific community. ISRO has shortlisted seven microgravity research experiments proposed by Indian Principal Investigators (PIs) from various national R&D laboratories/ academic institutions for implementation on International Space Station (ISS) during the upcoming Axiom-4 mission with ISRO's Gaganyatri: S.No Experiment Title Institution/s 1 Impact of Microgravity Radiation in ISS on Edible Microalgae International Centre for Genetic Engineering & Biotechnology (ICGEB) & National Institute of Plant Genome Research (NIPGR) ; Dept. of Biotechnology (DBT) 2 Sprouting Salad Seeds in Space: Relevance to Crew Nutrition University of Agricultural Sciences, Dharwad & Indian Institute of Technology, Dharwad 3 Survival, revival, reproduction, and transcriptome of the eutardigrade Paramacrobiotus sp. BLR strain in space Indian Institute of Sciences (IISc) 4 Effect of metabolic supplements on muscle regeneration under microgravity Institute of Stem Cell Science and Regenerative Medicine (InStem), DBT 5 Analyzing Human Interaction with Electronic Displays in Microgravity Indian Institute of Sciences (IISc) 6 Comparative growth and proteomics responses of cyanobacteria on urea and nitrate in microgravity International Centre for Genetic Engineering & Biotechnology (ICGEB); DBT 7 Impact of Microgravity on Growth and Yield Parameters in Food Crop Seeds Indian Institute of Space Science and Technology (IIST), Dept. of Space & College of Agriculture, Vellayani, Kerala Agricultural University These experiments will utilise available research facilities onboard ISS. Considering the safety driven operational philosophy as well as other mission constraints of human spaceflight missions, these shortlisted microgravity experiments are undergoing stringent evaluations and reviews on ground before launch. The experience gained through this effort in implementation of these experiments will nurture a microgravity research ecosystem in the country resulting in induction of advanced microgravity experiments in various disciplines in Indian Space Programme.",
         "entities": [
+            {
+                "name": "Bharatiya Antariksh Station",
+                "type": "MISSION",
+                "original_name": "Bharatiya Antariksh Station",
+                "confidence": 1.0,
+                "matched_by": "ontology",
+                "resolved": false
+            },
             {
                 "name": "Gaganyaan",
                 "type": "MISSION",
@@ -3095,15 +3084,7 @@
                 "type": "ORGANIZATION",
                 "original_name": "ISRO",
                 "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
-            },
-            {
-                "name": "Bharatiya Antariksh Station",
-                "type": "ORGANIZATION",
-                "original_name": "Bharatiya Antariksh Station",
-                "confidence": 0.5,
-                "matched_by": "unknown",
+                "matched_by": "alias",
                 "resolved": false
             },
             {
@@ -3147,14 +3128,6 @@
                 "resolved": false
             },
             {
-                "name": "India",
-                "type": "COUNTRY",
-                "original_name": "India",
-                "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
-            },
-            {
                 "name": "Gaganyaan Programme",
                 "type": "PROGRAM",
                 "original_name": "Gaganyaan Programme",
@@ -3174,14 +3147,6 @@
                 "name": "Human Spaceflight",
                 "type": "TECHNOLOGY",
                 "original_name": "Human Spaceflight",
-                "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
-            },
-            {
-                "name": "Navigation",
-                "type": "TECHNOLOGY",
-                "original_name": "Navigation",
                 "confidence": 1.0,
                 "matched_by": "ontology",
                 "resolved": false
@@ -3235,6 +3200,14 @@
                 "resolved": false
             },
             {
+                "name": "India",
+                "type": "COUNTRY",
+                "original_name": "India",
+                "confidence": 1.0,
+                "matched_by": "ontology",
+                "resolved": false
+            },
+            {
                 "name": "June,2023",
                 "type": "LOCATION",
                 "original_name": "June,2023",
@@ -3246,7 +3219,6 @@
         "launch_vehicles": [],
         "organizations": [
             "ISRO",
-            "Bharatiya Antariksh Station",
             "Indian Microgravity Research Portfolio",
             "the International Space Station",
             "LEO",
@@ -3273,7 +3245,7 @@
                 "type": "ORGANIZATION",
                 "original_name": "ISRO",
                 "confidence": 1.0,
-                "matched_by": "ontology",
+                "matched_by": "alias",
                 "resolved": false
             },
             {
@@ -3317,19 +3289,19 @@
                 "resolved": false
             },
             {
-                "name": "Sriharikota",
-                "type": "CITY",
-                "original_name": "Sriharikota",
-                "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
-            },
-            {
                 "name": "Drogue",
                 "type": "PERSON",
                 "original_name": "Drogue",
                 "confidence": 0.5,
                 "matched_by": "unknown",
+                "resolved": false
+            },
+            {
+                "name": "Sriharikota",
+                "type": "CITY",
+                "original_name": "Sriharikota",
+                "confidence": 1.0,
+                "matched_by": "ontology",
                 "resolved": false
             }
         ],
@@ -3360,7 +3332,7 @@
                 "type": "ORGANIZATION",
                 "original_name": "ISRO",
                 "confidence": 1.0,
-                "matched_by": "ontology",
+                "matched_by": "alias",
                 "resolved": false
             },
             {
@@ -3372,9 +3344,17 @@
                 "resolved": false
             },
             {
-                "name": "Propulsion Complex",
+                "name": "ISRO Propulsion Complex",
                 "type": "FACILITY",
-                "original_name": "Propulsion Complex",
+                "original_name": "ISRO Propulsion Complex",
+                "confidence": 1.0,
+                "matched_by": "ontology",
+                "resolved": false
+            },
+            {
+                "name": "Liquid Propulsion Systems Centre",
+                "type": "CENTRE",
+                "original_name": "Liquid Propulsion Systems Centre",
                 "confidence": 1.0,
                 "matched_by": "ontology",
                 "resolved": false
@@ -3383,6 +3363,14 @@
                 "name": "LVM3",
                 "type": "LAUNCH_VEHICLE",
                 "original_name": "LVM3",
+                "confidence": 1.0,
+                "matched_by": "ontology",
+                "resolved": false
+            },
+            {
+                "name": "Cryogenic Engine",
+                "type": "TECHNOLOGY",
+                "original_name": "Cryogenic Engine",
                 "confidence": 1.0,
                 "matched_by": "ontology",
                 "resolved": false
@@ -3399,14 +3387,6 @@
                 "name": "Mahendragiri",
                 "type": "CITY",
                 "original_name": "Mahendragiri",
-                "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
-            },
-            {
-                "name": "Cryogenic Engine",
-                "type": "TECHNOLOGY",
-                "original_name": "Cryogenic Engine",
                 "confidence": 1.0,
                 "matched_by": "ontology",
                 "resolved": false
@@ -3476,9 +3456,9 @@
                 "resolved": false
             },
             {
-                "name": "India",
-                "type": "COUNTRY",
-                "original_name": "India",
+                "name": "Geosynchronous Transfer Orbit",
+                "type": "CELESTIAL_BODY",
+                "original_name": "Geosynchronous Transfer Orbit",
                 "confidence": 1.0,
                 "matched_by": "ontology",
                 "resolved": false
@@ -3500,19 +3480,11 @@
                 "resolved": false
             },
             {
-                "name": "Transfer Orbit",
-                "type": "CELESTIAL_BODY",
-                "original_name": "Transfer Orbit",
+                "name": "India",
+                "type": "COUNTRY",
+                "original_name": "India",
                 "confidence": 1.0,
                 "matched_by": "ontology",
-                "resolved": false
-            },
-            {
-                "name": "Geosynchronous Transfer Orbit",
-                "type": "PERSON",
-                "original_name": "Geosynchronous Transfer Orbit",
-                "confidence": 0.5,
-                "matched_by": "unknown",
                 "resolved": false
             }
         ],
@@ -3553,7 +3525,7 @@
                 "type": "ORGANIZATION",
                 "original_name": "ISRO",
                 "confidence": 1.0,
-                "matched_by": "ontology",
+                "matched_by": "alias",
                 "resolved": false
             },
             {
@@ -3629,27 +3601,19 @@
                 "resolved": false
             },
             {
+                "name": "Geosynchronous Transfer Orbit",
+                "type": "CELESTIAL_BODY",
+                "original_name": "Geosynchronous Transfer Orbit",
+                "confidence": 1.0,
+                "matched_by": "ontology",
+                "resolved": false
+            },
+            {
                 "name": "Low Earth Orbit",
                 "type": "CELESTIAL_BODY",
                 "original_name": "Low Earth Orbit",
                 "confidence": 1.0,
                 "matched_by": "ontology",
-                "resolved": false
-            },
-            {
-                "name": "Transfer Orbit",
-                "type": "CELESTIAL_BODY",
-                "original_name": "Transfer Orbit",
-                "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
-            },
-            {
-                "name": "Geosynchronous Transfer Orbit",
-                "type": "PERSON",
-                "original_name": "Geosynchronous Transfer Orbit",
-                "confidence": 0.5,
-                "matched_by": "unknown",
                 "resolved": false
             },
             {
@@ -3691,11 +3655,19 @@
                 "resolved": false
             },
             {
+                "name": "CARE",
+                "type": "MISSION",
+                "original_name": "CARE",
+                "confidence": 1.0,
+                "matched_by": "ontology",
+                "resolved": false
+            },
+            {
                 "name": "ISRO",
                 "type": "ORGANIZATION",
                 "original_name": "ISRO",
                 "confidence": 1.0,
-                "matched_by": "ontology",
+                "matched_by": "alias",
                 "resolved": false
             },
             {
@@ -3731,14 +3703,6 @@
                 "resolved": false
             },
             {
-                "name": "LVM3-X",
-                "type": "ORGANIZATION",
-                "original_name": "LVM3-X",
-                "confidence": 0.5,
-                "matched_by": "unknown",
-                "resolved": false
-            },
-            {
                 "name": "LVM3-X/CARE",
                 "type": "ORGANIZATION",
                 "original_name": "LVM3-X/CARE",
@@ -3755,12 +3719,12 @@
                 "resolved": false
             },
             {
-                "name": "SDSC SHAR",
+                "name": "Satish Dhawan Space Centre",
                 "type": "SPACEPORT",
                 "original_name": "SDSC-SHAR",
                 "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
+                "matched_by": "alias",
+                "resolved": true
             },
             {
                 "name": "un",
@@ -3776,6 +3740,14 @@
                 "original_name": "LVM3",
                 "confidence": 1.0,
                 "matched_by": "ontology",
+                "resolved": false
+            },
+            {
+                "name": "LVM3-X",
+                "type": "ROCKET_VARIANT",
+                "original_name": "LVM3-X",
+                "confidence": 1.0,
+                "matched_by": "rocket_variant",
                 "resolved": false
             },
             {
@@ -3828,14 +3800,14 @@
             }
         ],
         "launch_vehicles": [
-            "LVM3"
+            "LVM3",
+            "LVM3-X"
         ],
         "organizations": [
             "ISRO",
             "Human Spaceflight Project",
             "the Indian Coast Guard",
             "CES",
-            "LVM3-X",
             "LVM3-X/CARE",
             "SDSC",
             "un"
@@ -3861,7 +3833,7 @@
                 "type": "ORGANIZATION",
                 "original_name": "ISRO",
                 "confidence": 1.0,
-                "matched_by": "ontology",
+                "matched_by": "alias",
                 "resolved": false
             },
             {
@@ -3869,7 +3841,7 @@
                 "type": "ORGANIZATION",
                 "original_name": "NASA",
                 "confidence": 1.0,
-                "matched_by": "ontology",
+                "matched_by": "alias",
                 "resolved": false
             },
             {
@@ -3913,20 +3885,12 @@
                 "resolved": false
             },
             {
-                "name": "SDSC SHAR",
+                "name": "Satish Dhawan Space Centre",
                 "type": "SPACEPORT",
                 "original_name": "SDSC SHAR",
                 "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
-            },
-            {
-                "name": "Satish Dhawan Space Centre",
-                "type": "SPACEPORT",
-                "original_name": "Satish Dhawan Space Centre",
-                "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
+                "matched_by": "alias",
+                "resolved": true
             },
             {
                 "name": "GSLV",
@@ -3969,14 +3933,6 @@
                 "resolved": false
             },
             {
-                "name": "Sriharikota",
-                "type": "CITY",
-                "original_name": "Sriharikota",
-                "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
-            },
-            {
                 "name": "Earth",
                 "type": "CELESTIAL_BODY",
                 "original_name": "Earth",
@@ -3998,6 +3954,14 @@
                 "original_name": "antenna",
                 "confidence": 0.5,
                 "matched_by": "unknown",
+                "resolved": false
+            },
+            {
+                "name": "Sriharikota",
+                "type": "CITY",
+                "original_name": "Sriharikota",
+                "confidence": 1.0,
+                "matched_by": "ontology",
                 "resolved": false
             }
         ],
@@ -4035,7 +3999,7 @@
                 "type": "ORGANIZATION",
                 "original_name": "ISRO",
                 "confidence": 1.0,
-                "matched_by": "ontology",
+                "matched_by": "alias",
                 "resolved": false
             },
             {
@@ -4043,7 +4007,7 @@
                 "type": "ORGANIZATION",
                 "original_name": "NASA",
                 "confidence": 1.0,
-                "matched_by": "ontology",
+                "matched_by": "alias",
                 "resolved": false
             },
             {
@@ -4121,14 +4085,6 @@
                 "resolved": false
             },
             {
-                "name": "EOS",
-                "type": "MISSION",
-                "original_name": "EOS",
-                "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
-            },
-            {
                 "name": "AstroSat",
                 "type": "SATELLITE",
                 "original_name": "AstroSat",
@@ -4138,7 +4094,7 @@
             },
             {
                 "name": "Mangalyaan",
-                "type": "SATELLITE",
+                "type": "MISSION",
                 "original_name": "Mars Orbiter Mission",
                 "confidence": 1.0,
                 "matched_by": "alias",
@@ -4149,16 +4105,16 @@
                 "type": "ORGANIZATION",
                 "original_name": "ISRO",
                 "confidence": 1.0,
-                "matched_by": "ontology",
+                "matched_by": "alias",
                 "resolved": false
             },
             {
                 "name": "NSIL",
                 "type": "ORGANIZATION",
-                "original_name": "NSIL",
+                "original_name": "NewSpace India Limited",
                 "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
+                "matched_by": "alias",
+                "resolved": true
             },
             {
                 "name": "Kestrel Initial Technology",
@@ -4193,6 +4149,14 @@
                 "resolved": false
             },
             {
+                "name": "EOS",
+                "type": "ORGANIZATION",
+                "original_name": "EOS",
+                "confidence": 0.5,
+                "matched_by": "unknown",
+                "resolved": false
+            },
+            {
                 "name": "KID",
                 "type": "ORGANIZATION",
                 "original_name": "KID",
@@ -4206,6 +4170,14 @@
                 "original_name": "PSLV",
                 "confidence": 1.0,
                 "matched_by": "ontology",
+                "resolved": false
+            },
+            {
+                "name": "PSLV-DL",
+                "type": "LAUNCH_VEHICLE",
+                "original_name": "PSLV-DL",
+                "confidence": 1.0,
+                "matched_by": "rocket_variant",
                 "resolved": false
             },
             {
@@ -4233,17 +4205,9 @@
                 "resolved": false
             },
             {
-                "name": "India",
-                "type": "COUNTRY",
-                "original_name": "India",
-                "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
-            },
-            {
-                "name": "Sriharikota",
-                "type": "CITY",
-                "original_name": "Sriharikota",
+                "name": "PS3 Stage",
+                "type": "TECHNOLOGY",
+                "original_name": "PS3 Stage",
                 "confidence": 1.0,
                 "matched_by": "ontology",
                 "resolved": false
@@ -4271,10 +4235,19 @@
                 "confidence": 0.5,
                 "matched_by": "unknown",
                 "resolved": false
+            },
+            {
+                "name": "Sriharikota",
+                "type": "CITY",
+                "original_name": "Sriharikota",
+                "confidence": 1.0,
+                "matched_by": "ontology",
+                "resolved": false
             }
         ],
         "launch_vehicles": [
             "PSLV",
+            "PSLV-DL",
             "PSLV-C62"
         ],
         "organizations": [
@@ -4282,6 +4255,7 @@
             "NSIL",
             "Kestrel Initial Technology",
             "domestic & international",
+            "EOS",
             "KID"
         ],
         "url": "https://www.isro.gov.in/Mission_PSLV_C62.html",
@@ -4305,7 +4279,7 @@
                 "type": "ORGANIZATION",
                 "original_name": "ISRO",
                 "confidence": 1.0,
-                "matched_by": "ontology",
+                "matched_by": "alias",
                 "resolved": false
             },
             {
@@ -4313,7 +4287,7 @@
                 "type": "ORGANIZATION",
                 "original_name": "NSIL",
                 "confidence": 1.0,
-                "matched_by": "ontology",
+                "matched_by": "alias",
                 "resolved": false
             },
             {
@@ -4321,7 +4295,7 @@
                 "type": "ORGANIZATION",
                 "original_name": "IN-SPACe",
                 "confidence": 1.0,
-                "matched_by": "ontology",
+                "matched_by": "alias",
                 "resolved": false
             },
             {
@@ -4342,10 +4316,10 @@
             },
             {
                 "name": "Space Applications Centre",
-                "type": "ORGANIZATION",
+                "type": "CENTRE",
                 "original_name": "Space Applications Centre",
-                "confidence": 0.5,
-                "matched_by": "unknown",
+                "confidence": 1.0,
+                "matched_by": "ontology",
                 "resolved": false
             },
             {
@@ -4365,22 +4339,6 @@
                 "resolved": false
             },
             {
-                "name": "SAC",
-                "type": "CENTRE",
-                "original_name": "SAC",
-                "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
-            },
-            {
-                "name": "India",
-                "type": "COUNTRY",
-                "original_name": "India",
-                "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
-            },
-            {
                 "name": "Ahmedabad",
                 "type": "CITY",
                 "original_name": "Ahmedabad",
@@ -4396,7 +4354,6 @@
             "IN-SPACe",
             "Indian Non-Governmental Entities",
             "NISAR science & project",
-            "Space Applications Centre",
             "ISRO Headquarters",
             "NISAR Awareness"
         ],
@@ -4421,7 +4378,7 @@
                 "type": "ORGANIZATION",
                 "original_name": "NASA",
                 "confidence": 1.0,
-                "matched_by": "ontology",
+                "matched_by": "alias",
                 "resolved": false
             },
             {
@@ -4429,7 +4386,7 @@
                 "type": "ORGANIZATION",
                 "original_name": "ISRO",
                 "confidence": 1.0,
-                "matched_by": "ontology",
+                "matched_by": "alias",
                 "resolved": false
             },
             {
@@ -4505,14 +4462,6 @@
                 "resolved": false
             },
             {
-                "name": "ISTRAC",
-                "type": "CENTRE",
-                "original_name": "ISTRAC",
-                "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
-            },
-            {
                 "name": "ISRO Telemetry Tracking and Command Network",
                 "type": "FACILITY",
                 "original_name": "ISRO Telemetry Tracking and Command Network",
@@ -4532,30 +4481,6 @@
                 "name": "Synthetic Aperture Radar",
                 "type": "TECHNOLOGY",
                 "original_name": "Synthetic Aperture Radar",
-                "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
-            },
-            {
-                "name": "India",
-                "type": "COUNTRY",
-                "original_name": "India",
-                "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
-            },
-            {
-                "name": "Gujarat",
-                "type": "STATE",
-                "original_name": "Gujarat",
-                "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
-            },
-            {
-                "name": "Ahmedabad",
-                "type": "CITY",
-                "original_name": "Ahmedabad",
                 "confidence": 1.0,
                 "matched_by": "ontology",
                 "resolved": false
@@ -4607,6 +4532,30 @@
                 "confidence": 0.5,
                 "matched_by": "unknown",
                 "resolved": false
+            },
+            {
+                "name": "Ahmedabad",
+                "type": "CITY",
+                "original_name": "Ahmedabad",
+                "confidence": 1.0,
+                "matched_by": "ontology",
+                "resolved": false
+            },
+            {
+                "name": "Gujarat",
+                "type": "STATE",
+                "original_name": "Gujarat",
+                "confidence": 1.0,
+                "matched_by": "ontology",
+                "resolved": false
+            },
+            {
+                "name": "India",
+                "type": "COUNTRY",
+                "original_name": "India",
+                "confidence": 1.0,
+                "matched_by": "ontology",
+                "resolved": false
             }
         ],
         "launch_vehicles": [
@@ -4645,7 +4594,7 @@
                 "type": "ORGANIZATION",
                 "original_name": "ISRO",
                 "confidence": 1.0,
-                "matched_by": "ontology",
+                "matched_by": "alias",
                 "resolved": false
             },
             {
@@ -4681,22 +4630,6 @@
                 "resolved": false
             },
             {
-                "name": "India",
-                "type": "COUNTRY",
-                "original_name": "India",
-                "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
-            },
-            {
-                "name": "New Delhi",
-                "type": "CITY",
-                "original_name": "New Delhi",
-                "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
-            },
-            {
                 "name": "Gaganyatris",
                 "type": "PERSON",
                 "original_name": "Gaganyatris",
@@ -4727,6 +4660,22 @@
                 "confidence": 0.5,
                 "matched_by": "unknown",
                 "resolved": false
+            },
+            {
+                "name": "India",
+                "type": "COUNTRY",
+                "original_name": "India",
+                "confidence": 1.0,
+                "matched_by": "ontology",
+                "resolved": false
+            },
+            {
+                "name": "New Delhi",
+                "type": "CITY",
+                "original_name": "New Delhi",
+                "confidence": 1.0,
+                "matched_by": "ontology",
+                "resolved": false
             }
         ],
         "launch_vehicles": [],
@@ -4754,11 +4703,19 @@
                 "resolved": false
             },
             {
+                "name": "National Remote Sensing Centre",
+                "type": "CENTRE",
+                "original_name": "National Remote Sensing Centre",
+                "confidence": 1.0,
+                "matched_by": "ontology",
+                "resolved": false
+            },
+            {
                 "name": "ISRO",
                 "type": "ORGANIZATION",
                 "original_name": "ISRO",
                 "confidence": 1.0,
-                "matched_by": "ontology",
+                "matched_by": "alias",
                 "resolved": false
             },
             {
@@ -4766,21 +4723,13 @@
                 "type": "ORGANIZATION",
                 "original_name": "NASA",
                 "confidence": 1.0,
-                "matched_by": "ontology",
+                "matched_by": "alias",
                 "resolved": false
             },
             {
                 "name": "NASA-ISRO Synthetic Aperture Radar",
                 "type": "ORGANIZATION",
                 "original_name": "NASA-ISRO Synthetic Aperture Radar",
-                "confidence": 0.5,
-                "matched_by": "unknown",
-                "resolved": false
-            },
-            {
-                "name": "National Remote Sensing Centre",
-                "type": "ORGANIZATION",
-                "original_name": "National Remote Sensing Centre",
                 "confidence": 0.5,
                 "matched_by": "unknown",
                 "resolved": false
@@ -4795,16 +4744,8 @@
             },
             {
                 "name": "Space Applications Centre",
-                "type": "ORGANIZATION",
-                "original_name": "Space Applications Centre",
-                "confidence": 0.5,
-                "matched_by": "unknown",
-                "resolved": false
-            },
-            {
-                "name": "SAC",
                 "type": "CENTRE",
-                "original_name": "SAC",
+                "original_name": "Space Applications Centre",
                 "confidence": 1.0,
                 "matched_by": "ontology",
                 "resolved": false
@@ -4831,9 +4772,7 @@
             "ISRO",
             "NASA",
             "NASA-ISRO Synthetic Aperture Radar",
-            "National Remote Sensing Centre",
-            "Soil Moisture Products",
-            "Space Applications Centre"
+            "Soil Moisture Products"
         ],
         "url": "https://www.isro.gov.in/NisarData_soil_moisture_products.html",
         "source": "ISRO"
@@ -4844,9 +4783,9 @@
         "content": "Ocean Colour Monitor-3(OCM-3) Satellite Imagery and Vegetation  Dynamics: Unveiling Global Patterns Ocean Colour Monitor-3(OCM-3) Satellite Imagery and Vegetation  Dynamics: Unveiling Global Patterns Home / Ocean Colour Monitor-3(OCM-3) Satellite Imagery and Vegetation  Dynamics: Unveiling Global Patterns April 03, 2025 Satellites are indispensable in capturing global-scale vegetation patterns, enabling scientists to assess how vegetation growth shifts in response to climate dynamics, environmental changes, and human activities. Instruments such as NASA’s MODIS on Terra and the ISROs EOS-06 OCM-3 payload measure energy across visible and near-infrared regions to derive the Normalized Difference Vegetation Index (NDVI). This index is a crucial tool for understanding how photosynthesis contributes to sequestering carbon dioxide from the atmosphere into biomass and soils, forming a key component of studies on the carbon cycle. Vegetation maps generated from these satellite observations depict a scale of “greenness” that reflects the vegetation density, type, and overall health. Regions with dense, vigorous growth are rendered in dark green, while areas with sparse vegetation appear in lighter, tan hues, with gray representing zones lacking sufficient data. This colour-coded representation illustrates the year-round lushness near the equator—where conditions such as temperature, rainfall, and sunlight are optimal—and highlights seasonal fluctuations in vegetation as one moves toward the poles. The Animation showing the Monthly Global NDVI derived from EOS-06 OCM data during April 2023 – Feb 2025. Advanced processing techniques have further enhanced the value of these remote sensing observations. For example, the EOS-06 OCM-3 system operates in Global Area Coverage mode, gathering data at regular cycles and leveraging GPU parallel processing to manage the immense data volume. By extracting specific spectral bands from Level-1C radiance products, stacking the pixel data, and applying the Maximum Value Composite method, high-resolution NDVI mosaics are generated efficiently. These products have been validated against established MODIS composites, ensuring that temporal variations and spatial patterns in vegetation are reliably captured. Integrating these sophisticated NDVI products into visualization portals supports various applications—from academic research to practical resource management. Farmers and forest managers use detailed vegetation maps to monitor the health of croplands and forests. At the same time, environmental scientists rely on them to analyze broader ecological trends and carbon cycling dynamics. This synergy of advanced satellite technology, high-speed data processing, and detailed mapping deepens our understanding of Earth’s ecosystems. It facilitates more informed decisions in managing natural resources and mitigating climate change impacts.",
         "entities": [
             {
-                "name": "EOS",
-                "type": "MISSION",
-                "original_name": "EOS",
+                "name": "EOS-06",
+                "type": "SATELLITE",
+                "original_name": "EOS-06",
                 "confidence": 1.0,
                 "matched_by": "ontology",
                 "resolved": false
@@ -4856,7 +4795,7 @@
                 "type": "ORGANIZATION",
                 "original_name": "NASA",
                 "confidence": 1.0,
-                "matched_by": "ontology",
+                "matched_by": "alias",
                 "resolved": false
             },
             {
@@ -4892,14 +4831,6 @@
                 "resolved": false
             },
             {
-                "name": "EOS-06",
-                "type": "SATELLITE",
-                "original_name": "EOS-06",
-                "confidence": 0.5,
-                "matched_by": "unknown",
-                "resolved": false
-            },
-            {
                 "name": "Global Area Coverage",
                 "type": "LOCATION",
                 "original_name": "Global Area Coverage",
@@ -4929,16 +4860,16 @@
                 "type": "ORGANIZATION",
                 "original_name": "ESA",
                 "confidence": 1.0,
-                "matched_by": "ontology",
+                "matched_by": "alias",
                 "resolved": false
             },
             {
                 "name": "NSIL",
                 "type": "ORGANIZATION",
-                "original_name": "NSIL",
+                "original_name": "NewSpace India Limited",
                 "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
+                "matched_by": "alias",
+                "resolved": true
             },
             {
                 "name": "First Launch Pad",
@@ -5021,11 +4952,11 @@
                 "resolved": false
             },
             {
-                "name": "India",
-                "type": "COUNTRY",
-                "original_name": "India",
-                "confidence": 1.0,
-                "matched_by": "ontology",
+                "name": "Lift",
+                "type": "PERSON",
+                "original_name": "Lift",
+                "confidence": 0.5,
+                "matched_by": "unknown",
                 "resolved": false
             },
             {
@@ -5034,14 +4965,6 @@
                 "original_name": "Sriharikota",
                 "confidence": 1.0,
                 "matched_by": "ontology",
-                "resolved": false
-            },
-            {
-                "name": "Lift",
-                "type": "PERSON",
-                "original_name": "Lift",
-                "confidence": 0.5,
-                "matched_by": "unknown",
                 "resolved": false
             }
         ],
@@ -5116,7 +5039,7 @@
                 "type": "ORGANIZATION",
                 "original_name": "ISRO",
                 "confidence": 1.0,
-                "matched_by": "ontology",
+                "matched_by": "alias",
                 "resolved": false
             },
             {
@@ -5176,14 +5099,6 @@
                 "resolved": false
             },
             {
-                "name": "India",
-                "type": "COUNTRY",
-                "original_name": "India",
-                "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
-            },
-            {
                 "name": "Earth",
                 "type": "CELESTIAL_BODY",
                 "original_name": "Earth",
@@ -5213,6 +5128,14 @@
                 "original_name": "Cyanobacteria",
                 "confidence": 0.5,
                 "matched_by": "unknown",
+                "resolved": false
+            },
+            {
+                "name": "India",
+                "type": "COUNTRY",
+                "original_name": "India",
+                "confidence": 1.0,
+                "matched_by": "ontology",
                 "resolved": false
             }
         ],
@@ -5247,7 +5170,7 @@
                 "type": "ORGANIZATION",
                 "original_name": "ISRO",
                 "confidence": 1.0,
-                "matched_by": "ontology",
+                "matched_by": "alias",
                 "resolved": false
             },
             {
@@ -5323,12 +5246,12 @@
                 "resolved": false
             },
             {
-                "name": "URSC",
+                "name": "U R Rao Satellite Centre",
                 "type": "CENTRE",
                 "original_name": "URSC",
                 "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
+                "matched_by": "alias",
+                "resolved": true
             },
             {
                 "name": "PSLV",
@@ -5387,22 +5310,6 @@
                 "resolved": false
             },
             {
-                "name": "India",
-                "type": "COUNTRY",
-                "original_name": "India",
-                "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
-            },
-            {
-                "name": "Bengaluru",
-                "type": "CITY",
-                "original_name": "Bengaluru",
-                "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
-            },
-            {
                 "name": "Chromosphere",
                 "type": "CELESTIAL_BODY",
                 "original_name": "Chromosphere",
@@ -5414,14 +5321,6 @@
                 "name": "Earth",
                 "type": "CELESTIAL_BODY",
                 "original_name": "Earth",
-                "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
-            },
-            {
-                "name": "Halo Orbit",
-                "type": "CELESTIAL_BODY",
-                "original_name": "Halo Orbit",
                 "confidence": 1.0,
                 "matched_by": "ontology",
                 "resolved": false
@@ -5448,6 +5347,22 @@
                 "original_name": "NUV",
                 "confidence": 0.5,
                 "matched_by": "unknown",
+                "resolved": false
+            },
+            {
+                "name": "Bengaluru",
+                "type": "CITY",
+                "original_name": "Bengaluru",
+                "confidence": 1.0,
+                "matched_by": "ontology",
+                "resolved": false
+            },
+            {
+                "name": "India",
+                "type": "COUNTRY",
+                "original_name": "India",
+                "confidence": 1.0,
+                "matched_by": "ontology",
                 "resolved": false
             }
         ],
@@ -5588,7 +5503,7 @@
                 "type": "ORGANIZATION",
                 "original_name": "ISRO",
                 "confidence": 1.0,
-                "matched_by": "ontology",
+                "matched_by": "alias",
                 "resolved": false
             },
             {
@@ -5656,14 +5571,6 @@
                 "resolved": false
             },
             {
-                "name": "Halo Orbit",
-                "type": "CELESTIAL_BODY",
-                "original_name": "Halo Orbit",
-                "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
-            },
-            {
                 "name": "Photosphere",
                 "type": "CELESTIAL_BODY",
                 "original_name": "Photosphere",
@@ -5692,6 +5599,14 @@
                 "name": "ISRO",
                 "type": "ORGANIZATION",
                 "original_name": "ISRO",
+                "confidence": 1.0,
+                "matched_by": "alias",
+                "resolved": false
+            },
+            {
+                "name": "Department of Space",
+                "type": "ORGANIZATION",
+                "original_name": "Department of Space",
                 "confidence": 1.0,
                 "matched_by": "ontology",
                 "resolved": false
@@ -5729,12 +5644,12 @@
                 "resolved": false
             },
             {
-                "name": "HSFC",
+                "name": "Human Space Flight Centre",
                 "type": "CENTRE",
                 "original_name": "HSFC",
                 "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
+                "matched_by": "alias",
+                "resolved": true
             },
             {
                 "name": "Human Spaceflight Programme",
@@ -5756,14 +5671,6 @@
                 "name": "Human Spaceflight",
                 "type": "TECHNOLOGY",
                 "original_name": "Human Spaceflight",
-                "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
-            },
-            {
-                "name": "Planetary Exploration",
-                "type": "TECHNOLOGY",
-                "original_name": "Planetary Exploration",
                 "confidence": 1.0,
                 "matched_by": "ontology",
                 "resolved": false
@@ -5828,6 +5735,7 @@
         "launch_vehicles": [],
         "organizations": [
             "ISRO",
+            "Department of Space",
             "Isolation Study '",
             "Ladakh August 1, 2025",
             "LEO",
@@ -5842,19 +5750,27 @@
         "content": "International Conference on Spacecraft Mission Operations - SMOPS-2026 International Conference on Spacecraft Mission Operations - SMOPS-2026 Home / International Conference on Spacecraft Mission Operations - SMOPS-2026 April 20, 2026 The second edition of the International Conference on “Spacecraft Mission\r\n                                        Operations: SMOPS-2026,” themed “Innovative Operations for Smart and Sustainable\r\n                                        Space Mission Management - Next Generation,” was held from 8-10 April, 2026 in\r\n                                        Bangalore, India. The conference, jointly organised by the Indian Space Research\r\n                                        Organisation (ISRO), the Astronautical Society of India (ASI) and the\r\n                                        International Academy of Astronautics (IAA), aimed to cover a wide range of\r\n                                        topics related to mission operations management, advanced mission design,\r\n                                        automation, large constellations management, human spaceflight mission, space\r\n                                        robotics, space policy, lunar and interplanetary exploration, cybersecurity in\r\n                                        space systems, artificial intelligence (AI), present and future trends in ground\r\n                                        station operations and so on, while addressing the futuristic techniques in both\r\n                                        upstream and downstream segments. An exclusive workshop for students and young\r\n                                        professionals was conducted on 10 th April, as part of SMOPS-2026. The conference was inaugurated on 8 th April 2026\r\n                                        by Shri A.\r\n                                        S. Kiran Kumar, former Chairman ISRO / Secretary, Department of Space (DOS), in\r\n                                        the presence of Dr. V. Narayanan, Chairman, ISRO / Secretary, DOS; Shri M.\r\n                                        Sankaran, Director, U R Rao Satellite Centre (URSC); Dr. Jean Michel Contant,\r\n                                        Secretary General, IAA; and Dr. A. K. Anil Kumar, Director, ISRO Telemetry\r\n                                        Tracking and Command Network (ISTRAC). The key themes featured in this conference, one-of-its-kind\r\n                                        in India, included Mission Operations: Turning Design into Achievement Navigating Current Milestones & Future Horizons Mission Design and Operations Mission Operations Strategy and Future Roadmap AI and Robotics Ground Segment and Constellations Human Space Program, Interplanetary Missions and Ground Segment Orbits of Opportunity: Contributing to the New Space Economy Human Space Program Challenges Robotic Mission Operations on ISS Space Domain Awareness: Concepts, Capabilities and Applications Leveraging Space Applications Apart from 120 oral and 88 poster presentations, leading\r\n                                        domain experts from European Space Agency (ESA); Centre National d'Études\r\n                                        Spatiales (CNES); German Aerospace Center Deutsches Zentrum für Luft- und\r\n                                        Raumfahrt (DLR); Institute of Biomedical Problems (IBMP), Russia; Institut\r\n                                        Kosmicheskih Issledovanyi (IKI), Russia; National Aeronautics and Space\r\n                                        Administration (NASA), USA; Japan Aerospace Exploration Agency (JAXA);\r\n                                        CelesTrak; European Organisation for the Exploitation of Meteorological\r\n                                        Satellites (EUMETSAT); European Telecommunications Satellite Organization\r\n                                        (Eutelsat); Delft University of Technology (TU Delft), Netherlands and\r\n                                        institutions from Canada, participated as keynote speakers and panellists. The conference served as a unique networking platform,\r\n                                        bringing together space agencies, start-ups, industry and academia to share\r\n                                        perspectives on state-of-the-art technologies and to address emerging challenges\r\n                                        in a rapidly evolving space landscape. The final day of the conference featured a workshop with\r\n                                        invited talks on topics such as robotic mission operations on the International\r\n                                        Space Station (ISS), Space Domain awareness, Space Applications, Human Space\r\n                                        missionsand astronaut training that witnessed overwhelming participation. During the inaugural address, Chairman ISRO emphasised the\r\n                                        critical role of meticulous planning and flawless execution of spacecraft\r\n                                        mission operations in ensuring the success of space missions. He reiterated the\r\n                                        need for the Indian space sector to proactively engage with global counterparts\r\n                                        in finding innovative solutions to the evolving challenges in the space sector. One of the central themes was navigating the ongoing and\r\n                                        upcoming challenges, from both technological and policy aspects, of increasing\r\n                                        complexity of diversified, distributed mission operational concepts, arising out\r\n                                        of disruptive technological innovation, advent of large constellations,\r\n                                        exacerbating space traffic congestion, and more ambitious human space\r\n                                        explorations\r\n                                        beyond the realm of Earth.The pivotal role of Artificial Intelligence (AI) and\r\n                                        Machine Learning (ML), in enabling more autonomous and efficient mission\r\n                                        operations with human-machine synergy were underscored across the sessions. ISTRAC, the hub of spacecraft operations for all Low Earth\r\n                                        Orbit and Deep Space missions, from Aryabhata satellite to NISAR, has several\r\n                                        landmark achievements to its credit, including the historic Mangalyaan mission,\r\n                                        thesoft landing of Chandrayaan-3, insertion of Aditya-L1 spacecraft in\r\n                                        Lagrangian Point around Sun and docking experiments in SpaDEx mission, took a\r\n                                        leading role in organising SMOPS-2026. In the backdrop of opening up of Indian\r\n                                        space sector and ISRO embarking on Human Space mission, SMOPS-2026 served as a\r\n                                        rich confluence of ideas across multiple disciplines, fostering collaboration,\r\n                                        cooperation, and partnerships amongst the global space community to chart a\r\n                                        safe, sustainable and smart roadmap for future space mission operations.",
         "entities": [
             {
-                "name": "ISRO",
+                "name": "Department of Space",
                 "type": "ORGANIZATION",
-                "original_name": "ISRO",
+                "original_name": "Department of Space",
                 "confidence": 1.0,
                 "matched_by": "ontology",
                 "resolved": false
             },
             {
-                "name": "Department of Space",
+                "name": "ISRO",
                 "type": "ORGANIZATION",
-                "original_name": "Department of Space",
-                "confidence": 0.5,
-                "matched_by": "unknown",
+                "original_name": "ISRO",
+                "confidence": 1.0,
+                "matched_by": "alias",
+                "resolved": false
+            },
+            {
+                "name": "ASI",
+                "type": "ORGANIZATION",
+                "original_name": "ASI",
+                "confidence": 1.0,
+                "matched_by": "ontology",
                 "resolved": false
             },
             {
@@ -5882,25 +5798,9 @@
                 "resolved": false
             },
             {
-                "name": "Chairman ISRO",
+                "name": "A. S. Kiran Kumar",
                 "type": "SCIENTIST",
-                "original_name": "Chairman ISRO",
-                "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
-            },
-            {
-                "name": "India",
-                "type": "COUNTRY",
-                "original_name": "India",
-                "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
-            },
-            {
-                "name": "Artificial Intelligence",
-                "type": "TECHNOLOGY",
-                "original_name": "Artificial Intelligence",
+                "original_name": "A. S. Kiran Kumar",
                 "confidence": 1.0,
                 "matched_by": "ontology",
                 "resolved": false
@@ -5928,12 +5828,21 @@
                 "confidence": 0.5,
                 "matched_by": "unknown",
                 "resolved": false
+            },
+            {
+                "name": "India",
+                "type": "COUNTRY",
+                "original_name": "India",
+                "confidence": 1.0,
+                "matched_by": "ontology",
+                "resolved": false
             }
         ],
         "launch_vehicles": [],
         "organizations": [
-            "ISRO",
             "Department of Space",
+            "ISRO",
+            "ASI",
             "DOS",
             "IAA",
             "SMOPS-2026"
@@ -5959,7 +5868,7 @@
                 "type": "ORGANIZATION",
                 "original_name": "ISRO",
                 "confidence": 1.0,
-                "matched_by": "ontology",
+                "matched_by": "alias",
                 "resolved": false
             },
             {
@@ -5976,14 +5885,6 @@
                 "original_name": "SDX",
                 "confidence": 0.5,
                 "matched_by": "unknown",
-                "resolved": false
-            },
-            {
-                "name": "Docking",
-                "type": "TECHNOLOGY",
-                "original_name": "Docking",
-                "confidence": 1.0,
-                "matched_by": "ontology",
                 "resolved": false
             }
         ],
@@ -6014,7 +5915,7 @@
                 "type": "ORGANIZATION",
                 "original_name": "ISRO",
                 "confidence": 1.0,
-                "matched_by": "ontology",
+                "matched_by": "alias",
                 "resolved": false
             },
             {
@@ -6147,7 +6048,7 @@
                 "type": "ORGANIZATION",
                 "original_name": "ISRO",
                 "confidence": 1.0,
-                "matched_by": "ontology",
+                "matched_by": "alias",
                 "resolved": false
             },
             {
@@ -6160,10 +6061,10 @@
             },
             {
                 "name": "ISRO Propulsion Complex",
-                "type": "ORGANIZATION",
+                "type": "FACILITY",
                 "original_name": "ISRO Propulsion Complex",
-                "confidence": 0.5,
-                "matched_by": "unknown",
+                "confidence": 1.0,
+                "matched_by": "ontology",
                 "resolved": false
             },
             {
@@ -6183,14 +6084,6 @@
                 "resolved": false
             },
             {
-                "name": "IPRC",
-                "type": "CENTRE",
-                "original_name": "IPRC",
-                "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
-            },
-            {
                 "name": "LAM",
                 "type": "ORGANIZATION",
                 "original_name": "LAM",
@@ -6207,20 +6100,12 @@
                 "resolved": false
             },
             {
-                "name": "LPSC",
+                "name": "Liquid Propulsion Systems Centre",
                 "type": "CENTRE",
                 "original_name": "LPSC",
                 "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
-            },
-            {
-                "name": "Propulsion Complex",
-                "type": "FACILITY",
-                "original_name": "Propulsion Complex",
-                "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
+                "matched_by": "alias",
+                "resolved": true
             },
             {
                 "name": "Orbital Module",
@@ -6239,19 +6124,19 @@
                 "resolved": false
             },
             {
-                "name": "Mahendragiri",
-                "type": "CITY",
-                "original_name": "Mahendragiri",
-                "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
-            },
-            {
                 "name": "100s",
                 "type": "PERSON",
                 "original_name": "100s",
                 "confidence": 0.5,
                 "matched_by": "unknown",
+                "resolved": false
+            },
+            {
+                "name": "Mahendragiri",
+                "type": "CITY",
+                "original_name": "Mahendragiri",
+                "confidence": 1.0,
+                "matched_by": "ontology",
                 "resolved": false
             }
         ],
@@ -6259,7 +6144,6 @@
         "organizations": [
             "ISRO",
             "Gaganyaan Orbital Module",
-            "ISRO Propulsion Complex",
             "Liquid Apogee Motor",
             "the Gaganyaan SMPS",
             "LAM",
@@ -6274,9 +6158,9 @@
         "content": "Indian Satellite data based analysis of the Dharali Flash Flood Indian Satellite data based analysis of the Dharali Flash Flood Home / Indian Satellite data based analysis of the Dharali Flash Flood August 07, 2025 A catastrophic flash flood triggered by intense rainfall caused debris-laden flows over Dharali and Harsil villages, in Uttarkashi district, Uttarakhand, on the 5th August 2025. The sudden deluge swept away homes, buildings, bridges, roads, and claimed human lives. National Remote Sensing Centre (NRSC) / ISRO carried out rapid assessment of the damage using very high-resolution satellite images of India’s Cartosat-2S satellites. The comparative analysis of satellite images of 07.08.2025 (post-event) and available cloud-free pre-event data (13.06.2024) revealed the extent and severity of the destruction. The salient findings include: Indications of flash flood, with widened stream channels, altered river morphology and damage to human lives & infrastructure. Fan-shaped deposit of sediment & debris at Dharali village (~20ha area, ~750m X ~450m), at the confluence of the Kheer Gad & Bhagirathi River. Partial / complete destruction and disappearance of several buildings in the flood-affected zone, likely submerged or swept away by the intense mud flow and debris. A number of buildings appear to be submerged with mud / debris, in Dharali village. The satellite images would help the ongoing search & rescue operations to reach out to stranded individuals and restore connectivity to the isolated region. The event highlights increasing vulnerability of Himalayan settlements to disasters. Scientific analysis is being carried out to ascertain the cause of the triggering event.",
         "entities": [
             {
-                "name": "Cartosat",
-                "type": "MISSION",
-                "original_name": "Cartosat",
+                "name": "National Remote Sensing Centre",
+                "type": "CENTRE",
+                "original_name": "National Remote Sensing Centre",
                 "confidence": 1.0,
                 "matched_by": "ontology",
                 "resolved": false
@@ -6286,15 +6170,7 @@
                 "type": "ORGANIZATION",
                 "original_name": "ISRO",
                 "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
-            },
-            {
-                "name": "National Remote Sensing Centre",
-                "type": "ORGANIZATION",
-                "original_name": "National Remote Sensing Centre",
-                "confidence": 0.5,
-                "matched_by": "unknown",
+                "matched_by": "alias",
                 "resolved": false
             },
             {
@@ -6314,14 +6190,6 @@
                 "resolved": false
             },
             {
-                "name": "NRSC",
-                "type": "CENTRE",
-                "original_name": "NRSC",
-                "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
-            },
-            {
                 "name": "Indian Satellite",
                 "type": "ORGANIZATION",
                 "original_name": "Indian Satellite",
@@ -6336,14 +6204,6 @@
                 "confidence": 0.9,
                 "matched_by": "fuzzy",
                 "resolved": true
-            },
-            {
-                "name": "India",
-                "type": "COUNTRY",
-                "original_name": "India",
-                "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
             },
             {
                 "name": "Dharali",
@@ -6370,6 +6230,14 @@
                 "resolved": false
             },
             {
+                "name": "India",
+                "type": "COUNTRY",
+                "original_name": "India",
+                "confidence": 1.0,
+                "matched_by": "ontology",
+                "resolved": false
+            },
+            {
                 "name": "Uttarakhand",
                 "type": "LOCATION",
                 "original_name": "Uttarakhand",
@@ -6389,7 +6257,6 @@
         "launch_vehicles": [],
         "organizations": [
             "ISRO",
-            "National Remote Sensing Centre",
             "search & rescue",
             "sediment & debris",
             "Indian Satellite"
@@ -6403,6 +6270,14 @@
         "content": "SpaDeX Mission SpaDeX Mission Home /SpaDeX Mission While making a maneuver to reach 225 m between satellites the drift was found to be more than expected, post non-visibility period.The planned docking for 9 th January 2025, is postponed. Satellites are safe SpaDeX Deployed! Successful separation of SpaDeX satellites marks another milestone in India's space journey. December 21, 2024 SpaDeX mission is a cost-effective technology demonstrator mission for the demonstration of in-space\r\n                    docking using two small spacecraft launched by PSLV. This technology is essential for India's space\r\n                    ambitions such as Indian on Moon, sample return from the Moon, the building and operation of\r\n                    Bharatiya Antariksh Station (BAS), etc. In-space docking technology is essential when multiple\r\n                    rocket launches are required to achieve common mission objectives. Through this mission, India is\r\n                    marching towards becoming the fourth country in the world to have space docking technology. Objectives: The primary objective of the SpaDeX mission is to develop and demonstrate the technology needed for\r\n                    rendezvous, docking, and undocking of two small spacecraft (SDX01, which is the Chaser, and SDX02,\r\n                    the Target, nominally) in a low-Earth circular orbit. Secondary objectives include: Demonstration of the transfer of electric power between the docked spacecraft, which is essential\r\n                      for future applications such as in-space robotics, Composite spacecraft control, and Payload operations after undocking. More Details SpaDeX Mission POEM-4 Payload Brochure PDF - 8.4 MB Launch Streaming Docking Event Programme Vehicle movement from PIF to MST time lapse video Integration Video Lift-off Video Onboard Video Gallery Mission Concept: The SpaDeX mission consists of two small spacecraft (about 220 kg each) to be launched by PSLV-C60,\r\n                    independently and simultaneously, into a 470 km circular orbit at 55° inclination, with a local time\r\n                    cycle of about 66 days. The demonstrated precision of the PSLV vehicle will be utilized to give a\r\n                    small relative velocity between the Target and Chaser spacecraft at the time of separation from the\r\n                    launch vehicle. This incremental velocity will allow the Target spacecraft to build a 10-20 km\r\n                    inter-satellite separation with respect to the Chaser within a day. At this point, the relative\r\n                    velocity between the Target will be compensated using the propulsion system of the Target\r\n                    spacecraft. At the end of this drift arrest maneuver, the Target and Chaser will be in the same orbit with\r\n                    identical velocity but separated by about 20 km, known as Far Rendezvous. With a similar strategy of\r\n                    introducing and then compensating for a small relative velocity between the two spacecraft, the\r\n                    Chaser will approach the Target with progressively reduced inter-satellite distances of 5 km, 1.5\r\n                    km, 500 m, 225 m, 15 m, and 3 m, ultimately leading to the docking of the two spacecraft. After\r\n                    successful docking and rigidization, electrical power transfer between the two satellites will be\r\n                    demonstrated before undocking and separation of the two satellites to start the operation of their\r\n                    respective payloads for the expected mission life of up to two years. New Technologies: The indigenous technologies developed for enabling this docking mission are as follows: Docking mechanism, A suite of four rendezvous and docking sensors, Power transfer technology, Indigenous novel autonomous rendezvous and docking strategy, Inter-satellite communication link (ISL) for autonomous communication between spacecraft,\r\n                      incorporated with inbuilt intelligence to know the states of the other spacecraft, GNSS-based Novel Relative Orbit Determination and Propagation (RODP) processor to determine the\r\n                      relative position and velocity of the other spacecraft, Simulation test beds for both hardware and software design validation and testing. In addition, SpaDeX, because of its small size and mass, is even more challenging due to the finer\r\n                    precision required for the rendezvous and docking maneuvers compared to docking two large\r\n                    spacecraft. This mission will be a forerunner for autonomous docking needed for future lunar\r\n                    missions like Chandrayaan-4 without the support of GNSS from Earth. Docking Mechanism: The docking mechanism is a low-impact docking system (approach velocity is in the order of 10 mm/s),\r\n                    androgynous (docking systems are identical for both spacecraft, Chaser & Target), and is a\r\n                    peripheral docking system (concept similar to the International Docking System Standard used by\r\n                    other agencies for human missions). The mechanism is smaller (450 mm) with one degree of freedom for\r\n                    extension and uses two motors compared to the IDSS (800 mm) on a hexapod with 24 motors. Multiple\r\n                    test beds were established to test the hardware and software simulation of the docking kinematics to\r\n                    verify and finalise the docking approach parameters. Sensor Suite: The additional sensor suite in this mission includes Laser Range Finder (LRF) and Corner Cube Retro\r\n                    Reflectors to work for a range of 6000 to 200 m for determining range (R). The set of Rendezvous\r\n                    Sensors (RS) is used in the range of 2000 to 250 m and from 250-10 m. RS provides the relative\r\n                    position (x, y, z) while LRF determines both relative position and velocity independently. Proximity and Docking Sensor (PDS) provides relative position and velocity over a range of 30 m to\r\n                    0.4 m. Laser Diodes (LDs) are used as targets for RS & PDS. A video monitor is used in the 20 to 0.5\r\n                    m range and it will capture the video of the docking event. A Mechanism Entry Sensor (MES) is used\r\n                    from 8 cm to 4 cm to detect chaser entry into the target spacecraft during docking. Multiple test\r\n                    beds were used to calibrate and validate these sensors before accepting them for the mission. ISL-Enabled GNSS-Based RODP: Like all ISRO satellites in low-Earth orbit, both the SpaDeX spacecraft carry a differential\r\n                    GNSS-based Satellite Positioning System (SPS), which provides PNT (Position, Navigation, and Timing)\r\n                    solutions for the satellites. In SpaDeX, a novel RODP processor is included in the SPS receiver,\r\n                    which allows accurate determination of the relative position and velocity of the Chaser and the\r\n                    Target. By subtracting the carrier phase measurements from the same GNSS satellites in both Chaser\r\n                    and Target SPS receivers, highly accurate relative states of the two satellites are determined. The\r\n                    VHF/UHF transceivers in both satellites aid this process by transferring the GNSS satellite\r\n                    measurements from one satellite to the other. Hardware and software test beds, including closed-loop\r\n                    verifications, were carried out to characterise the RODP performance. Rendezvous and Docking Algorithms: Up to an inter-satellite distance (ISD) of 5 km, standard orbit maintenance and attitude control\r\n                    algorithms employed in ISRO LEO spacecraft are used. As the spacecraft are in circular orbit, and\r\n                    any addition or reduction of velocity to the satellites will result in orbit change, the V-bar\r\n                    strategy using n-Pulse, Glideslope and PV guidance algorithms are employed to reduce the ISD between\r\n                    the satellites, hold at fixed ISDs to evaluate the sensors and software, and finally docking. These\r\n                    algorithms were converted into software for achieving the rendezvous and docking. These software\r\n                    solutions were tested and validated in multiple digital, hardware-in-loop, onboard-in-loop,\r\n                    software-in-loop, and robotic simulations. Post-Docking Activities: After the docking and undocking events, the spacecrafts will be separated and used for application\r\n                    missions. A High-Resolution Camera (HRC) with a 4.5 m IGFOV and a swath of 9.2 x 9.2 km (snapshot mode)\r\n                      and 9.2 x 4.6 km (video mode) from a 450 km altitude is mounted in SDX01. This is a miniature\r\n                      version of the surveillance camera developed by SAC/ISRO. A Miniature Multi-Spectral Payload (MMX) is mounted in SDX02, developed by SAC/ISRO. This has\r\n                      four VNIR bands (B1/B2/B3/B4) at 450 nm to 860 nm and a 25 m IGFOV with a swath of 100 km from a\r\n                      450 km altitude. The imaging is useful for natural resource monitoring and vegetation studies. A Radiation Monitor (RadMon) payload is mounted in SDX02, which will measure radiation dose\r\n                      encountered in space. This will help in generation of a radiation database for future Total\r\n                      Ionization Dosimeter (TID) and Single Event Upset (SEU) measurements for space science studies,\r\n                      with applications in human spaceflight. Spacecraft Development: The SpaDeX spacecraft were designed and realized by the UR Rao Satellite Centre (URSC) with the\r\n                    support of other ISRO centers (VSSC, LPSC, SAC, IISU, and LEOS). The spacecraft, in its orbital\r\n                    phase, will be controlled from ISTRAC using ISRO ground stations and other externally hired ground\r\n                    stations. The full integration and testing of the satellite were carried out at M/s Ananth\r\n                    Technologies, Bangalore, under the supervision of URSC. Presently, after completing all tests and\r\n                    clearances, the spacecraft has moved from URSC to SDSC and is undergoing preparations for launch. Click here for PSLV C60/SPADEX Image Gallery Click here for PSLV C60/SPADEX Video Gallery More Details SpaDeX Mission POEM-4 Payload Brochure PDF - 8.4 MB Launch Streaming Docking Event Programme Vehicle movement from PIF to MST time lapse video Integration Video Lift-off Video Onboard Video Gallery",
         "entities": [
             {
+                "name": "Bharatiya Antariksh Station",
+                "type": "MISSION",
+                "original_name": "Bharatiya Antariksh Station",
+                "confidence": 1.0,
+                "matched_by": "ontology",
+                "resolved": false
+            },
+            {
                 "name": "SpaDeX",
                 "type": "MISSION",
                 "original_name": "SpaDeX",
@@ -6415,15 +6290,7 @@
                 "type": "ORGANIZATION",
                 "original_name": "IN-SPACe",
                 "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
-            },
-            {
-                "name": "Bharatiya Antariksh Station",
-                "type": "ORGANIZATION",
-                "original_name": "Bharatiya Antariksh Station",
-                "confidence": 0.5,
-                "matched_by": "unknown",
+                "matched_by": "alias",
                 "resolved": false
             },
             {
@@ -6491,30 +6358,6 @@
                 "resolved": false
             },
             {
-                "name": "India",
-                "type": "COUNTRY",
-                "original_name": "India",
-                "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
-            },
-            {
-                "name": "Docking",
-                "type": "TECHNOLOGY",
-                "original_name": "Docking",
-                "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
-            },
-            {
-                "name": "Rendezvous",
-                "type": "TECHNOLOGY",
-                "original_name": "Rendezvous",
-                "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
-            },
-            {
                 "name": "Space Docking",
                 "type": "TECHNOLOGY",
                 "original_name": "Space Docking",
@@ -6553,6 +6396,14 @@
                 "confidence": 0.5,
                 "matched_by": "unknown",
                 "resolved": false
+            },
+            {
+                "name": "India",
+                "type": "COUNTRY",
+                "original_name": "India",
+                "confidence": 1.0,
+                "matched_by": "ontology",
+                "resolved": false
             }
         ],
         "launch_vehicles": [
@@ -6561,7 +6412,6 @@
         ],
         "organizations": [
             "IN-SPACe",
-            "Bharatiya Antariksh Station",
             "Integration Video Lift-",
             "MST",
             "PIF",
@@ -6581,7 +6431,7 @@
                 "type": "ORGANIZATION",
                 "original_name": "ISRO",
                 "confidence": 1.0,
-                "matched_by": "ontology",
+                "matched_by": "alias",
                 "resolved": false
             },
             {
@@ -6625,14 +6475,6 @@
                 "resolved": false
             },
             {
-                "name": "Bengaluru",
-                "type": "CITY",
-                "original_name": "Bengaluru",
-                "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
-            },
-            {
                 "name": "Human Spaceflight",
                 "type": "TECHNOLOGY",
                 "original_name": "Human Spaceflight",
@@ -6646,6 +6488,14 @@
                 "original_name": "Crew",
                 "confidence": 0.5,
                 "matched_by": "unknown",
+                "resolved": false
+            },
+            {
+                "name": "Bengaluru",
+                "type": "CITY",
+                "original_name": "Bengaluru",
+                "confidence": 1.0,
+                "matched_by": "ontology",
                 "resolved": false
             }
         ],
@@ -6679,15 +6529,7 @@
                 "type": "ORGANIZATION",
                 "original_name": "ISRO",
                 "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
-            },
-            {
-                "name": "Docking",
-                "type": "TECHNOLOGY",
-                "original_name": "Docking",
-                "confidence": 1.0,
-                "matched_by": "ontology",
+                "matched_by": "alias",
                 "resolved": false
             }
         ],
@@ -6716,13 +6558,29 @@
                 "type": "ORGANIZATION",
                 "original_name": "ISRO",
                 "confidence": 1.0,
-                "matched_by": "ontology",
+                "matched_by": "alias",
                 "resolved": false
             },
             {
                 "name": "SPADEX UNDOCKING SUCCESSFUL",
                 "type": "ORGANIZATION",
                 "original_name": "SPADEX UNDOCKING SUCCESSFUL",
+                "confidence": 0.5,
+                "matched_by": "unknown",
+                "resolved": false
+            },
+            {
+                "name": "Space Docking",
+                "type": "TECHNOLOGY",
+                "original_name": "Space Docking",
+                "confidence": 1.0,
+                "matched_by": "ontology",
+                "resolved": false
+            },
+            {
+                "name": "Mauritius",
+                "type": "PERSON",
+                "original_name": "Mauritius",
                 "confidence": 0.5,
                 "matched_by": "unknown",
                 "resolved": false
@@ -6741,38 +6599,6 @@
                 "original_name": "Lucknow",
                 "confidence": 1.0,
                 "matched_by": "ontology",
-                "resolved": false
-            },
-            {
-                "name": "Docking",
-                "type": "TECHNOLOGY",
-                "original_name": "Docking",
-                "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
-            },
-            {
-                "name": "Rendezvous",
-                "type": "TECHNOLOGY",
-                "original_name": "Rendezvous",
-                "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
-            },
-            {
-                "name": "Space Docking",
-                "type": "TECHNOLOGY",
-                "original_name": "Space Docking",
-                "confidence": 1.0,
-                "matched_by": "ontology",
-                "resolved": false
-            },
-            {
-                "name": "Mauritius",
-                "type": "PERSON",
-                "original_name": "Mauritius",
-                "confidence": 0.5,
-                "matched_by": "unknown",
                 "resolved": false
             }
         ],

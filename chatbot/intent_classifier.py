@@ -1,9 +1,30 @@
+import os
 import ollama
+
+# Bypass system HTTP proxies for local Ollama requests
+os.environ["NO_PROXY"] = "localhost,127.0.0.1"
+os.environ["no_proxy"] = "localhost,127.0.0.1"
 
 MODEL = "llama3.2:3b"
 
 
-def get_intent(question):
+def get_intent(question: str) -> str:
+    if not question:
+        return "unknown"
+
+    q_lower = question.lower().strip()
+
+    # Rule-based fast intent matching
+    if any(k in q_lower for k in ["list mission", "all mission", "show mission", "list all mission"]):
+        return "list_missions"
+    if any(k in q_lower for k in ["list organization", "all organization", "show organization", "list org"]):
+        return "list_organizations"
+    if any(k in q_lower for k in ["list people", "show scientist", "list scientist", "who are the scientists"]):
+        return "list_people"
+    if any(k in q_lower for k in ["list location", "show location"]):
+        return "list_locations"
+    if any(k in q_lower for k in ["list date", "show date"]):
+        return "list_dates"
 
     prompt = f"""
 You are an AI Intent Classifier.
@@ -13,7 +34,6 @@ Your job is to classify user questions into ONE of these intents.
 Return ONLY ONE WORD.
 
 Possible intents:
-
 mission
 organization
 person
@@ -27,71 +47,23 @@ list_locations
 list_dates
 unknown
 
-Examples
-
-Tell me about Chandrayaan-3
-mission
-
-Tell me about Aditya-L1
-mission
-
-Tell me about SpaDeX
-mission
-
-Who worked on Chandrayaan-3
-person
-
-Who developed Aditya-L1
-person
-
-Which organizations worked on Chandrayaan-3
-organization
-
-Where was Chandrayaan-3 launched
-location
-
-When was Chandrayaan-3 launched
-date
-
-Compare Chandrayaan-2 and Chandrayaan-3
-comparison
-
-Difference between PSLV and GSLV
-comparison
-
-List all missions
-list_missions
-
-Show all ISRO missions
-list_missions
-
-List organizations
-list_organizations
-
-Show scientists
-list_people
-
-List locations
-list_locations
-
-List dates
-list_dates
-
-Question
-
-{question}
+User Question:
+"{question}"
 
 Intent:
 """
 
-    response = ollama.chat(
-        model=MODEL,
-        messages=[
-            {
-                "role": "user",
-                "content": prompt
-            }
-        ]
-    )
-
-    return response["message"]["content"].strip().lower()
+    try:
+        response = ollama.chat(
+            model=MODEL,
+            messages=[
+                {
+                    "role": "user",
+                    "content": prompt
+                }
+            ]
+        )
+        return response["message"]["content"].strip().lower()
+    except Exception as e:
+        print(f"[Intent Classifier Warning]: {e}")
+        return "unknown"

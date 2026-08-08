@@ -1,5 +1,6 @@
 from pymongo import MongoClient
 from neo4j import GraphDatabase
+from chatbot.config import NEO4J_URI, USERNAME, PASSWORD
 
 # =====================================================
 # MongoDB Configuration
@@ -15,16 +16,11 @@ collection = mongo_db["website_entities"]
 # Neo4j Configuration
 # =====================================================
 
-URI = "neo4j://127.0.0.1:7687"
-
-USERNAME = "neo4j"
-
-PASSWORD = "graphmind123"
-
 driver = GraphDatabase.driver(
-    URI,
+    NEO4J_URI,
     auth=(USERNAME, PASSWORD)
 )
+
 
 # =====================================================
 # Connect

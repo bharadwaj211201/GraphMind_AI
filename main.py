@@ -95,74 +95,32 @@ def normalize_name(name):
 # ==========================================================
 
 MISSION_KEYWORDS = {
-
-    "Aditya-L1": [
-        "adityal1",
-        "aditya"
-    ],
-
-    "AstroSat": [
-        "astrosat"
-    ],
-
-    "Chandrayaan-1": [
-        "chandrayaan1"
-    ],
-
-    "Chandrayaan-2": [
-        "chandrayaan2"
-    ],
-
-    "Chandrayaan-3": [
-        "chandrayaan3"
-    ],
-
-    "Gaganyaan": [
-        "gaganyaan"
-    ],
-
-    "SpaDeX": [
-        "spadex"
-    ],
-
-    "NISAR": [
-        "nisar"
-    ],
-
-    "Mars Orbiter Mission": [
-        "marsorbitermission",
-        "marsorbiter",
-        "mangalyaan"
-    ],
-
-    "PSLV-C59": [
-        "pslvc59"
-    ],
-
-    "PSLV-C62": [
-        "pslvc62"
-    ],
-
-    "LVM3": [
-        "lvm3"
-    ],
-
-    "LVM3-M5": [
-        "lvm3m5"
-    ],
-
-    "LVM3-M6": [
-        "lvm3m6"
-    ],
-
-    "GSLV-F11": [
-        "gslvf11"
-    ],
-
-    "GSLV-F16": [
-        "gslvf16"
-    ]
+    "Aditya-L1": ["adityal1", "aditya"],
+    "AstroSat": ["astrosat"],
+    "XPoSat": ["xposat"],
+    "Chandrayaan-1": ["chandrayaan1"],
+    "Chandrayaan-2": ["chandrayaan2"],
+    "Chandrayaan-3": ["chandrayaan3"],
+    "Chandrayaan-4": ["chandrayaan4"],
+    "LUPEX": ["lupex"],
+    "Gaganyaan": ["gaganyaan"],
+    "SpaDeX": ["spadex"],
+    "NISAR": ["nisar"],
+    "Mars Orbiter Mission": ["marsorbitermission", "marsorbiter", "mangalyaan"],
+    "Venus Orbiter Mission": ["venusorbiter", "shukrayaan"],
+    "Cartosat-1": ["cartosat1"], "Cartosat-2": ["cartosat2"], "Cartosat-3": ["cartosat3"],
+    "Oceansat-1": ["oceansat1"], "Oceansat-2": ["oceansat2"], "Oceansat-3": ["oceansat3"],
+    "Resourcesat-1": ["resourcesat1"], "Resourcesat-2": ["resourcesat2"],
+    "RISAT-1": ["risat1"], "RISAT-2": ["risat2"],
+    "EOS-01": ["eos01"], "EOS-02": ["eos02"], "EOS-03": ["eos03"], "EOS-04": ["eos04"],
+    "EOS-05": ["eos05"], "EOS-06": ["eos06"], "EOS-07": ["eos07"], "EOS-08": ["eos08"],
+    "GSAT-6": ["gsat6"], "GSAT-7": ["gsat7"], "GSAT-11": ["gsat11"], "GSAT-24": ["gsat24"], "GSAT-30": ["gsat30"],
+    "INSAT-3D": ["insat3d"], "INSAT-3DS": ["insat3ds"],
+    "IRNSS-1A": ["irnss1a"], "NVS-01": ["nvs01"], "NavIC": ["navic"],
+    "Aryabhata": ["aryabhata"], "Bhaskara-I": ["bhaskara"], "APPLE": ["apple"],
+    "PSLV": ["pslv"], "GSLV": ["gslv"], "LVM3": ["lvm3"], "SSLV": ["sslv"], "RLV-TD": ["rlvtd"]
 }
+
 
 
 def extract_mission_key(title):
@@ -538,12 +496,19 @@ if ENABLE_WIKIPEDIA:
         # Ignore Non-Mission Pages
         # -----------------------------
 
-        _, mission_key = extract_mission_key(
-            mission["title"]
-        )
+        canonical_title, mission_key = extract_mission_key(mission["title"])
 
-        if mission_key not in {normalize_name(name) for name in MISSION_KEYWORDS}:
+        if not mission_key:
             continue
+
+        if mission_key not in mission_index:
+            mission_index[mission_key] = {
+                "title": canonical_title or mission["title"],
+                "website": None,
+                "wikipedia": None,
+                "pdf": None
+            }
+
 
         search_text = (
 

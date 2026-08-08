@@ -19,24 +19,6 @@ CRITICAL RULES FOR GENERATING CYPHER:
 4. Do NOT use aggregated queries like `WITH collect(o)` unless `o` was defined in a MATCH clause.
 5. Simple, robust return pattern: `MATCH (m:Mission) WHERE toLower(m.name) CONTAINS toLower("...") OPTIONAL MATCH (m)-[r]-(n) RETURN m, r, n LIMIT 50`
 
-Examples:
-
-Question: "Tell me about Chandrayaan-3 mission, its launch date, and who operated it."
-Cypher:
-MATCH (m:Mission)
-WHERE toLower(m.name) CONTAINS toLower("Chandrayaan-3") or toLower(m.name) CONTAINS toLower("Chandrayaan")
-OPTIONAL MATCH (m)-[r]-(n)
-RETURN m, r, n
-LIMIT 50
-
-Question: "Who is APJ Abdul Kalam?"
-Cypher:
-MATCH (p:Person)
-WHERE toLower(p.name) CONTAINS toLower("Kalam")
-OPTIONAL MATCH (p)-[r]-(n)
-RETURN p, r, n
-LIMIT 50
-
 Return ONLY the raw executable Cypher query. No explanations, no markdown formatting.
 """
 
@@ -46,17 +28,13 @@ LIST_PEOPLE = "MATCH (p:Person) OPTIONAL MATCH (p)-[r]-(n) RETURN p, r, n LIMIT 
 
 
 def clean_cypher_output(text: str) -> str:
-    # Strip markdown blocks
     text = re.sub(r'```(?:cypher)?', '', text).strip()
-    
-    # Filter out commentary lines
     lines = []
     for line in text.splitlines():
         line_str = line.strip()
         if line_str.lower().startswith(("note:", "explanation:", "//")):
             continue
         lines.append(line_str)
-        
     return "\n".join(lines).strip()
 
 
@@ -72,6 +50,14 @@ def generate_cypher(question: str) -> str:
 
     prompt = f"{MISSION_PROMPT}\n\nUser Question: \"{question}\"\n\nCypher Query:"
     cypher_raw = ask_llm(prompt)
+
+    if "[OLLAMA_ERROR]" in cypher_raw:
+        # Fallback Cypher generation based on keyword extraction if Ollama server is offline
+        words = [w.strip("?,.!") for w in question.split() if len(w) > 3 and w.lower() not in {"tell", "about", "what", "where", "when", "which", "show", "list", "give", "from"}]
+        if words:
+            kw = words[0]
+            return f'MATCH (m:Mission) WHERE toLower(m.name) CONTAINS toLower("{kw}") OPTIONAL MATCH (m)-[r]-(n) RETURN m, r, n LIMIT 50'
+        return LIST_MISSIONS
+
     cypher_clean = clean_cypher_output(cypher_raw)
-    
     return cypher_clean

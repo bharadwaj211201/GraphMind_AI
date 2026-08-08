@@ -3,58 +3,32 @@
         "mission": "EOS",
         "document_count": 24,
         "document_types": [
-            "LAUNCH_CAMPAIGN",
-            "LAUNCH_VEHICLE",
-            "MISSION_PAGE",
+            "MISSION",
             "NEWS",
-            "SCIENTIFIC_RESULT",
-            "TECHNICAL_DOCUMENT"
+            "PDF",
+            "WIKIPEDIA"
         ],
         "organizations": [],
-        "centres": [
-            "ISTRAC",
-            "NRSC",
-            "SDSC"
-        ],
-        "launch_vehicles": [
-            "GSLV",
-            "LVM3",
-            "PSLV",
-            "SSLV"
-        ],
+        "centres": [],
+        "launch_vehicles": [],
         "rocket_variants": [],
         "satellites": [],
         "spacecraft": [],
         "payloads": [],
+        "instruments": [],
         "astronauts": [],
         "scientists": [],
         "countries": [],
+        "states": [],
+        "cities": [],
+        "spaceports": [],
+        "facilities": [],
+        "laboratories": [],
+        "programs": [],
         "technologies": [],
         "celestial_bodies": [],
         "documents": [
-            "Annual_Report_2023.pdf",
-            "Annual_Report_2024.pdf",
-            "Annual_Report_2025.pdf",
-            "Communications satellite",
-            "Department of Space",
-            "Earth observation satellite",
-            "GPS-aided GEO augmented navigation",
-            "ISRO",
-            "Jawaharlal Nehru",
-            "LVM3M5.pdf",
-            "Leveraging Indian National Satellite System (INSAT) Geostationary Satellite for advanced lightning detection and analysis",
-            "Mars",
-            "Ocean Colour Monitor-3(OCM-3) Satellite Imagery and Vegetation  Dynamics: Unveiling Global Patterns",
-            "PSLV-C62 / EOS-N1 Mission",
-            "PSLV_C62.pdf",
-            "Remote sensing",
-            "Satellite",
-            "Satellite navigation",
-            "Satish Dhawan Space Centre",
-            "Small-lift launch vehicle",
-            "Space exploration",
-            "Spaceport",
-            "Telehealth"
+            ""
         ],
         "urls": [
             "",
@@ -84,73 +58,59 @@
             "WIKIPEDIA"
         ],
         "detection_reasons": [
-            "CONTENT(1), LAUNCH_CAMPAIGN",
-            "CONTENT(1), NEWS",
-            "CONTENT(108), NEWS",
-            "CONTENT(12), NEWS",
-            "CONTENT(12), SCIENTIFIC_RESULT",
-            "CONTENT(131), NEWS",
-            "CONTENT(2), LAUNCH_VEHICLE",
-            "CONTENT(2), NEWS",
-            "CONTENT(2), SCIENTIFIC_RESULT",
-            "CONTENT(25), NEWS",
+            "CONTENT(1), WIKIPEDIA",
+            "CONTENT(108), PDF",
+            "CONTENT(12), WIKIPEDIA",
+            "CONTENT(131), PDF",
+            "CONTENT(2), PDF",
+            "CONTENT(2), WIKIPEDIA",
+            "CONTENT(25), WIKIPEDIA",
             "CONTENT(3), NEWS",
-            "CONTENT(4), NEWS",
-            "CONTENT(5), NEWS",
-            "CONTENT(8), LAUNCH_VEHICLE",
-            "CONTENT(8), NEWS",
-            "CONTENT(90), NEWS",
-            "TITLE, CONTENT(7), MISSION_PAGE",
-            "TITLE, URL, CONTENT(4), TECHNICAL_DOCUMENT"
+            "CONTENT(4), WIKIPEDIA",
+            "CONTENT(5), WIKIPEDIA",
+            "CONTENT(7), MISSION",
+            "CONTENT(8), PDF",
+            "CONTENT(8), WIKIPEDIA",
+            "CONTENT(90), PDF",
+            "URL, CONTENT(4), NEWS"
         ],
-        "average_confidence": 0.23
+        "average_confidence": 0.2
     },
     {
         "mission": "Gaganyaan",
-        "document_count": 14,
+        "document_count": 17,
         "document_types": [
-            "FLIGHT_TEST",
-            "LAUNCH_CAMPAIGN",
-            "LAUNCH_VEHICLE",
-            "MISSION_PAGE",
-            "MISSION_UPDATE",
-            "NEWS"
+            "MISSION",
+            "NEWS",
+            "WIKIPEDIA"
         ],
         "organizations": [],
-        "centres": [
-            "SDSC",
-            "VSSC"
-        ],
-        "launch_vehicles": [
-            "LVM3"
-        ],
+        "centres": [],
+        "launch_vehicles": [],
         "rocket_variants": [],
         "satellites": [],
         "spacecraft": [],
         "payloads": [],
+        "instruments": [],
         "astronauts": [],
         "scientists": [],
         "countries": [],
+        "states": [],
+        "cities": [],
+        "spaceports": [],
+        "facilities": [],
+        "laboratories": [],
+        "programs": [],
         "technologies": [],
         "celestial_bodies": [],
         "documents": [
-            "Dr. V. Narayanan Assumed Charge of Secretary, Department of Space and Chairman, Space Commission",
-            "Gaganyaan-G1 Launch campaign commences: Human Rated LVM3 assembly starts at SDSC for the first un-crewed flight",
-            "Gaganyaan.pdf",
-            "ISRO accomplishes first Integrated Air Drop Test for Gaganyaan Missions successfully",
-            "ISRO conducts Second Integrated Air Drop Test (IADT-02) for Gaganyaan",
-            "ISRO conducts successful hot tests of Gaganyaan Service Module Propulsion System",
-            "ISRO organizes Space Analog Mission in Tso Kar Valley, Ladakh",
-            "MISSION MITRA by ISRO\r\n        Mapping of Interoperable Traits and Response Assessment (MITRA)",
-            "National Space Day 2025: Celebrating India’s Space Journey from Aryabhatta to Gaganyaan",
-            "Preparing for inflight re-ignition - Vacuum ignition trial of Cryogenic engine with Multi-element Igniter conducted successfully",
-            "Successful accomplishment of Development of Service Module Propulsion System technology for Gaganyaan Missions",
-            "Successful accomplishment of Drogue Parachute Deployment Tests for Gaganyaan",
-            "Updates on Gaganyaan, Space Docking Technology and GLEX2025",
-            "V. Narayanan (engineer)"
+            ""
         ],
         "urls": [
-            "",
+            "https://en.wikipedia.org/wiki/Deep_space_exploration",
+            "https://en.wikipedia.org/wiki/Interkosmos",
+            "https://en.wikipedia.org/wiki/List_of_government_space_agencies",
+            "https://en.wikipedia.org/wiki/Timeline_of_first_orbital_launches_by_country",
             "https://en.wikipedia.org/wiki/V._Narayanan_(engineer)",
             "https://www.isro.gov.in/DrVNarayanan_Assumed_Charge_Secretary_DOS_Chairman_Space_Commission.html",
             "https://www.isro.gov.in/Gaganyaan_Drogue_Parachute_Deployment_Tests.html",
@@ -167,64 +127,53 @@
         ],
         "sources": [
             "ISRO",
-            "PDF",
             "WIKIPEDIA"
         ],
         "detection_reasons": [
-            "CONTENT(1), LAUNCH_VEHICLE",
-            "CONTENT(1), MISSION_PAGE",
-            "CONTENT(4), NEWS",
-            "CONTENT(5), NEWS",
-            "NEWS",
-            "TITLE, CONTENT(2), NEWS",
-            "TITLE, URL, CONTENT(3), NEWS",
-            "TITLE, URL, CONTENT(5), MISSION_UPDATE",
-            "TITLE, URL, CONTENT(6), FLIGHT_TEST",
-            "TITLE, URL, CONTENT(7), FLIGHT_TEST",
-            "TITLE, URL, CONTENT(7), LAUNCH_CAMPAIGN",
-            "TITLE, URL, CONTENT(7), MISSION_UPDATE"
+            "CONTENT(1), MISSION",
+            "CONTENT(1), NEWS",
+            "CONTENT(4), WIKIPEDIA",
+            "CONTENT(5), MISSION",
+            "MISSION",
+            "URL, CONTENT(3), NEWS",
+            "URL, CONTENT(5), NEWS",
+            "URL, CONTENT(6), NEWS",
+            "URL, CONTENT(7), MISSION",
+            "URL, CONTENT(7), NEWS",
+            "WIKIPEDIA"
         ],
-        "average_confidence": 0.57
+        "average_confidence": 0.2
     },
     {
         "mission": "Aditya-L1",
         "document_count": 12,
         "document_types": [
-            "MISSION_PAGE",
+            "MISSION",
             "NEWS",
-            "PAYLOAD_DOCUMENT",
-            "SCIENTIFIC_RESULT"
+            "PDF",
+            "SCIENTIFIC_ARTICLE"
         ],
         "organizations": [],
-        "centres": [
-            "SDSC",
-            "URSC"
-        ],
-        "launch_vehicles": [
-            "PSLV"
-        ],
+        "centres": [],
+        "launch_vehicles": [],
         "rocket_variants": [],
         "satellites": [],
         "spacecraft": [],
         "payloads": [],
+        "instruments": [],
         "astronauts": [],
         "scientists": [],
         "countries": [],
+        "states": [],
+        "cities": [],
+        "spaceports": [],
+        "facilities": [],
+        "laboratories": [],
+        "programs": [],
         "technologies": [],
         "celestial_bodies": [],
         "documents": [
-            "Aditya-L1 Mission: Announcement of Opportunity (AO) soliciting proposals for the first AO cycle observations",
-            "Aditya-L1 Mission: Announcement of Opportunity (AO) soliciting proposals for the second AO cycle observations",
-            "Aditya-L1 measurementshelp to explain unusual dawn-time geomagnetic disturbances during strong solar storms",
-            "AdityaL1.pdf",
-            "Historic First: India’s Solar Ultra-violet Imaging Telescope (SUIT) onboard Aditya-L1 Captures Unprecedented Solar Flare Details",
-            "ISRO Organises National Meet on Aditya L1 Data Release and Payload Performance Appraisal",
-            "ISRO's Aditya-L1 decodes the Impact of a Powerful Solar Storm on Earth’s Invisible Magnetic Shield",
-            "India’s Aditya-L1 Joins Global Effort in Landmark Solar Storm Study",
-            "International Conference on Spacecraft Mission Operations - SMOPS-2026",
-            "Release of the Second Set of Aditya-L1 Science Data",
-            "Solar Ultraviolet Imaging Telescope (SUIT) onboard Aditya-L1 Mission Observed Powerful Solar Flare and a First-of-Its-Kind Observation of Rare Plasma Ejection in Ultra-violet Light",
-            "Unlocking the Mysteries of the Sun: Aditya-L1’s Observations of a Coronal Mass Ejection"
+            ""
         ],
         "urls": [
             "",
@@ -245,56 +194,50 @@
             "PDF"
         ],
         "detection_reasons": [
-            "CONTENT(1), MISSION_PAGE",
-            "TITLE, CONTENT(12), SCIENTIFIC_RESULT",
-            "TITLE, CONTENT(7), SCIENTIFIC_RESULT",
-            "TITLE, CONTENT(8), NEWS",
-            "TITLE, CONTENT(8), SCIENTIFIC_RESULT",
-            "TITLE, CONTENT(9), SCIENTIFIC_RESULT",
-            "TITLE, URL, CONTENT(10), SCIENTIFIC_RESULT",
-            "TITLE, URL, CONTENT(15), SCIENTIFIC_RESULT",
-            "TITLE, URL, CONTENT(6), SCIENTIFIC_RESULT",
-            "URL, CONTENT(2), PAYLOAD_DOCUMENT"
+            "CONTENT(1), MISSION",
+            "CONTENT(12), NEWS",
+            "CONTENT(7), SCIENTIFIC_ARTICLE",
+            "CONTENT(8), NEWS",
+            "CONTENT(8), PDF",
+            "CONTENT(9), NEWS",
+            "URL, CONTENT(10), MISSION",
+            "URL, CONTENT(15), NEWS",
+            "URL, CONTENT(2), NEWS",
+            "URL, CONTENT(6), MISSION",
+            "URL, CONTENT(6), NEWS"
         ],
-        "average_confidence": 0.73
+        "average_confidence": 0.26
     },
     {
         "mission": "NISAR",
         "document_count": 8,
         "document_types": [
-            "EVENT",
-            "LAUNCH_VEHICLE",
-            "MISSION_PAGE",
-            "NEWS"
+            "MISSION",
+            "NEWS",
+            "PDF",
+            "WIKIPEDIA"
         ],
         "organizations": [],
-        "centres": [
-            "ISTRAC",
-            "SAC",
-            "SDSC"
-        ],
-        "launch_vehicles": [
-            "GSLV",
-            "GSLV-F16"
-        ],
+        "centres": [],
+        "launch_vehicles": [],
         "rocket_variants": [],
         "satellites": [],
         "spacecraft": [],
         "payloads": [],
+        "instruments": [],
         "astronauts": [],
         "scientists": [],
         "countries": [],
+        "states": [],
+        "cities": [],
+        "spaceports": [],
+        "facilities": [],
+        "laboratories": [],
+        "programs": [],
         "technologies": [],
         "celestial_bodies": [],
         "documents": [
-            "GSLV_F16.pdf",
-            "GSLV_F16NISAR.pdf",
-            "ISRO’s GSLV-F16 will launch ISRO-NASA joint satellite, NISAR, on July 30, 2025",
-            "Karnataka",
-            "NISAR Awareness Workshop (April 29, 2025) for Indian Non-Governmental Entities (NGEi) \r\n        Space Applications Centre, Ahmedabad",
-            "NISAR Mission enters Science Phase",
-            "NISAR – NASA ISRO Synthetic Aperture Radar Mission",
-            "Soil Moisture Products at 100m resolution from NISAR data"
+            ""
         ],
         "urls": [
             "",
@@ -311,24 +254,22 @@
             "WIKIPEDIA"
         ],
         "detection_reasons": [
-            "CONTENT(1), NEWS",
-            "CONTENT(11), LAUNCH_VEHICLE",
-            "TITLE, CONTENT(11), LAUNCH_VEHICLE",
-            "TITLE, URL, CONTENT(10), MISSION_PAGE",
-            "TITLE, URL, CONTENT(14), EVENT",
-            "TITLE, URL, CONTENT(18), NEWS",
-            "TITLE, URL, CONTENT(20), MISSION_PAGE",
-            "TITLE, URL, CONTENT(7), MISSION_PAGE"
+            "CONTENT(1), WIKIPEDIA",
+            "CONTENT(11), PDF",
+            "URL, CONTENT(10), NEWS",
+            "URL, CONTENT(14), NEWS",
+            "URL, CONTENT(18), NEWS",
+            "URL, CONTENT(20), MISSION",
+            "URL, CONTENT(7), MISSION"
         ],
-        "average_confidence": 0.69
+        "average_confidence": 0.35
     },
     {
         "mission": "Axiom-4",
         "document_count": 7,
         "document_types": [
-            "MISSION_PAGE",
-            "MISSION_UPDATE",
-            "SCIENTIFIC_RESULT"
+            "MISSION",
+            "PRESS_RELEASE"
         ],
         "organizations": [],
         "centres": [],
@@ -337,19 +278,20 @@
         "satellites": [],
         "spacecraft": [],
         "payloads": [],
+        "instruments": [],
         "astronauts": [],
         "scientists": [],
         "countries": [],
+        "states": [],
+        "cities": [],
+        "spaceports": [],
+        "facilities": [],
+        "laboratories": [],
+        "programs": [],
         "technologies": [],
         "celestial_bodies": [],
         "documents": [
-            "Ax-04 Mission Press Update",
-            "Ax-04 Mission Updates",
-            "Axiom-4 Mission: A saga of ~12 million kilometers and ~282 orbits aboard ISS",
-            "Axiom-4 Mission: Successful completion of Microgravity experiments",
-            "ISRO-NASA joint Axiom – 4 mission to International Space Station (ISS):\r\n        Post splash down activities and Health conditions of Gaganyatri Shubhanshu Shukla",
-            "Indian Microgravity Research Portfolio in upcoming Axiom-4 Mission",
-            "Progress of Axiom-4 mission and tentative schedule for undocking from ISS to return journey to earth"
+            ""
         ],
         "urls": [
             "https://www.isro.gov.in/Ax-04_MissionUpdates_13062025.html",
@@ -364,49 +306,46 @@
             "ISRO"
         ],
         "detection_reasons": [
-            "CONTENT(1), MISSION_UPDATE",
-            "MISSION_UPDATE",
-            "TITLE, CONTENT(3), MISSION_PAGE",
-            "TITLE, URL, CONTENT(3), MISSION_PAGE",
-            "TITLE, URL, CONTENT(4), SCIENTIFIC_RESULT",
-            "TITLE, URL, CONTENT(5), MISSION_PAGE",
-            "URL, MISSION_PAGE"
+            "CONTENT(1), MISSION",
+            "CONTENT(3), MISSION",
+            "PRESS_RELEASE",
+            "URL, CONTENT(3), MISSION",
+            "URL, CONTENT(4), MISSION",
+            "URL, CONTENT(5), MISSION",
+            "URL, MISSION"
         ],
-        "average_confidence": 0.64
+        "average_confidence": 0.22
     },
     {
         "mission": "Chandrayaan-2",
         "document_count": 6,
         "document_types": [
-            "LAUNCH_VEHICLE",
+            "MISSION",
             "NEWS",
-            "SCIENTIFIC_RESULT"
+            "SCIENTIFIC_ARTICLE",
+            "WIKIPEDIA"
         ],
         "organizations": [],
-        "centres": [
-            "VSSC"
-        ],
-        "launch_vehicles": [
-            "GSLV",
-            "LVM3",
-            "PSLV"
-        ],
+        "centres": [],
+        "launch_vehicles": [],
         "rocket_variants": [],
         "satellites": [],
         "spacecraft": [],
         "payloads": [],
+        "instruments": [],
         "astronauts": [],
         "scientists": [],
         "countries": [],
+        "states": [],
+        "cities": [],
+        "spaceports": [],
+        "facilities": [],
+        "laboratories": [],
+        "programs": [],
         "technologies": [],
         "celestial_bodies": [],
         "documents": [
-            "Chandrayaan programme",
-            "Chandrayaan-2 Dual Frequency Synthetic Aperture Radar (DFSAR) Observations Reveal Subsurface Ice in Lunar South\n        Polar Regions",
-            "Chandrayaan-2 Observes Effects of the Coronal Mass Ejections from the Sun on the Lunar Exosphere",
-            "Chandrayaan-2 unveils the effect of the Earth’s geomagnetic tail on the Lunar ionosphere plasma",
-            "Chandrayaan2",
-            "LVM3-M6 / BlueBird Block-2 Mission"
+            ""
         ],
         "urls": [
             "https://en.wikipedia.org/wiki/Chandrayaan_programme",
@@ -421,45 +360,45 @@
             "WIKIPEDIA"
         ],
         "detection_reasons": [
-            "CONTENT(1), LAUNCH_VEHICLE",
-            "CONTENT(25), NEWS",
-            "TITLE, CONTENT(6), NEWS",
-            "TITLE, URL, CONTENT(6), SCIENTIFIC_RESULT",
-            "TITLE, URL, CONTENT(7), SCIENTIFIC_RESULT"
+            "CONTENT(1), MISSION",
+            "CONTENT(25), WIKIPEDIA",
+            "CONTENT(6), NEWS",
+            "URL, CONTENT(6), SCIENTIFIC_ARTICLE",
+            "URL, CONTENT(7), NEWS"
         ],
-        "average_confidence": 0.62
+        "average_confidence": 0.27
     },
     {
         "mission": "Chandrayaan-3",
         "document_count": 6,
         "document_types": [
-            "LAUNCH_VEHICLE",
+            "MISSION",
             "NEWS",
-            "SCIENTIFIC_RESULT"
+            "PDF",
+            "SCIENTIFIC_ARTICLE",
+            "WIKIPEDIA"
         ],
         "organizations": [],
-        "centres": [
-            "SDSC"
-        ],
-        "launch_vehicles": [
-            "LVM3"
-        ],
+        "centres": [],
+        "launch_vehicles": [],
         "rocket_variants": [],
         "satellites": [],
         "spacecraft": [],
         "payloads": [],
+        "instruments": [],
         "astronauts": [],
         "scientists": [],
         "countries": [],
+        "states": [],
+        "cities": [],
+        "spaceports": [],
+        "facilities": [],
+        "laboratories": [],
+        "programs": [],
         "technologies": [],
         "celestial_bodies": [],
         "documents": [
-            "Chandrayaan-3 \"Hop\" Experiment Reveals Hidden Lunar Secrets: Scientists Uncover Regolith Heterogeneity at Moon’s\r\n        South Pole",
-            "Chandrayaan-3 Fly-by",
-            "Chandrayaan-3's RAMBHA-LP Instrument Delivers Critical 'Ground Truth'  on the Moon’s Plasma Environment",
-            "Chandrayaan3.pdf",
-            "LVM3-M5/CMS-03 MISSION",
-            "Space technology"
+            ""
         ],
         "urls": [
             "",
@@ -475,43 +414,44 @@
             "WIKIPEDIA"
         ],
         "detection_reasons": [
-            "CONTENT(1), LAUNCH_VEHICLE",
-            "CONTENT(1), NEWS",
-            "TITLE, CONTENT(10), NEWS",
-            "TITLE, CONTENT(4), NEWS",
-            "TITLE, CONTENT(7), SCIENTIFIC_RESULT",
-            "TITLE, URL, CONTENT(7), SCIENTIFIC_RESULT"
+            "CONTENT(1), MISSION",
+            "CONTENT(1), WIKIPEDIA",
+            "CONTENT(10), PDF",
+            "CONTENT(4), NEWS",
+            "CONTENT(7), SCIENTIFIC_ARTICLE",
+            "URL, CONTENT(7), NEWS"
         ],
-        "average_confidence": 0.47
+        "average_confidence": 0.12
     },
     {
-        "mission": "SpaDex",
+        "mission": "SpaDeX",
         "document_count": 5,
         "document_types": [
-            "MISSION_PAGE",
-            "MISSION_UPDATE",
-            "NEWS"
+            "MISSION",
+            "NEWS",
+            "PDF"
         ],
         "organizations": [],
         "centres": [],
-        "launch_vehicles": [
-            "PSLV"
-        ],
+        "launch_vehicles": [],
         "rocket_variants": [],
         "satellites": [],
         "spacecraft": [],
         "payloads": [],
+        "instruments": [],
         "astronauts": [],
         "scientists": [],
         "countries": [],
+        "states": [],
+        "cities": [],
+        "spaceports": [],
+        "facilities": [],
+        "laboratories": [],
+        "programs": [],
         "technologies": [],
         "celestial_bodies": [],
         "documents": [
-            "ISRO successfully completed docking of two SPADEX satellites (SDX-01 & SDX-02) in the early hours of 16 January, 2025.",
-            "SPADEX Mission: Successful demonstration of Second Docking and Power Transfer",
-            "SPADEX UNDOCKING SUCCESSFUL",
-            "SpaDeX Mission",
-            "SpaDex.pdf"
+            ""
         ],
         "urls": [
             "",
@@ -525,19 +465,19 @@
             "PDF"
         ],
         "detection_reasons": [
-            "TITLE, CONTENT(19), NEWS",
-            "TITLE, URL, CONTENT(16), MISSION_PAGE",
-            "TITLE, URL, CONTENT(4), MISSION_UPDATE",
-            "TITLE, URL, CONTENT(5), MISSION_UPDATE",
-            "TITLE, URL, CONTENT(7), MISSION_UPDATE"
+            "CONTENT(19), PDF",
+            "URL, CONTENT(16), MISSION",
+            "URL, CONTENT(4), NEWS",
+            "URL, CONTENT(5), MISSION",
+            "URL, CONTENT(7), NEWS"
         ],
-        "average_confidence": 0.93
+        "average_confidence": 0.39
     },
     {
         "mission": "Mangalyaan",
         "document_count": 3,
         "document_types": [
-            "NEWS"
+            "WIKIPEDIA"
         ],
         "organizations": [],
         "centres": [],
@@ -546,15 +486,20 @@
         "satellites": [],
         "spacecraft": [],
         "payloads": [],
+        "instruments": [],
         "astronauts": [],
         "scientists": [],
         "countries": [],
+        "states": [],
+        "cities": [],
+        "spaceports": [],
+        "facilities": [],
+        "laboratories": [],
+        "programs": [],
         "technologies": [],
         "celestial_bodies": [],
         "documents": [
-            "India",
-            "Prime Minister of India",
-            "Soviet Union"
+            ""
         ],
         "urls": [
             "https://en.wikipedia.org/wiki/India",
@@ -565,37 +510,38 @@
             "WIKIPEDIA"
         ],
         "detection_reasons": [
-            "NEWS"
+            "WIKIPEDIA"
         ],
-        "average_confidence": 0.02
+        "average_confidence": 0.0
     },
     {
         "mission": "Mars Orbiter Mission",
         "document_count": 2,
         "document_types": [
-            "NEWS"
+            "PDF",
+            "WIKIPEDIA"
         ],
         "organizations": [],
-        "centres": [
-            "ISTRAC"
-        ],
-        "launch_vehicles": [
-            "GSLV",
-            "LVM3",
-            "PSLV"
-        ],
+        "centres": [],
+        "launch_vehicles": [],
         "rocket_variants": [],
         "satellites": [],
         "spacecraft": [],
         "payloads": [],
+        "instruments": [],
         "astronauts": [],
         "scientists": [],
         "countries": [],
+        "states": [],
+        "cities": [],
+        "spaceports": [],
+        "facilities": [],
+        "laboratories": [],
+        "programs": [],
         "technologies": [],
         "celestial_bodies": [],
         "documents": [
-            "Mars Orbiter Mission",
-            "Mars_Orbiter_Mission.pdf"
+            ""
         ],
         "urls": [
             "",
@@ -606,13 +552,13 @@
             "WIKIPEDIA"
         ],
         "detection_reasons": [
-            "CONTENT(5), NEWS",
-            "TITLE, CONTENT(9), NEWS"
+            "CONTENT(5), PDF",
+            "CONTENT(9), WIKIPEDIA"
         ],
-        "average_confidence": 0.31
+        "average_confidence": 0.08
     },
     {
-        "mission": "AstroSat",
+        "mission": "Cartosat",
         "document_count": 1,
         "document_types": [
             "NEWS"
@@ -624,47 +570,20 @@
         "satellites": [],
         "spacecraft": [],
         "payloads": [],
+        "instruments": [],
         "astronauts": [],
         "scientists": [],
         "countries": [],
+        "states": [],
+        "cities": [],
+        "spaceports": [],
+        "facilities": [],
+        "laboratories": [],
+        "programs": [],
         "technologies": [],
         "celestial_bodies": [],
         "documents": [
-            "AstroSat.pdf"
-        ],
-        "urls": [
             ""
-        ],
-        "sources": [
-            "PDF"
-        ],
-        "detection_reasons": [
-            "TITLE, NEWS"
-        ],
-        "average_confidence": 0.5
-    },
-    {
-        "mission": "Cartosat",
-        "document_count": 1,
-        "document_types": [
-            "NEWS"
-        ],
-        "organizations": [],
-        "centres": [
-            "NRSC"
-        ],
-        "launch_vehicles": [],
-        "rocket_variants": [],
-        "satellites": [],
-        "spacecraft": [],
-        "payloads": [],
-        "astronauts": [],
-        "scientists": [],
-        "countries": [],
-        "technologies": [],
-        "celestial_bodies": [],
-        "documents": [
-            "Indian Satellite data based analysis of the Dharali Flash Flood"
         ],
         "urls": [
             "https://www.isro.gov.in/indian_satellite_data_based_analysis_of_the_dharali_flash_flood.html"
@@ -681,7 +600,7 @@
         "mission": "Chandrayaan-1",
         "document_count": 1,
         "document_types": [
-            "NEWS"
+            "WIKIPEDIA"
         ],
         "organizations": [],
         "centres": [],
@@ -690,13 +609,20 @@
         "satellites": [],
         "spacecraft": [],
         "payloads": [],
+        "instruments": [],
         "astronauts": [],
         "scientists": [],
         "countries": [],
+        "states": [],
+        "cities": [],
+        "spaceports": [],
+        "facilities": [],
+        "laboratories": [],
+        "programs": [],
         "technologies": [],
         "celestial_bodies": [],
         "documents": [
-            "Moon"
+            ""
         ],
         "urls": [
             "https://en.wikipedia.org/wiki/Moon"
@@ -705,7 +631,7 @@
             "WIKIPEDIA"
         ],
         "detection_reasons": [
-            "CONTENT(3), NEWS"
+            "CONTENT(3), WIKIPEDIA"
         ],
         "average_confidence": 0.04
     },
@@ -713,7 +639,7 @@
         "mission": "NavIC",
         "document_count": 1,
         "document_types": [
-            "TECHNICAL_DOCUMENT"
+            "WIKIPEDIA"
         ],
         "organizations": [],
         "centres": [],
@@ -722,13 +648,20 @@
         "satellites": [],
         "spacecraft": [],
         "payloads": [],
+        "instruments": [],
         "astronauts": [],
         "scientists": [],
         "countries": [],
+        "states": [],
+        "cities": [],
+        "spaceports": [],
+        "facilities": [],
+        "laboratories": [],
+        "programs": [],
         "technologies": [],
         "celestial_bodies": [],
         "documents": [
-            "Indian Regional Navigation Satellite System"
+            ""
         ],
         "urls": [
             "https://en.wikipedia.org/wiki/Indian_Regional_Navigation_Satellite_System"
@@ -737,8 +670,47 @@
             "WIKIPEDIA"
         ],
         "detection_reasons": [
-            "CONTENT(30), TECHNICAL_DOCUMENT"
+            "CONTENT(30), WIKIPEDIA"
         ],
-        "average_confidence": 0.3
+        "average_confidence": 0.36
+    },
+    {
+        "mission": "TV-D1",
+        "document_count": 1,
+        "document_types": [
+            "PDF"
+        ],
+        "organizations": [],
+        "centres": [],
+        "launch_vehicles": [],
+        "rocket_variants": [],
+        "satellites": [],
+        "spacecraft": [],
+        "payloads": [],
+        "instruments": [],
+        "astronauts": [],
+        "scientists": [],
+        "countries": [],
+        "states": [],
+        "cities": [],
+        "spaceports": [],
+        "facilities": [],
+        "laboratories": [],
+        "programs": [],
+        "technologies": [],
+        "celestial_bodies": [],
+        "documents": [
+            ""
+        ],
+        "urls": [
+            ""
+        ],
+        "sources": [
+            "PDF"
+        ],
+        "detection_reasons": [
+            "CONTENT(9), PDF"
+        ],
+        "average_confidence": 0.11
     }
 ]

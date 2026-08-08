@@ -1,9 +1,11 @@
 from neo4j import GraphDatabase
+from chatbot.config import NEO4J_URI, USERNAME, PASSWORD
 
 driver = GraphDatabase.driver(
-    "bolt://localhost:7687",
-    auth=("neo4j", "graphmind123")
+    NEO4J_URI,
+    auth=(USERNAME, PASSWORD)
 )
+
 
 def run_cypher(query):
 

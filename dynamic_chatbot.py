@@ -1,6 +1,7 @@
-from cypher_generator import generate_cypher
+from chatbot.cypher_generator import generate_cypher
 from dynamic_graph_search import run_cypher
-from response_generator import generate_response
+from chatbot.response_generator import generate_response
+
 
 print("=" * 70)
 print("GRAPHMIND AI (Dynamic Cypher)")

@@ -1,7 +1,8 @@
 from mission_parser import get_mission
-from intent_classifier import get_intent
-from graph_search import search_graph
-from response_generator import generate_response
+from chatbot.intent_classifier import get_intent
+from chatbot.graph_search import search_graph
+from chatbot.response_generator import generate_response
+
 
 print("=" * 70)
 print("GRAPHMIND AI")
