@@ -2,6 +2,8 @@ import json
 from pathlib import Path
 from neo4j import GraphDatabase
 from chatbot.config import NEO4J_URI, USERNAME, PASSWORD
+from chatbot.cypher_executor import is_actual_mission
+
 
 try:
     driver = GraphDatabase.driver(
@@ -38,11 +40,13 @@ def get_in_memory_dashboard_data():
     org_list = []
 
     for item in missions_data:
+
         m_title = item.get("title")
-        if m_title:
+        if m_title and is_actual_mission(m_title):
             missions.add(m_title)
             if len(mission_list) < 10:
                 mission_list.append({"Mission": m_title})
+
 
         for ent in item.get("entities", []):
             e_name = ent.get("name")

@@ -63,19 +63,25 @@ count = 0
 with driver.session() as session:
 
     for document in documents:
-
         mission = document.get("mission", "").strip()
-
         category = document.get("category", "")
-
         url = document.get("url", "")
 
         if not mission:
             continue
 
+        m_type = "Mission"
+        m_low = mission.lower()
+        if any(s in m_low for s in ["kalam", "sarabhai", "dhawan", "somanath", "sivan"]):
+            m_type = "Person"
+        elif any(o in m_low for o in ["isro", "drdo", "department of space", "prl"]):
+            m_type = "Organization"
+        elif any(c in m_low for c in ["vssc", "ursc", "sac", "lpsc", "space centre"]):
+            m_type = "Centre"
+
         session.run(
-            """
-            MERGE (m:Mission {name:$mission})
+            f"""
+            MERGE (m:{m_type} {{name:$mission}})
             SET m.category=$category,
                 m.url=$url
             """,
@@ -87,20 +93,17 @@ with driver.session() as session:
         entities = document.get("entities", [])
 
         for entity in entities:
-
             name = entity.get("text", "").strip()
-
             label = entity.get("label", "ENTITY")
 
             if not name:
                 continue
 
             if label == "ORG":
-
                 session.run(
-                    """
-                    MERGE (e:Organization {name:$name})
-                    MERGE (m:Mission {name:$mission})
+                    f"""
+                    MERGE (e:Organization {{name:$name}})
+                    MERGE (m:{m_type} {{name:$mission}})
                     MERGE (m)-[:HAS_ORGANIZATION]->(e)
                     """,
                     name=name,
@@ -108,11 +111,10 @@ with driver.session() as session:
                 )
 
             elif label == "PERSON":
-
                 session.run(
-                    """
-                    MERGE (e:Person {name:$name})
-                    MERGE (m:Mission {name:$mission})
+                    f"""
+                    MERGE (e:Person {{name:$name}})
+                    MERGE (m:{m_type} {{name:$mission}})
                     MERGE (m)-[:HAS_PERSON]->(e)
                     """,
                     name=name,
@@ -120,11 +122,10 @@ with driver.session() as session:
                 )
 
             elif label in ["GPE", "LOC"]:
-
                 session.run(
-                    """
-                    MERGE (e:Location {name:$name})
-                    MERGE (m:Mission {name:$mission})
+                    f"""
+                    MERGE (e:Location {{name:$name}})
+                    MERGE (m:{m_type} {{name:$mission}})
                     MERGE (m)-[:HAS_LOCATION]->(e)
                     """,
                     name=name,
@@ -132,11 +133,10 @@ with driver.session() as session:
                 )
 
             elif label == "DATE":
-
                 session.run(
-                    """
-                    MERGE (e:Date {name:$name})
-                    MERGE (m:Mission {name:$mission})
+                    f"""
+                    MERGE (e:Date {{name:$name}})
+                    MERGE (m:{m_type} {{name:$mission}})
                     MERGE (m)-[:HAS_DATE]->(e)
                     """,
                     name=name,
@@ -144,17 +144,17 @@ with driver.session() as session:
                 )
 
             else:
-
                 session.run(
-                    """
-                    MERGE (e:Entity {name:$name,type:$type})
-                    MERGE (m:Mission {name:$mission})
+                    f"""
+                    MERGE (e:Entity {{name:$name,type:$type}})
+                    MERGE (m:{m_type} {{name:$mission}})
                     MERGE (m)-[:HAS_ENTITY]->(e)
                     """,
                     name=name,
                     type=label,
                     mission=mission
                 )
+
 
         count += 1
 

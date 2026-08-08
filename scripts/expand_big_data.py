@@ -192,11 +192,12 @@ PRECISE_MISSION_MAP = {
 }
 
 extra_pioneers = ["A.P.J. Abdul Kalam", "APJ Abdul Kalam", "Vikram Sarabhai", "Satish Dhawan"]
-all_topics = list(dict.fromkeys(extra_pioneers + MISSIONS + SATELLITES))
+all_topics = list(dict.fromkeys(MISSIONS + SATELLITES + extra_pioneers))
 expanded_records = []
 relationship_counter = 1
 
 for topic in all_topics:
+
     m_key = topic.lower().replace("-", "").replace(".", "").replace(" ", "").replace("_", "")
     
     spec = PRECISE_MISSION_MAP.get(topic, {})

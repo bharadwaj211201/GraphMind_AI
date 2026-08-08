@@ -1,3 +1,4 @@
+# pyrefly: ignore [missing-import]
 from neo4j import GraphDatabase
 from chatbot.config import NEO4J_URI, USERNAME, PASSWORD
 
