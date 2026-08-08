@@ -152,6 +152,42 @@ FUTURISTIC_CSS = """
         border-radius: 50%;
     }
 
+    /* High Contrast Text Across All Chat Containers & Paragraphs */
+    p, span, label, li, td, th, h1, h2, h3, h4, h5, h6,
+    .stMarkdown, [data-testid="stMarkdownContainer"] p,
+    [data-testid="stMarkdownContainer"] span, [data-testid="stMarkdownContainer"] div,
+    [data-testid="stChatMessage"] p, [data-testid="stChatMessage"] span,
+    [data-testid="stChatMessage"] div {
+        color: #F8FAFC !important;
+    }
+
+    /* Force Bright Sidebar Text */
+    section[data-testid="stSidebar"] label,
+    section[data-testid="stSidebar"] span,
+    section[data-testid="stSidebar"] p,
+    section[data-testid="stSidebar"] div,
+    section[data-testid="stSidebar"] h1,
+    section[data-testid="stSidebar"] h2,
+    section[data-testid="stSidebar"] h3 {
+        color: #F8FAFC !important;
+    }
+
+    /* Chat Message Bubble Contrast */
+    [data-testid="stChatMessage"] {
+        background: rgba(30, 41, 59, 0.85) !important;
+        border: 1px solid rgba(56, 189, 248, 0.3) !important;
+        border-radius: 14px !important;
+        padding: 16px 20px !important;
+        margin-bottom: 14px !important;
+    }
+
+    /* Selectbox Input Dark Background & Bright Text */
+    div[data-baseweb="select"] > div {
+        background-color: #1E293B !important;
+        color: #F8FAFC !important;
+        border-color: rgba(56, 189, 248, 0.4) !important;
+    }
+
     /* Node Details Container */
     .details-card-cosmic {
         background: rgba(15, 23, 42, 0.85);
@@ -164,6 +200,7 @@ FUTURISTIC_CSS = """
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
 </style>
+
 """
 
 st.markdown(FUTURISTIC_CSS, unsafe_allow_html=True)
@@ -361,14 +398,15 @@ def render_graph(graph_data, query="", key_suffix=""):
         node={"labelProperty": "label"},
         link={"labelProperty": "label", "renderItalic": False},
         barnesHut={
-            "gravitationalConstant": -25000,
-            "centralGravity": 0.04,
-            "springLength": 300,
-            "springConstant": 0.008,
+            "gravitationalConstant": -45000,
+            "centralGravity": 0.03,
+            "springLength": 350,
+            "springConstant": 0.005,
             "damping": 0.09,
             "avoidOverlap": 1.0
         }
     )
+
 
     # agraph canvas execution
     clicked_node_id = agraph(nodes=nodes, edges=edges, config=config)
