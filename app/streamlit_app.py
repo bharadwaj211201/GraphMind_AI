@@ -278,13 +278,13 @@ def build_graph(graph_data, query_target=""):
 
             if node_id not in nodes:
                 color = NODE_COLORS.get(node_type, NODE_COLORS["Default"])
-                size = 36 if node_type == "Mission" else (28 if node_type in ("Organization", "LaunchVehicle", "Centre", "Scientist", "Person") else 24)
+                size = 26 if node_type == "Mission" else 20
                 font_cfg = {
-                    "color": "#F8FAFC",
-                    "size": 12,
+                    "color": "#0F172A",
+                    "size": 13,
                     "face": "Plus Jakarta Sans",
                     "strokeWidth": 3,
-                    "strokeColor": "#0F172A"
+                    "strokeColor": "#FFFFFF"
                 }
 
                 nodes[node_id] = Node(
@@ -320,12 +320,13 @@ def build_graph(graph_data, query_target=""):
                         source=src_id,
                         target=tgt_id,
                         label=rel_label if len(rel_label) < 15 else rel_label[:12] + "..",
-                        color="#475569",
-                        font={"color": "#94A3B8", "size": 9, "strokeWidth": 2, "strokeColor": "#0F172A"}
+                        color="#94A3B8",
+                        font={"color": "#334155", "size": 10, "strokeWidth": 2, "strokeColor": "#FFFFFF"}
                     )
                 )
 
     return list(nodes.values()), edges, node_metadata
+
 
 
 def render_graph(graph_data, query="", key_suffix=""):
