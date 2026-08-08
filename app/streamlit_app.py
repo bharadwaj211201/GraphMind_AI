@@ -455,66 +455,66 @@ def render_dynamic_analytics_figures(graph_data, question=""):
     if not graph_data or not isinstance(graph_data, list):
         return
 
-    st.markdown("### 📊 Dynamic Data Analytics Figures")
-    st.caption("Analytical figures generated dynamically from Knowledge Base records matching your query.")
+    st.markdown("### 📊 Knowledge Graph Data Analytics Figures")
+    st.caption("Analytical figures generated dynamically from retrieved Knowledge Graph triples.")
 
+    rel_counts = {}
     type_counts = {}
-    domain_sector = {
-        "Lunar Exploration": 0,
-        "Solar & Astronomy": 0,
-        "Planetary Exploration": 0,
-        "Human Spaceflight": 0,
-        "Earth Observation": 0,
-        "Communication Satellites": 0,
-        "Pioneer Missions": 0
-    }
+    fact_rows = []
 
     for item in graph_data:
         m = item.get("m", {})
+        r = item.get("r", {})
         n = item.get("n", {})
         
         m_props = m.get("properties", {}) if isinstance(m, dict) else {}
         n_props = n.get("properties", {}) if isinstance(n, dict) else {}
         
-        m_name = m_props.get("name", "").strip()
-        n_name = n_props.get("name", "").strip()
+        m_name = m_props.get("name", "").strip() or "ISRO Entity"
+        n_name = n_props.get("name", "").strip() or "Graph Target"
         n_type = n.get("type", "Entity") if isinstance(n, dict) else "Entity"
+        rel_type = r.get("relationship", "RELATED_TO") if isinstance(r, dict) else "RELATED_TO"
 
+        rel_counts[rel_type] = rel_counts.get(rel_type, 0) + 1
         type_counts[n_type] = type_counts.get(n_type, 0) + 1
 
-        m_low = (m_name + " " + n_name).lower()
-        if any(w in m_low for w in ["chandra", "lupex", "moon"]):
-            domain_sector["Lunar Exploration"] += 1
-        elif any(w in m_low for w in ["aditya", "astrosat", "xposat", "sun", "solar"]):
-            domain_sector["Solar & Astronomy"] += 1
-        elif any(w in m_low for w in ["mangalyaan", "mars", "shukrayaan", "venus"]):
-            domain_sector["Planetary Exploration"] += 1
-        elif any(w in m_low for w in ["gaganyaan", "spadex", "crew"]):
-            domain_sector["Human Spaceflight"] += 1
-        elif any(w in m_low for w in ["eos", "cartosat", "risat", "oceansat", "nisar"]):
-            domain_sector["Earth Observation"] += 1
-        elif any(w in m_low for w in ["gsat", "insat"]):
-            domain_sector["Communication Satellites"] += 1
-        else:
-            domain_sector["Pioneer Missions"] += 1
+        fact_rows.append({
+            "Source Entity": m_name,
+            "Relationship": rel_type,
+            "Target Entity": n_name,
+            "Entity Category": n_type
+        })
 
     col1, col2 = st.columns(2)
 
     with col1:
-        domain_df = pd.DataFrame([{"Sector": k, "Count": v} for k, v in domain_sector.items() if v > 0])
-        if domain_df.empty:
-            domain_df = pd.DataFrame([
-                {"Sector": "Lunar Exploration", "Count": 5},
-                {"Sector": "Earth Observation", "Count": 27},
-                {"Sector": "Communication Satellites", "Count": 46},
-                {"Sector": "Solar & Astronomy", "Count": 3},
-                {"Sector": "Human Spaceflight", "Count": 5}
-            ])
+        # Chart 1: Relationship Type Frequency (Derived directly from graph triples)
+        rel_df = pd.DataFrame([{"Relationship": k, "Triples": v} for k, v in rel_counts.items()])
+        rel_df = rel_df.sort_values(by="Triples", ascending=True)
+
+        fig_rel = px.bar(
+            rel_df, x="Triples", y="Relationship", orientation="h",
+            title="🕸️ Retained Graph Relationship Types",
+            color="Relationship",
+            color_discrete_sequence=["#0EA5E9", "#6366F1", "#10B981", "#F59E0B", "#EF4444", "#EC4899", "#8B5CF6", "#06B6D4", "#F97316"]
+        )
+        fig_rel.update_layout(
+            paper_bgcolor="rgba(0,0,0,0)",
+            plot_bgcolor="rgba(0,0,0,0)",
+            font={"color": "#0F172A", "family": "Plus Jakarta Sans"},
+            margin=dict(l=10, r=10, t=40, b=10),
+            showlegend=False
+        )
+        st.plotly_chart(fig_rel, use_container_width=True)
+
+    with col2:
+        # Chart 2: Entity Category Distribution (Derived directly from graph nodes)
+        cat_df = pd.DataFrame([{"Category": k, "Entities": v} for k, v in type_counts.items()])
 
         fig_pie = px.pie(
-            domain_df, values="Count", names="Sector", hole=0.55,
-            title="🎯 Mission Exploration Sector Distribution",
-            color_discrete_sequence=["#0EA5E9", "#6366F1", "#10B981", "#F59E0B", "#EF4444", "#EC4899", "#8B5CF6"]
+            cat_df, values="Entities", names="Category", hole=0.5,
+            title="🔗 Graph Entity Category Breakdown",
+            color_discrete_sequence=["#0EA5E9", "#6366F1", "#10B981", "#F59E0B", "#EF4444", "#EC4899", "#8B5CF6", "#06B6D4", "#F97316"]
         )
         fig_pie.update_layout(
             paper_bgcolor="rgba(0,0,0,0)",
@@ -524,31 +524,10 @@ def render_dynamic_analytics_figures(graph_data, question=""):
         )
         st.plotly_chart(fig_pie, use_container_width=True)
 
-    with col2:
-        cat_df = pd.DataFrame([{"Category": k, "Entities": v} for k, v in type_counts.items()])
-        if cat_df.empty:
-            cat_df = pd.DataFrame([
-                {"Category": "Mission", "Entities": 93},
-                {"Category": "Organization", "Entities": 66},
-                {"Category": "Scientist", "Entities": 30},
-                {"Category": "Spaceport", "Entities": 5},
-                {"Category": "Date", "Entities": 136}
-            ])
+    # Optional Fact Data Table
+    with st.expander("📄 View Retrieved Graph Triples Table", expanded=False):
+        st.dataframe(pd.DataFrame(fact_rows), use_container_width=True, hide_index=True)
 
-        fig_bar = px.bar(
-            cat_df, x="Entities", y="Category", orientation="h",
-            title="🔗 Knowledge Graph Entity Category Counts",
-            color="Category",
-            color_discrete_sequence=["#0EA5E9", "#6366F1", "#10B981", "#F59E0B", "#EF4444", "#EC4899"]
-        )
-        fig_bar.update_layout(
-            paper_bgcolor="rgba(0,0,0,0)",
-            plot_bgcolor="rgba(0,0,0,0)",
-            font={"color": "#0F172A", "family": "Plus Jakarta Sans"},
-            margin=dict(l=10, r=10, t=40, b=10),
-            showlegend=False
-        )
-        st.plotly_chart(fig_bar, use_container_width=True)
 
 
 
