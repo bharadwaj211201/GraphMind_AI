@@ -1,4 +1,5 @@
 from chatbot.llm_interface import ask_llm
+from chatbot.cypher_executor import is_actual_mission
 
 
 def generate_offline_synthesis(question: str, graph_data: list) -> str:
@@ -44,11 +45,14 @@ def generate_offline_synthesis(question: str, graph_data: list) -> str:
 
     # 1. Special Handling for List Missions Query
     if is_list_query or len(subjects) > 3:
-        all_missions = [f"**{name}**" for name in subjects if name.lower() not in {"isro", "drdo", "department of space"}]
-        missions_str = ", ".join(all_missions[:12]) if all_missions else "**Chandrayaan-3**, **Aditya-L1**, **Gaganyaan**, **Mangalyaan**, **Astrosat**, **XPoSat**, **SpaDeX**, **Cartosat-3**, **RISAT-1A**, **EOS-06**"
+        all_missions = [f"**{name}**" for name in subjects if is_actual_mission(name)]
+        missions_str = ", ".join(all_missions[:10]) if all_missions else "**Chandrayaan-3**, **Aditya-L1**, **Gaganyaan**, **Mangalyaan**, **AstroSat**, **XPoSat**, **SpaDeX**, **EOS-06**"
+
         
         org_name = list(orgs)[0] if orgs else "ISRO (Indian Space Research Organisation)"
-        org_str = f"**{org_name.strip('*')}**"
+        clean_org = str(org_name).replace("*", "").strip()
+        org_str = f"**{clean_org}**"
+
 
         centre_str = ", ".join([f"**{c}**" for c in list(centres)[:3]]) or "**Vikram Sarabhai Space Centre (VSSC)** and **U R Rao Satellite Centre (URSC)**"
         vehicle_str = ", ".join([f"**{v}**" for v in list(vehicles)[:3]]) or "**LVM3 (GSLV Mk III)** and **PSLV**"

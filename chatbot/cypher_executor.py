@@ -54,24 +54,62 @@ def normalize_label(raw_label: str) -> str:
     return mapping.get(lbl, raw_label.replace("_", " ").title().replace(" ", ""))
 
 
+KNOWN_SCIENTISTS = [
+    "kalam", "abdul kalam", "sarabhai", "dhawan", "somanath", "sivan", "radhakrishnan",
+    "u.r. rao", "ur rao", "u r rao", "kasturirangan", "annadurai", "bhabha", "homi"
+]
+
+KNOWN_ORGS = [
+    "isro", "drdo", "department of space", "nasa", "jaxa", "esa", "prl",
+    "physical research laboratory", "indian institute of science", "iisc"
+]
+
+KNOWN_CENTRES = [
+    "space centre", "vssc", "ursc", "sac", "lpsc", "iprc", "istrac", "nrsc", "shar"
+]
+
+KNOWN_MISSIONS = [
+    "chandrayaan", "aditya", "gaganyaan", "mangalyaan", "astrosat", "xposat",
+    "spadex", "lupex", "cartosat", "oceansat", "resourcesat", "risat", "eos",
+    "aryabhata", "bhaskara", "apple", "insat", "gsat", "nisar", "trishna", "shukrayaan"
+]
+
+
+def is_actual_mission(name: str) -> bool:
+    if not name:
+        return False
+    n_low = name.strip().lower()
+
+    # Exclude scientists / people
+    if any(s in n_low for s in KNOWN_SCIENTISTS):
+        return False
+
+    # Exclude orgs and centres
+    if any(o in n_low for o in KNOWN_ORGS + KNOWN_CENTRES):
+        return False
+
+    # Positive match for mission patterns
+    return any(m in n_low for m in KNOWN_MISSIONS)
+
+
 def infer_source_type(title: str, rel_source_label: str = None) -> str:
+    t_lower = title.strip().lower()
+
+    # 1. Highest Priority: Keyword matching on title
+    if any(sk in t_lower for sk in KNOWN_SCIENTISTS):
+        return "Scientist"
+    if any(ok == t_lower or t_lower.startswith(ok) for ok in KNOWN_ORGS):
+        return "Organization"
+    if any(ck in t_lower for ck in KNOWN_CENTRES):
+        return "Centre"
+    if any(mk in t_lower for mk in KNOWN_MISSIONS):
+        return "Mission"
+
+    # 2. Second Priority: rel_source_label if provided
     if rel_source_label:
         norm = normalize_label(rel_source_label)
         if norm in ("Scientist", "Organization", "Centre", "LaunchVehicle", "Mission"):
             return norm
-
-    t_lower = title.lower()
-    scientist_keywords = ["kalam", "sarabhai", "dhawan", "somanath", "sivan", "radhakrishnan", "scientist", "pioneer"]
-    if any(sk in t_lower for sk in scientist_keywords):
-        return "Scientist"
-    
-    org_keywords = ["isro", "drdo", "department of space", "nasa", "jaxa", "esa"]
-    if any(ok == t_lower for ok in org_keywords):
-        return "Organization"
-        
-    centre_keywords = ["space centre", "vssc", "ursc", "sac", "lpsc", "iprc", "istrac", "nrsc"]
-    if any(ck in t_lower for ck in centre_keywords):
-        return "Centre"
 
     return "Mission"
 
@@ -89,16 +127,17 @@ def execute_in_memory_search(query: str):
 
     if is_list_missions:
         mission_records = []
-        for m in kb:
-            title = m.get("title", "")
-            m_type = infer_source_type(title)
-            if m_type == "Mission" and title.lower() not in {"isro", "isro mission"}:
-                mission_records.append(m)
-        
-        selected_missions = mission_records[:12] if mission_records else kb[:12]
+        seen_titles = set()
 
-        for mission in selected_missions:
-            m_title = mission.get("title", "ISRO Mission")
+        for m in kb:
+            title = m.get("title", "").strip()
+            if is_actual_mission(title) and title.lower() not in seen_titles:
+                seen_titles.add(title.lower())
+                mission_records.append(title)
+
+        selected_titles = mission_records[:8] if mission_records else ["Chandrayaan-3", "Aditya-L1", "Gaganyaan", "Mangalyaan", "AstroSat", "XPoSat", "SpaDeX", "EOS-06"]
+
+        for m_title in selected_titles:
             graph_data.append({
                 "m": {
                     "type": "Mission",
@@ -119,7 +158,7 @@ def execute_in_memory_search(query: str):
     search_term = matches[0].strip() if matches else ""
 
     if not search_term:
-        # Broad ISRO domain keywords list (longer/specific terms first to prevent partial matches)
+        # Broad ISRO domain keywords list
         domain_keywords = [
             "chandrayaan-3", "chandrayaan 3", "chandrayaan-2", "chandrayaan-1", "chandrayaan-4", "chandrayaan",
             "aditya-l1", "aditya l1", "aditya", "gaganyaan", "spadex", "nisar",
@@ -160,19 +199,19 @@ def execute_in_memory_search(query: str):
             m for m in kb if any(pk in m.get("title", "").lower() for pk in priority_keys)
         ]
         if not target_missions:
-            target_missions = kb[:5]
+            target_missions = kb[:3]
 
-    # Limit targets to 2 if specific query to prevent mixing unrelated missions (e.g. Chandrayaan-4 with Chandrayaan-3)
-    max_targets = 2 if search_term and search_term != "isro" else 5
+    # Limit target entity documents to 1 for specific query to keep graph clean and uncrowded
+    max_targets = 1 if search_term and search_term != "isro" else 3
     selected_targets = target_missions[:max_targets]
 
     for mission in selected_targets:
         m_title = mission.get("title", "ISRO Node")
-
         relationships = mission.get("relationships", [])
 
         if relationships:
-            for rel in relationships[:12]:
+            # Cap relationships to 6 max per node to prevent graph overcrowding
+            for rel in relationships[:6]:
                 m_type = infer_source_type(m_title, rel.get("source_label") or rel.get("source_type"))
                 target_type = normalize_label(rel.get("target_label") or rel.get("target_type"))
                 target_name = rel.get("target", "Entity")
@@ -192,7 +231,7 @@ def execute_in_memory_search(query: str):
                 })
         else:
             m_type = infer_source_type(m_title)
-            for ent in mission.get("entities", [])[:8]:
+            for ent in mission.get("entities", [])[:5]:
                 target_type = normalize_label(ent.get("type", "Entity"))
                 target_name = ent.get("name", "Entity")
 
@@ -211,6 +250,7 @@ def execute_in_memory_search(query: str):
                 })
 
     return graph_data
+
 
 
 def execute_cypher(query: str):

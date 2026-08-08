@@ -338,9 +338,19 @@ def render_graph(graph_data, query="", key_suffix=""):
     query_target = extract_query_target(query)
     nodes, edges, node_metadata = build_graph(graph_data, query_target=query_target)
 
+    # Prevent graph canvas overcrowding by capping max nodes to 12
+    if len(nodes) > 12:
+        target_nodes = [n for n in nodes if "⭐" in str(n.label)]
+        other_nodes = [n for n in nodes if "⭐" not in str(n.label)]
+        allowed_nodes = target_nodes + other_nodes[:(12 - len(target_nodes))]
+        allowed_ids = {n.id for n in allowed_nodes}
+        nodes = allowed_nodes
+        edges = [e for e in edges if e.source in allowed_ids and e.target in allowed_ids]
+
     if not nodes:
         st.info("No structural nodes found to render visually.")
         return
+
 
     # Legend Header
     st.markdown(
