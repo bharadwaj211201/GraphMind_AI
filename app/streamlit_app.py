@@ -6,16 +6,30 @@ root_dir = Path(__file__).resolve().parent.parent
 if str(root_dir) not in sys.path:
     sys.path.insert(0, str(root_dir))
 
+import importlib
 import json
 from datetime import datetime
 import pandas as pd
 import streamlit as st
 from streamlit_agraph import agraph, Node, Edge, Config
 
+import chatbot.cypher_executor
+import chatbot.cypher_generator
+import chatbot.dynamic_response_generator
+import chatbot.llm_interface
+import app.dashboard
+
+importlib.reload(chatbot.cypher_executor)
+importlib.reload(chatbot.cypher_generator)
+importlib.reload(chatbot.dynamic_response_generator)
+importlib.reload(chatbot.llm_interface)
+importlib.reload(app.dashboard)
+
 from app.dashboard import get_dashboard_data
 from chatbot.cypher_generator import generate_cypher
-from chatbot.cypher_executor import execute_cypher
+from chatbot.cypher_executor import execute_cypher, is_actual_mission
 from chatbot.dynamic_response_generator import summarize
+
 
 # ==========================================================
 # Page Configuration (Forced Pure Light Theme)

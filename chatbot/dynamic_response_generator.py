@@ -46,12 +46,19 @@ def generate_offline_synthesis(question: str, graph_data: list) -> str:
     # 1. Special Handling for List Missions Query
     if is_list_query or len(subjects) > 3:
         all_missions = [f"**{name}**" for name in subjects if is_actual_mission(name)]
-        missions_str = ", ".join(all_missions[:10]) if all_missions else "**Chandrayaan-3**, **Aditya-L1**, **Gaganyaan**, **Mangalyaan**, **AstroSat**, **XPoSat**, **SpaDeX**, **EOS-06**"
+        if not all_missions:
+            all_missions = [
+                "**Chandrayaan-3**", "**Aditya-L1**", "**Gaganyaan**", "**Mangalyaan**",
+                "**AstroSat**", "**XPoSat**", "**SpaDeX**", "**Cartosat-3**", "**EOS-06**"
+            ]
+        missions_str = ", ".join(all_missions[:10])
 
-        
         org_name = list(orgs)[0] if orgs else "ISRO (Indian Space Research Organisation)"
         clean_org = str(org_name).replace("*", "").strip()
-        org_str = f"**{clean_org}**" if clean_org else "**ISRO**"
+        if not clean_org or any(p in clean_org.lower() for p in ["physical research laboratory", "prl", "kalam", "sarabhai", "dhawan"]):
+            clean_org = "ISRO (Indian Space Research Organisation)"
+        org_str = f"**{clean_org}**"
+
 
 
 
