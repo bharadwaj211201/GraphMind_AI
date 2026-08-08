@@ -253,11 +253,67 @@ def execute_in_memory_search(query: str):
 
 
 
+def sanitize_graph_records(records: list, query: str = "") -> list:
+    if not records:
+        return []
+
+    q_low = query.lower()
+    is_list_missions = any(phrase in q_low for phrase in ["list all", "list mission", "all mission", "show mission", "list_missions", "match (m:mission)"])
+
+    sanitized = []
+    seen_keys = set()
+
+    for item in records:
+        if not isinstance(item, dict):
+            continue
+
+        m = item.get("m", {})
+        r = item.get("r", {})
+        n = item.get("n", {})
+
+        m_props = m.get("properties", {}) if isinstance(m, dict) else {}
+        n_props = n.get("properties", {}) if isinstance(n, dict) else {}
+
+        m_name = str(m_props.get("name", m_props.get("title", ""))).strip()
+        n_name = str(n_props.get("name", n_props.get("title", ""))).strip()
+
+        if not m_name:
+            continue
+
+        # Correct type inference
+        m_type = infer_source_type(m_name, m.get("type") if isinstance(m, dict) else None)
+        n_type = normalize_label(n.get("type") if isinstance(n, dict) else "Entity")
+
+        # If user asked to list missions, STRICTLY filter for actual space missions!
+        if is_list_missions:
+            if not is_actual_mission(m_name):
+                continue
+
+        key = (m_name, n_name, r.get("relationship") if isinstance(r, dict) else "")
+        if key in seen_keys:
+            continue
+        seen_keys.add(key)
+
+        sanitized.append({
+            "m": {
+                "type": m_type,
+                "properties": {"name": m_name}
+            },
+            "r": {
+                "relationship": r.get("relationship", "RELATED_TO") if isinstance(r, dict) else "RELATED_TO"
+            },
+            "n": {
+                "type": n_type,
+                "properties": {"name": n_name}
+            }
+        })
+
+    return sanitized
+
+
 def execute_cypher(query: str):
     if not query or not query.strip():
-        return execute_in_memory_search("isro")
-
-    graph_data = []
+        return sanitize_graph_records(execute_in_memory_search("isro"), "isro")
 
     if driver:
         try:
@@ -265,7 +321,7 @@ def execute_cypher(query: str):
                 result = session.run(query)
                 records = [dict(record) for record in result]
                 if records:
-                    return records
+                    return sanitize_graph_records(records, query)
         except (CypherSyntaxError, Neo4jError, Exception) as e:
             print(f"[Neo4j Cypher Execution Note]: {e}")
 
@@ -274,4 +330,4 @@ def execute_cypher(query: str):
     if not graph_data:
         graph_data = execute_in_memory_search("isro")
 
-    return graph_data
+    return sanitize_graph_records(graph_data, query)

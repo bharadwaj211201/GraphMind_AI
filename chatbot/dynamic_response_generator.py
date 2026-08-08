@@ -51,7 +51,8 @@ def generate_offline_synthesis(question: str, graph_data: list) -> str:
         
         org_name = list(orgs)[0] if orgs else "ISRO (Indian Space Research Organisation)"
         clean_org = str(org_name).replace("*", "").strip()
-        org_str = f"**{clean_org}**"
+        org_str = f"**{clean_org}**" if clean_org else "**ISRO**"
+
 
 
         centre_str = ", ".join([f"**{c}**" for c in list(centres)[:3]]) or "**Vikram Sarabhai Space Centre (VSSC)** and **U R Rao Satellite Centre (URSC)**"
@@ -113,6 +114,9 @@ def summarize(question: str, graph_data: list) -> str:
         from chatbot.cypher_executor import execute_in_memory_search
         graph_data = execute_in_memory_search(question)
 
+    q_low = question.lower()
+    is_list_query = any(w in q_low for w in ["list", "all mission", "missions", "show mission", "available"])
+
     formatted_facts = []
     for item in graph_data:
         m = item.get("m", {})
@@ -129,6 +133,9 @@ def summarize(question: str, graph_data: list) -> str:
         n_name = n_props.get("name", "ISRO Entity")
         n_type = n.get("type", "Entity") if isinstance(n, dict) else "Entity"
 
+        if is_list_query and not is_actual_mission(m_name):
+            continue
+
         fact = f"- **{m_name}** `[{rel_type}]` -> **{n_type}**: {n_name}"
         formatted_facts.append(fact)
 
@@ -142,7 +149,7 @@ Provide a clear, detailed, and continuous 5 to 6 line PARAGRAPH narrative answer
 CRITICAL FORMATTING RULES:
 1. Write a single smooth 5 to 6 line PARAGRAPH. Do NOT use numbered lists (1. 2. 3.), do NOT use bullet points (- or *).
 2. Format ALL primary query keywords, mission titles (e.g. **Chandrayaan-3**, **Aditya-L1**), organizations, centres, launch vehicles, payloads, and space scientists in **bold** markdown (`**Name**`).
-3. If the user asks to list or show available ISRO missions, explicitly enumerate the mission names in **bold** within the paragraph text.
+3. If the user asks to list or show available ISRO missions, explicitly enumerate ONLY valid space missions in **bold**. Do NOT list scientists (e.g. A.P.J. Abdul Kalam, Satish Dhawan, Vikram Sarabhai) or institutes as mission titles.
 
 User Question: "{question}"
 
