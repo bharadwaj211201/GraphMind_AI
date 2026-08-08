@@ -206,8 +206,8 @@ def execute_in_memory_search(query: str):
         if not target_missions:
             target_missions = kb[:3]
 
-    # Limit target entity documents to 1 for specific query to keep graph clean and uncrowded
-    max_targets = 1 if search_term and search_term != "isro" else 3
+    # Increase target entity documents to return rich network of nodes
+    max_targets = 3 if search_term and search_term != "isro" else 6
     selected_targets = target_missions[:max_targets]
 
     for mission in selected_targets:
@@ -215,8 +215,8 @@ def execute_in_memory_search(query: str):
         relationships = mission.get("relationships", [])
 
         if relationships:
-            # Cap relationships to 6 max per node to prevent graph overcrowding
-            for rel in relationships[:6]:
+            # Return up to 15 relationships per node for rich visual network
+            for rel in relationships[:15]:
                 m_type = infer_source_type(m_title, rel.get("source_label") or rel.get("source_type"))
                 target_type = normalize_label(rel.get("target_label") or rel.get("target_type"))
                 target_name = rel.get("target", "Entity")
@@ -236,7 +236,7 @@ def execute_in_memory_search(query: str):
                 })
         else:
             m_type = infer_source_type(m_title)
-            for ent in mission.get("entities", [])[:5]:
+            for ent in mission.get("entities", [])[:10]:
                 target_type = normalize_label(ent.get("type", "Entity"))
                 target_name = ent.get("name", "Entity")
 
@@ -253,6 +253,7 @@ def execute_in_memory_search(query: str):
                         "properties": {"name": target_name}
                     }
                 })
+
 
     return graph_data
 
