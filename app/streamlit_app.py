@@ -45,29 +45,27 @@ st.set_page_config(
 )
 
 # ==========================================================
-# Ultra-Premium Futuristic Glassmorphic CSS System
+# Clean Light Theme CSS System
 # ==========================================================
 
-FUTURISTIC_CSS = """
+LIGHT_THEME_CSS = """
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap');
 
     html, body, [data-testid="stAppViewContainer"], .stApp {
-        background: radial-gradient(circle at 50% 0%, #0F172A 0%, #090D16 100%) !important;
-        color: #F8FAFC !important;
+        background-color: #FFFFFF !important;
+        color: #0F172A !important;
         font-family: 'Plus Jakarta Sans', sans-serif !important;
     }
 
     [data-testid="stHeader"] {
-        background: rgba(15, 23, 42, 0.8) !important;
-        backdrop-filter: blur(12px) !important;
+        background-color: #FFFFFF !important;
     }
 
-    /* Sidebar Custom Glassmorphic Styling */
+    /* Sidebar Light Theme */
     section[data-testid="stSidebar"] {
-        background: rgba(15, 23, 42, 0.85) !important;
-        backdrop-filter: blur(16px) !important;
-        border-right: 1px solid rgba(56, 189, 248, 0.2) !important;
+        background-color: #F8FAFC !important;
+        border-right: 1px solid #E2E8F0 !important;
     }
 
     /* Block Container Padding */
@@ -77,74 +75,92 @@ FUTURISTIC_CSS = """
         max-width: 1440px;
     }
 
-    /* Cosmic Mission Control Header Banner */
-    .header-banner-cosmic {
-        background: linear-gradient(135deg, rgba(14, 165, 233, 0.15) 0%, rgba(99, 102, 241, 0.15) 50%, rgba(236, 72, 153, 0.15) 100%);
-        border: 1px solid rgba(56, 189, 248, 0.3);
-        border-radius: 20px;
+    /* Light Header Banner */
+    .header-banner-light {
+        background: linear-gradient(135deg, #F0F9FF 0%, #E0F2FE 50%, #EEF2FF 100%);
+        border: 1px solid #BAE6FD;
+        border-radius: 18px;
         padding: 24px 32px;
         margin-bottom: 24px;
-        backdrop-filter: blur(12px);
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+        box-shadow: 0 4px 16px rgba(2, 132, 199, 0.08);
     }
-    .header-title-cosmic {
+    .header-title-light {
         font-family: 'Outfit', sans-serif;
-        background: linear-gradient(90deg, #38BDF8 0%, #818CF8 50%, #F43F5E 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        font-size: 2.4rem;
+        color: #0369A1;
+        font-size: 2.3rem;
         font-weight: 800;
         margin: 0;
         letter-spacing: -0.5px;
     }
-    .header-subtitle-cosmic {
-        color: #94A3B8;
+    .header-subtitle-light {
+        color: #0284C7;
         font-size: 1.05rem;
         margin-top: 6px;
         font-weight: 500;
     }
 
-    /* Metric Cards Override */
+    /* Metric Cards Light Theme */
     div[data-testid="stMetric"] {
-        background: rgba(30, 41, 59, 0.75) !important;
-        border: 1px solid rgba(56, 189, 248, 0.25) !important;
+        background: #FFFFFF !important;
+        border: 1px solid #E2E8F0 !important;
         border-radius: 16px !important;
         padding: 16px 20px !important;
-        backdrop-filter: blur(12px) !important;
-        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2) !important;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04) !important;
     }
     div[data-testid="stMetricLabel"] {
-        color: #38BDF8 !important;
+        color: #0284C7 !important;
         font-weight: 700 !important;
         font-size: 0.82rem !important;
         text-transform: uppercase;
         letter-spacing: 0.5px;
     }
     div[data-testid="stMetricValue"] {
-        color: #F8FAFC !important;
+        color: #0F172A !important;
         font-weight: 800 !important;
         font-size: 1.9rem !important;
     }
 
-    /* Graph Legend Box */
-    .legend-box-cosmic {
+    /* Chat Message Bubbles Light Theme */
+    [data-testid="stChatMessage"] {
+        background: #F8FAFC !important;
+        border: 1px solid #E2E8F0 !important;
+        border-radius: 14px !important;
+        padding: 16px 20px !important;
+        margin-bottom: 14px !important;
+    }
+
+    /* High Contrast Dark Text Across Light Containers */
+    p, span, label, li, td, th, h1, h2, h3, h4, h5, h6,
+    .stMarkdown, [data-testid="stMarkdownContainer"] p,
+    [data-testid="stMarkdownContainer"] span, [data-testid="stMarkdownContainer"] div,
+    [data-testid="stChatMessage"] p, [data-testid="stChatMessage"] span,
+    [data-testid="stChatMessage"] div,
+    section[data-testid="stSidebar"] label, section[data-testid="stSidebar"] span,
+    section[data-testid="stSidebar"] p, section[data-testid="stSidebar"] div,
+    section[data-testid="stSidebar"] h1, section[data-testid="stSidebar"] h2,
+    section[data-testid="stSidebar"] h3 {
+        color: #0F172A !important;
+    }
+
+    /* Graph Legend Box Light */
+    .legend-box-light {
         display: flex;
         flex-wrap: wrap;
         gap: 14px;
         padding: 14px 20px;
-        background: rgba(15, 23, 42, 0.8);
-        border: 1px solid rgba(56, 189, 248, 0.25);
+        background: #FFFFFF;
+        border: 1px solid #E2E8F0;
         border-radius: 14px;
         margin-bottom: 16px;
-        backdrop-filter: blur(10px);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
     }
-    .legend-item-cosmic {
+    .legend-item-light {
         display: flex;
         align-items: center;
         gap: 8px;
         font-size: 0.85rem;
         font-weight: 600;
-        color: #CBD5E1;
+        color: #334155;
     }
     .legend-dot {
         width: 14px;
@@ -152,46 +168,10 @@ FUTURISTIC_CSS = """
         border-radius: 50%;
     }
 
-    /* High Contrast Text Across All Chat Containers & Paragraphs */
-    p, span, label, li, td, th, h1, h2, h3, h4, h5, h6,
-    .stMarkdown, [data-testid="stMarkdownContainer"] p,
-    [data-testid="stMarkdownContainer"] span, [data-testid="stMarkdownContainer"] div,
-    [data-testid="stChatMessage"] p, [data-testid="stChatMessage"] span,
-    [data-testid="stChatMessage"] div {
-        color: #F8FAFC !important;
-    }
-
-    /* Force Bright Sidebar Text */
-    section[data-testid="stSidebar"] label,
-    section[data-testid="stSidebar"] span,
-    section[data-testid="stSidebar"] p,
-    section[data-testid="stSidebar"] div,
-    section[data-testid="stSidebar"] h1,
-    section[data-testid="stSidebar"] h2,
-    section[data-testid="stSidebar"] h3 {
-        color: #F8FAFC !important;
-    }
-
-    /* Chat Message Bubble Contrast */
-    [data-testid="stChatMessage"] {
-        background: rgba(30, 41, 59, 0.85) !important;
-        border: 1px solid rgba(56, 189, 248, 0.3) !important;
-        border-radius: 14px !important;
-        padding: 16px 20px !important;
-        margin-bottom: 14px !important;
-    }
-
-    /* Selectbox Input Dark Background & Bright Text */
-    div[data-baseweb="select"] > div {
-        background-color: #1E293B !important;
-        color: #F8FAFC !important;
-        border-color: rgba(56, 189, 248, 0.4) !important;
-    }
-
-    /* Node Details Container */
-    .details-card-cosmic {
-        background: rgba(15, 23, 42, 0.85);
-        border: 1px solid rgba(56, 189, 248, 0.3);
+    /* Node Details Container Light */
+    .details-card-light {
+        background: #F8FAFC;
+        border: 1px solid #CBD5E1;
         border-radius: 16px;
         padding: 20px 24px;
         margin-top: 16px;
@@ -200,10 +180,10 @@ FUTURISTIC_CSS = """
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
 </style>
-
 """
 
-st.markdown(FUTURISTIC_CSS, unsafe_allow_html=True)
+st.markdown(LIGHT_THEME_CSS, unsafe_allow_html=True)
+
 
 # ==========================================================
 # Distinct Node Colors (Clean Aesthetics, Gold Star Removed)
@@ -367,19 +347,19 @@ def render_graph(graph_data, query="", key_suffix=""):
         st.info("No structural nodes found to render visually.")
         return
 
-    # Clean Legend Header (Gold Star Removed!)
+    # Clean Legend Header (Light Theme)
     st.markdown(
         """
-        <div class="legend-box-cosmic">
-            <div class="legend-item-cosmic"><div class="legend-dot" style="background:#EF4444;"></div> Mission</div>
-            <div class="legend-item-cosmic"><div class="legend-dot" style="background:#0EA5E9;"></div> Organization</div>
-            <div class="legend-item-cosmic"><div class="legend-dot" style="background:#6366F1;"></div> ISRO Centre</div>
-            <div class="legend-item-cosmic"><div class="legend-dot" style="background:#F59E0B;"></div> Scientist</div>
-            <div class="legend-item-cosmic"><div class="legend-dot" style="background:#10B981;"></div> Spaceport</div>
-            <div class="legend-item-cosmic"><div class="legend-dot" style="background:#06B6D4;"></div> Launch Vehicle</div>
-            <div class="legend-item-cosmic"><div class="legend-dot" style="background:#EC4899;"></div> Payload</div>
-            <div class="legend-item-cosmic"><div class="legend-dot" style="background:#8B5CF6;"></div> Launch Date</div>
-            <div class="legend-item-cosmic"><div class="legend-dot" style="background:#F97316;"></div> Celestial Body</div>
+        <div class="legend-box-light">
+            <div class="legend-item-light"><div class="legend-dot" style="background:#EF4444;"></div> Mission</div>
+            <div class="legend-item-light"><div class="legend-dot" style="background:#0EA5E9;"></div> Organization</div>
+            <div class="legend-item-light"><div class="legend-dot" style="background:#6366F1;"></div> ISRO Centre</div>
+            <div class="legend-item-light"><div class="legend-dot" style="background:#F59E0B;"></div> Scientist</div>
+            <div class="legend-item-light"><div class="legend-dot" style="background:#10B981;"></div> Spaceport</div>
+            <div class="legend-item-light"><div class="legend-dot" style="background:#06B6D4;"></div> Launch Vehicle</div>
+            <div class="legend-item-light"><div class="legend-dot" style="background:#EC4899;"></div> Payload</div>
+            <div class="legend-item-light"><div class="legend-dot" style="background:#8B5CF6;"></div> Launch Date</div>
+            <div class="legend-item-light"><div class="legend-dot" style="background:#F97316;"></div> Celestial Body</div>
         </div>
         """,
         unsafe_allow_html=True
@@ -392,21 +372,21 @@ def render_graph(graph_data, query="", key_suffix=""):
         directed=True,
         physics=True,
         hierarchical=False,
+        bgColor="#FFFFFF",
         nodeHighlightBehavior=True,
-        highlightColor="#38BDF8",
+        highlightColor="#0284C7",
         collapsible=False,
         node={"labelProperty": "label"},
         link={"labelProperty": "label", "renderItalic": False},
         barnesHut={
-            "gravitationalConstant": -45000,
+            "gravitationalConstant": -35000,
             "centralGravity": 0.03,
-            "springLength": 350,
+            "springLength": 320,
             "springConstant": 0.005,
             "damping": 0.09,
             "avoidOverlap": 1.0
         }
     )
-
 
     # agraph canvas execution
     clicked_node_id = agraph(nodes=nodes, edges=edges, config=config)
@@ -436,20 +416,20 @@ def render_graph(graph_data, query="", key_suffix=""):
     if target_info:
         st.markdown(
             f"""
-            <div class="details-card-cosmic">
-                <div style="color:#38BDF8; font-size:1.1rem; font-weight:700; margin-bottom:10px;">📌 Node Attribute Summary: {target_info['name']}</div>
-                <table style="width:100%; border-collapse: collapse; font-size:0.92rem; color:#F8FAFC;">
-                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
-                        <td style="padding:8px 0; font-weight:700; color:#94A3B8; width:30%;">Entity Name:</td>
-                        <td style="padding:8px 0; color:#38BDF8; font-weight:700;">{target_info['name']}</td>
+            <div class="details-card-light">
+                <div style="color:#0369A1; font-size:1.1rem; font-weight:700; margin-bottom:10px;">📌 Node Attribute Summary: {target_info['name']}</div>
+                <table style="width:100%; border-collapse: collapse; font-size:0.92rem; color:#0F172A;">
+                    <tr style="border-bottom: 1px solid #E2E8F0;">
+                        <td style="padding:8px 0; font-weight:700; color:#475569; width:30%;">Entity Name:</td>
+                        <td style="padding:8px 0; color:#0369A1; font-weight:700;">{target_info['name']}</td>
                     </tr>
-                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
-                        <td style="padding:8px 0; font-weight:700; color:#94A3B8;">Node Category:</td>
-                        <td style="padding:8px 0; color:#CBD5E1;">{target_info['type']}</td>
+                    <tr style="border-bottom: 1px solid #E2E8F0;">
+                        <td style="padding:8px 0; font-weight:700; color:#475569;">Node Category:</td>
+                        <td style="padding:8px 0; color:#334155;">{target_info['type']}</td>
                     </tr>
-                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
-                        <td style="padding:8px 0; font-weight:700; color:#94A3B8;">Graph Connections:</td>
-                        <td style="padding:8px 0; color:#CBD5E1;">{len(target_info['connections'])} Linked Network Entities</td>
+                    <tr style="border-bottom: 1px solid #E2E8F0;">
+                        <td style="padding:8px 0; font-weight:700; color:#475569;">Graph Connections:</td>
+                        <td style="padding:8px 0; color:#334155;">{len(target_info['connections'])} Linked Network Entities</td>
                     </tr>
                 </table>
             </div>
@@ -533,12 +513,12 @@ def render_dynamic_analytics_figures(graph_data, question=""):
         fig_pie = px.pie(
             domain_df, values="Count", names="Sector", hole=0.55,
             title="🎯 Mission Exploration Sector Distribution",
-            color_discrete_sequence=px.colors.qualitative.Pastel
+            color_discrete_sequence=["#0EA5E9", "#6366F1", "#10B981", "#F59E0B", "#EF4444", "#EC4899", "#8B5CF6"]
         )
         fig_pie.update_layout(
             paper_bgcolor="rgba(0,0,0,0)",
             plot_bgcolor="rgba(0,0,0,0)",
-            font={"color": "#F8FAFC", "family": "Plus Jakarta Sans"},
+            font={"color": "#0F172A", "family": "Plus Jakarta Sans"},
             margin=dict(l=10, r=10, t=40, b=10)
         )
         st.plotly_chart(fig_pie, use_container_width=True)
@@ -558,16 +538,17 @@ def render_dynamic_analytics_figures(graph_data, question=""):
             cat_df, x="Entities", y="Category", orientation="h",
             title="🔗 Knowledge Graph Entity Category Counts",
             color="Category",
-            color_discrete_sequence=px.colors.sequential.Cyan
+            color_discrete_sequence=["#0EA5E9", "#6366F1", "#10B981", "#F59E0B", "#EF4444", "#EC4899"]
         )
         fig_bar.update_layout(
             paper_bgcolor="rgba(0,0,0,0)",
             plot_bgcolor="rgba(0,0,0,0)",
-            font={"color": "#F8FAFC", "family": "Plus Jakarta Sans"},
+            font={"color": "#0F172A", "family": "Plus Jakarta Sans"},
             margin=dict(l=10, r=10, t=40, b=10),
             showlegend=False
         )
         st.plotly_chart(fig_bar, use_container_width=True)
+
 
 
 # ==========================================================
@@ -700,8 +681,8 @@ def render_sidebar():
     st.sidebar.markdown(
         """
         <div style="text-align: center; padding: 12px 0;">
-            <h2 style="margin:0; font-size: 1.8rem; color: #38BDF8; font-weight:800; font-family:'Outfit',sans-serif;">🛰️ GraphMind AI</h2>
-            <p style="margin:4px 0 0 0; color: #818CF8; font-size: 0.88rem; font-weight:600;">ISRO Mission Control Graph Engine</p>
+            <h2 style="margin:0; font-size: 1.8rem; color: #0369A1; font-weight:800; font-family:'Outfit',sans-serif;">🛰️ GraphMind AI</h2>
+            <p style="margin:4px 0 0 0; color: #0284C7; font-size: 0.88rem; font-weight:600;">ISRO Mission Control Graph Engine</p>
         </div>
         """,
         unsafe_allow_html=True
@@ -772,8 +753,8 @@ def render_sidebar():
     st.sidebar.markdown("---")
     st.sidebar.markdown(
         """
-        <div style="font-size: 0.82rem; color: #94A3B8; text-align: center; background: rgba(30,41,59,0.7); border:1px solid rgba(56,189,248,0.2); padding: 12px; border-radius: 12px;">
-            <p style="margin:0 0 4px 0; font-weight:700; color:#F8FAFC;">CDAC BDA Major Project</p>
+        <div style="font-size: 0.82rem; color: #475569; text-align: center; background: #FFFFFF; border:1px solid #E2E8F0; padding: 12px; border-radius: 12px;">
+            <p style="margin:0 0 4px 0; font-weight:700; color:#0F172A;">CDAC BDA Major Project</p>
             <p style="margin:2px 0;"><b>Team:</b> Shashank, Bharadwaj, Shivam, Prabhas</p>
         </div>
         """,
@@ -786,12 +767,12 @@ def render_sidebar():
 
 render_sidebar()
 
-# Futuristic Cosmic Header Banner
+# Clean Light Header Banner
 st.markdown(
     """
-    <div class="header-banner-cosmic">
-        <h1 class="header-title-cosmic">GraphMind AI — ISRO Mission Control</h1>
-        <p class="header-subtitle-cosmic">Graph-Based Retrieval-Augmented Generation (GraphRAG) & Data Analytics for 133 Spacecraft Missions, 104 Launches & 432 Foreign Satellites</p>
+    <div class="header-banner-light">
+        <h1 class="header-title-light">GraphMind AI — ISRO Mission Control</h1>
+        <p class="header-subtitle-light">Graph-Based Retrieval-Augmented Generation (GraphRAG) & Data Analytics for 133 Spacecraft Missions, 104 Launches & 432 Foreign Satellites</p>
     </div>
     """,
     unsafe_allow_html=True
