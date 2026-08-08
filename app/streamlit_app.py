@@ -455,11 +455,23 @@ def render_dynamic_analytics_figures(graph_data, question=""):
     if not graph_data or not isinstance(graph_data, list):
         return
 
-    st.markdown("### 📊 Knowledge Graph Data Analytics Figures")
-    st.caption("Analytical figures generated dynamically from retrieved Knowledge Graph triples.")
+    st.markdown("### 📊 Mission Subsystems & Knowledge Graph Analytics")
+    st.caption("Analytical figures generated dynamically from Knowledge Graph records for this mission.")
 
-    rel_counts = {}
+    category_labels = {
+        "CENTRE": "ISRO Development Centres",
+        "ORGANIZATION": "Governing Organizations",
+        "PAYLOAD": "Scientific Payloads",
+        "SPACECRAFT": "Spacecraft Subsystems",
+        "LAUNCH_VEHICLE": "Launch Vehicles & Rockets",
+        "SPACEPORT": "Launch Ports & Facilities",
+        "SCIENTIST": "Scientists & Project Directors",
+        "DATE": "Milestone Dates",
+        "CELESTIAL_BODY": "Celestial Destination"
+    }
+
     type_counts = {}
+    component_list = []
     fact_rows = []
 
     for item in graph_data:
@@ -475,46 +487,52 @@ def render_dynamic_analytics_figures(graph_data, question=""):
         n_type = n.get("type", "Entity") if isinstance(n, dict) else "Entity"
         rel_type = r.get("relationship", "RELATED_TO") if isinstance(r, dict) else "RELATED_TO"
 
-        rel_counts[rel_type] = rel_counts.get(rel_type, 0) + 1
-        type_counts[n_type] = type_counts.get(n_type, 0) + 1
+        readable_cat = category_labels.get(str(n_type).upper(), n_type)
+        type_counts[readable_cat] = type_counts.get(readable_cat, 0) + 1
+
+        component_list.append({
+            "Component / Entity": n_name,
+            "Subsystem Type": readable_cat
+        })
 
         fact_rows.append({
             "Source Entity": m_name,
             "Relationship": rel_type,
             "Target Entity": n_name,
-            "Entity Category": n_type
+            "Entity Category": readable_cat
         })
 
     col1, col2 = st.columns(2)
 
     with col1:
-        # Chart 1: Relationship Type Frequency (Derived directly from graph triples)
-        rel_df = pd.DataFrame([{"Relationship": k, "Triples": v} for k, v in rel_counts.items()])
-        rel_df = rel_df.sort_values(by="Triples", ascending=True)
+        # Chart 1: Key Connected Subsystems & Entities (Bar Chart)
+        comp_df = pd.DataFrame(component_list).drop_duplicates()
+        comp_counts = comp_df["Subsystem Type"].value_counts().reset_index()
+        comp_counts.columns = ["Subsystem Category", "Count"]
 
-        fig_rel = px.bar(
-            rel_df, x="Triples", y="Relationship", orientation="h",
-            title="🕸️ Retained Graph Relationship Types",
-            color="Relationship",
-            color_discrete_sequence=["#0EA5E9", "#6366F1", "#10B981", "#F59E0B", "#EF4444", "#EC4899", "#8B5CF6", "#06B6D4", "#F97316"]
+        fig_bar = px.bar(
+            comp_counts, x="Count", y="Subsystem Category", orientation="h",
+            title="🚀 Mission Component Breakdown",
+            color="Subsystem Category",
+            color_discrete_sequence=["#0EA5E9", "#6366F1", "#10B981", "#F59E0B", "#EF4444", "#EC4899", "#8B5CF6", "#06B6D4"]
         )
-        fig_rel.update_layout(
+        fig_bar.update_layout(
             paper_bgcolor="rgba(0,0,0,0)",
             plot_bgcolor="rgba(0,0,0,0)",
             font={"color": "#0F172A", "family": "Plus Jakarta Sans"},
             margin=dict(l=10, r=10, t=40, b=10),
             showlegend=False
         )
-        st.plotly_chart(fig_rel, use_container_width=True)
+        st.plotly_chart(fig_bar, use_container_width=True)
 
     with col2:
-        # Chart 2: Entity Category Distribution (Derived directly from graph nodes)
-        cat_df = pd.DataFrame([{"Category": k, "Entities": v} for k, v in type_counts.items()])
+        # Chart 2: Subsystem Category Proportion (Pie / Donut Chart)
+        cat_df = pd.DataFrame([{"Subsystem": k, "Proportion": v} for k, v in type_counts.items()])
 
         fig_pie = px.pie(
-            cat_df, values="Entities", names="Category", hole=0.5,
-            title="🔗 Graph Entity Category Breakdown",
-            color_discrete_sequence=["#0EA5E9", "#6366F1", "#10B981", "#F59E0B", "#EF4444", "#EC4899", "#8B5CF6", "#06B6D4", "#F97316"]
+            cat_df, values="Proportion", names="Subsystem", hole=0.45,
+            title="🎯 Subsystem Allocation Distribution",
+            color_discrete_sequence=["#0EA5E9", "#6366F1", "#10B981", "#F59E0B", "#EF4444", "#EC4899", "#8B5CF6", "#06B6D4"]
         )
         fig_pie.update_layout(
             paper_bgcolor="rgba(0,0,0,0)",
@@ -525,8 +543,9 @@ def render_dynamic_analytics_figures(graph_data, question=""):
         st.plotly_chart(fig_pie, use_container_width=True)
 
     # Optional Fact Data Table
-    with st.expander("📄 View Retrieved Graph Triples Table", expanded=False):
+    with st.expander("📄 View Knowledge Graph Triples Table", expanded=False):
         st.dataframe(pd.DataFrame(fact_rows), use_container_width=True, hide_index=True)
+
 
 
 
