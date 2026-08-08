@@ -345,7 +345,8 @@ def render_graph(graph_data, query="", key_suffix=""):
         allowed_nodes = target_nodes + other_nodes[:(12 - len(target_nodes))]
         allowed_ids = {n.id for n in allowed_nodes}
         nodes = allowed_nodes
-        edges = [e for e in edges if e.source in allowed_ids and e.target in allowed_ids]
+        edges = [e for e in edges if getattr(e, 'source', None) in allowed_ids and getattr(e, 'to', None) in allowed_ids]
+
 
     if not nodes:
         st.info("No structural nodes found to render visually.")
