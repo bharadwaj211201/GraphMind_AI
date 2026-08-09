@@ -389,8 +389,8 @@ def render_graph(graph_data, query="", key_suffix=""):
         }
     )
 
-    # agraph canvas execution
-    clicked_node_id = agraph(nodes=nodes, edges=edges, config=config)
+    # agraph canvas execution with unique component key
+    clicked_node_id = agraph(nodes=nodes, edges=edges, config=config, key=f"agraph_{key_suffix}")
 
     # Interactive Node Selector Dropdown
     node_choices = ["-- Select a node to inspect key-value details --"] + [
@@ -451,7 +451,7 @@ def render_graph(graph_data, query="", key_suffix=""):
 # Dynamic Data Analytics Figures Engine (Plotly Figures)
 # ==========================================================
 
-def render_dynamic_analytics_figures(graph_data, question=""):
+def render_dynamic_analytics_figures(graph_data, question="", key_suffix=""):
     if not graph_data or not isinstance(graph_data, list):
         return
 
@@ -502,49 +502,54 @@ def render_dynamic_analytics_figures(graph_data, question=""):
             "Entity Category": readable_cat
         })
 
-    col1, col2 = st.columns(2)
+    # Chart 1: Key Connected Subsystems & Entities (Bar Chart)
+    comp_df = pd.DataFrame(component_list).drop_duplicates()
+    comp_counts = comp_df["Subsystem Type"].value_counts().reset_index()
+    comp_counts.columns = ["Subsystem Category", "Count"]
 
-    with col1:
-        # Chart 1: Key Connected Subsystems & Entities (Bar Chart)
-        comp_df = pd.DataFrame(component_list).drop_duplicates()
-        comp_counts = comp_df["Subsystem Type"].value_counts().reset_index()
-        comp_counts.columns = ["Subsystem Category", "Count"]
+    fig_bar = px.bar(
+        comp_counts, x="Count", y="Subsystem Category", orientation="h",
+        title="🚀 Mission Component Breakdown",
+        color="Subsystem Category",
+        text="Count",
+        color_discrete_sequence=["#0EA5E9", "#6366F1", "#10B981", "#F59E0B", "#EF4444", "#EC4899", "#8B5CF6", "#06B6D4"]
+    )
+    fig_bar.update_traces(
+        textposition="outside",
+        textfont=dict(size=13, color="#0F172A", family="Plus Jakarta Sans"),
+        cliponaxis=False
+    )
+    fig_bar.update_layout(
+        paper_bgcolor="rgba(0,0,0,0)",
+        plot_bgcolor="rgba(0,0,0,0)",
+        font={"color": "#0F172A", "family": "Plus Jakarta Sans"},
+        margin=dict(l=10, r=40, t=40, b=10),
+        showlegend=False,
+        xaxis=dict(showgrid=True, gridcolor="#E2E8F0")
+    )
+    st.plotly_chart(fig_bar, use_container_width=True, key=f"bar_{key_suffix}")
 
-        fig_bar = px.bar(
-            comp_counts, x="Count", y="Subsystem Category", orientation="h",
-            title="🚀 Mission Component Breakdown",
-            color="Subsystem Category",
-            color_discrete_sequence=["#0EA5E9", "#6366F1", "#10B981", "#F59E0B", "#EF4444", "#EC4899", "#8B5CF6", "#06B6D4"]
-        )
-        fig_bar.update_layout(
-            paper_bgcolor="rgba(0,0,0,0)",
-            plot_bgcolor="rgba(0,0,0,0)",
-            font={"color": "#0F172A", "family": "Plus Jakarta Sans"},
-            margin=dict(l=10, r=10, t=40, b=10),
-            showlegend=False
-        )
-        st.plotly_chart(fig_bar, use_container_width=True)
-
-    with col2:
-        # Chart 2: Subsystem Category Proportion (Pie / Donut Chart)
-        cat_df = pd.DataFrame([{"Subsystem": k, "Proportion": v} for k, v in type_counts.items()])
-
-        fig_pie = px.pie(
-            cat_df, values="Proportion", names="Subsystem", hole=0.45,
-            title="🎯 Subsystem Allocation Distribution",
-            color_discrete_sequence=["#0EA5E9", "#6366F1", "#10B981", "#F59E0B", "#EF4444", "#EC4899", "#8B5CF6", "#06B6D4"]
-        )
-        fig_pie.update_layout(
-            paper_bgcolor="rgba(0,0,0,0)",
-            plot_bgcolor="rgba(0,0,0,0)",
-            font={"color": "#0F172A", "family": "Plus Jakarta Sans"},
-            margin=dict(l=10, r=10, t=40, b=10)
-        )
-        st.plotly_chart(fig_pie, use_container_width=True)
+    # Subsystem Analytics Summary Box
+    st.markdown(
+        """
+        <div style="background:#F0F9FF; border:1px solid #BAE6FD; border-radius:10px; padding:16px; margin-top:10px; margin-bottom:15px;">
+            <div style="color:#0369A1; font-weight:700; font-size:1.05rem; margin-bottom:8px;">💡 Dynamic Subsystem Analytics Summary</div>
+        """,
+        unsafe_allow_html=True
+    )
+    for _, row in comp_counts.iterrows():
+        cat_name = row["Subsystem Category"]
+        cnt = int(row["Count"])
+        matched_entities = comp_df[comp_df["Subsystem Type"] == cat_name]["Component / Entity"].tolist()
+        formatted_names = ", ".join([f"**{name}**" for name in matched_entities[:6]])
+        if len(matched_entities) > 6:
+            formatted_names += f" *(and {len(matched_entities)-6} more)*"
+        st.markdown(f"- **{cat_name} ({cnt})**: {formatted_names}")
+    st.markdown("</div>", unsafe_allow_html=True)
 
     # Optional Fact Data Table
     with st.expander("📄 View Knowledge Graph Triples Table", expanded=False):
-        st.dataframe(pd.DataFrame(fact_rows), use_container_width=True, hide_index=True)
+        st.dataframe(pd.DataFrame(fact_rows), use_container_width=True, hide_index=True, key=f"df_{key_suffix}")
 
 
 
@@ -559,22 +564,35 @@ def render_chat_tab():
     st.caption("Natural Language Knowledge Graph Query Engine with dynamic graph visualization and data analytics.")
 
 
-    # Sample Quick Prompts
-    st.markdown("##### 💡 Suggested Questions")
-    col1, col2, col3, col4 = st.columns(4)
+    # 10 Most Thinkable Human Questions Dropdown Selector
+    st.markdown("##### 🎯 10 Most Thinkable Human Questions (Select from Dropdown)")
+    
+    top_10_questions = [
+        "-- Select a top human query from dropdown --",
+        "1. 🌕 Tell me about Chandrayaan-3 mission, launch date, payloads, and landing site.",
+        "2. ☀️ What is Aditya-L1 solar observatory mission and its scientific instruments?",
+        "3. 👨‍🔬 Who is the current Chairman of ISRO and key space pioneers?",
+        "4. 📍 Where is ISRO headquartered and its primary launch facilities across India?",
+        "5. 🚀 Which was the last rocket launched by ISRO?",
+        "6. 🌌 What is XPoSat (X-ray Polarimeter Satellite) space mission?",
+        "7. 👨‍🚀 Who is Group Captain Shubhanshu Shukla in Gaganyaan Ax-4 mission?",
+        "8. 🏛️ Who founded ISRO and when was it established?",
+        "9. 🛰️ What are the key details of EOS-08 and SSLV-D3 launch?",
+        "10. 📋 List all space missions indexed in the Knowledge Base."
+    ]
 
-    with col1:
-        if st.button("🚀 Chandrayaan-3 Details", use_container_width=True):
-            st.session_state.pending_question = "Tell me about Chandrayaan-3 mission, launch date, payloads, and organizations."
-    with col2:
-        if st.button("☀️ Aditya-L1 Solar Mission", use_container_width=True):
-            st.session_state.pending_question = "Tell me about Aditya-L1 solar mission and its payloads."
-    with col3:
-        if st.button("👨‍🔬 APJ Abdul Kalam & ISRO", use_container_width=True):
-            st.session_state.pending_question = "Who is APJ Abdul Kalam and what was his role in ISRO?"
-    with col4:
-        if st.button("📋 List All Missions", use_container_width=True):
-            st.session_state.pending_question = "List all ISRO missions available in the knowledge graph."
+    selected_q = st.selectbox(
+        "Select a question from dropdown to run GraphRAG query:",
+        top_10_questions,
+        key="top_10_dropdown"
+    )
+
+    if selected_q and selected_q != top_10_questions[0]:
+        clean_q = selected_q.split(". ", 1)[-1]
+        if st.session_state.get("last_dropdown_q") != clean_q:
+            st.session_state.last_dropdown_q = clean_q
+            st.session_state.pending_question = clean_q
+            st.rerun()
 
     st.markdown("---")
 
@@ -593,7 +611,7 @@ def render_chat_tab():
                 render_graph(chat["graph_data"], query=chat["question"], key_suffix=f"hist_{idx}")
 
             with st.expander("📊 Dynamic Data Analytics Figures", expanded=True):
-                render_dynamic_analytics_figures(chat["graph_data"], question=chat["question"])
+                render_dynamic_analytics_figures(chat["graph_data"], question=chat["question"], key_suffix=f"hist_{idx}")
 
             with st.expander("📦 Raw Neo4j Graph Data", expanded=False):
                 st.json(chat["graph_data"])
@@ -623,7 +641,7 @@ def render_chat_tab():
                 render_graph(graph_data, query=question, key_suffix="live_new")
 
             with st.expander("📊 Dynamic Data Analytics Figures", expanded=True):
-                render_dynamic_analytics_figures(graph_data, question=question)
+                render_dynamic_analytics_figures(graph_data, question=question, key_suffix="live_new")
 
             with st.expander("📦 Raw Neo4j Graph Data", expanded=False):
                 st.json(graph_data)
@@ -770,8 +788,8 @@ render_sidebar()
 st.markdown(
     """
     <div class="header-banner-light">
-        <h1 class="header-title-light">GraphMind AI — ISRO Mission Control</h1>
-        <p class="header-subtitle-light">Graph-Based Retrieval-Augmented Generation (GraphRAG) & Data Analytics for 133 Spacecraft Missions, 104 Launches & 432 Foreign Satellites</p>
+        <h1 class="header-title-light">GraphMind AI — ISRO Missions</h1>
+        <p class="header-subtitle-light">MultiGraph AI: Intelligent Multi-Source Entity Extraction and Knowledge Graph-Based Conversational Assistant</p>
     </div>
     """,
     unsafe_allow_html=True

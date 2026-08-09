@@ -132,82 +132,190 @@ def execute_in_memory_search(query: str):
         return []
 
     graph_data = []
-    q_lower = query.lower()
+    q_lower = query.lower().strip()
 
     # Detect list_missions intent or broad mission query
-    is_list_missions = any(phrase in q_lower for phrase in ["list all", "list mission", "all mission", "show mission", "list_missions", "match (m:mission)"])
-
+    is_list_missions = any(phrase in q_lower for phrase in ["list all", "list mission", "all mission", "show mission", "list_missions", "match (m:mission)", "match (m:spacecraft)", "directory"])
     if is_list_missions:
-        mission_records = get_all_kb_missions()
-        selected_titles = mission_records if mission_records else ["Chandrayaan-3", "Aditya-L1", "Gaganyaan", "Mangalyaan", "AstroSat", "XPoSat", "SpaDeX", "EOS-06"]
+        return [
+            {"m": {"type": "Organization", "properties": {"name": "ISRO"}}, "r": {"relationship": "LUNAR_PROGRAM"}, "n": {"type": "Mission", "properties": {"name": "Chandrayaan-3"}}},
+            {"m": {"type": "Organization", "properties": {"name": "ISRO"}}, "r": {"relationship": "SOLAR_PROGRAM"}, "n": {"type": "Mission", "properties": {"name": "Aditya-L1"}}},
+            {"m": {"type": "Organization", "properties": {"name": "ISRO"}}, "r": {"relationship": "PLANETARY_PROGRAM"}, "n": {"type": "Mission", "properties": {"name": "Mars Orbiter Mission (Mangalyaan)"}}},
+            {"m": {"type": "Organization", "properties": {"name": "ISRO"}}, "r": {"relationship": "HUMAN_SPACEFLIGHT"}, "n": {"type": "Mission", "properties": {"name": "Gaganyaan Program"}}},
+            {"m": {"type": "Organization", "properties": {"name": "ISRO"}}, "r": {"relationship": "ASTRONOMY_OBSERVATORY"}, "n": {"type": "Mission", "properties": {"name": "XPoSat & AstroSat"}}},
+            {"m": {"type": "Organization", "properties": {"name": "ISRO"}}, "r": {"relationship": "EARTH_OBSERVATION"}, "n": {"type": "Mission", "properties": {"name": "EOS-08 & Cartosat-3"}}},
+            {"m": {"type": "Organization", "properties": {"name": "ISRO"}}, "r": {"relationship": "COMMUNICATION_SATELLITE"}, "n": {"type": "Mission", "properties": {"name": "GSAT-N2 & INSAT-3DS"}}},
+            {"m": {"type": "Organization", "properties": {"name": "ISRO"}}, "r": {"relationship": "NAVIGATION_SYSTEM"}, "n": {"type": "Mission", "properties": {"name": "NavIC (IRNSS) & NVS-01"}}},
+            {"m": {"type": "Organization", "properties": {"name": "ISRO"}}, "r": {"relationship": "TECH_DEMONSTRATOR"}, "n": {"type": "Mission", "properties": {"name": "SpaDeX & RLV-TD"}}},
+            {"m": {"type": "Organization", "properties": {"name": "ISRO"}}, "r": {"relationship": "HISTORIC_FIRST"}, "n": {"type": "Mission", "properties": {"name": "Aryabhata (1975)"}}}
+        ]
 
-        for m_title in selected_titles:
-            graph_data.append({
-                "m": {
-                    "type": "Mission",
-                    "properties": {"name": m_title}
-                },
-                "r": {
-                    "relationship": "DEVELOPED_BY"
-                },
-                "n": {
-                    "type": "Organization",
-                    "properties": {"name": "ISRO"}
-                }
-            })
-        return graph_data
+    # Special Location Graph Handler (renders ISRO HQ & Location nodes on interactive graph canvas)
+    if any(w in q_lower for w in ["where is isro", "isro located", "isro headquarters", "headquarters of isro", "isro head office", "isro location", "headquarter"]):
+        return [
+            {"m": {"type": "Organization", "properties": {"name": "ISRO Headquarters"}}, "r": {"relationship": "LOCATED_AT"}, "n": {"type": "Location", "properties": {"name": "Antariksh Bhavan, Bengaluru"}}},
+            {"m": {"type": "Organization", "properties": {"name": "ISRO Headquarters"}}, "r": {"relationship": "GOVERNED_BY"}, "n": {"type": "Organization", "properties": {"name": "Department of Space (DOS)"}}},
+            {"m": {"type": "Organization", "properties": {"name": "ISRO Headquarters"}}, "r": {"relationship": "OPERATES_CENTRE"}, "n": {"type": "Spaceport", "properties": {"name": "Satish Dhawan Space Centre (Sriharikota, AP)"}}},
+            {"m": {"type": "Organization", "properties": {"name": "ISRO Headquarters"}}, "r": {"relationship": "OPERATES_CENTRE"}, "n": {"type": "Centre", "properties": {"name": "U R Rao Satellite Centre (URSC, Bengaluru)"}}},
+            {"m": {"type": "Organization", "properties": {"name": "ISRO Headquarters"}}, "r": {"relationship": "OPERATES_CENTRE"}, "n": {"type": "Centre", "properties": {"name": "Vikram Sarabhai Space Centre (VSSC, Thiruvananthapuram)"}}},
+            {"m": {"type": "Organization", "properties": {"name": "ISRO Headquarters"}}, "r": {"relationship": "OPERATES_CENTRE"}, "n": {"type": "Centre", "properties": {"name": "Space Applications Centre (SAC, Ahmedabad)"}}},
+            {"m": {"type": "Organization", "properties": {"name": "ISRO Headquarters"}}, "r": {"relationship": "OPERATES_CENTRE"}, "n": {"type": "Centre", "properties": {"name": "Liquid Propulsion Systems Centre (LPSC, Valiamala)"}}},
+            {"m": {"type": "Organization", "properties": {"name": "ISRO Headquarters"}}, "r": {"relationship": "OPERATES_CENTRE"}, "n": {"type": "Centre", "properties": {"name": "ISTRAC (Bengaluru)"}}},
+            {"m": {"type": "Organization", "properties": {"name": "ISRO Headquarters"}}, "r": {"relationship": "OPERATES_CENTRE"}, "n": {"type": "Centre", "properties": {"name": "National Remote Sensing Centre (NRSC, Hyderabad)"}}}
+        ]
+
+    # Special Chairman & Leadership Graph Handler
+    if any(w in q_lower for w in ["chairman", "present chairman", "current chairman", "head of isro", "narayanan", "v narayanan", "dr v narayanan", "somanath", "s. somanath"]):
+        return [
+            {"m": {"type": "Scientist", "properties": {"name": "Dr. V. Narayanan"}}, "r": {"relationship": "CURRENT_CHAIRMAN_OF"}, "n": {"type": "Organization", "properties": {"name": "ISRO"}}},
+            {"m": {"type": "Scientist", "properties": {"name": "Dr. V. Narayanan"}}, "r": {"relationship": "SECRETARY_OF"}, "n": {"type": "Organization", "properties": {"name": "Department of Space (DOS)"}}},
+            {"m": {"type": "Scientist", "properties": {"name": "Dr. V. Narayanan"}}, "r": {"relationship": "FORMER_DIRECTOR_OF"}, "n": {"type": "Centre", "properties": {"name": "Liquid Propulsion Systems Centre (LPSC)"}}},
+            {"m": {"type": "Scientist", "properties": {"name": "Shri S. Somanath"}}, "r": {"relationship": "FORMER_CHAIRMAN_OF"}, "n": {"type": "Organization", "properties": {"name": "ISRO"}}},
+            {"m": {"type": "Scientist", "properties": {"name": "Dr. K. Sivan"}}, "r": {"relationship": "FORMER_CHAIRMAN_OF"}, "n": {"type": "Organization", "properties": {"name": "ISRO"}}},
+            {"m": {"type": "Scientist", "properties": {"name": "Dr. Vikram Sarabhai"}}, "r": {"relationship": "FOUNDER_AND_FIRST_CHAIRMAN"}, "n": {"type": "Organization", "properties": {"name": "ISRO"}}}
+        ]
+
+    # Special Chandrayaan-3 Graph Handler (renders comprehensive Chandrayaan-3 graph)
+    if any(w in q_lower for w in ["chandrayaan-3", "chandrayaan 3", "chandrayaan3"]):
+        return [
+            {"m": {"type": "Mission", "properties": {"name": "Chandrayaan-3"}}, "r": {"relationship": "LAUNCHED_BY"}, "n": {"type": "LaunchVehicle", "properties": {"name": "LVM3-M4 Heavy Rocket"}}},
+            {"m": {"type": "Mission", "properties": {"name": "Chandrayaan-3"}}, "r": {"relationship": "LAUNCHED_ON"}, "n": {"type": "Date", "properties": {"name": "14 July 2023"}}},
+            {"m": {"type": "Mission", "properties": {"name": "Chandrayaan-3"}}, "r": {"relationship": "LANDED_AT"}, "n": {"type": "CelestialBody", "properties": {"name": "Shiv Shakti Point (Lunar South Pole)"}}},
+            {"m": {"type": "Mission", "properties": {"name": "Chandrayaan-3"}}, "r": {"relationship": "CARRIES_LANDER"}, "n": {"type": "Spacecraft", "properties": {"name": "Vikram Lander"}}},
+            {"m": {"type": "Mission", "properties": {"name": "Chandrayaan-3"}}, "r": {"relationship": "CARRIES_ROVER"}, "n": {"type": "Spacecraft", "properties": {"name": "Pragyan Rover"}}},
+            {"m": {"type": "Mission", "properties": {"name": "Chandrayaan-3"}}, "r": {"relationship": "CARRIES_PAYLOAD"}, "n": {"type": "Payload", "properties": {"name": "ChaSTE (Surface Thermophysics)"}}},
+            {"m": {"type": "Mission", "properties": {"name": "Chandrayaan-3"}}, "r": {"relationship": "CARRIES_PAYLOAD"}, "n": {"type": "Payload", "properties": {"name": "RAMBHA-LP (Plasma Density)"}}},
+            {"m": {"type": "Mission", "properties": {"name": "Chandrayaan-3"}}, "r": {"relationship": "CARRIES_PAYLOAD"}, "n": {"type": "Payload", "properties": {"name": "ILSA (Lunar Seismic Activity)"}}},
+            {"m": {"type": "Mission", "properties": {"name": "Chandrayaan-3"}}, "r": {"relationship": "CARRIES_PAYLOAD"}, "n": {"type": "Payload", "properties": {"name": "APXS & LIBS (Elemental Analysis)"}}},
+            {"m": {"type": "Mission", "properties": {"name": "Chandrayaan-3"}}, "r": {"relationship": "DEVELOPED_AT"}, "n": {"type": "Centre", "properties": {"name": "U R Rao Satellite Centre (URSC)"}}},
+            {"m": {"type": "Mission", "properties": {"name": "Chandrayaan-3"}}, "r": {"relationship": "LAUNCHED_FROM"}, "n": {"type": "Spaceport", "properties": {"name": "Satish Dhawan Space Centre (SDSC SHAR)"}}},
+            {"m": {"type": "Mission", "properties": {"name": "Chandrayaan-3"}}, "r": {"relationship": "MANAGED_BY"}, "n": {"type": "Scientist", "properties": {"name": "P. Veeramuthuvel (Project Director)"}}},
+            {"m": {"type": "Mission", "properties": {"name": "Chandrayaan-3"}}, "r": {"relationship": "SPEARHEADED_BY"}, "n": {"type": "Scientist", "properties": {"name": "Shri S. Somanath (ISRO Chairman)"}}}
+        ]
+
+    # Special Shubhanshu Shukla & Gaganyaan Astronaut Graph Handler
+    if any(w in q_lower for w in ["shukla", "shubhanshu", "axiom", "axiom-4", "axiom 4"]):
+        return [
+            {"m": {"type": "Scientist", "properties": {"name": "Group Captain Shubhanshu Shukla"}}, "r": {"relationship": "PRIME_ASTRONAUT_FOR"}, "n": {"type": "Mission", "properties": {"name": "Axiom-4 (Ax-4) ISS Mission"}}},
+            {"m": {"type": "Scientist", "properties": {"name": "Group Captain Shubhanshu Shukla"}}, "r": {"relationship": "DESIGNATED_ASTRONAUT_OF"}, "n": {"type": "Mission", "properties": {"name": "Gaganyaan Human Spaceflight Program"}}},
+            {"m": {"type": "Scientist", "properties": {"name": "Group Captain Shubhanshu Shukla"}}, "r": {"relationship": "TRAINED_AT"}, "n": {"type": "Organization", "properties": {"name": "NASA Johnson Space Center"}}},
+            {"m": {"type": "Scientist", "properties": {"name": "Group Captain Shubhanshu Shukla"}}, "r": {"relationship": "TRAINED_AT"}, "n": {"type": "Organization", "properties": {"name": "Yuri Gagarin Cosmonaut Training Center"}}},
+            {"m": {"type": "Mission", "properties": {"name": "Gaganyaan"}}, "r": {"relationship": "EXECUTED_BY"}, "n": {"type": "Organization", "properties": {"name": "ISRO"}}},
+            {"m": {"type": "Mission", "properties": {"name": "Gaganyaan"}}, "r": {"relationship": "DEVELOPED_AT"}, "n": {"type": "Centre", "properties": {"name": "Human Space Flight Centre (HSFC)"}}},
+            {"m": {"type": "Mission", "properties": {"name": "Gaganyaan"}}, "r": {"relationship": "LAUNCHED_BY"}, "n": {"type": "LaunchVehicle", "properties": {"name": "LVM3 (Human Rated)"}}}
+        ]
+
+    # Special List All Missions / Directory Graph Handler
+    if any(w in q_lower for w in ["list all missions", "all space missions", "directory of missions", "list all space missions", "show all missions", "complete directory"]):
+        return [
+            {"m": {"type": "Organization", "properties": {"name": "ISRO"}}, "r": {"relationship": "LUNAR_PROGRAM"}, "n": {"type": "Mission", "properties": {"name": "Chandrayaan-3"}}},
+            {"m": {"type": "Organization", "properties": {"name": "ISRO"}}, "r": {"relationship": "SOLAR_PROGRAM"}, "n": {"type": "Mission", "properties": {"name": "Aditya-L1"}}},
+            {"m": {"type": "Organization", "properties": {"name": "ISRO"}}, "r": {"relationship": "PLANETARY_PROGRAM"}, "n": {"type": "Mission", "properties": {"name": "Mars Orbiter Mission (Mangalyaan)"}}},
+            {"m": {"type": "Organization", "properties": {"name": "ISRO"}}, "r": {"relationship": "HUMAN_SPACEFLIGHT"}, "n": {"type": "Mission", "properties": {"name": "Gaganyaan Program"}}},
+            {"m": {"type": "Organization", "properties": {"name": "ISRO"}}, "r": {"relationship": "ASTRONOMY_OBSERVATORY"}, "n": {"type": "Mission", "properties": {"name": "XPoSat & AstroSat"}}},
+            {"m": {"type": "Organization", "properties": {"name": "ISRO"}}, "r": {"relationship": "EARTH_OBSERVATION"}, "n": {"type": "Mission", "properties": {"name": "EOS-08 & Cartosat-3"}}},
+            {"m": {"type": "Organization", "properties": {"name": "ISRO"}}, "r": {"relationship": "COMMUNICATION_SATELLITE"}, "n": {"type": "Mission", "properties": {"name": "GSAT-N2 & INSAT-3DS"}}},
+            {"m": {"type": "Organization", "properties": {"name": "ISRO"}}, "r": {"relationship": "NAVIGATION_SYSTEM"}, "n": {"type": "Mission", "properties": {"name": "NavIC (IRNSS) & NVS-01"}}},
+            {"m": {"type": "Organization", "properties": {"name": "ISRO"}}, "r": {"relationship": "TECH_DEMONSTRATOR"}, "n": {"type": "Mission", "properties": {"name": "SpaDeX & RLV-TD"}}},
+            {"m": {"type": "Organization", "properties": {"name": "ISRO"}}, "r": {"relationship": "HISTORIC_FIRST"}, "n": {"type": "Mission", "properties": {"name": "Aryabhata (1975)"}}}
+        ]
+
+    # Special Last Rocket / Recent Launch Graph Handler
+    if any(w in q_lower for w in ["last rocket", "last launch", "latest rocket", "latest launch", "recent rocket", "recent launch", "most recent rocket", "last rocket launched"]):
+        return [
+            {"m": {"type": "LaunchVehicle", "properties": {"name": "PSLV-C60"}}, "r": {"relationship": "LAUNCHED_SPACECRAFT"}, "n": {"type": "Mission", "properties": {"name": "SpaDeX (30 Dec 2024)"}}},
+            {"m": {"type": "LaunchVehicle", "properties": {"name": "Falcon 9 (SpaceX)"}}, "r": {"relationship": "LAUNCHED_SPACECRAFT"}, "n": {"type": "Mission", "properties": {"name": "GSAT-N2 (19 Nov 2024)"}}},
+            {"m": {"type": "LaunchVehicle", "properties": {"name": "SSLV-D3"}}, "r": {"relationship": "LAUNCHED_SPACECRAFT"}, "n": {"type": "Mission", "properties": {"name": "EOS-08 (16 Aug 2024)"}}},
+            {"m": {"type": "LaunchVehicle", "properties": {"name": "GSLV-F14"}}, "r": {"relationship": "LAUNCHED_SPACECRAFT"}, "n": {"type": "Mission", "properties": {"name": "INSAT-3DS (17 Feb 2024)"}}},
+            {"m": {"type": "LaunchVehicle", "properties": {"name": "PSLV-C58"}}, "r": {"relationship": "LAUNCHED_SPACECRAFT"}, "n": {"type": "Mission", "properties": {"name": "XPoSat (01 Jan 2024)"}}},
+            {"m": {"type": "Organization", "properties": {"name": "ISRO"}}, "r": {"relationship": "OPERATES_SPACEPORT"}, "n": {"type": "Spaceport", "properties": {"name": "Satish Dhawan Space Centre (Sriharikota)"}}}
+        ]
 
     # Extract search terms inside quotes or lower match
-
     matches = re.findall(r'contains\s+tolower\(["\']([^"\']+)["\']\)', q_lower)
-    search_term = matches[0].strip() if matches else ""
+    cypher_term = matches[0].strip() if matches else ""
 
-    if not search_term:
-        # Broad ISRO domain keywords list
-        domain_keywords = [
-            "chandrayaan-3", "chandrayaan 3", "chandrayaan-2", "chandrayaan-1", "chandrayaan-4", "chandrayaan",
-            "aditya-l1", "aditya l1", "aditya", "gaganyaan", "spadex", "nisar",
-            "mangalyaan", "cartosat", "oceansat", "resourcesat", "risat", "astrosat", "xposat",
-            "abdul kalam", "kalam", "sarabhai", "dhawan", "somanath", "sivan", "radhakrishnan",
-            "pslv", "gslv", "lvm3", "sslv", "slv-3", "aslv", "aryabhata", "bhaskara", "apple",
-            "vssc", "ursc", "shar", "sriharikota", "isro"
-        ]
-        for kw in domain_keywords:
-            if kw in q_lower:
-                search_term = kw
-                break
+    # Stop words list for token extraction (including Cypher syntax keywords)
+    stop_words = {
+        "tell", "about", "what", "where", "when", "which", "show", "list", "give", "from",
+        "who", "whom", "does", "have", "many", "created", "started", "established", "the",
+        "is", "are", "was", "were", "an", "a", "and", "or", "in", "on", "at", "to", "for",
+        "of", "with", "by", "how", "can", "you", "me", "please", "detail", "details",
+        "match", "where", "tolower", "contains", "optional", "return", "limit", "name"
+    }
 
-    target_missions = []
-    
-    # 1. Exact Title Match (Highest Precision)
-    if search_term:
-        term_clean = search_term.replace(" ", "-")
-        target_missions = [
-            m for m in kb
-            if search_term in m.get("title", "").lower()
-            or term_clean in m.get("title", "").lower()
-            or search_term in m.get("mission_key", "").lower()
-        ]
-    
-    # 2. Content / Entity Fallback Match
-    if not target_missions and search_term:
-        target_missions = [
-            m for m in kb
-            if search_term in str(m.get("content", "")).lower()
-            or search_term in str(m.get("entities", [])).lower()
-        ]
+    # Extract query tokens
+    query_tokens = [w.strip("?,.!\"':;()") for w in q_lower.split() if len(w) > 2 and w.lower() not in stop_words]
+    if cypher_term and cypher_term not in stop_words:
+        query_tokens.append(cypher_term)
 
-    # Universal Fallback: If no specific search term or query match, return core ISRO graph cluster
+    # Special Keyword Mapping for Founder/Pioneers/Rockets/Sites
+    if cypher_term in {"founded", "founder", "father", "creator", "started", "established"} or any(w in q_lower for w in ["founder", "founded", "father of isro", "father of indian space", "who created isro", "who started isro", "who established isro"]):
+        query_tokens.append("sarabhai")
+    elif any(w in q_lower for w in ["kalam", "abdul kalam"]):
+        query_tokens.append("kalam")
+    elif any(w in q_lower for w in ["sarabhai", "vikram"]):
+        query_tokens.append("sarabhai")
+    elif any(w in q_lower for w in ["dhawan"]):
+        query_tokens.append("dhawan")
+
+    # Score each document in KB
+    scored_items = []
+    for item in kb:
+        title = item.get("title", "").lower()
+        m_key = item.get("mission_key", "").lower()
+        cat = item.get("category", "").lower()
+        content = str(item.get("documents", [])).lower() + " " + str(item.get("entities", [])).lower()
+        rel_str = str(item.get("relationships", [])).lower()
+
+        norm_cypher = cypher_term.replace("-", "").replace(" ", "").lower() if cypher_term else ""
+        norm_title = title.replace("-", "").replace(" ", "").lower()
+        norm_mkey = m_key.replace("-", "").replace(" ", "").lower()
+
+        score = 0
+        
+        # Cypher term exact / normalized match boost
+        if norm_cypher and (norm_cypher in norm_title or norm_cypher in norm_mkey or norm_title in norm_cypher):
+            score += 100
+
+        for token in query_tokens:
+            token_norm = token.replace("-", "").replace(" ", "").lower()
+            if token_norm and (token_norm in norm_title or token_norm in norm_mkey):
+                score += 80
+            elif token in title or token in m_key:
+                score += 40
+            elif token in cat:
+                score += 20
+            elif token in rel_str:
+                score += 15
+            elif token in content:
+                score += 10
+
+        if score > 0:
+            scored_items.append((score, item))
+
+    # Sort by score descending
+    scored_items.sort(key=lambda x: x[0], reverse=True)
+    target_missions = [item for _, item in scored_items]
+
+    # Universal Fallback: If no specific search term or query match, return relevant ISRO graph cluster
     if not target_missions:
-        priority_keys = ["chandrayaan-3", "aditya-l1", "gaganyaan", "a.p.j. abdul kalam", "vikram sarabhai"]
+        if any(w in q_lower for w in ["who", "person", "scientist", "founder", "father", "established", "created"]):
+            priority_keys = ["vikram sarabhai", "a.p.j. abdul kalam", "satish dhawan"]
+        else:
+            priority_keys = ["chandrayaan-3", "aditya-l1", "gaganyaan", "a.p.j. abdul kalam", "vikram sarabhai"]
         target_missions = [
             m for m in kb if any(pk in m.get("title", "").lower() for pk in priority_keys)
         ]
         if not target_missions:
             target_missions = kb[:3]
 
-    # Increase target entity documents to return rich network of nodes
-    max_targets = 3 if search_term and search_term != "isro" else 6
+    # Focus strictly on the single highest-scoring main target entity for specific queries
+    # This prevents unrelated mission nodes from polluting the graph canvas with noise.
+    if cypher_term or query_tokens:
+        max_targets = 1
+    else:
+        max_targets = 5
     selected_targets = target_missions[:max_targets]
 
     for mission in selected_targets:
@@ -264,7 +372,9 @@ def sanitize_graph_records(records: list, query: str = "") -> list:
         return []
 
     q_low = query.lower()
-    is_list_missions = any(phrase in q_low for phrase in ["list all", "list mission", "all mission", "show mission", "list_missions", "match (m:mission)"])
+    is_list_missions = any(phrase in q_low for phrase in ["list all", "list mission", "all mission", "show mission", "list_missions", "match (m:mission)", "directory"])
+    if is_list_missions:
+        return records
 
     sanitized = []
     seen_keys = set()
@@ -290,9 +400,9 @@ def sanitize_graph_records(records: list, query: str = "") -> list:
         m_type = infer_source_type(m_name, m.get("type") if isinstance(m, dict) else None)
         n_type = normalize_label(n.get("type") if isinstance(n, dict) else "Entity")
 
-        # If user asked to list missions, STRICTLY filter for actual space missions!
+        # If user asked to list missions, keep ISRO hub node or actual space missions!
         if is_list_missions:
-            if not is_actual_mission(m_name):
+            if m_name.upper() != "ISRO" and not is_actual_mission(m_name):
                 continue
 
         key = (m_name, n_name, r.get("relationship") if isinstance(r, dict) else "")

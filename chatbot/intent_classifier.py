@@ -15,6 +15,14 @@ def get_intent(question: str) -> str:
     q_lower = question.lower().strip()
 
     # Rule-based fast intent matching
+    if any(k in q_lower for k in ["hi", "hello", "hey", "who are you", "what can you do", "help", "what is graphmind"]):
+        return "greeting"
+    if any(k in q_lower for k in ["how many", "total mission", "total launch", "count", "statistics"]):
+        return "statistics"
+    if any(k in q_lower for k in ["founder", "founded", "who created", "who established", "who started", "father of isro", "father of indian space"]):
+        return "person"
+    if any(k in q_lower for k in ["who is", "who was", "scientist", "scientists", "people", "chairman", "director"]):
+        return "person"
     if any(k in q_lower for k in ["list mission", "all mission", "show mission", "list all mission"]):
         return "list_missions"
     if any(k in q_lower for k in ["list organization", "all organization", "show organization", "list org"]):

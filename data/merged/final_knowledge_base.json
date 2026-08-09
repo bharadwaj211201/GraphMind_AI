@@ -26266,7 +26266,7 @@
     "documents": [
       {
         "url": "https://www.isro.gov.in/missions/saral",
-        "content": "SARAL is an essential space capability/pioneer in ISRO's history involving IN-SPACe, D空间. Launched on 28 November 1994, work was engineered at NRSC, Space Physics Laboratory and launched via GSLV-F06 from Satish Dhawan Space Centre. Key achievements include SSM, Communication Transponder designed to study Earth. Key pioneers and scientists include K. Sivan."
+        "content": "SARAL is an essential space capability/pioneer in ISRO's history involving IN-SPACe, D\u7a7a\u95f4. Launched on 28 November 1994, work was engineered at NRSC, Space Physics Laboratory and launched via GSLV-F06 from Satish Dhawan Space Centre. Key achievements include SSM, Communication Transponder designed to study Earth. Key pioneers and scientists include K. Sivan."
       }
     ],
     "entities": [
@@ -26293,10 +26293,10 @@
         ]
       },
       {
-        "name": "D空间",
+        "name": "D\u7a7a\u95f4",
         "type": "ORGANIZATION",
         "aliases": [
-          "D空间"
+          "D\u7a7a\u95f4"
         ],
         "sources": [
           "ISRO",
@@ -26437,7 +26437,7 @@
         "source": "SARAL",
         "source_type": "MISSION",
         "source_label": "Mission",
-        "target": "D空间",
+        "target": "D\u7a7a\u95f4",
         "target_type": "ORGANIZATION",
         "target_label": "Organization",
         "relationship": "INVOLVES",
@@ -28909,7 +28909,7 @@
     "documents": [
       {
         "url": "https://www.isro.gov.in/missions/rohinirs1",
-        "content": "Rohini RS-1 is an essential space capability/pioneer in ISRO's history involving Indian Space Research Organisation, D空间. Launched on 12 May 1994, work was engineered at Satish Dhawan Space Centre, Indian Deep Space Network and launched via GSLV Mk I from Satish Dhawan Space Centre. Key achievements include UVIT, SSM designed to study Earth. Key pioneers and scientists include Nandini Harinath."
+        "content": "Rohini RS-1 is an essential space capability/pioneer in ISRO's history involving Indian Space Research Organisation, D\u7a7a\u95f4. Launched on 12 May 1994, work was engineered at Satish Dhawan Space Centre, Indian Deep Space Network and launched via GSLV Mk I from Satish Dhawan Space Centre. Key achievements include UVIT, SSM designed to study Earth. Key pioneers and scientists include Nandini Harinath."
       }
     ],
     "entities": [
@@ -28936,10 +28936,10 @@
         ]
       },
       {
-        "name": "D空间",
+        "name": "D\u7a7a\u95f4",
         "type": "ORGANIZATION",
         "aliases": [
-          "D空间"
+          "D\u7a7a\u95f4"
         ],
         "sources": [
           "ISRO",
@@ -29080,7 +29080,7 @@
         "source": "Rohini RS-1",
         "source_type": "MISSION",
         "source_label": "Mission",
-        "target": "D空间",
+        "target": "D\u7a7a\u95f4",
         "target_type": "ORGANIZATION",
         "target_label": "Organization",
         "relationship": "INVOLVES",
@@ -35008,7 +35008,7 @@
     "documents": [
       {
         "url": "https://www.isro.gov.in/missions/gsat11",
-        "content": "GSAT-11 is an essential space capability/pioneer in ISRO's history involving D空间, IMD. Launched on 05 December 2018, work was engineered at Laboratory for Electro-Optics Systems, LEOS and launched via PSLV-C19 from Satish Dhawan Space Centre. Key achievements include IIRS, ASPEX designed to study Earth. Key pioneers and scientists include Mylswamy Annadurai."
+        "content": "GSAT-11 is an essential space capability/pioneer in ISRO's history involving D\u7a7a\u95f4, IMD. Launched on 05 December 2018, work was engineered at Laboratory for Electro-Optics Systems, LEOS and launched via PSLV-C19 from Satish Dhawan Space Centre. Key achievements include IIRS, ASPEX designed to study Earth. Key pioneers and scientists include Mylswamy Annadurai."
       }
     ],
     "entities": [
@@ -35024,10 +35024,10 @@
         ]
       },
       {
-        "name": "D空间",
+        "name": "D\u7a7a\u95f4",
         "type": "ORGANIZATION",
         "aliases": [
-          "D空间"
+          "D\u7a7a\u95f4"
         ],
         "sources": [
           "ISRO",
@@ -35165,7 +35165,7 @@
         "source": "GSAT-11",
         "source_type": "MISSION",
         "source_label": "Mission",
-        "target": "D空间",
+        "target": "D\u7a7a\u95f4",
         "target_type": "ORGANIZATION",
         "target_label": "Organization",
         "relationship": "INVOLVES",
@@ -48349,6 +48349,194 @@
         "target_type": "DATE",
         "target_label": "Date",
         "relationship": "LAUNCHED_ON"
+      }
+    ]
+  },
+  {
+    "title": "Dr. V. Narayanan",
+    "mission_key": "narayanan",
+    "category": "Scientist & ISRO Chairman",
+    "documents": [
+      "Dr. V. Narayanan is the 11th Chairman of the Indian Space Research Organisation (ISRO) and Secretary of the Department of Space (DOS), assuming office on January 14, 2025.",
+      "Prior to his appointment as ISRO Chairman, Dr. V. Narayanan served as the Director of the Liquid Propulsion Systems Centre (LPSC) in Valiamala, Kerala.",
+      "He is a distinguished rocket propulsion scientist specializing in cryogenic engines, liquid propulsion systems, and heavy-lift rocket stage technology for LVM3 and PSLV launchers."
+    ],
+    "entities": [
+      {
+        "name": "Dr. V. Narayanan",
+        "type": "SCIENTIST"
+      },
+      {
+        "name": "ISRO",
+        "type": "ORGANIZATION"
+      },
+      {
+        "name": "Department of Space",
+        "type": "ORGANIZATION"
+      },
+      {
+        "name": "Liquid Propulsion Systems Centre",
+        "type": "CENTRE"
+      },
+      {
+        "name": "LVM3",
+        "type": "LAUNCH_VEHICLE"
+      },
+      {
+        "name": "PSLV",
+        "type": "LAUNCH_VEHICLE"
+      },
+      {
+        "name": "14 January 2025",
+        "type": "DATE"
+      }
+    ],
+    "relationships": [
+      {
+        "relationship_id": "REL_NARAYANAN_01",
+        "source": "Dr. V. Narayanan",
+        "source_type": "SCIENTIST",
+        "source_label": "Scientist",
+        "target": "ISRO",
+        "target_type": "ORGANIZATION",
+        "target_label": "Organization",
+        "relationship": "CURRENT_CHAIRMAN_OF",
+        "evidence": [
+          "Domain Knowledge Base"
+        ],
+        "confidence": 1.0
+      },
+      {
+        "relationship_id": "REL_NARAYANAN_02",
+        "source": "Dr. V. Narayanan",
+        "source_type": "SCIENTIST",
+        "source_label": "Scientist",
+        "target": "Department of Space",
+        "target_type": "ORGANIZATION",
+        "target_label": "Organization",
+        "relationship": "SECRETARY_OF",
+        "evidence": [
+          "Domain Knowledge Base"
+        ],
+        "confidence": 1.0
+      },
+      {
+        "relationship_id": "REL_NARAYANAN_03",
+        "source": "Dr. V. Narayanan",
+        "source_type": "SCIENTIST",
+        "source_label": "Scientist",
+        "target": "Liquid Propulsion Systems Centre",
+        "target_type": "CENTRE",
+        "target_label": "Centre",
+        "relationship": "FORMER_DIRECTOR_OF",
+        "evidence": [
+          "Domain Knowledge Base"
+        ],
+        "confidence": 1.0
+      },
+      {
+        "relationship_id": "REL_NARAYANAN_04",
+        "source": "Dr. V. Narayanan",
+        "source_type": "SCIENTIST",
+        "source_label": "Scientist",
+        "target": "LVM3",
+        "target_type": "LAUNCH_VEHICLE",
+        "target_label": "LaunchVehicle",
+        "relationship": "DEVELOPED_PROPULSION",
+        "evidence": [
+          "Domain Knowledge Base"
+        ],
+        "confidence": 1.0
+      },
+      {
+        "relationship_id": "REL_NARAYANAN_05",
+        "source": "Dr. V. Narayanan",
+        "source_type": "SCIENTIST",
+        "source_label": "Scientist",
+        "target": "14 January 2025",
+        "target_type": "DATE",
+        "target_label": "Date",
+        "relationship": "APPOINTED_ON",
+        "evidence": [
+          "Domain Knowledge Base"
+        ],
+        "confidence": 1.0
+      }
+    ]
+  },
+  {
+    "title": "SSLV-D3 / EOS-08",
+    "mission_key": "sslv-d3",
+    "category": "Spacecraft Mission & Launch Vehicle",
+    "documents": [
+      "SSLV-D3 successfully placed the EOS-08 Earth Observation Satellite and SR-0 DEMOSAT into Low Earth Orbit on August 16, 2024.",
+      "This mission marked the successful completion of the Small Satellite Launch Vehicle (SSLV) development program, declaring SSLV operational for commercial small satellite launches.",
+      "The launch took place from the First Launch Pad at Satish Dhawan Space Centre (SDSC SHAR), Sriharikota."
+    ],
+    "entities": [
+      {
+        "name": "SSLV-D3",
+        "type": "LAUNCH_VEHICLE"
+      },
+      {
+        "name": "EOS-08",
+        "type": "SPACECRAFT"
+      },
+      {
+        "name": "ISRO",
+        "type": "ORGANIZATION"
+      },
+      {
+        "name": "Satish Dhawan Space Centre",
+        "type": "SPACEPORT"
+      },
+      {
+        "name": "16 August 2024",
+        "type": "DATE"
+      }
+    ],
+    "relationships": [
+      {
+        "relationship_id": "REL_SSLVD3_01",
+        "source": "SSLV-D3",
+        "source_type": "LAUNCH_VEHICLE",
+        "source_label": "LaunchVehicle",
+        "target": "EOS-08",
+        "target_type": "SPACECRAFT",
+        "target_label": "Spacecraft",
+        "relationship": "LAUNCHED",
+        "evidence": [
+          "Domain Knowledge Base"
+        ],
+        "confidence": 1.0
+      },
+      {
+        "relationship_id": "REL_SSLVD3_02",
+        "source": "SSLV-D3",
+        "source_type": "LAUNCH_VEHICLE",
+        "source_label": "LaunchVehicle",
+        "target": "16 August 2024",
+        "target_type": "DATE",
+        "target_label": "Date",
+        "relationship": "LAUNCHED_ON",
+        "evidence": [
+          "Domain Knowledge Base"
+        ],
+        "confidence": 1.0
+      },
+      {
+        "relationship_id": "REL_SSLVD3_03",
+        "source": "SSLV-D3",
+        "source_type": "LAUNCH_VEHICLE",
+        "source_label": "LaunchVehicle",
+        "target": "Satish Dhawan Space Centre",
+        "target_type": "SPACEPORT",
+        "target_label": "Spaceport",
+        "relationship": "LAUNCHED_FROM",
+        "evidence": [
+          "Domain Knowledge Base"
+        ],
+        "confidence": 1.0
       }
     ]
   }
